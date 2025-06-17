@@ -10,5 +10,5 @@ protected:
 	void UpdateImpl() override;
 
 private:
-	Sun* m_Sun{};
+	GameObject* m_Sun{};
 };

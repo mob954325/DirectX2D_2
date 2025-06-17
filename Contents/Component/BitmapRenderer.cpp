@@ -31,7 +31,11 @@ void BitmapRenderer::Render(D2DRenderManager* manager)
 
 void BitmapRenderer::CreateBitMap(const wchar_t* path)
 {
-
+	Microsoft::WRL::ComPtr<ID2D1Bitmap1> outBitmap;
+	HRESULT hr = renderManager->CreateBitmapFromFile(path, outBitmap.GetAddressOf());
+	assert(SUCCEEDED(hr));
+	
+	m_bitmap = outBitmap;
 }
 
 void BitmapRenderer::SetScreenSize(int width, int height)

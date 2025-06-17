@@ -7,7 +7,8 @@
 
 void GameScene::OnEnterImpl()
 {
-	//m_Sun = new Sun();
+	m_Sun = new Sun();
+	AddGameObject(m_Sun);
 }
 
 void GameScene::OnExitImpl()

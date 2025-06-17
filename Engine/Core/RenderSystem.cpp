@@ -3,6 +3,7 @@
 void RenderSystem::Regist(RenderComponent* comp)
 {
 	components.push_back(comp);
+	comp->SetRenderManager(renderManager);
 }
 
 void RenderSystem::UnRegist(RenderComponent* comp)

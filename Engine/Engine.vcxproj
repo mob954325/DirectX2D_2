@@ -129,7 +129,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Base\BaseScript.h" />
     <ClInclude Include="Base\Component.h" />
     <ClInclude Include="Base\ScriptComponent.h" />
     <ClInclude Include="Core\Application.h" />

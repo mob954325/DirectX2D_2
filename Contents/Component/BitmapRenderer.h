@@ -8,7 +8,7 @@ class BitmapRenderer : public RenderComponent
 {
 public:
 	BitmapRenderer() {};
-	~BitmapRenderer() {};
+	~BitmapRenderer() { };
 
 	void Render(D2DRenderManager* manager) override;
 

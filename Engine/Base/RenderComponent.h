@@ -12,7 +12,8 @@ public:
 	void OnStart() override {};
 
 	virtual void Render(D2DRenderManager* manager) = 0;
+	void SetRenderManager(D2DRenderManager* pManager) { renderManager = pManager; }
 
-private:	
-	 //D2DRenderManager
+protected:	
+	D2DRenderManager* renderManager{};
 };

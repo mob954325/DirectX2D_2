@@ -2,7 +2,7 @@
 #include "Utility/Singleton.h"
 #include "ScriptSystem.h"
 #include "RenderSystem.h"
-#include "Component.h"
+#include "Base/Component.h"
 #include <vector>
 
 class ScriptSystem;

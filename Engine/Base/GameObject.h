@@ -12,12 +12,17 @@ class GameObject
 {
 public:
 	GameObject();
-	~GameObject();
+	virtual ~GameObject();
 
 	/// <summary>
 	/// Update 실행 전 한 번 실행되는 함수
 	/// </summary>
 	virtual void Start() = 0;
+
+	/// <summary>
+	/// 업데이트 실행
+	/// </summary>
+	virtual void Update() = 0;
 
 	/// <summary>
 	/// 씬 종료시 실행될 함수
