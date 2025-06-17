@@ -36,7 +36,7 @@ void D2DRenderManager::Uninitialize()
 	m_wicImagingFactory = nullptr;
 }
 
-void D2DRenderManager::Render(GameSystem* game)
+void D2DRenderManager::Render(RenderSystem* system)
 {
 	assert(m_d2dDeviceContext);
 
@@ -45,7 +45,7 @@ void D2DRenderManager::Render(GameSystem* game)
 	// Clear
 	m_d2dDeviceContext->Clear(D2D1::ColorF(D2D1::ColorF::DarkSlateBlue));
 
-	game->Render(this);
+	system->Update(this);
 
 	//PrintText(L"회전 여부 : R",0,0);
 	//PrintText(L"회전 방향 변경 : T",0,20);

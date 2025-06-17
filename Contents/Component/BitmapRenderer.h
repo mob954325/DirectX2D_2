@@ -1,20 +1,23 @@
 ﻿#pragma once
 #include "Core/Application.h"
 #include "Base/Component.h"
-#include "Base/IRenderer.h"
+#include "Base/RenderComponent.h"
+#include "Base/Transform.h"
 
-class BitmapRenderer : public Component, public IRenderable
+class BitmapRenderer : public RenderComponent
 {
 public:
 	BitmapRenderer() {};
 	~BitmapRenderer() {};
 
-	void Update() override;
 	void Render(D2DRenderManager* manager) override;
 
-	void SetBitmap(const ComPtr<ID2D1Bitmap1>& bitmap);
+	void CreateBitMap(const wchar_t* path);
 	void SetScreenSize(int width, int height);
 	void SetOffSet(float x, float y);
+
+	Microsoft::WRL::ComPtr<ID2D1Bitmap1> GetBitmap();
+
 protected:
 	D2D1::Matrix3x2F GetRenderMatrix(Transform* transform);
 

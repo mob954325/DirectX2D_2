@@ -17,3 +17,8 @@ GameObject::~GameObject()
 
 	components.clear();
 }
+
+void GameObject::RegisterComponentWithSystemManager(Component* comp)
+{
+	Singleton<SystemManager>::GetInstance().RegisterComponent(comp);
+}

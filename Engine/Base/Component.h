@@ -11,7 +11,10 @@ public:
 	Component() = default;
 	virtual ~Component() = default;
 
-	virtual void Update() = 0;
+	//virtual void OnCreate() {};
+	virtual void OnStart() {};
+	//virtual void OnEnd() {};
+	virtual void OnDestroy() {};
 
 	/// <summary>
 	/// 해당 Component를 가지고 있는 게임 오브젝트

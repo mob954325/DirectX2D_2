@@ -1,17 +1,24 @@
 ﻿#include "DemoGameApp.h"
 #include "Core/D2DRenderManager.h"
+#include "Core/SceneManager.h"
 #include "Utility/Singleton.h"
 #include "Utility/Input.h"
 #include "Utility/GameTime.h"
+
+#include "MenuScene.h"
+#include "GameScene.h"
 
 void DemoGameApp::Initialize()
 {
 	__super::Initialize(); // Application 초기화
 
-	camera = new Transform();
-
+	Singleton<SceneManager>::GetInstance().AddScene(new MenuScene());
+	Singleton<SceneManager>::GetInstance().AddScene(new GameScene());
+	Singleton<SceneManager>::GetInstance().ChangeScene(0);
+	/*camera = new Transform();
+	
 	// Sun -> Earth -> Moon
-	m_Sun = new Sun(m_D2DRenderManager, m_GameSystem);
+	m_Sun = new Sun(m_D2DRenderManager, m_ScriptSystem);
 
 	m_Earth = new BitmapRenderer();
 	m_Earth->GetTransform()->SetScale(0.5f, 0.5f);
@@ -43,11 +50,10 @@ void DemoGameApp::Initialize()
 
 	for (int i = 0; i < objects.size(); i++)
 	{
-		objects[i]->SetScreenSize(m_Width, m_Height);
-		m_D2DRenderManager->AddRenderObject(objects[i]);
+		objects[i]->GetComponent<BitmapRenderer>()->SetScreenSize(m_Width, m_Height);
 	}
 
-	m_D2DRenderManager->SetMainCamera(camera);
+	m_D2DRenderManager->SetMainCamera(camera); */
 }
 
 void DemoGameApp::Render()
@@ -60,90 +66,90 @@ void DemoGameApp::Uninitialize()
 	__super::Uninitialize();
 
 	// delete BitmapRenderer
-	for (int i = 0; i < objects.size(); i++)
-	{
-		delete objects[i];
-		objects[i] = nullptr;
-	}
+	//for (int i = 0; i < objects.size(); i++)
+	//{
+	//	delete objects[i];
+	//	objects[i] = nullptr;
+	//}
 
-	objects.clear();
+	//objects.clear();
 }
 
 void DemoGameApp::Update()
 {
 	__super::Update();
 
-	FlagInputUpdate();
-	MoveCamera();
-	SolarSystemUpdate();
+	//FlagInputUpdate();
+	//MoveCamera();
+	//SolarSystemUpdate();
 }
 
-void DemoGameApp::FlagInputUpdate()
-{
-	if (Singleton<Input>::GetInstance().IsKeyPressed('R')) // R : 그림 움직임 
-	{		
-		isSolarSystemMove = !isSolarSystemMove;
-	}
-
-	if (Singleton<Input>::GetInstance().IsKeyPressed('T')) // T : 회전 방향 반전
-	{
-		baseRotateSpeed *= -1;
-	}
-
-	if (Singleton<Input>::GetInstance().IsKeyPressed('Y')) // Y : 유니티 좌표계 사용
-	{
-		for (BitmapRenderer* comp : objects)
-		{
-			comp->GetTransform()->SetIsUnityCoords(!comp->GetTransform()->IsUnityCoords());
-		}
-	}
-
-	if (Singleton<Input>::GetInstance().IsKeyPressed('U'))
-	{
-		Reset();
-	}
-}
-
-void DemoGameApp::MoveCamera()
-{
-	if (Singleton<Input>::GetInstance().IsKeyDown('D'))
-	{
-		D2D1_VECTOR_2F position = camera->GetPosition();
-		camera->SetPosition(position.x + cameraMoveSpeed, position.y);
-	}
-	if (Singleton<Input>::GetInstance().IsKeyDown('A'))
-	{
-		D2D1_VECTOR_2F position = camera->GetPosition();
-		camera->SetPosition(position.x - cameraMoveSpeed, position.y);
-	}
-	if (Singleton<Input>::GetInstance().IsKeyDown('W'))
-	{
-		D2D1_VECTOR_2F position = camera->GetPosition();
-		camera->SetPosition(position.x, position.y + cameraMoveSpeed);
-	}
-	if (Singleton<Input>::GetInstance().IsKeyDown('S'))
-	{
-		D2D1_VECTOR_2F position = camera->GetPosition();
-		camera->SetPosition(position.x, position.y - cameraMoveSpeed);
-	}
-}
-
-void DemoGameApp::SolarSystemUpdate()
-{
-	if (!isSolarSystemMove) return;
-
-	float rotation_sun = m_Sun->GetTransform()->GetRotation();
-	m_Sun->GetTransform()->SetRotation(rotation_sun + baseRotateSpeed * sunRotateRatio * Singleton<GameTime>::GetInstance().GetDeltaTime());
-
-	float rotation_earth = m_Earth->GetTransform()->GetRotation();
-	m_Earth->GetTransform()->SetRotation(rotation_earth + baseRotateSpeed * earthRotateRatio * Singleton<GameTime>::GetInstance().GetDeltaTime());
-
-	//float rotation_moon = transform_Moon->GetRotation();
-	//transform_Moon->SetRotation(rotation_moon + baseRotateSpeed * moonRotateRatio * Singleton<GameTime>::GetInstance().GetDeltaTime());
-}
-
-void DemoGameApp::Reset()
-{
-	m_Sun->GetTransform()->SetPosition(0.0f, 0.0f);
-	camera->SetPosition(0.0f, 0.0f);
-}
+//void DemoGameApp::FlagInputUpdate()
+//{
+//	if (Singleton<Input>::GetInstance().IsKeyPressed('R')) // R : 그림 움직임 
+//	{		
+//		isSolarSystemMove = !isSolarSystemMove;
+//	}
+//
+//	if (Singleton<Input>::GetInstance().IsKeyPressed('T')) // T : 회전 방향 반전
+//	{
+//		baseRotateSpeed *= -1;
+//	}
+//
+//	if (Singleton<Input>::GetInstance().IsKeyPressed('Y')) // Y : 유니티 좌표계 사용
+//	{
+//		for (GameObject* comp : objects)
+//		{
+//			comp->transform->SetIsUnityCoords(!comp->transform->IsUnityCoords());
+//		}
+//	}
+//
+//	if (Singleton<Input>::GetInstance().IsKeyPressed('U'))
+//	{
+//		Reset();
+//	}
+//}
+//
+//void DemoGameApp::MoveCamera()
+//{
+//	if (Singleton<Input>::GetInstance().IsKeyDown('D'))
+//	{
+//		D2D1_VECTOR_2F position = camera->GetPosition();
+//		camera->SetPosition(position.x + cameraMoveSpeed, position.y);
+//	}
+//	if (Singleton<Input>::GetInstance().IsKeyDown('A'))
+//	{
+//		D2D1_VECTOR_2F position = camera->GetPosition();
+//		camera->SetPosition(position.x - cameraMoveSpeed, position.y);
+//	}
+//	if (Singleton<Input>::GetInstance().IsKeyDown('W'))
+//	{
+//		D2D1_VECTOR_2F position = camera->GetPosition();
+//		camera->SetPosition(position.x, position.y + cameraMoveSpeed);
+//	}
+//	if (Singleton<Input>::GetInstance().IsKeyDown('S'))
+//	{
+//		D2D1_VECTOR_2F position = camera->GetPosition();
+//		camera->SetPosition(position.x, position.y - cameraMoveSpeed);
+//	}
+//}
+//
+//void DemoGameApp::SolarSystemUpdate()
+//{
+//	if (!isSolarSystemMove) return;
+//
+//	float rotation_sun = m_Sun->transform->GetRotation();
+//	m_Sun->transform->SetRotation(rotation_sun + baseRotateSpeed * sunRotateRatio * Singleton<GameTime>::GetInstance().GetDeltaTime());
+//
+//	//float rotation_earth = m_Earth->transform->GetRotation();
+//	//m_Earth->transform->SetRotation(rotation_earth + baseRotateSpeed * earthRotateRatio * Singleton<GameTime>::GetInstance().GetDeltaTime());
+//
+//	//float rotation_moon = transform_Moon->GetRotation();
+//	//transform_Moon->SetRotation(rotation_moon + baseRotateSpeed * moonRotateRatio * Singleton<GameTime>::GetInstance().GetDeltaTime());
+//}
+//
+//void DemoGameApp::Reset()
+//{
+//	m_Sun->transform->SetPosition(0.0f, 0.0f);
+//	camera->SetPosition(0.0f, 0.0f);
+//}

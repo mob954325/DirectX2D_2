@@ -1,11 +1,14 @@
 ﻿#include "pch.h"
 #include "Application.h"
+#include "SceneManager.h"
 #include "D2DRenderManager.h"
-#include "GameSystem.h"
+#include "ScriptSystem.h"
+#include "RenderSystem.h"
 
 #include "Singleton.h"
 #include "Input.h"
 #include "GameTime.h"
+#include "SystemManager.h"
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -104,11 +107,18 @@ void Application::Initialize()
 	m_D2DRenderManager->SetScreenSize(m_Width, m_Height);
 	m_D2DRenderManager->SetD2D1DeviceContext7(m_d2dDeviceContext.Get());
 
-	// GameSystem 초기화
-	m_GameSystem = new GameSystem;
+	// ScriptSystem 초기화
+	m_ScriptSystem = new ScriptSystem;
+
+	// RenderSystem  초기화
+	m_RenderSystem = new RenderSystem(m_D2DRenderManager);
 
 	// GameTime 초기화
 	Singleton<GameTime>::GetInstance().InitTime();
+
+	// SystemManager 초기화
+	Singleton<SystemManager>::GetInstance().SetScriptSystem(m_ScriptSystem);
+	Singleton<SystemManager>::GetInstance().SetRenderSystem(m_RenderSystem);
 }
 
 void Application::Uninitialize()
@@ -163,13 +173,14 @@ void Application::MessageProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 void Application::Render()
 {
-	m_D2DRenderManager->Render(m_GameSystem);
+	m_D2DRenderManager->Render(m_RenderSystem);
 	m_dxgiSwapChain->Present(1, 0);
 }
 
 void Application::Update()
 {
-	m_GameSystem->Update();
+	m_ScriptSystem->Update(); // 컴포넌트 업데이트
+	Singleton<SceneManager>::GetInstance().Update(); // 씬 내용 업데이트
 }
 
 void Application::Run()

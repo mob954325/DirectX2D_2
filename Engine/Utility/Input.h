@@ -1,8 +1,8 @@
-#pragma once
+﻿#pragma once
 #include <Windows.h>
 #include "Singleton.h"
 
-class Input : Singleton<Input>
+class Input : public Singleton<Input>
 {
 public:
 	Input() = default;

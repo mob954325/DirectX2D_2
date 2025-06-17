@@ -3,7 +3,7 @@
 #include <windows.h>
 #include "Singleton.h"
 
-class GameTime : Singleton<GameTime>
+class GameTime : public Singleton<GameTime>
 {
 public:
 	GameTime() = default;

@@ -1,17 +1,19 @@
 ﻿#pragma once
 #include "framework.h"
+#include "D2DRenderManager.h"
+#include "ScriptSystem.h"
+#include "RenderSystem.h"
+#include "SystemManager.h"
 
 using namespace Microsoft::WRL;
-
-class D2DRenderManager;
-class GameSystem;
 
 // 윈도우 프로그램 생성 재활용을 위한 클래스
 class Application
 {
 public:
 	D2DRenderManager* m_D2DRenderManager;	
-	GameSystem* m_GameSystem;
+	ScriptSystem* m_ScriptSystem;
+	RenderSystem* m_RenderSystem;
 
 	/// <summary>
 	/// D2DRenderManager 초기화

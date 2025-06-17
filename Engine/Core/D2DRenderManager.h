@@ -1,18 +1,19 @@
 ﻿#pragma once
 #include "framework.h"
 #include "Base/Transform.h"
-#include "Base/IRenderer.h" 
-#include "GameSystem.h"
+#include "Base/RenderComponent.h" 
+#include "RenderSystem.h"
 
 using namespace Microsoft::WRL;
 
+class RenderSystem;
 // Direct2D 코드 재활용 하기 위한 클래스 | IRenderer
 class D2DRenderManager
 {
 public:
 	void Initialize();
 	void Uninitialize();
-	void Render(GameSystem* game);
+	void Render(RenderSystem* game);
 
 	void SetD2D1DeviceContext7(ID2D1DeviceContext7* pD2D1DeviceContext7);
 	void SetScreenSize(int width, int height);
@@ -21,9 +22,9 @@ public:
 	int GetScreenHeightSize() { return screenHeight; };
 
 	void SetBitmapTransform(D2D1_MATRIX_3X2_F& finalMatrix);
-	void DrawBitmap(Microsoft::WRL::ComPtr<ID2D1Bitmap1> bitmap);
-	void DrawBitmap(Microsoft::WRL::ComPtr<ID2D1Bitmap1> bitmap, D2D1_RECT_F& destRect);
-	void DrawImage(Microsoft::WRL::ComPtr<ID2D1Effect> effect);
+	void DrawBitmap(ComPtr<ID2D1Bitmap1> bitmap);
+	void DrawBitmap(ComPtr<ID2D1Bitmap1> bitmap, D2D1_RECT_F& destRect);
+	void DrawImage(ComPtr<ID2D1Effect> effect);
 
 	/// <summary>
 	/// WIC를 통해 이미지를 ID2D1Bitmap1**로 반환하는 함수
@@ -46,7 +47,7 @@ protected:
 	ComPtr<IDWriteTextFormat> m_pDWriteTextFormat;
 	ComPtr<ID2D1SolidColorBrush> m_pBrush; // 브러시 개체 인터페이스 포인터 변수
 
-	Transform* m_camTransform; // 현재 렌더링하는 카메라 transform 참조값
+	Transform* m_camTransform = {}; // 현재 렌더링하는 카메라 transform 참조값
 
 	int screenWidth = 0;
 	int screenHeight = 0;
