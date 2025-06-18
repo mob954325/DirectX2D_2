@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Base\Camera.h" />
     <ClInclude Include="Base\Component.h" />
     <ClInclude Include="Base\ScriptComponent.h" />
     <ClInclude Include="Core\Application.h" />
@@ -137,9 +138,8 @@
     <ClInclude Include="Base\GameObject.h" />
     <ClInclude Include="Core\ScriptSystem.h" />
     <ClInclude Include="Core\Scene.h" />
-    <ClInclude Include="Core\SceneManager.h" />
+    <ClInclude Include="Utility\SceneManager.h" />
     <ClInclude Include="Core\RenderSystem.h" />
-    <ClInclude Include="Core\SystemManager.h" />
     <ClInclude Include="Utility\GameTime.h" />
     <ClInclude Include="Utility\Input.h" />
     <ClInclude Include="Base\RenderComponent.h" />
@@ -148,14 +148,14 @@
     <ClInclude Include="Base\Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Base\Camera.cpp" />
     <ClCompile Include="Core\Application.cpp" />
     <ClCompile Include="Core\D2DRenderManager.cpp" />
     <ClCompile Include="Base\GameObject.cpp" />
     <ClCompile Include="Core\ScriptSystem.cpp" />
     <ClCompile Include="Core\Scene.cpp" />
-    <ClCompile Include="Core\SceneManager.cpp" />
+    <ClCompile Include="Utility\SceneManager.cpp" />
     <ClCompile Include="Core\RenderSystem.cpp" />
-    <ClCompile Include="Core\SystemManager.cpp" />
     <ClCompile Include="Utility\GameTime.cpp" />
     <ClCompile Include="Utility\Input.cpp" />
     <ClCompile Include="MyD2DEngine.cpp" />

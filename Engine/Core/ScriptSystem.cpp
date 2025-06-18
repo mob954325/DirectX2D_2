@@ -4,9 +4,9 @@ ScriptSystem::~ScriptSystem()
 {
 	std::vector<ScriptComponent*>::iterator it = components.begin();
 
-	for (; it != components.end(); it++)
+	for (; it != components.end();)
 	{
-		components.erase(it);
+		it = components.erase(it);
 	}
 
 	components.clear();

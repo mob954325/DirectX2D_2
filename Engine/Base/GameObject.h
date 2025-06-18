@@ -2,7 +2,6 @@
 #include "pch.h"
 #include "Utility/Singleton.h"
 #include "Base/Component.h"
-#include "Core/SystemManager.h"
 #include "Transform.h"
 
 /// <summary>
@@ -29,7 +28,7 @@ public:
 	/// </summary>
 	virtual void OnDestory() = 0;
 
-	Transform* transform;
+	Transform* transform = {};
 
 	template <typename T>
 	T* AddComponent()
@@ -40,7 +39,8 @@ public:
 		comp->owner = this;
 		components.push_back(comp);
 
-		RegisterComponentWithSystemManager(comp);
+		comp->OnStart();
+		RegisterComponentWithScriptSystem(comp);
 
 		return comp;
 	}
@@ -71,7 +71,7 @@ public:
 		}
 	}
 private:
-	void RegisterComponentWithSystemManager(Component* comp);
+	void RegisterComponentWithScriptSystem(Component* comp);
 
 	std::vector<Component*> components; // 컴포넌트를 담는 컨테이너
 };

@@ -2,7 +2,7 @@
 #include "Base/GameObject.h"
 #include "BitmapRenderer.h"
 
-class Sun : public GameObject
+class Earth : public GameObject
 {
 public:
 	void Start() override;
@@ -10,9 +10,9 @@ public:
 	void OnDestory() override;
 
 protected:
-	BitmapRenderer* bitmapRenderer {};
+	BitmapRenderer* bitmapRenderer{};
 
-	float baseRotateSpeed = 360.0f;	
-	float sunRotateRatio = 0.1f;
+	float baseRotateSpeed = 360.0f;
+	float earthRotateRatio = 0.5f;
 };
 

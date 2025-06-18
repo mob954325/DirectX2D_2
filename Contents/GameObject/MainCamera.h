@@ -1,20 +1,22 @@
 ﻿#pragma once
 #include "Base/GameObject.h"
-#include "TextRenderer.h"
 #include "InputSystem.h"
+#include "Base/Camera.h"
 
-class MenuTextObject : public GameObject
+class MainCamera : public GameObject
 {
 public:
-	MenuTextObject() {};
-	~MenuTextObject() {};
+	MainCamera() {};
+	~MainCamera() {};
 
 	void Start() override;
 	void Update() override;
 	void OnDestory() override;
 
 private:
-	TextRenderer* textRenderer{};
+	Camera* camera{};
 	InputSystem* inputSystem{};
+
+	float cameraMoveSpeed = 5.0f;
 };
 

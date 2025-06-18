@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "Core/Scene.h"
-#include "Sun.h"
 
 class GameScene : public Scene
 {
@@ -10,5 +9,10 @@ protected:
 	void UpdateImpl() override;
 
 private:
+	GameObject* m_MainCamera{};
+
 	GameObject* m_Sun{};
+	GameObject* m_Earth{};
+	GameObject* m_Moon{};
+	GameObject* m_TextObject{};
 };

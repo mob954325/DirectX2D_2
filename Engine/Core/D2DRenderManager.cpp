@@ -1,5 +1,7 @@
 ﻿#include "pch.h"
 #include "D2DRenderManager.h"
+#include "Singleton.h"
+#include "RenderSystem.h"
 
 void D2DRenderManager::Initialize()
 {
@@ -36,7 +38,7 @@ void D2DRenderManager::Uninitialize()
 	m_wicImagingFactory = nullptr;
 }
 
-void D2DRenderManager::Render(RenderSystem* system)
+void D2DRenderManager::Render()
 {
 	assert(m_d2dDeviceContext);
 
@@ -45,13 +47,8 @@ void D2DRenderManager::Render(RenderSystem* system)
 	// Clear
 	m_d2dDeviceContext->Clear(D2D1::ColorF(D2D1::ColorF::DarkSlateBlue));
 
-	system->Update(this);
+	Singleton<RenderSystem>::GetInstance().Update(this);
 
-	//PrintText(L"회전 여부 : R",0,0);
-	//PrintText(L"회전 방향 변경 : T",0,20);
-	//PrintText(L"유니티 좌표계 전환 : Y",0,40);
-	//PrintText(L"태양 위치 (0,0)으로 초기화 : U",0, 80);
-	//PrintText(L"카메라 이동 : WASD",0, 60);
 
 	m_d2dDeviceContext->EndDraw();
 }
@@ -101,18 +98,6 @@ void D2DRenderManager::PrintText(const wchar_t* str, float left, float top)
 	m_d2dDeviceContext->SetTransform(D2D1::Matrix3x2F::Identity());
 	m_pBrush->SetColor(D2D1::ColorF(D2D1::ColorF::White));
 	m_d2dDeviceContext->DrawTextW(str, (UINT32)wcslen(str), m_pDWriteTextFormat.Get(), D2D1::RectF(left, top, left + 300, top + 250), m_pBrush.Get());
-}
-
-D2D1_MATRIX_3X2_F D2DRenderManager::GetCameraInvertMatrix()
-{
-	if (m_camTransform != nullptr)
-	{
-		return m_camTransform->ToWorldInvertMatrix();
-	}
-	else
-	{
-		return D2D1::Matrix3x2F::Identity();
-	}
 }
 
 void D2DRenderManager::CreateEffect(ID2D1Effect** skew, ID2D1Effect** shadow, Microsoft::WRL::ComPtr<ID2D1Bitmap> bitmap)

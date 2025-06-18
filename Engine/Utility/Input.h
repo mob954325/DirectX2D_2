@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include "Singleton.h"
 
-class Input : public Singleton<Input>
+class Input
 {
 public:
 	Input() = default;

@@ -2,7 +2,6 @@
 #include "framework.h"
 #include "Base/Transform.h"
 #include "Base/RenderComponent.h" 
-#include "RenderSystem.h"
 
 using namespace Microsoft::WRL;
 
@@ -13,7 +12,7 @@ class D2DRenderManager
 public:
 	void Initialize();
 	void Uninitialize();
-	void Render(RenderSystem* game);
+	void Render();
 
 	void SetD2D1DeviceContext7(ID2D1DeviceContext7* pD2D1DeviceContext7);
 	void SetScreenSize(int width, int height);
@@ -34,8 +33,6 @@ public:
 	/// <returns>상태</returns>
 	HRESULT CreateBitmapFromFile(const wchar_t* path, ID2D1Bitmap1** outBitmap);
 	void PrintText(const wchar_t* str, float left, float top);
-	D2D1_MATRIX_3X2_F GetCameraInvertMatrix();
-	void SetMainCamera(Transform* t) { m_camTransform = t; }
 	void CreateEffect(ID2D1Effect** skew, ID2D1Effect** shadow, Microsoft::WRL::ComPtr<ID2D1Bitmap> bitmap);
 
 protected:
@@ -46,8 +43,6 @@ protected:
 	ComPtr<IDWriteFactory> m_pDWriteFactory;
 	ComPtr<IDWriteTextFormat> m_pDWriteTextFormat;
 	ComPtr<ID2D1SolidColorBrush> m_pBrush; // 브러시 개체 인터페이스 포인터 변수
-
-	Transform* m_camTransform = {}; // 현재 렌더링하는 카메라 transform 참조값
 
 	int screenWidth = 0;
 	int screenHeight = 0;

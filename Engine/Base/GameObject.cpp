@@ -1,24 +1,34 @@
 ﻿#include "GameObject.h"
+#include "RenderSystem.h"
+#include "ScriptSystem.h"
 
+class RenderComponent;
+class ScriptComponent;
 GameObject::GameObject()
 {
-	transform = new Transform();
+	transform = AddComponent<Transform>();
 }
 
 GameObject::~GameObject()
 {
-	delete transform;
-
 	std::vector<Component*>::iterator it = components.begin();
-	for (; it != components.end(); it++)
+	for (; it != components.end();)
 	{
-		components.erase(it);
+		(*it)->OnDestroy();
+		it = components.erase(it);
 	}
 
 	components.clear();
 }
 
-void GameObject::RegisterComponentWithSystemManager(Component* comp)
+void GameObject::RegisterComponentWithScriptSystem(Component* comp)
 {
-	Singleton<SystemManager>::GetInstance().RegisterComponent(comp);
+	if (ScriptComponent* sc = dynamic_cast<ScriptComponent*>(comp))
+	{
+		Singleton<ScriptSystem>::GetInstance().Regist(sc);
+	}
+	else if (RenderComponent* rc = dynamic_cast<RenderComponent*>(comp))
+	{
+		Singleton<RenderSystem>::GetInstance().Regist(rc);
+	}
 }

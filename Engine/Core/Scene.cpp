@@ -16,13 +16,22 @@ void Scene::OnExit()
 
 	for (GameObject* obj : gameObjects)
 	{
-		obj->OnDestory();
+		obj->OnDestory();		
+		delete obj;
 	}
+
+	gameObjects.clear();
 }
 
 void Scene::Update()
 {
 	DestroyGameObjects();
+
+	for (GameObject* obj : gameObjects)
+	{
+		obj->Update();
+	}
+
 	UpdateImpl();
 }
 
@@ -58,9 +67,13 @@ void Scene::DestroyGameObjects()
 {
 	std::vector<GameObject*>::iterator it = destroyList.begin();
 
-	for (; it != destroyList.end(); it++)
+	for (; it != destroyList.end();)
 	{
-		(*it)->OnDestory();
+		GameObject* targetObject = *it;
+
+		it = destroyList.erase(it);
+		targetObject->OnDestory();
+		delete targetObject;
 	}
 
 	destroyList.clear();

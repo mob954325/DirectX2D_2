@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include "pch.h"
+#include "Component.h"
 
-class Transform
+class Transform : public Component
 {
 protected:
 	Transform* camera = nullptr;
@@ -22,19 +23,16 @@ public:
 		: position({ 0.0f, 0.0f }), rotation(0.0f), scale({1.0f, 1.0f}) { }
 
 	// get, set
-	D2D1_VECTOR_2F GetPosition() { return position; }
+	D2D1_VECTOR_2F GetPosition() const { return position; }
 	void SetPosition(float x, float y) { dirty = true; position.x = x; position.y = y; }
 
-	float GetRotation() { return rotation; }
+	float GetRotation() const { return rotation; }
 	void SetRotation(float rotValue) { dirty = true; rotation = rotValue; }
 
-	D2D1_VECTOR_2F GetScale() { return scale; }
+	D2D1_VECTOR_2F GetScale() const { return scale; }
 	void SetScale(float scaleX, float scaleY) { dirty = true; scale.x = scaleX; scale.y = scaleY; }
 
-	Transform* GetCamera() { return camera; }
-	void SetCamera(Transform* t) { camera = t; }
-
-	Transform* GetParent() { return parent; }
+	Transform* GetParent() const { return parent; }
 	void SetParent(Transform* t) { parent = t; }
 
 	bool IsUnityCoords() { return isUnityCoords; }

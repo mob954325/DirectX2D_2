@@ -1,6 +1,6 @@
 ﻿#include "DemoGameApp.h"
 #include "Core/D2DRenderManager.h"
-#include "Core/SceneManager.h"
+#include "Utility/SceneManager.h"
 #include "Utility/Singleton.h"
 #include "Utility/Input.h"
 #include "Utility/GameTime.h"

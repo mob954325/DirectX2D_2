@@ -1,18 +1,24 @@
 ﻿#include "BitmapRenderer.h"
 #include "Core/D2DRenderManager.h"
 #include "Base/GameObject.h"
+#include "Base/Camera.h"
+#include "Utility/SceneManager.h"
+
 
 void BitmapRenderer::Render(D2DRenderManager* manager)
 {
 	if (m_bitmap != nullptr)
 	{
+		Camera* pCam = Singleton<SceneManager>::GetInstance().GetMainCamera();
+		D2D1_MATRIX_3X2_F mainCamInvertMatrix = pCam ? pCam->GetTransform()->ToWorldInvertMatrix() : D2D1::Matrix3x2F::Identity();
+
 		// 최종 변환 값 계산
 		if (owner->transform->IsUnityCoords())
 		{
 			finalMatrix =
 				unityRenderMatrix *					// Render Matrix
 				owner->transform->ToWorldMatrix() *	// m_transform world matrix 
-				manager->GetCameraInvertMatrix() *	// MainCamera invert matrix
+				mainCamInvertMatrix *				// MainCamera invert matrix
 				unityCoordMatrix;					// unity coord Matrix
 		}
 		else
@@ -20,22 +26,31 @@ void BitmapRenderer::Render(D2DRenderManager* manager)
 			finalMatrix =
 				normalRenderMatrix *				// Render Matrix
 				owner->transform->ToWorldMatrix() *	// m_transform world matrix 
-				manager->GetCameraInvertMatrix();   // MainCamera invert matrix	
+				mainCamInvertMatrix;				// MainCamera invert matrix	
 		}
 
 		manager->SetBitmapTransform(finalMatrix);
+		manager->DrawBitmap(m_bitmap);
 	}
+}
 
-	manager->DrawBitmap(m_bitmap);
+void BitmapRenderer::OnStart()
+{
+	D2D1_SIZE_U screenSize = Singleton<SceneManager>::GetInstance().GetScreenSize();
+	screenWidth = (int)screenSize.width;
+	screenHeight = (int)screenSize.height;
+	unityCoordMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation((FLOAT)(screenWidth / 2), (FLOAT)(screenHeight / 2));
+}
+
+void BitmapRenderer::OnDestroy()
+{
+	m_bitmap.Reset();
 }
 
 void BitmapRenderer::CreateBitMap(const wchar_t* path)
 {
-	Microsoft::WRL::ComPtr<ID2D1Bitmap1> outBitmap;
-	HRESULT hr = renderManager->CreateBitmapFromFile(path, outBitmap.GetAddressOf());
+	HRESULT hr = renderManager->CreateBitmapFromFile(path, m_bitmap.GetAddressOf());
 	assert(SUCCEEDED(hr));
-	
-	m_bitmap = outBitmap;
 }
 
 void BitmapRenderer::SetScreenSize(int width, int height)
@@ -56,16 +71,16 @@ Microsoft::WRL::ComPtr<ID2D1Bitmap1> BitmapRenderer::GetBitmap()
 	return m_bitmap;
 }
 
-D2D1::Matrix3x2F BitmapRenderer::GetRenderMatrix(Transform* transform)
-{
-	if (transform == nullptr)
-		return D2D1::Matrix3x2F::Identity();
-
-	float scaleX = 1.0f;
-	float scaleY = transform->IsUnityCoords() ? -1.0f : 1.0f; // 유니티 좌표계면 y축 상하 반전
-
-	float offsetX = 0.0f;
-	float offsetY = 0.0f;
-
-	return D2D1::Matrix3x2F::Scale(scaleX, scaleY) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
-}
+//D2D1::Matrix3x2F BitmapRenderer::GetRenderMatrix(Transform* transform)
+//{
+//	if (transform == nullptr)
+//		return D2D1::Matrix3x2F::Identity();
+//
+//	float scaleX = 1.0f;
+//	float scaleY = transform->IsUnityCoords() ? -1.0f : 1.0f; // 유니티 좌표계면 y축 상하 반전
+//
+//	float offsetX = 0.0f;
+//	float offsetY = 0.0f;
+//
+//	return D2D1::Matrix3x2F::Scale(scaleX, scaleY) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
+//}

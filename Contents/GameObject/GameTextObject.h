@@ -3,11 +3,11 @@
 #include "TextRenderer.h"
 #include "InputSystem.h"
 
-class MenuTextObject : public GameObject
+class GameTextObject : public GameObject
 {
 public:
-	MenuTextObject() {};
-	~MenuTextObject() {};
+	GameTextObject() {};
+	~GameTextObject() {};
 
 	void Start() override;
 	void Update() override;
@@ -15,6 +15,7 @@ public:
 
 private:
 	TextRenderer* textRenderer{};
+	TextRenderer* textRenderer2{};
 	InputSystem* inputSystem{};
 };
 

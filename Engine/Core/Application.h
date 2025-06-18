@@ -3,7 +3,6 @@
 #include "D2DRenderManager.h"
 #include "ScriptSystem.h"
 #include "RenderSystem.h"
-#include "SystemManager.h"
 
 using namespace Microsoft::WRL;
 
@@ -11,9 +10,7 @@ using namespace Microsoft::WRL;
 class Application
 {
 public:
-	D2DRenderManager* m_D2DRenderManager;	
-	ScriptSystem* m_ScriptSystem;
-	RenderSystem* m_RenderSystem;
+	D2DRenderManager* m_D2DRenderManager{};
 
 	/// <summary>
 	/// D2DRenderManager 초기화
@@ -38,12 +35,12 @@ protected:
 	ComPtr<ID2D1Bitmap1>			m_d2dBitmapTarget;
 
 private:
-	HINSTANCE		m_hInstance;
+	HINSTANCE		m_hInstance{};
 	//std::wstring	m_windowName = L"WindowClass";
 	//std::wstring	m_titleName = L"Default Title Name";
 	//std::string	m_modulePath;
 	//std::string	m_workingPath;
-	HWND			m_hwnd;
+	HWND			m_hwnd{};
 
 	bool m_isWindowOpen = false; // 윈도우가 열렸는지 확인하는 변수
 	bool m_resized = false;

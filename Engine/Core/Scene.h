@@ -10,6 +10,11 @@ struct SceneState
 	// ??
 };
 
+// NOTE : AddGameObject한 객체는 Scene내부에서 delete를 호출해서 메모리 해제를 함
+
+/// <summary>
+/// SceneMnaager가 관리하는 Scene 클래스
+/// </summary>
 class Scene
 {
 public:
@@ -30,10 +35,6 @@ public:
 
 	void AddGameObject(GameObject* gameObject);
 	void RemoveObject(GameObject* gameObject);
-	void RegisterComponent(Component* comp);
-
-	void SetScriptSystem(ScriptSystem* pSystem);
-	void SetRenderSystem(RenderSystem* pSystem);
 
 private:
 	void DestroyGameObjects();

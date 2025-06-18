@@ -2,7 +2,7 @@
 
 #include "Utility/Singleton.h"
 #include "Utility/Input.h"
-#include "Core/SceneManager.h"
+#include "Utility/SceneManager.h"
 #include "MenuTextObject.h"
 
 
@@ -17,8 +17,4 @@ void MenuScene::OnExitImpl()
 
 void MenuScene::UpdateImpl()
 {
-	if (Singleton<Input>::GetInstance().IsKeyPressed(VK_RETURN))
-	{
-		Singleton<SceneManager>::GetInstance().ChangeScene(1);
-	}
 }

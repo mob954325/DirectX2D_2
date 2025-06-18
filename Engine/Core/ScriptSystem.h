@@ -1,8 +1,9 @@
 ﻿#pragma once
 #include "framework.h"
+#include "Utility/Singleton.h"
 #include "Base/ScriptComponent.h"
 
-class ScriptSystem
+class ScriptSystem : public Singleton<ScriptSystem>
 {
 public:
 	ScriptSystem() = default;

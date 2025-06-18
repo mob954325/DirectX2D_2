@@ -11,9 +11,9 @@ public:
 	Component() = default;
 	virtual ~Component() = default;
 
-	//virtual void OnCreate() {};
+	virtual void OnCreate() {};
 	virtual void OnStart() {};
-	//virtual void OnEnd() {};
+	virtual void OnEnd() {};
 	virtual void OnDestroy() {};
 
 	/// <summary>
