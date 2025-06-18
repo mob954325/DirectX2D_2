@@ -8,6 +8,8 @@
 /// <remarks>
 /// 해당 컴포넌트를 사용할 때 부착한 오브젝트의 트랜스폼을 SetTransform 함수로 넘겨줘야함
 /// 그렇지 않으면 내부적으로 기본 트랜스폼 생성해서 반환
+/// 
+/// 25 06 18 : SceneManager에 카메라 추가해야 카메라 적용됨
 /// </remarks>
 class Camera : public Component
 {

@@ -11,7 +11,7 @@
 /// 모든 씬 관리 클래스
 /// </summary>
 /// <remarks>
-/// 2025 06 18 기준 카메라 관리도 포함되어있음
+/// 카메라 관리함수, Screen 크기값 포함됨
 /// </remarks>
 class SceneManager : public Singleton<SceneManager>
 {
