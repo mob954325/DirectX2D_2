@@ -72,6 +72,9 @@
     <ClCompile Include="Component\BitmapRenderer.cpp">
       <Filter>소스 파일\Component</Filter>
     </ClCompile>
+    <ClCompile Include="Component\AnimationComponent.cpp">
+      <Filter>소스 파일\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DemoGameApp.h">
@@ -108,6 +111,9 @@
       <Filter>헤더 파일\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Component\TextRenderer.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\AnimationComponent.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
   </ItemGroup>

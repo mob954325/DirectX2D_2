@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Component\AnimationComponent.cpp" />
     <ClCompile Include="Component\BitmapRenderer.cpp" />
     <ClCompile Include="DemoGameApp.cpp" />
     <ClCompile Include="GameObject\Earth.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="Component\TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Component\AnimationComponent.h" />
     <ClInclude Include="Component\BitmapRenderer.h" />
     <ClInclude Include="DemoGameApp.h" />
     <ClInclude Include="GameObject\Earth.h" />

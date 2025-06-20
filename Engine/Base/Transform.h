@@ -68,3 +68,18 @@ public:
 	void Reset();
 };
 
+// 기본 좌표 [ normal setting ]
+//       (0,0) +----------+ (width, 0)
+//             |          |
+//             |          |
+//             |  screen  |
+//             |          |
+// (0, height) +----------+ (width, height)
+
+// 유니티 좌표 [ UnityCoord Setting ]
+// (-width / 2, height / 2)  +----------+ (width / 2, height / 2) 
+//                           |          |
+//                           |  Center  |
+//                           |  (0, 0)  |
+//                           |          |
+// (-width / 2, -height / 2) +----------+ (width / 2, -height / 2) 

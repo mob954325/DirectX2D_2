@@ -30,6 +30,8 @@ void BitmapRenderer::Render(D2DRenderManager* manager)
 		}
 
 		manager->SetBitmapTransform(finalMatrix);
+
+		//D2D1_RECT_F testRect{ 0, 0, 0, 0 };
 		manager->DrawBitmap(m_bitmap);
 	}
 }
@@ -71,17 +73,3 @@ Microsoft::WRL::ComPtr<ID2D1Bitmap1> BitmapRenderer::GetBitmap()
 {
 	return m_bitmap;
 }
-
-//D2D1::Matrix3x2F BitmapRenderer::GetRenderMatrix(Transform* transform)
-//{
-//	if (transform == nullptr)
-//		return D2D1::Matrix3x2F::Identity();
-//
-//	float scaleX = 1.0f;
-//	float scaleY = transform->IsUnityCoords() ? -1.0f : 1.0f; // 유니티 좌표계면 y축 상하 반전
-//
-//	float offsetX = 0.0f;
-//	float offsetY = 0.0f;
-//
-//	return D2D1::Matrix3x2F::Scale(scaleX, scaleY) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
-//}
