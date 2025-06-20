@@ -1,11 +1,13 @@
 ﻿#include "TestPlayer.h"
 #include "Utility/Singleton.h"
 #include "Utility/GameTime.h"
+#include "Utility/SceneManager.h"
 
 void TestPlayer::Start()
 {
 	playerMainCam = AddComponent<Camera>();
 	playerMainCam->AttachGameObjectToCamera(this->transform);
+	Singleton<SceneManager>::GetInstance().AddCamera(playerMainCam);
 
 	idleBitmap = AddComponent<BitmapRenderer>();
 	idleBitmap->CreateBitMap(L"../Resource/Idle_Down.png");
@@ -41,28 +43,27 @@ void TestPlayer::Move()
 {
 	if (input == nullptr) return;
 
-	D2D1_VECTOR_2F inputVec = { 0,0 };
+	D2D1_VECTOR_2F position = transform->GetPosition();
+	D2D1_VECTOR_2F moveVec = { 0,0 };
 
 	if (input->IsKeyDown(VK_RIGHT))
 	{
-		D2D1_VECTOR_2F position = transform->GetPosition();
-		transform->SetPosition(position.x + speed, position.y);
+		moveVec.x += speed;
 	}
 	if (input->IsKeyDown(VK_LEFT))
 	{
-		D2D1_VECTOR_2F position = transform->GetPosition();
-		transform->SetPosition(position.x - speed, position.y);
+		moveVec.x -= speed;
 	}
 	if (input->IsKeyDown(VK_UP))
 	{
-		D2D1_VECTOR_2F position = transform->GetPosition();
-		transform->SetPosition(position.x, position.y + speed);
+		moveVec.y += speed;
 	}
 	if (input->IsKeyDown(VK_DOWN))
 	{
-		D2D1_VECTOR_2F position = transform->GetPosition();
-		transform->SetPosition(position.x, position.y - speed);
+		moveVec.y -= speed;
 	}
+
+	transform->SetPosition(position.x + moveVec.x, position.y + moveVec.y);
 }
 
 void TestPlayer::CamMove()
