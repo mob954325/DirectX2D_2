@@ -5,7 +5,6 @@
 class Transform : public Component
 {
 protected:
-	Transform* camera = nullptr;
 	Transform* parent = nullptr;
 
 	D2D1_VECTOR_2F position;
