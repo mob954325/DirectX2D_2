@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "pch.h"
 #include "Utility/Singleton.h"
-#include "Base/Component.h"
+#include "Component.h"
 #include "Transform.h"
 
 /// <summary>

@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "framework.h"
 #include "Utility/Singleton.h"
-#include "Base/ScriptComponent.h"
+#include "Component/Base/ScriptComponent.h"
 
 class ScriptSystem : public Singleton<ScriptSystem>
 {

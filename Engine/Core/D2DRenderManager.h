@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "framework.h"
-#include "Base/Transform.h"
-#include "Base/RenderComponent.h" 
+#include "Component/Base/Transform.h"
+#include "Component/Base/RenderComponent.h" 
 
 using namespace Microsoft::WRL;
 

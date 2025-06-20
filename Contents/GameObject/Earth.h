@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "Base/GameObject.h"
-#include "BitmapRenderer.h"
+#include "Component/Base/GameObject.h"
+#include "Component/BitmapRenderer.h"
 
 class Earth : public GameObject
 {

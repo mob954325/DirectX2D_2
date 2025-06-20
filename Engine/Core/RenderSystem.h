@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Utility/Singleton.h"
-#include "Base/RenderComponent.h"
+#include "Component/Base/RenderComponent.h"
 #include "D2DRenderManager.h"
 #include <vector>
 

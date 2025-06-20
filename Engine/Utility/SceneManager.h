@@ -3,7 +3,7 @@
 #include "Core/RenderSystem.h"
 #include "Utility/Singleton.h"
 #include "Core/Scene.h"
-#include "Base/Camera.h"
+#include "Component/Camera.h"
 #include <map>
 #include <vector>
 

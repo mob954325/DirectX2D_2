@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "Component.h"
-//#include "D2DRenderManager.h"
 
 class D2DRenderManager;
 class RenderComponent : public Component

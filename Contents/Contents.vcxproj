@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Engine;$(SolutionDir)Contents\Component;$(SolutionDir)Contents\GameObject;$(SolutionDir)Contents\Scenes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Engine;$(SolutionDir)Contents\GameObject;$(SolutionDir)Contents\Scenes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -119,7 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Engine;$(SolutionDir)Contents\Component;$(SolutionDir)Contents\GameObject;$(SolutionDir)Contents\Scenes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Engine;$(SolutionDir)Contents\GameObject;$(SolutionDir)Contents\Scenes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -129,8 +129,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Component\AnimationComponent.cpp" />
-    <ClCompile Include="Component\BitmapRenderer.cpp" />
     <ClCompile Include="DemoGameApp.cpp" />
     <ClCompile Include="GameObject\Earth.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -139,14 +137,10 @@
     <ClCompile Include="GameObject\GameTextObject.cpp" />
     <ClCompile Include="GameObject\Moon.cpp" />
     <ClCompile Include="GameObject\MainCamera.cpp" />
-    <ClCompile Include="Component\InputSystem.cpp" />
     <ClCompile Include="Scenes\GameScene.cpp" />
     <ClCompile Include="Scenes\MenuScene.cpp" />
-    <ClCompile Include="Component\TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Component\AnimationComponent.h" />
-    <ClInclude Include="Component\BitmapRenderer.h" />
     <ClInclude Include="DemoGameApp.h" />
     <ClInclude Include="GameObject\Earth.h" />
     <ClInclude Include="GameObject\Sun.h" />
@@ -154,10 +148,8 @@
     <ClInclude Include="GameObject\GameTextObject.h" />
     <ClInclude Include="GameObject\Moon.h" />
     <ClInclude Include="GameObject\MainCamera.h" />
-    <ClInclude Include="Component\InputSystem.h" />
     <ClInclude Include="Scenes\GameScene.h" />
     <ClInclude Include="Scenes\MenuScene.h" />
-    <ClInclude Include="Component\TextRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

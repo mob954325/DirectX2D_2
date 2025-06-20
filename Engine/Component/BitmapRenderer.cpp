@@ -1,7 +1,7 @@
 ﻿#include "BitmapRenderer.h"
 #include "Core/D2DRenderManager.h"
 #include "Base/GameObject.h"
-#include "Base/Camera.h"
+#include "Camera.h"
 #include "Utility/SceneManager.h"
 
 
