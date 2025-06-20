@@ -15,6 +15,6 @@ void Moon::Update()
 {
 }
 
-void Moon::OnDestory()
+void Moon::OnDestroy()
 {
 }

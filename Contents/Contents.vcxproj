@@ -137,8 +137,10 @@
     <ClCompile Include="GameObject\GameTextObject.cpp" />
     <ClCompile Include="GameObject\Moon.cpp" />
     <ClCompile Include="GameObject\MainCamera.cpp" />
+    <ClCompile Include="GameObject\InfoTextObject.cpp" />
     <ClCompile Include="Scenes\GameScene.cpp" />
     <ClCompile Include="Scenes\MenuScene.cpp" />
+    <ClCompile Include="GameObject\TestPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DemoGameApp.h" />
@@ -148,8 +150,10 @@
     <ClInclude Include="GameObject\GameTextObject.h" />
     <ClInclude Include="GameObject\Moon.h" />
     <ClInclude Include="GameObject\MainCamera.h" />
+    <ClInclude Include="GameObject\InfoTextObject.h" />
     <ClInclude Include="Scenes\GameScene.h" />
     <ClInclude Include="Scenes\MenuScene.h" />
+    <ClInclude Include="GameObject\TestPlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

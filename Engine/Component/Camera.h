@@ -14,16 +14,20 @@
 class Camera : public Component
 {
 public:
+	void OnStart() override;	// 임시
 	void OnDestroy() override;
 
 	bool IsMainCamera();
 	void SetIsMainCamera(bool value);
-	void SetTransform(Transform* pTransform);
-	Transform* GetTransform();
+	void AttachGameObjectToCamera(Transform* pTransform);
+	D2D1_MATRIX_3X2_F GetMatrix() const;
+	D2D1_MATRIX_3X2_F GetInvertMatrix() const;
 
+	Transform& GetTransform() const;
 private:
 	bool isMainCamera = false;
 	bool isLocalTransform = false;	  // 참조한 트랜스폼이 아닌 직접 만든 트랜스폼인지 확인하는 변수
 	Transform* gameObjectTransform{}; // 이걸 부착한 게임 오브젝트의 트랜스폼을 참조
+	Transform* localTransform{};	  // 카메라가 가지고 있는 Transform
 };
 

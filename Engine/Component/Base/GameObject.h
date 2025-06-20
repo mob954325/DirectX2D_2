@@ -26,7 +26,7 @@ public:
 	/// <summary>
 	/// 씬 종료시 실행될 함수
 	/// </summary>
-	virtual void OnDestory() = 0;
+	virtual void OnDestroy() = 0;
 
 	Transform* transform = {};
 

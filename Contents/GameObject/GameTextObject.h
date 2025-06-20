@@ -11,11 +11,12 @@ public:
 
 	void Start() override;
 	void Update() override;
-	void OnDestory() override;
+	void OnDestroy() override;
 
 private:
 	TextRenderer* textRenderer{};
 	TextRenderer* textRenderer2{};
+
 	InputSystem* inputSystem{};
 };
 

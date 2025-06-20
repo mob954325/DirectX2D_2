@@ -10,7 +10,7 @@ void BitmapRenderer::Render(D2DRenderManager* manager)
 	if (m_bitmap != nullptr)
 	{
 		Camera* pCam = Singleton<SceneManager>::GetInstance().GetMainCamera();
-		D2D1_MATRIX_3X2_F mainCamInvertMatrix = pCam ? pCam->GetTransform()->ToWorldInvertMatrix() : D2D1::Matrix3x2F::Identity();
+		D2D1_MATRIX_3X2_F mainCamInvertMatrix = pCam ? pCam->GetInvertMatrix() : D2D1::Matrix3x2F::Identity();
 
 		// 최종 변환 값 계산
 		if (owner->transform->IsUnityCoords())

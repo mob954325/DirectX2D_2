@@ -16,7 +16,7 @@ void Sun::Update()
 	transform->SetRotation(rotation_sun + baseRotateSpeed * sunRotateRatio * Singleton<GameTime>::GetInstance().GetDeltaTime());
 }
 
-void Sun::OnDestory()
+void Sun::OnDestroy()
 {
 	
 }

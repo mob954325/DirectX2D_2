@@ -5,7 +5,7 @@ void MainCamera::Start()
 {
 	camera = AddComponent<Camera>();
 	camera->SetIsMainCamera(true);
-	camera->SetTransform(this->transform);
+	camera->AttachGameObjectToCamera(this->transform);
 	Singleton<SceneManager>::GetInstance().AddCamera(camera);
 
 	inputSystem = AddComponent<InputSystem>();
@@ -36,6 +36,6 @@ void MainCamera::Update()
 	}
 }
 
-void MainCamera::OnDestory()
+void MainCamera::OnDestroy()
 {
 }

@@ -21,6 +21,6 @@ void GameTextObject::Update()
 	}
 }
 
-void GameTextObject::OnDestory()
+void GameTextObject::OnDestroy()
 {
 }

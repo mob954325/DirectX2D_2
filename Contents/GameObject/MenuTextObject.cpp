@@ -18,7 +18,7 @@ void MenuTextObject::Update()
 	}
 }
 
-void MenuTextObject::OnDestory()
+void MenuTextObject::OnDestroy()
 {
 	
 }

@@ -9,6 +9,8 @@ protected:
 	void UpdateImpl() override;
 
 private:
+	GameObject* m_TestPlayer;
+
 	GameObject* m_MainCamera{};
 
 	GameObject* m_Sun{};

@@ -7,7 +7,7 @@ class Moon : public GameObject
 public:
 	void Start() override;
 	void Update() override;
-	void OnDestory() override;
+	void OnDestroy() override;
 
 protected:
 	BitmapRenderer* bitmapRenderer{};

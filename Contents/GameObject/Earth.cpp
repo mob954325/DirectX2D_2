@@ -19,6 +19,6 @@ void Earth::Update()
 	transform->SetRotation(rotation_earth + baseRotateSpeed * earthRotateRatio * Singleton<GameTime>::GetInstance().GetDeltaTime());
 }
 
-void Earth::OnDestory()
+void Earth::OnDestroy()
 {
 }

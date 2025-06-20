@@ -16,7 +16,7 @@ void Scene::OnExit()
 
 	for (GameObject* obj : gameObjects)
 	{
-		obj->OnDestory();		
+		obj->OnDestroy();		
 		delete obj;
 	}
 
@@ -72,7 +72,7 @@ void Scene::DestroyGameObjects()
 		GameObject* targetObject = *it;
 
 		it = destroyList.erase(it);
-		targetObject->OnDestory();
+		targetObject->OnDestroy();
 		delete targetObject;
 	}
 

@@ -10,9 +10,13 @@
 #include "Moon.h"
 #include "MainCamera.h"
 #include "GameTextObject.h"
+#include "TestPlayer.h"
 
 void GameScene::OnEnterImpl()
 {
+	m_TestPlayer = new TestPlayer();
+	AddGameObject(m_TestPlayer);
+
 	m_MainCamera = new MainCamera();
 	AddGameObject(m_MainCamera);
 
