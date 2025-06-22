@@ -57,19 +57,22 @@ public:
 		}
 	}
 
-	template <typename T>
-	void RemoveComponent(T* targetComp)
+	void RemoveComponent(Component* targetComp)
 	{
-		for (auto it = components.begin(); it != components.end(); ++it)
+		for (auto it = components.begin(); it != components.end();)
 		{
-			Component* comp = *it;
-			if (comp == targetComp)
+			if (*it == targetComp)
 			{
-				delete comp;
-				it = components.erase(it); // 벡터에서 삭제
+				delete* it;
+				it = components.erase(it);
+			}
+			else
+			{
+				++it;
 			}
 		}
 	}
+
 private:
 	void RegisterComponentWithScriptSystem(Component* comp);
 
