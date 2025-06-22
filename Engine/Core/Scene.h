@@ -36,7 +36,7 @@ public:
 	void AddGameObject(GameObject* gameObject);
 	void RemoveObject(GameObject* gameObject);
 
-private:
+protected:
 	void DestroyGameObjects();
 
 	/// <summary>
