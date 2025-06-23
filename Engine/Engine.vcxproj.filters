@@ -87,7 +87,7 @@
     <ClInclude Include="Utility\Singleton.h">
       <Filter>헤더 파일\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Component\AnimationComponent.h">
+    <ClInclude Include="Component\AnimationRenderer.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
     <ClInclude Include="Component\BitmapRenderer.h">
@@ -140,7 +140,7 @@
     <ClCompile Include="MyD2DEngine.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Component\AnimationComponent.cpp">
+    <ClCompile Include="Component\AnimationRenderer.cpp">
       <Filter>소스 파일\Component</Filter>
     </ClCompile>
     <ClCompile Include="Component\BitmapRenderer.cpp">

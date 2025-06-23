@@ -10,7 +10,6 @@ protected:
 	D2D1_VECTOR_2F position;
 	float rotation;
 	D2D1_VECTOR_2F scale;
-
 	D2D1_MATRIX_3X2_F cachedMatrix = D2D1::Matrix3x2F::Identity();
 
 	bool dirty = true;	// 행렬 반복 연산 제거용 플래그 변수 ( true : transform 값이 갱신됨 )

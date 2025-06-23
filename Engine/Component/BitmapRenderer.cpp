@@ -4,7 +4,6 @@
 #include "Camera.h"
 #include "Utility/SceneManager.h"
 
-
 void BitmapRenderer::Render(D2DRenderManager* manager)
 {
 	if (m_bitmap != nullptr)
@@ -30,8 +29,6 @@ void BitmapRenderer::Render(D2DRenderManager* manager)
 		}
 
 		manager->SetBitmapTransform(finalMatrix);
-
-		//D2D1_RECT_F testRect{ 0, 0, 0, 0 };
 		manager->DrawBitmap(m_bitmap);
 	}
 }

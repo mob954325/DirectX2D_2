@@ -22,7 +22,7 @@ public:
 
 	void SetBitmapTransform(D2D1_MATRIX_3X2_F& finalMatrix);
 	void DrawBitmap(ComPtr<ID2D1Bitmap1> bitmap);
-	void DrawBitmap(ComPtr<ID2D1Bitmap1> bitmap, D2D1_RECT_F& destRect);
+	void DrawBitmap(ComPtr<ID2D1Bitmap1> bitmap, D2D1_RECT_F& destRect, D2D1_RECT_F& srcRect);
 	void DrawImage(ComPtr<ID2D1Effect> effect);
 
 	/// <summary>

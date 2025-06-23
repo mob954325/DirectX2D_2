@@ -9,12 +9,16 @@ void TestPlayer::Start()
 	playerMainCam->AttachGameObjectToCamera(this->transform);
 	Singleton<SceneManager>::GetInstance().AddCamera(playerMainCam);
 
-	idleBitmap = AddComponent<BitmapRenderer>();
-	idleBitmap->CreateBitMap(L"../Resource/Idle_Down.png");
+	idleBitmap = AddComponent<AnimationRenderer>();
+	idleBitmap->CreateBitMap(L"../Resource/Idle_Down(48x64).png");
 
-	idleBitmap->SetOffSet(idleBitmap->GetBitmap()->GetSize().width / 2 * -1, idleBitmap->GetBitmap()->GetSize().height / 2 * -1);
+	idleBitmap->SetOffSet(24, 32);
 	transform->SetIsUnityCoords(true);
 	transform->SetScale(1.0f, 1.0f);
+
+	idleBitmap->SetFrameCount(8, 1);
+	idleBitmap->SetFrameSize(48, 64);
+	idleBitmap->Play();
 
 	input = AddComponent<InputSystem>();
 }

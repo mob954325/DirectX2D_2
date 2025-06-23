@@ -81,12 +81,9 @@ void D2DRenderManager::DrawBitmap(Microsoft::WRL::ComPtr<ID2D1Bitmap1> bitmap)
 	m_d2dDeviceContext->DrawBitmap(bitmap.Get());
 }
 
-/// <summary>
-/// 사용하지 말 것
-/// </summary>
-void D2DRenderManager::DrawBitmap(Microsoft::WRL::ComPtr<ID2D1Bitmap1> bitmap, D2D1_RECT_F& destRect) 
+void D2DRenderManager::DrawBitmap(Microsoft::WRL::ComPtr<ID2D1Bitmap1> bitmap, D2D1_RECT_F& destRect, D2D1_RECT_F& srcRect) 
 {
-	m_d2dDeviceContext->DrawBitmap(bitmap.Get(), {0, 0, 0, 0}, 1.0f, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, destRect);
+	m_d2dDeviceContext->DrawBitmap(bitmap.Get(), &destRect, 1.0f, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, &srcRect);
 }
 
 void D2DRenderManager::DrawImage(Microsoft::WRL::ComPtr<ID2D1Effect> effect)

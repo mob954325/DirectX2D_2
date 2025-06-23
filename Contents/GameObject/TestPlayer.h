@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Component/Base/GameObject.h"
-#include "Component/BitmapRenderer.h"
+#include "Component/AnimationRenderer.h"
 #include "Component/Camera.h"
 #include "Component/InputSystem.h"
 
@@ -17,7 +17,7 @@ private:
 	void CamMove();
 
 	Camera* playerMainCam{};
-	BitmapRenderer* idleBitmap{};
+	AnimationRenderer* idleBitmap{};
 	InputSystem* input{};
 
 	float speed = 5.0f;

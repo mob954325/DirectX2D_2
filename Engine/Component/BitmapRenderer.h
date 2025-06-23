@@ -39,5 +39,10 @@ protected:
 	int screenHeight = 0;
 	float offsetX = 0.0f;
 	float offsetY = 0.0f;
+
+	int index = 0; // test
+	int maxIndex = 4; // test
+	float timer = 0;
+	float maxtimer = 0.2f;
 };
 
