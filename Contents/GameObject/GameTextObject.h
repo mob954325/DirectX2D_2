@@ -16,6 +16,7 @@ public:
 private:
 	TextRenderer* textRenderer{};
 	TextRenderer* textRenderer2{};
+	TextRenderer* textRenderer3{};
 
 	InputSystem* inputSystem{};
 };

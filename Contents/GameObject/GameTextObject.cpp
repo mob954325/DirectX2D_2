@@ -1,6 +1,9 @@
 ﻿#include "GameTextObject.h"
 #include "Utility/SceneManager.h"
 
+#include "Utility/Singleton.h"
+#include "Utility/SceneManager.h"
+
 void GameTextObject::Start()
 {
 	textRenderer = AddComponent<TextRenderer>();
@@ -11,6 +14,14 @@ void GameTextObject::Start()
 	textRenderer2->SetText(L"WASD : 카메라 이동\n\n Y : 메인카메라를 플레이어 카메라로 변경 \n\n U : 메인카메라를 프리 카메라로 변경");
 	textRenderer2->SetPosition(20, 80);
 	inputSystem = AddComponent<InputSystem>();	
+
+	textRenderer3 = AddComponent<TextRenderer>(); // 중앙 확인옹 텍스트
+	textRenderer3->SetText(L"^");
+	
+	D2D1_SIZE_U size = Singleton<SceneManager>::GetInstance().GetScreenSize();
+	textRenderer3->SetPosition(size.width / 2, size.height / 2);
+
+
 }
 
 void GameTextObject::Update()

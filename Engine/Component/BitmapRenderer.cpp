@@ -62,8 +62,9 @@ void BitmapRenderer::SetScreenSize(int width, int height)
 void BitmapRenderer::SetOffSet(float x, float y)
 {
 	offsetX = x; offsetY = y;
-	normalRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, 1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
-	unityRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation(offsetX, -offsetY);
+
+	normalRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, 1.0) * D2D1::Matrix3x2F::Translation(offsetX, -offsetY);
+	unityRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
 }
 
 Microsoft::WRL::ComPtr<ID2D1Bitmap1> BitmapRenderer::GetBitmap()

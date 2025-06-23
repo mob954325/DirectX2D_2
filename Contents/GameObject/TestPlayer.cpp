@@ -12,7 +12,7 @@ void TestPlayer::Start()
 	idleBitmap = AddComponent<AnimationRenderer>();
 	idleBitmap->CreateBitMap(L"../Resource/Idle_Down(48x64).png");
 
-	idleBitmap->SetOffSet(24, 32);
+	idleBitmap->SetOffSet(-24, 32);
 	transform->SetIsUnityCoords(true);
 	transform->SetScale(1.0f, 1.0f);
 

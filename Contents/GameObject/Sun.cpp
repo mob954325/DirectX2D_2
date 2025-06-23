@@ -7,7 +7,7 @@ void Sun::Start()
 
 	transform->SetScale(0.1f, 0.1f);
 	transform->SetIsUnityCoords(true);
-	bitmapRenderer->SetOffSet(bitmapRenderer->GetBitmap()->GetSize().width / 2 * -1, bitmapRenderer->GetBitmap()->GetSize().height / 2 * -1);
+	bitmapRenderer->SetOffSet(-512, 512);
 }
 
 void Sun::Update()
