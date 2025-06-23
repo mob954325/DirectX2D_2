@@ -7,6 +7,7 @@ void InputSystem::OnStart()
 
 void InputSystem::OnDestroy()
 {
+	delete input;
 }
 
 void InputSystem::Update()
