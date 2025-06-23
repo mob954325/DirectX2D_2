@@ -32,21 +32,19 @@ void Camera::AttachGameObjectToCamera(Transform* pTransform)
 
 D2D1_MATRIX_3X2_F Camera::GetMatrix() const
 {
-	D2D1_MATRIX_3X2_F transformMatrix = localTransform->ToWorldMatrix();
-	D2D1_MATRIX_3X2_F attachedObjectMatrix = gameObjectTransform->ToWorldMatrix();
-	D2D1_MATRIX_3X2_F resultMatrix = transformMatrix * attachedObjectMatrix;
+	D2D1_MATRIX_3X2_F attached = gameObjectTransform->ToWorldMatrix();
+	D2D1_MATRIX_3X2_F local = localTransform->ToWorldMatrix();
+	D2D1_MATRIX_3X2_F resultMatrix = attached * local;
 
 	return resultMatrix;
 }
 
 D2D1_MATRIX_3X2_F Camera::GetInvertMatrix() const
 {
-	D2D1_MATRIX_3X2_F transformMatrix = localTransform->ToWorldMatrix();
-	D2D1_MATRIX_3X2_F attachedObjectMatrix = gameObjectTransform->ToWorldMatrix();
-	D2D1_MATRIX_3X2_F resultMatrix = transformMatrix * attachedObjectMatrix;
-	D2D1InvertMatrix(&resultMatrix);
+	D2D1_MATRIX_3X2_F matrix = GetMatrix();
+	D2D1InvertMatrix(&matrix);
 
-	return resultMatrix;
+	return matrix;
 }
 
 Transform& Camera::GetTransform() const

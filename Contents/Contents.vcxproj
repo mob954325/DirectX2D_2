@@ -136,7 +136,7 @@
     <ClCompile Include="GameObject\MenuTextObject.cpp" />
     <ClCompile Include="GameObject\GameTextObject.cpp" />
     <ClCompile Include="GameObject\Moon.cpp" />
-    <ClCompile Include="GameObject\MainCamera.cpp" />
+    <ClCompile Include="GameObject\FreeCamera.cpp" />
     <ClCompile Include="GameObject\InfoTextObject.cpp" />
     <ClCompile Include="Scenes\GameScene.cpp" />
     <ClCompile Include="Scenes\MenuScene.cpp" />
@@ -149,7 +149,7 @@
     <ClInclude Include="GameObject\MenuTextObject.h" />
     <ClInclude Include="GameObject\GameTextObject.h" />
     <ClInclude Include="GameObject\Moon.h" />
-    <ClInclude Include="GameObject\MainCamera.h" />
+    <ClInclude Include="GameObject\FreeCamera.h" />
     <ClInclude Include="GameObject\InfoTextObject.h" />
     <ClInclude Include="Scenes\GameScene.h" />
     <ClInclude Include="Scenes\MenuScene.h" />

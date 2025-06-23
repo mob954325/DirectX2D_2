@@ -57,7 +57,7 @@
     <ClCompile Include="GameObject\Earth.cpp">
       <Filter>소스 파일\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\MainCamera.cpp">
+    <ClCompile Include="GameObject\FreeCamera.cpp">
       <Filter>소스 파일\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="GameObject\InfoTextObject.cpp">
@@ -83,7 +83,7 @@
     <ClInclude Include="GameObject\GameTextObject.h">
       <Filter>헤더 파일\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\MainCamera.h">
+    <ClInclude Include="GameObject\FreeCamera.h">
       <Filter>헤더 파일\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="GameObject\MenuTextObject.h">

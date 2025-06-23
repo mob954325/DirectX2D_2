@@ -3,11 +3,11 @@
 #include "Component/InputSystem.h"
 #include "Component/Camera.h"
 
-class MainCamera : public GameObject
+class FreeCamera : public GameObject
 {
 public:
-	MainCamera() {};
-	~MainCamera() {};
+	FreeCamera() {};
+	~FreeCamera() {};
 
 	void Start() override;
 	void Update() override;

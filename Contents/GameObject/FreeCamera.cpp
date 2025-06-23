@@ -1,7 +1,7 @@
-﻿#include "MainCamera.h"
+﻿#include "FreeCamera.h"
 #include "Utility/SceneManager.h"
 
-void MainCamera::Start()
+void FreeCamera::Start()
 {
 	camera = AddComponent<Camera>();
 	camera->SetIsMainCamera(true);
@@ -11,7 +11,7 @@ void MainCamera::Start()
 	inputSystem = AddComponent<InputSystem>();
 }
 
-void MainCamera::Update()
+void FreeCamera::Update()
 {
 	// Input
 	if (inputSystem->IsKeyDown('D'))
@@ -36,6 +36,6 @@ void MainCamera::Update()
 	}
 }
 
-void MainCamera::OnDestroy()
+void FreeCamera::OnDestroy()
 {
 }

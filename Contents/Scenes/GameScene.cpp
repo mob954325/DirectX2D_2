@@ -8,7 +8,7 @@
 #include "Sun.h"
 #include "Earth.h"
 #include "Moon.h"
-#include "MainCamera.h"
+#include "FreeCamera.h"
 #include "GameTextObject.h"
 #include "TestPlayer.h"
 
@@ -17,7 +17,7 @@ void GameScene::OnEnterImpl()
 	m_TestPlayer = new TestPlayer();
 	AddGameObject(m_TestPlayer);
 
-	m_MainCamera = new MainCamera();
+	m_MainCamera = new FreeCamera();
 	AddGameObject(m_MainCamera);
 
 	m_Sun = new Sun();
