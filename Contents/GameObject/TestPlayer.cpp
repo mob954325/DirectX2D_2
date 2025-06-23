@@ -30,7 +30,6 @@ void TestPlayer::Update()
 		playerMainCam->SetIsMainCamera(false);
 	}
 
-
 	Move();
 	CamMove();
 }
@@ -82,5 +81,5 @@ void TestPlayer::CamMove()
 	float deltaTime = Singleton<GameTime>::GetInstance().GetDeltaTime();
 	D2D1_VECTOR_2F moveVec = { deltaTime * inputVec.x * speed, deltaTime * inputVec.y * speed };
 
-	transform->SetPosition(positionVec.x + moveVec.x, positionVec.y + moveVec.y);
+	//playerMainCam->SetPosition(positionVec.x + moveVec.x, positionVec.y + moveVec.y);
 }
