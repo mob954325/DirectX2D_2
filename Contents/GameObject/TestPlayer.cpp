@@ -21,10 +21,38 @@ void TestPlayer::Start()
 	idleBitmap->Play();
 
 	input = AddComponent<InputSystem>();
+
+	hpComp = AddComponent<StatComponent>();
+	hpComp->ChangeStat(maxHp);
+	OnHitAction += hpComp->GetValueFunctionObject();
+	
+	text = AddComponent<TextRenderer>();
+	text->SetPosition(700, 20);
+
+	// Text 초기화
+	std::wstring hpText = L"Hp : ";
+	hpText += std::to_wstring(hpComp->GetValue());
+	text->SetText(hpText);
 }
 
 void TestPlayer::Update()
 {
+	// 체력 이벤트 인풋
+	if (input->IsKeyPressed('H'))
+	{
+		int dmg = 1;
+		OnHit(dmg);
+	}
+	else if (input->IsKeyPressed('J'))
+	{
+		hpComp->ChangeStat(maxHp);
+
+		std::wstring hpText = L"Hp : ";
+		hpText += std::to_wstring(hpComp->GetValue());
+		text->SetText(hpText);
+	}
+
+	// 카메라 설정 인풋
 	if (input->IsKeyPressed('Y'))
 	{
 		playerMainCam->SetIsMainCamera(true);
@@ -86,4 +114,17 @@ void TestPlayer::CamMove()
 	D2D1_VECTOR_2F moveVec = { deltaTime * inputVec.x * speed, deltaTime * inputVec.y * speed };
 
 	//playerMainCam->SetPosition(positionVec.x + moveVec.x, positionVec.y + moveVec.y);
+}
+
+void TestPlayer::OnHit(int dmg)
+{
+	int currentHp = hpComp->GetValue();
+
+	if (currentHp <= 0) return;
+
+	OnHitAction.Invoke(currentHp - dmg);
+
+	std::wstring hpText = L"Hp : ";
+	hpText += std::to_wstring(hpComp->GetValue());
+	text->SetText(hpText);
 }
