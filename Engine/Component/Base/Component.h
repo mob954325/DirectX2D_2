@@ -1,6 +1,7 @@
 ﻿#pragma once
-
 class GameObject;
+
+#include "pch.h"
 
 /// <summary>
 /// 모든 컴포넌트 클래스가 상속 받을 클래스

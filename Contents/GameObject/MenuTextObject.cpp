@@ -8,6 +8,10 @@ void MenuTextObject::Start()
 	textRenderer->SetPosition(20, 20);
 
 	inputSystem = AddComponent<InputSystem>();
+
+	box = AddComponent<BoxComponent>();
+	box->SetIsShow(true);
+	box->SetRect({ 0, 0, 200, 200 });
 }
 
 void MenuTextObject::Update()

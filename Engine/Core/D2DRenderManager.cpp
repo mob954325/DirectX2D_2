@@ -91,6 +91,16 @@ void D2DRenderManager::DrawImage(Microsoft::WRL::ComPtr<ID2D1Effect> effect)
 	m_d2dDeviceContext->DrawImage(effect.Get());
 }
 
+void D2DRenderManager::CreateBrush(const D2D1::ColorF& color, ID2D1SolidColorBrush** pBrush)
+{
+	m_d2dDeviceContext->CreateSolidColorBrush(color, pBrush);
+}
+
+void D2DRenderManager::DrawRectangle(D2D1_RECT_F& rect, ID2D1Brush* brush, FLOAT width, ID2D1StrokeStyle* strokeStyle)
+{
+	m_d2dDeviceContext->DrawRectangle(rect, brush, width, strokeStyle);
+}
+
 void D2DRenderManager::PrintText(const wchar_t* str, float left, float top)
 {
 	if (!m_d2dDeviceContext || !m_pBrush) return;

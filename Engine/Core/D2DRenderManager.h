@@ -25,6 +25,10 @@ public:
 	void DrawBitmap(ComPtr<ID2D1Bitmap1> bitmap, D2D1_RECT_F& destRect, D2D1_RECT_F& srcRect);
 	void DrawImage(ComPtr<ID2D1Effect> effect);
 
+	void CreateBrush(const D2D1::ColorF& color, ID2D1SolidColorBrush** pBrush);
+	void DrawRectangle(D2D1_RECT_F& rect, ID2D1Brush* brush, FLOAT width = 1.0f, ID2D1StrokeStyle* strokeStyle = (ID2D1StrokeStyle*)0);
+
+
 	/// <summary>
 	/// WIC를 통해 이미지를 ID2D1Bitmap1**로 반환하는 함수
 	/// </summary>

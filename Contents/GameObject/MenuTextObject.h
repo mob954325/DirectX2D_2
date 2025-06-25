@@ -2,6 +2,7 @@
 #include "Component/Base/GameObject.h"
 #include "Component/TextRenderer.h"
 #include "Component/InputSystem.h"
+#include "Component/BoxComponent.h"
 
 class MenuTextObject : public GameObject
 {
@@ -16,5 +17,6 @@ public:
 private:
 	TextRenderer* textRenderer{};
 	InputSystem* inputSystem{};
+	BoxComponent* box{};
 };
 

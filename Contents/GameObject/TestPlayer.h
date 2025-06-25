@@ -5,6 +5,7 @@
 #include "Component/InputSystem.h"
 #include "Component/StatComponent.h"
 #include "Component/TextRenderer.h"
+#include "Component/BoxComponent.h"
 #include "Utility/EventDelegate.h"
 
 class TestPlayer : public GameObject
@@ -18,6 +19,7 @@ private:
 
 	void Move();
 	void CamMove();
+	void UpdateRectPosition();
 
 	void OnHit(int dmg);
 
@@ -26,6 +28,7 @@ private:
 	InputSystem* input{};
 	StatComponent* hpComp{};
 	TextRenderer* text{};
+	BoxComponent* box{};
 
 	EventDelegate<int> OnHitAction; // 피격시 호출되는 델리게이트
 

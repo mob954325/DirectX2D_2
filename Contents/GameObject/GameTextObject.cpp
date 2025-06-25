@@ -19,7 +19,7 @@ void GameTextObject::Start()
 	textRenderer3->SetText(L"^");
 	
 	D2D1_SIZE_U size = Singleton<SceneManager>::GetInstance().GetScreenSize();
-	textRenderer3->SetPosition(size.width / 2, size.height / 2);
+	textRenderer3->SetPosition((float)(size.width / 2), (float)(size.height / 2));
 
 
 }

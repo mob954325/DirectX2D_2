@@ -39,8 +39,8 @@ public:
 		comp->owner = this;
 		components.push_back(comp);
 
-		comp->OnStart();
 		RegisterComponentWithScriptSystem(comp);
+		comp->OnStart();
 
 		return comp;
 	}
