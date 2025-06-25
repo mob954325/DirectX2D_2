@@ -138,8 +138,10 @@
     <ClInclude Include="Component\InputSystem.h" />
     <ClInclude Include="Component\TextRenderer.h" />
     <ClInclude Include="Core\Application.h" />
+    <ClInclude Include="Core\AppPaths.h" />
     <ClInclude Include="Core\D2DRenderManager.h" />
     <ClInclude Include="Component\StatComponent.h" />
+    <ClInclude Include="Core\EngineData.h" />
     <ClInclude Include="Utility\EventDelegate.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Component\Base\GameObject.h" />
@@ -162,6 +164,7 @@
     <ClCompile Include="Component\InputSystem.cpp" />
     <ClCompile Include="Component\TextRenderer.cpp" />
     <ClCompile Include="Core\Application.cpp" />
+    <ClCompile Include="Core\AppPaths.cpp" />
     <ClCompile Include="Core\D2DRenderManager.cpp" />
     <ClCompile Include="Component\Base\GameObject.cpp" />
     <ClCompile Include="Core\ScriptSystem.cpp" />

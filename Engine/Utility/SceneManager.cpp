@@ -76,9 +76,3 @@ void SceneManager::AddCamera(Camera* pCamera)
 {
 	cameras.push_back(pCamera);
 }
-
-void SceneManager::SetScreenSize(unsigned int width, unsigned int height)
-{
-	this->width = width;
-	this->height = height;
-}

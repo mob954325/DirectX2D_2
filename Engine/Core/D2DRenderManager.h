@@ -15,10 +15,6 @@ public:
 	void Render();
 
 	void SetD2D1DeviceContext7(ID2D1DeviceContext7* pD2D1DeviceContext7);
-	void SetScreenSize(int width, int height);
-
-	int GetScreenWidthSize() { return screenWidth; };
-	int GetScreenHeightSize() { return screenHeight; };
 
 	void SetBitmapTransform(D2D1_MATRIX_3X2_F& finalMatrix);
 	void DrawBitmap(ComPtr<ID2D1Bitmap1> bitmap);
@@ -47,7 +43,4 @@ protected:
 	ComPtr<IDWriteFactory> m_pDWriteFactory;
 	ComPtr<IDWriteTextFormat> m_pDWriteTextFormat;
 	ComPtr<ID2D1SolidColorBrush> m_pBrush; // 브러시 개체 인터페이스 포인터 변수
-
-	int screenWidth = 0;
-	int screenHeight = 0;
 };

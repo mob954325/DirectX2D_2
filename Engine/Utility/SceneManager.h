@@ -25,9 +25,6 @@ public:
 
 	Camera* GetMainCamera();
 	void AddCamera(Camera* pCamera);
-
-	void SetScreenSize(unsigned int width, unsigned int height);
-	D2D1_SIZE_U GetScreenSize() { return { width, height }; };
 private:
 	std::map<int, Scene*> scenes; // sceneIndex, Scene
 
@@ -35,7 +32,4 @@ private:
 	Scene* currentScene = nullptr;
 	int currentSceneIndex = -1;
 	int sceneCount = 0;
-
-	unsigned int width = 0;
-	unsigned int height = 0;
 };

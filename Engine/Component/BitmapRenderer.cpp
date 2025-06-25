@@ -3,6 +3,7 @@
 #include "Base/GameObject.h"
 #include "Camera.h"
 #include "Utility/SceneManager.h"
+#include "EngineData.h"
 
 void BitmapRenderer::Render(D2DRenderManager* manager)
 {
@@ -36,9 +37,8 @@ void BitmapRenderer::Render(D2DRenderManager* manager)
 void BitmapRenderer::OnStart()
 {
 	// 유니티 좌표 매트릭스를 위한 스크린크기 불러오기
-	D2D1_SIZE_U screenSize = Singleton<SceneManager>::GetInstance().GetScreenSize();
-	screenWidth = (int)screenSize.width;
-	screenHeight = (int)screenSize.height;
+	screenWidth = EngineData::SceenWidth;
+	screenHeight = EngineData::SceenHeight;
 	unityCoordMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation((FLOAT)(screenWidth / 2), (FLOAT)(screenHeight / 2));
 }
 

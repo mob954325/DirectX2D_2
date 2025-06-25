@@ -23,9 +23,6 @@ public:
 	virtual void Update();
 	void Run();
 
-	int m_Width = 1024;
-	int m_Height = 768;
-
 protected:
 	void ResizeSwapChainBuffers();
 
@@ -36,10 +33,6 @@ protected:
 
 private:
 	HINSTANCE		m_hInstance{};
-	//std::wstring	m_windowName = L"WindowClass";
-	//std::wstring	m_titleName = L"Default Title Name";
-	//std::string	m_modulePath;
-	//std::string	m_workingPath;
 	HWND			m_hwnd{};
 
 	bool m_isWindowOpen = false; // 윈도우가 열렸는지 확인하는 변수

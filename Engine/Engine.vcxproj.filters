@@ -111,6 +111,12 @@
     <ClInclude Include="Component\BoxComponent.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
+    <ClInclude Include="Core\EngineData.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\AppPaths.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -169,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="Component\BoxComponent.cpp">
       <Filter>소스 파일\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\AppPaths.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

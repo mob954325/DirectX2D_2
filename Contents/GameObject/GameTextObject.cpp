@@ -2,7 +2,7 @@
 #include "Utility/SceneManager.h"
 
 #include "Utility/Singleton.h"
-#include "Utility/SceneManager.h"
+#include "Core/EngineData.h"
 
 void GameTextObject::Start()
 {
@@ -18,7 +18,7 @@ void GameTextObject::Start()
 	textRenderer3 = AddComponent<TextRenderer>(); // 중앙 확인옹 텍스트
 	textRenderer3->SetText(L"^");
 	
-	D2D1_SIZE_U size = Singleton<SceneManager>::GetInstance().GetScreenSize();
+	D2D1_SIZE_U size = { EngineData::SceenWidth, EngineData::SceenHeight };
 	textRenderer3->SetPosition((float)(size.width / 2), (float)(size.height / 2));
 
 

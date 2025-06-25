@@ -65,12 +65,6 @@ void D2DRenderManager::SetD2D1DeviceContext7(ID2D1DeviceContext7* pD2D1DeviceCon
 	}
 }
 
-void D2DRenderManager::SetScreenSize(int width, int height)
-{
-	screenWidth = width;
-	screenHeight = height;
-}
-
 void D2DRenderManager::SetBitmapTransform(D2D1_MATRIX_3X2_F& finalMatrix)
 {
 	m_d2dDeviceContext->SetTransform(finalMatrix);
