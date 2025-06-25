@@ -1,6 +1,7 @@
 ﻿#include "BoxComponent.h"
 #include "D2DRenderManager.h"
 #include "GameObject.h"
+#include "EngineData.h"
 
 void BoxComponent::OnStart()
 {
@@ -23,12 +24,21 @@ void BoxComponent::Render(D2DRenderManager* render)
 	{
 		if (owner->transform->IsUnityCoords())
 		{
-			// NOTE : 나중에 좌표값 수정할 것
+
+			// NOTE : 유니티 좌표계 추가 계산 후 경계 확인하기
+			render->DrawRectangle(rect, brush, width, strokeStyle);
+			float topGap = rect.bottom - rect.top;
+			D2D1_RECT_F unityRect =
+			{
+				rect.left + (EngineData::SceenWidth / 2),
+				rect.top + (EngineData::SceenHeight / 2),
+				rect.right + (EngineData::SceenWidth / 2),
+				rect.bottom + (EngineData::SceenHeight / 2)
+			};
 			render->DrawRectangle(rect, brush, width, strokeStyle);
 		}
 		else
 		{
-			render->DrawRectangle(rect, brush, width, strokeStyle);
 		}
 	}
 }
