@@ -19,7 +19,6 @@ private:
 
 	void Move();
 	void CamMove();
-	void UpdateRectPosition();
 
 	void OnHit(int dmg);
 

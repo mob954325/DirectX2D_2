@@ -8,6 +8,9 @@ public:
 	void SetFrameSize(int imageWidth, int imageHeight); 
 	void SetFrameCount(int row, int colum);
 
+	int GetRowCount() { return rowCount; }
+	int GetColumnCount() { return columnCount; }
+
 	void Play() { isPlay = true; }
 	void Stop() { isPlay = false; }
 

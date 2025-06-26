@@ -37,12 +37,21 @@ void TestPlayer::Start()
 	box = AddComponent<BoxComponent>();
 	box->SetIsShow(true);
 	box->SetWidth(2.0f);
+	D2D1_SIZE_F size = idleBitmap->GetBitmap()->GetSize();
+	D2D1_RECT_F rect // NOTE: 임시 값 조정 
+	{
+		-48 / 2,
+		-64 / 2,
+		48 / 2,
+		64 / 2,
+	};
+
+	box->SetRect(rect);
+
 }
 
 void TestPlayer::Update()
 {
-	UpdateRectPosition();
-
 	// 체력 이벤트 인풋
 	if (input->IsKeyPressed('H'))
 	{
@@ -120,23 +129,6 @@ void TestPlayer::CamMove()
 	D2D1_VECTOR_2F moveVec = { deltaTime * inputVec.x * speed, deltaTime * inputVec.y * speed };
 
 	//playerMainCam->SetPosition(positionVec.x + moveVec.x, positionVec.y + moveVec.y);
-}
-
-void TestPlayer::UpdateRectPosition()
-{
-	if (!box) return;
-
-	D2D1_SIZE_F size =  idleBitmap->GetBitmap()->GetSize();
-	D2D1_VECTOR_2F pos = transform->GetPosition();
-	D2D1_RECT_F rect
-	{
-		pos.x,
-		pos.y + size.height,
-		pos.x + size.width,
-		pos.y
-	};
-
-	box->SetRect(rect);
 }
 
 void TestPlayer::OnHit(int dmg)
