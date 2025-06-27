@@ -1,9 +1,11 @@
 ﻿#include "BitmapRenderer.h"
 #include "Core/D2DRenderManager.h"
 #include "Base/GameObject.h"
-#include "Camera.h"
 #include "Utility/SceneManager.h"
+#include "Core/ResourceManager.h"
+#include "Camera.h"
 #include "EngineData.h"
+#include "BitmapResource.h"
 
 void BitmapRenderer::Render(D2DRenderManager* manager)
 {
@@ -44,13 +46,18 @@ void BitmapRenderer::OnStart()
 
 void BitmapRenderer::OnDestroy()
 {
-	m_bitmap.Reset();
+	m_bitmap.Reset(); // NOTE : 제거하면 비트맵 해제 안되서 터짐 
 }
 
 void BitmapRenderer::CreateBitMap(const wchar_t* path)
 {
 	HRESULT hr = renderManager->CreateBitmapFromFile(path, m_bitmap.GetAddressOf());
 	assert(SUCCEEDED(hr));
+}
+
+void BitmapRenderer::CreateBitmapResource(std::wstring filePath)
+{
+	m_bitmapResource = resourceManager->CreateBitmapResource(filePath);
 }
 
 void BitmapRenderer::SetScreenSize(int width, int height)

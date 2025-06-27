@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Core\BitmapResource.h" />
     <ClInclude Include="Component\BoxComponent.h" />
     <ClInclude Include="Component\Camera.h" />
     <ClInclude Include="Component\Base\Component.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Core\D2DRenderManager.h" />
     <ClInclude Include="Component\StatComponent.h" />
     <ClInclude Include="Core\EngineData.h" />
+    <ClInclude Include="Core\ResourceManager.h" />
     <ClInclude Include="Utility\EventDelegate.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Component\Base\GameObject.h" />
@@ -157,6 +159,7 @@
     <ClInclude Include="Component\Base\Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Core\BitmapResource.cpp" />
     <ClCompile Include="Component\BoxComponent.cpp" />
     <ClCompile Include="Component\Camera.cpp" />
     <ClCompile Include="Component\AnimationRenderer.cpp" />
@@ -170,6 +173,7 @@
     <ClCompile Include="Core\ScriptSystem.cpp" />
     <ClCompile Include="Core\Scene.cpp" />
     <ClCompile Include="Component\StatComponent.cpp" />
+    <ClCompile Include="Core\ResourceManager.cpp" />
     <ClCompile Include="Utility\SceneManager.cpp" />
     <ClCompile Include="Core\RenderSystem.cpp" />
     <ClCompile Include="Utility\GameTime.cpp" />

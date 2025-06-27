@@ -117,6 +117,12 @@
     <ClInclude Include="Core\AppPaths.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Core\ResourceManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\BitmapResource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -177,6 +183,12 @@
       <Filter>소스 파일\Component</Filter>
     </ClCompile>
     <ClCompile Include="Core\AppPaths.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ResourceManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\BitmapResource.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

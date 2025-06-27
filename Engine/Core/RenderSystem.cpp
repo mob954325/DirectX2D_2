@@ -4,6 +4,7 @@ void RenderSystem::Regist(RenderComponent* comp)
 {
 	components.push_back(comp);
 	comp->SetRenderManager(renderManager);
+	comp->SetResourceManager(resourceManager);
 }
 
 void RenderSystem::UnRegist(RenderComponent* comp)

@@ -3,6 +3,7 @@
 #include "Base/Component.h"
 #include "Base/RenderComponent.h"
 #include "Base/Transform.h"
+#include "Core/BitmapResource.h"
 
 class BitmapRenderer : public RenderComponent
 {
@@ -15,6 +16,7 @@ public:
 	void OnDestroy() override;
 
 	void CreateBitMap(const wchar_t* path);
+	void CreateBitmapResource(std::wstring filePath);
 	void SetScreenSize(int width, int height);
 	void SetOffSet(float x, float y);
 
@@ -26,6 +28,7 @@ protected:
 	D2D1_MATRIX_3X2_F unityRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
 
 	Microsoft::WRL::ComPtr<ID2D1Bitmap1> m_bitmap;
+	std::shared_ptr<BitmapResource> m_bitmapResource;
 	D2D1_RECT_F destRect = {};
 	D2D1_MATRIX_3X2_F finalMatrix = {};
 

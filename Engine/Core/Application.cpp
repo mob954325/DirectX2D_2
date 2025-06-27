@@ -112,12 +112,17 @@ void Application::Initialize()
 	m_D2DRenderManager->Initialize();
 	m_D2DRenderManager->SetD2D1DeviceContext7(m_d2dDeviceContext.Get());
 
+	// ResourceManager 초기화
+	m_ResourceManager = new ResourceManager(m_D2DRenderManager);
+
 	// RenderSystem  초기화
 	Singleton<RenderSystem>::GetInstance().Init(m_D2DRenderManager);
+	Singleton<RenderSystem>::GetInstance().SetResourceManager(m_ResourceManager); // NOTE : 나중에 제거할 것
 
 	// GameTime 초기화
 	Singleton<GameTime>::GetInstance().InitTime();
 
+	// -- Application 상속받은 클래스의 Initialize() 실행
 }
 
 void Application::Uninitialize()

@@ -3,6 +3,7 @@
 #include "D2DRenderManager.h"
 #include "ScriptSystem.h"
 #include "RenderSystem.h"
+#include "Core/ResourceManager.h"
 
 using namespace Microsoft::WRL;
 
@@ -11,6 +12,7 @@ class Application
 {
 public:
 	D2DRenderManager* m_D2DRenderManager{};
+	ResourceManager* m_ResourceManager{};
 
 	/// <summary>
 	/// D2DRenderManager 초기화
