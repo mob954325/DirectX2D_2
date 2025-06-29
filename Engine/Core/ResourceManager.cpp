@@ -6,15 +6,15 @@ std::shared_ptr<BitmapResource> ResourceManager::CreateBitmapResource(std::wstri
 {
 	std::shared_ptr<BitmapResource> sharedResource;
 	auto it = mapBitmap.find(filePath);
-	if (it == mapBitmap.end()) // 키가 존재하지 않음
+
+	if (it == mapBitmap.end() || it->second.expired())
 	{
-		std::weak_ptr<BitmapResource> weakResource;
-		sharedResource = weakResource.lock();
+		sharedResource = std::make_shared<BitmapResource>();
 
 		ID2D1Bitmap1* outBitmap = nullptr;
 		renderManager->CreateBitmapFromFile(filePath.c_str(), &outBitmap);
-
 		sharedResource->SetBitmap(&outBitmap);
+		mapBitmap[filePath] = sharedResource;
 	}
 	else
 	{
@@ -22,4 +22,13 @@ std::shared_ptr<BitmapResource> ResourceManager::CreateBitmapResource(std::wstri
 	}
 
 	return sharedResource;
+}
+
+void ResourceManager::ReleaseAllResource()
+{
+	for (auto resource : mapBitmap)
+	{
+		// resource release
+		
+	}
 }

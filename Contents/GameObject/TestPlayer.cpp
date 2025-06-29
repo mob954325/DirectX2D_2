@@ -10,7 +10,7 @@ void TestPlayer::Start()
 	Singleton<SceneManager>::GetInstance().AddCamera(playerMainCam);
 
 	idleBitmap = AddComponent<AnimationRenderer>();
-	idleBitmap->CreateBitMap(L"../Resource/Idle_Down(48x64).png");
+	idleBitmap->CreateBitmapResource(L"../Resource/Idle_Down(48x64).png");
 
 	idleBitmap->SetOffSet(-24, 32);
 	transform->SetIsUnityCoords(true);
@@ -37,7 +37,7 @@ void TestPlayer::Start()
 	box = AddComponent<BoxComponent>();
 	box->SetIsShow(true);
 	box->SetWidth(2.0f);
-	D2D1_SIZE_F size = idleBitmap->GetBitmap()->GetSize();
+	D2D1_SIZE_F size = idleBitmap->GetResource().get()->GetBitmap()->GetSize();
 	D2D1_RECT_F rect // NOTE: 임시 값 조정 
 	{
 		-48 / 2,

@@ -34,10 +34,11 @@ public:
 	void OnExit();	
 
 	void AddGameObject(GameObject* gameObject);
-	void RemoveObject(GameObject* gameObject);
+	void FindRemoveObject();
 
 protected:
 	void DestroyGameObjects();
+	void AddCreatedObjects();
 
 	/// <summary>
 	/// Scene을 상속 받은 클래스가 씬 시작 시 실행할 내용
@@ -56,5 +57,6 @@ protected:
 
 	std::vector<GameObject*> gameObjects;
 	std::vector<GameObject*> destroyList;
+	std::vector<GameObject*> pendingObjects;
 };
 

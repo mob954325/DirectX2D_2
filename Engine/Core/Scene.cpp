@@ -3,11 +3,6 @@
 void Scene::OnEnter()
 {
 	OnEnterImpl();
-
-	for (GameObject* obj : gameObjects)
-	{
-		obj->Start();
-	}
 }
 
 void Scene::OnExit()
@@ -25,38 +20,30 @@ void Scene::OnExit()
 
 void Scene::Update()
 {
-	DestroyGameObjects();
+	AddCreatedObjects();
 
 	for (GameObject* obj : gameObjects)
 	{
-		obj->Update();
+		if(!obj->GetEarlyCreatedFlag())obj->Update();
 	}
 
 	UpdateImpl();
+
+	DestroyGameObjects();
 }
 
 void Scene::AddGameObject(GameObject* gameObject)
 {
-	// 게임오브젝트 중복 적용 방지
-	for (GameObject* obj : gameObjects)
-	{
-		if (obj == gameObject)
-		{
-			// 이미 등록된 게임 오브젝트
-			return;
-		}
-	}
-
-	gameObjects.push_back(gameObject);
+	pendingObjects.push_back(gameObject);
 }
 
-void Scene::RemoveObject(GameObject* gameObject)
+void Scene::FindRemoveObject()
 {
 	std::vector<GameObject*>::iterator it = gameObjects.begin();
 
 	for (; it != gameObjects.end(); it++)
 	{
-		if (*it == gameObject) // 제거할 오브젝트 찾음
+		if ((*it)->GetRemoveFlag()) // 제거할 오브젝트 찾음
 		{
 			destroyList.push_back(*it);
 		}
@@ -65,16 +52,30 @@ void Scene::RemoveObject(GameObject* gameObject)
 
 void Scene::DestroyGameObjects()
 {
-	std::vector<GameObject*>::iterator it = destroyList.begin();
+	FindRemoveObject();
 
-	for (; it != destroyList.end();)
+	for (GameObject* targetObject : destroyList)
 	{
-		GameObject* targetObject = *it;
+		auto it = std::find(gameObjects.begin(), gameObjects.end(), targetObject);
+		if (it != gameObjects.end())
+		{
+			GameObject* obj = *it;
+			obj->OnDestroy();
+			gameObjects.erase(it); // 먼저 erase
+			delete obj;            // 그 다음 delete
+		}
+	}
+	destroyList.clear();
+}
 
-		it = destroyList.erase(it);
-		targetObject->OnDestroy();
-		delete targetObject;
+void Scene::AddCreatedObjects()
+{
+	for (GameObject* obj : pendingObjects)
+	{
+		gameObjects.push_back(obj);
+		obj->SetEarlyCreatedFalse();
+		obj->Start();
 	}
 
-	destroyList.clear();
+	pendingObjects.clear();
 }

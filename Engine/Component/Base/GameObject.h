@@ -73,9 +73,16 @@ public:
 		}
 	}
 
+	void SetDestroy() { shouldRemove = true; };
+	bool GetRemoveFlag() { return shouldRemove; }
+
+	void SetEarlyCreatedFalse() { earlyCreated = false; };
+	bool GetEarlyCreatedFlag() { return earlyCreated; }
 private:
 	void RegisterComponentWithScriptSystem(Component* comp);
 
 	std::vector<Component*> components; // 컴포넌트를 담는 컨테이너
+	bool shouldRemove = false;
+	bool earlyCreated = true;
 };
 

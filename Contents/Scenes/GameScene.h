@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Core/Scene.h"
+#include "Component/InputSystem.h"
 
 class GameScene : public Scene
 {
@@ -17,4 +18,7 @@ private:
 	GameObject* m_Earth{};
 	GameObject* m_Moon{};
 	GameObject* m_TextObject{};
+	GameObject* m_Sun2{};
+
+	std::vector<GameObject*> objects;
 };

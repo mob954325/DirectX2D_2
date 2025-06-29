@@ -4,6 +4,7 @@
 class BitmapResource
 {
 public:
+
 	Microsoft::WRL::ComPtr<ID2D1Bitmap1> GetBitmap();
 	void SetBitmap(ID2D1Bitmap1** pBitmap);
 

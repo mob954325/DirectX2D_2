@@ -3,7 +3,7 @@
 void Sun::Start()
 {
 	bitmapRenderer = AddComponent<BitmapRenderer>();
-	bitmapRenderer->CreateBitMap(L"../Resource/Sun.png");
+	bitmapRenderer->CreateBitmapResource(L"../Resource/Sun.png");
 
 	transform->SetScale(0.1f, 0.1f);
 	transform->SetIsUnityCoords(true);

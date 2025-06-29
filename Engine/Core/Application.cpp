@@ -131,6 +131,10 @@ void Application::Uninitialize()
 	m_D2DRenderManager->Uninitialize();
 	delete m_D2DRenderManager;
 
+	m_ResourceManager->ReleaseAllResource();
+	delete m_ResourceManager;
+	m_ResourceManager = nullptr;
+
 	m_d3dDevice = nullptr;
 	m_dxgiSwapChain = nullptr;
 	m_d2dDeviceContext = nullptr;

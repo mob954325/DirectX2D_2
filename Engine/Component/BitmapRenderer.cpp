@@ -9,7 +9,7 @@
 
 void BitmapRenderer::Render(D2DRenderManager* manager)
 {
-	if (m_bitmap != nullptr)
+	if (m_bitmapResource != nullptr) // m_bitmap 사용하면 터짐
 	{
 		Camera* pCam = Singleton<SceneManager>::GetInstance().GetMainCamera();
 		D2D1_MATRIX_3X2_F mainCamInvertMatrix = pCam ? pCam->GetInvertMatrix() : D2D1::Matrix3x2F::Identity();
@@ -32,7 +32,7 @@ void BitmapRenderer::Render(D2DRenderManager* manager)
 		}
 
 		manager->SetBitmapTransform(finalMatrix);
-		manager->DrawBitmap(m_bitmap);
+		manager->DrawBitmap(m_bitmapResource.get()->GetBitmap());
 	}
 }
 
@@ -46,13 +46,7 @@ void BitmapRenderer::OnStart()
 
 void BitmapRenderer::OnDestroy()
 {
-	m_bitmap.Reset(); // NOTE : 제거하면 비트맵 해제 안되서 터짐 
-}
-
-void BitmapRenderer::CreateBitMap(const wchar_t* path)
-{
-	HRESULT hr = renderManager->CreateBitmapFromFile(path, m_bitmap.GetAddressOf());
-	assert(SUCCEEDED(hr));
+	m_bitmapResource.reset();
 }
 
 void BitmapRenderer::CreateBitmapResource(std::wstring filePath)
@@ -74,7 +68,7 @@ void BitmapRenderer::SetOffSet(float x, float y)
 	unityRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
 }
 
-Microsoft::WRL::ComPtr<ID2D1Bitmap1> BitmapRenderer::GetBitmap()
+std::shared_ptr<BitmapResource> BitmapRenderer::GetResource()
 {
-	return m_bitmap;
+	return m_bitmapResource;
 }

@@ -10,6 +10,7 @@ public:
 	ResourceManager(D2DRenderManager* pManager) : renderManager(pManager) {};
 
 	std::shared_ptr<BitmapResource> CreateBitmapResource(std::wstring filePath);
+	void ReleaseAllResource();
 
 private:
 	D2DRenderManager* renderManager;

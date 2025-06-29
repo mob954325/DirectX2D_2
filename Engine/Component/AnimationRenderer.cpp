@@ -6,7 +6,7 @@
 
 void AnimationRenderer::Render(D2DRenderManager* manager)
 {
-	if (!m_bitmap) return;
+	if (!m_bitmapResource) return;
 
 	if (isPlay)
 	{
@@ -57,7 +57,7 @@ void AnimationRenderer::Render(D2DRenderManager* manager)
 		(FLOAT)((indexY + 1) * frameHeight)
 	};
 
-	manager->DrawBitmap(m_bitmap, destRect, srcRect);
+	manager->DrawBitmap(m_bitmapResource.get()->GetBitmap(), destRect, srcRect);
 }
 
 void AnimationRenderer::SetFrameSize(int imageWidth, int imageHeight)

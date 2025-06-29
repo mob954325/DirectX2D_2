@@ -66,6 +66,9 @@
     <ClCompile Include="GameObject\TestPlayer.cpp">
       <Filter>소스 파일\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject\Sun2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DemoGameApp.h">
@@ -100,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="GameObject\TestPlayer.h">
       <Filter>헤더 파일\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Sun2.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

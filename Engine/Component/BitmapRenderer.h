@@ -15,19 +15,17 @@ public:
 	void OnStart() override;
 	void OnDestroy() override;
 
-	void CreateBitMap(const wchar_t* path);
 	void CreateBitmapResource(std::wstring filePath);
 	void SetScreenSize(int width, int height);
 	void SetOffSet(float x, float y);
 
-	Microsoft::WRL::ComPtr<ID2D1Bitmap1> GetBitmap();
+	std::shared_ptr<BitmapResource> GetResource();
 
 protected:
 	D2D1_MATRIX_3X2_F unityCoordMatrix = D2D1::Matrix3x2F::Identity(); // 유니티 좌표 전환 메트릭스
 	D2D1_MATRIX_3X2_F normalRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, 1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
 	D2D1_MATRIX_3X2_F unityRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
 
-	Microsoft::WRL::ComPtr<ID2D1Bitmap1> m_bitmap;
 	std::shared_ptr<BitmapResource> m_bitmapResource;
 	D2D1_RECT_F destRect = {};
 	D2D1_MATRIX_3X2_F finalMatrix = {};

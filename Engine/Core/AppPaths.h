@@ -9,7 +9,7 @@ class AppPaths : public Singleton<AppPaths>
 {
 public:
 	AppPaths() {};
-	~AppPaths() {};
+	//~AppPaths() {};
 
 	// Application::Initialize에서 초기화
 	void InitPaths();
