@@ -146,9 +146,12 @@
     <ClInclude Include="Core\EngineData.h" />
     <ClInclude Include="Core\RenderSystem.h" />
     <ClInclude Include="Core\ScriptSystem.h" />
+    <ClInclude Include="Utils\JsonUtil.h" />
     <ClInclude Include="Platform\D2DRenderManager.h" />
+    <ClInclude Include="Resources\AnimationResource.h" />
     <ClInclude Include="Resources\BitmapResource.h" />
     <ClInclude Include="Resources\ResourceManager.h" />
+    <ClInclude Include="Resources\SpriteResource.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Systems\Input.h" />
@@ -172,6 +175,7 @@
     <ClCompile Include="Components\Rendering\BoxComponent.cpp" />
     <ClCompile Include="Components\Rendering\TextRenderer.cpp" />
     <ClCompile Include="Core\ScriptSystem.cpp" />
+    <ClCompile Include="Utils\JsonUtil.cpp" />
     <ClCompile Include="Platform\D2DRenderManager.cpp" />
     <ClCompile Include="Resources\BitmapResource.cpp" />
     <ClCompile Include="Resources\ResourceManager.cpp" />
