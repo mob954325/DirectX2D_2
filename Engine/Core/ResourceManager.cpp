@@ -12,7 +12,7 @@ std::shared_ptr<BitmapResource> ResourceManager::CreateBitmapResource(std::wstri
 		ID2D1Bitmap1* outBitmap = nullptr;
 		renderManager->CreateBitmapFromFile(filePath.c_str(), &outBitmap);
 		sharedResource->SetBitmap(&outBitmap);
-		mapBitmap[filePath] = sharedResource;
+		mapBitmap[filePath] = std::weak_ptr<BitmapResource>(sharedResource);
 	}
 	else
 	{
