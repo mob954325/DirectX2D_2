@@ -1,5 +1,5 @@
 ﻿#include "FreeCamera.h"
-#include "Utility/SceneManager.h"
+#include "Scene/SceneManager.h"
 
 void FreeCamera::Start()
 {

@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "Component/Base/GameObject.h"
-#include "Component/BitmapRenderer.h"
+#include "Components/Base/GameObject.h"
+#include "Components/Rendering/BitmapRenderer.h"
 
 class Sun : public GameObject
 {

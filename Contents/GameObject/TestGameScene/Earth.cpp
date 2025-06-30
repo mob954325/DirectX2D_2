@@ -1,6 +1,6 @@
 ﻿#include "Earth.h"
-#include "Utility/SceneManager.h"
-#include "Utility/GameTime.h"
+#include "Scene/SceneManager.h"
+#include "Utils/GameTime.h"
 
 void Earth::Start()
 {

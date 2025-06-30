@@ -1,5 +1,5 @@
 ﻿#include "Sun.h"
-#include "Utility/GameTime.h"
+#include "Utils/GameTime.h"
 void Sun::Start()
 {
 	bitmapRenderer = AddComponent<BitmapRenderer>();

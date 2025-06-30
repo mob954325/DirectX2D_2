@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include "Components/Base/GameObject.h"
 #include "Components/Base/Component.h"
-#include "ScriptSystem.h"
-#include "RenderSystem.h"
+#include "Core/ScriptSystem.h"
+#include "Core/RenderSystem.h"
 #include <vector>
 
 struct SceneState

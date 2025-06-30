@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "Component/Base/GameObject.h"
-#include "Component/TextRenderer.h"
-#include "Component/InputSystem.h"
+#include "Components/Base/GameObject.h"
+#include "Components/Rendering/TextRenderer.h"
+#include "Components/Logic/InputSystem.h"
 
 class GameTextObject : public GameObject
 {

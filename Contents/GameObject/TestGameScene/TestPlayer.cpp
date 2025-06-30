@@ -1,7 +1,7 @@
 ﻿#include "TestPlayer.h"
-#include "Utility/Singleton.h"
-#include "Utility/GameTime.h"
-#include "Utility/SceneManager.h"
+#include "Utils/Singleton.h"
+#include "Utils/GameTime.h"
+#include "Scene/SceneManager.h"
 
 void TestPlayer::Start()
 {

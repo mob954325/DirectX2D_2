@@ -129,33 +129,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DemoGameApp.cpp" />
-    <ClCompile Include="GameObject\Earth.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject\Sun.cpp" />
-    <ClCompile Include="GameObject\MenuTextObject.cpp" />
-    <ClCompile Include="GameObject\GameTextObject.cpp" />
-    <ClCompile Include="GameObject\Moon.cpp" />
-    <ClCompile Include="GameObject\FreeCamera.cpp" />
-    <ClCompile Include="GameObject\InfoTextObject.cpp" />
-    <ClCompile Include="Scenes\GameScene.cpp" />
+    <ClCompile Include="Application\DemoGameApp.cpp" />
+    <ClCompile Include="GameObject\TestGameScene\Earth.cpp" />
+    <ClCompile Include="Application\Game.cpp" />
+    <ClCompile Include="GameObject\TestGameScene\Sun.cpp" />
+    <ClCompile Include="GameObject\MenuScene\MenuTextObject.cpp" />
+    <ClCompile Include="GameObject\TestGameScene\GameTextObject.cpp" />
+    <ClCompile Include="GameObject\TestGameScene\Moon.cpp" />
+    <ClCompile Include="GameObject\TestGameScene\FreeCamera.cpp" />
+    <ClCompile Include="GameObject\TestGameScene\InfoTextObject.cpp" />
+    <ClCompile Include="GameObject\TestGameScene\TestPlayer.cpp" />
+    <ClCompile Include="GameObject\TestGameScene\SunGeneratorObject.cpp" />
     <ClCompile Include="Scenes\MenuScene.cpp" />
-    <ClCompile Include="GameObject\TestPlayer.cpp" />
-    <ClCompile Include="GameObject\SunGeneratorObject.cpp" />
+    <ClCompile Include="Scenes\TestGameScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DemoGameApp.h" />
-    <ClInclude Include="GameObject\Earth.h" />
-    <ClInclude Include="GameObject\Sun.h" />
-    <ClInclude Include="GameObject\MenuTextObject.h" />
-    <ClInclude Include="GameObject\GameTextObject.h" />
-    <ClInclude Include="GameObject\Moon.h" />
-    <ClInclude Include="GameObject\FreeCamera.h" />
-    <ClInclude Include="GameObject\InfoTextObject.h" />
-    <ClInclude Include="Scenes\GameScene.h" />
+    <ClInclude Include="Application\DemoGameApp.h" />
+    <ClInclude Include="GameObject\TestGameScene\Earth.h" />
+    <ClInclude Include="GameObject\TestGameScene\Sun.h" />
+    <ClInclude Include="GameObject\MenuScene\MenuTextObject.h" />
+    <ClInclude Include="GameObject\TestGameScene\GameTextObject.h" />
+    <ClInclude Include="GameObject\TestGameScene\Moon.h" />
+    <ClInclude Include="GameObject\TestGameScene\FreeCamera.h" />
+    <ClInclude Include="GameObject\TestGameScene\InfoTextObject.h" />
+    <ClInclude Include="GameObject\TestGameScene\TestPlayer.h" />
+    <ClInclude Include="GameObject\TestGameScene\SunGeneratorObject.h" />
     <ClInclude Include="Scenes\MenuScene.h" />
-    <ClInclude Include="GameObject\TestPlayer.h" />
-    <ClInclude Include="GameObject\SunGeneratorObject.h" />
+    <ClInclude Include="Scenes\TestGameScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

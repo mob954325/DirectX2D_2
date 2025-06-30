@@ -1,19 +1,19 @@
 ﻿#include "DemoGameApp.h"
-#include "Core/D2DRenderManager.h"
-#include "Utility/SceneManager.h"
-#include "Utility/Singleton.h"
-#include "Utility/Input.h"
-#include "Utility/GameTime.h"
+#include "Platform/D2DRenderManager.h"
+#include "Scene/SceneManager.h"
+#include "Utils/Singleton.h"
+#include "Systems/Input.h"
+#include "Utils/GameTime.h"
 
-#include "MenuScene.h"
-#include "GameScene.h"
+#include "Scenes/MenuScene.h"
+#include "Scenes/TestGameScene.h"
 
 void DemoGameApp::Initialize()
 {
 	__super::Initialize(); // Application 초기화
 
 	Singleton<SceneManager>::GetInstance().AddScene(new MenuScene());
-	Singleton<SceneManager>::GetInstance().AddScene(new GameScene());
+	Singleton<SceneManager>::GetInstance().AddScene(new TestGameScene());
 	Singleton<SceneManager>::GetInstance().ChangeScene(0);
 }
 

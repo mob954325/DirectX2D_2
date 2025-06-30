@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include "framework.h"
 #include "Platform/D2DRenderManager.h"
-#include "ScriptSystem.h"
-#include "RenderSystem.h"
+#include "Core/ScriptSystem.h"
+#include "Core/RenderSystem.h"
 #include "Resources/ResourceManager.h"
 
 using namespace Microsoft::WRL;

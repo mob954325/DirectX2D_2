@@ -1,9 +1,9 @@
 ﻿#include "MenuScene.h"
 
-#include "Utility/Singleton.h"
-#include "Utility/Input.h"
-#include "Utility/SceneManager.h"
-#include "MenuTextObject.h"
+#include "Utils/Singleton.h"
+#include "Systems/Input.h"
+#include "Scene/SceneManager.h"
+#include "GameObject/MenuScene/MenuTextObject.h"
 
 
 void MenuScene::OnEnterImpl()

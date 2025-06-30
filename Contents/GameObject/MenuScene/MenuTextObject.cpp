@@ -1,5 +1,5 @@
 ﻿#include "MenuTextObject.h"
-#include "Utility/SceneManager.h"
+#include "Scene/SceneManager.h"
 
 void MenuTextObject::Start()
 {

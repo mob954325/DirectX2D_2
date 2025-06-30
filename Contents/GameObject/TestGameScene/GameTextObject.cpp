@@ -1,7 +1,7 @@
 ﻿#include "GameTextObject.h"
-#include "Utility/SceneManager.h"
+#include "Scene/SceneManager.h"
 
-#include "Utility/Singleton.h"
+#include "Utils/Singleton.h"
 #include "Core/EngineData.h"
 
 void GameTextObject::Start()

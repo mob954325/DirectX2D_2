@@ -1,12 +1,12 @@
 ﻿#pragma once
-#include "Component/Base/GameObject.h"
-#include "Component/AnimationRenderer.h"
-#include "Component/Camera.h"
-#include "Component/InputSystem.h"
-#include "Component/StatComponent.h"
-#include "Component/TextRenderer.h"
-#include "Component/BoxComponent.h"
-#include "Utility/EventDelegate.h"
+#include "Components/Base/GameObject.h"
+#include "Components/Rendering/AnimationRenderer.h"
+#include "Components/Camera/Camera.h"
+#include "Components/Logic/InputSystem.h"
+#include "Components/Logic/StatComponent.h"
+#include "Components/Rendering/TextRenderer.h"
+#include "Components/Rendering/BoxComponent.h"
+#include "Utils/EventDelegate.h"
 
 class TestPlayer : public GameObject
 {

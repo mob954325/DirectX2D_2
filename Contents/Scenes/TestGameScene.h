@@ -1,8 +1,8 @@
 ﻿#pragma once
-#include "Core/Scene.h"
-#include "Component/InputSystem.h"
+#include "Scene/Scene.h"
+#include "Components/Logic/InputSystem.h"
 
-class GameScene : public Scene
+class TestGameScene : public Scene
 {
 protected:
 	void OnEnterImpl() override;

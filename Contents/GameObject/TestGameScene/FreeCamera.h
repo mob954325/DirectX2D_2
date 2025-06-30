@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "Component/Base/GameObject.h"
-#include "Component/InputSystem.h"
-#include "Component/Camera.h"
+#include "Components/Base/GameObject.h"
+#include "Components/Logic/InputSystem.h"
+#include "Components/Camera/Camera.h"
 
 class FreeCamera : public GameObject
 {

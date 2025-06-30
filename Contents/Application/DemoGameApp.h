@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "Core/Application.h"
-#include "Core/Scene.h"
+#include "Application/Application.h"
+#include "Scene/Scene.h"
 
 enum SceneType
 {

@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "Component/Base/GameObject.h"
-#include "Component/TextRenderer.h"
+#include "Components/Base/GameObject.h"
+#include "Components/Rendering/TextRenderer.h"
 
 class InfoTextObject : public GameObject
 {

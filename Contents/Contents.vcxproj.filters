@@ -1,111 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Application">
+      <UniqueIdentifier>{db8955e1-1f56-4b8a-91ab-dedcc54f5fbc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="소스 파일\GameObject">
-      <UniqueIdentifier>{a1a1c8f4-5807-4c7b-bb4d-ba4e9a7d64e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Scene">
-      <UniqueIdentifier>{2455c8a8-f772-4dae-a550-da969e52db1d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\Component">
-      <UniqueIdentifier>{97957adb-9d85-4fce-a5e4-e64c8db939b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\GameObject">
+    <Filter Include="GameObject">
       <UniqueIdentifier>{c8b4a70c-d557-4bc2-8c47-6e1bdf8f3386}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Scene">
-      <UniqueIdentifier>{c43b1e4d-f809-4352-abb3-4f2b2545af9f}</UniqueIdentifier>
+    <Filter Include="GameObject\소스">
+      <UniqueIdentifier>{0441e362-810a-49ca-8269-b734463a535a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\헤더">
+      <UniqueIdentifier>{4fe7c00f-0a36-4348-ab5e-fbabc949b038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\소스\MenuScene">
+      <UniqueIdentifier>{b97bb19e-521c-47b2-9ec8-a4e20ac8e4bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\소스\TestGameScene">
+      <UniqueIdentifier>{3f159fc5-65e4-440e-90b1-ba212fd8d1ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\헤더\MenuScene">
+      <UniqueIdentifier>{6dc02426-e468-496f-a771-be4b7255d808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\헤더\TestGameScene">
+      <UniqueIdentifier>{2ebcf5a3-64f4-42af-97b6-1c556346850d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DemoGameApp.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="GameObject\TestGameScene\SunGeneratorObject.cpp">
+      <Filter>GameObject\소스\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="GameObject\MenuScene\MenuTextObject.cpp">
+      <Filter>GameObject\소스\MenuScene</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes\GameScene.cpp">
-      <Filter>소스 파일\Scene</Filter>
+    <ClCompile Include="GameObject\TestGameScene\Earth.cpp">
+      <Filter>GameObject\소스\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes\MenuScene.cpp">
-      <Filter>소스 파일\Scene</Filter>
+    <ClCompile Include="GameObject\TestGameScene\FreeCamera.cpp">
+      <Filter>GameObject\소스\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\Sun.cpp">
-      <Filter>소스 파일\GameObject</Filter>
+    <ClCompile Include="GameObject\TestGameScene\GameTextObject.cpp">
+      <Filter>GameObject\소스\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\Moon.cpp">
-      <Filter>소스 파일\GameObject</Filter>
+    <ClCompile Include="GameObject\TestGameScene\InfoTextObject.cpp">
+      <Filter>GameObject\소스\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\MenuTextObject.cpp">
-      <Filter>소스 파일\GameObject</Filter>
+    <ClCompile Include="GameObject\TestGameScene\Moon.cpp">
+      <Filter>GameObject\소스\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\GameTextObject.cpp">
-      <Filter>소스 파일\GameObject</Filter>
+    <ClCompile Include="GameObject\TestGameScene\Sun.cpp">
+      <Filter>GameObject\소스\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\Earth.cpp">
-      <Filter>소스 파일\GameObject</Filter>
+    <ClCompile Include="GameObject\TestGameScene\TestPlayer.cpp">
+      <Filter>GameObject\소스\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\FreeCamera.cpp">
-      <Filter>소스 파일\GameObject</Filter>
+    <ClCompile Include="Application\DemoGameApp.cpp">
+      <Filter>Application</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\InfoTextObject.cpp">
-      <Filter>소스 파일\GameObject</Filter>
+    <ClCompile Include="Application\Game.cpp">
+      <Filter>Application</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestPlayer.cpp">
-      <Filter>소스 파일\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject\SunGeneratorObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
+    <ClCompile Include="Scenes\MenuScene.cpp" />
+    <ClCompile Include="Scenes\TestGameScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DemoGameApp.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="GameObject\MenuScene\MenuTextObject.h">
+      <Filter>GameObject\헤더\MenuScene</Filter>
     </ClInclude>
-    <ClInclude Include="Scenes\GameScene.h">
-      <Filter>헤더 파일\Scene</Filter>
+    <ClInclude Include="GameObject\TestGameScene\Earth.h">
+      <Filter>GameObject\헤더\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="Scenes\MenuScene.h">
-      <Filter>헤더 파일\Scene</Filter>
+    <ClInclude Include="GameObject\TestGameScene\FreeCamera.h">
+      <Filter>GameObject\헤더\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\Earth.h">
-      <Filter>헤더 파일\GameObject</Filter>
+    <ClInclude Include="GameObject\TestGameScene\GameTextObject.h">
+      <Filter>GameObject\헤더\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\GameTextObject.h">
-      <Filter>헤더 파일\GameObject</Filter>
+    <ClInclude Include="GameObject\TestGameScene\InfoTextObject.h">
+      <Filter>GameObject\헤더\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\FreeCamera.h">
-      <Filter>헤더 파일\GameObject</Filter>
+    <ClInclude Include="GameObject\TestGameScene\Moon.h">
+      <Filter>GameObject\헤더\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\MenuTextObject.h">
-      <Filter>헤더 파일\GameObject</Filter>
+    <ClInclude Include="GameObject\TestGameScene\Sun.h">
+      <Filter>GameObject\헤더\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\Moon.h">
-      <Filter>헤더 파일\GameObject</Filter>
+    <ClInclude Include="GameObject\TestGameScene\TestPlayer.h">
+      <Filter>GameObject\헤더\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\Sun.h">
-      <Filter>헤더 파일\GameObject</Filter>
+    <ClInclude Include="GameObject\TestGameScene\SunGeneratorObject.h">
+      <Filter>GameObject\헤더\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\InfoTextObject.h">
-      <Filter>헤더 파일\GameObject</Filter>
+    <ClInclude Include="Application\DemoGameApp.h">
+      <Filter>Application</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestPlayer.h">
-      <Filter>헤더 파일\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject\SunGeneratorObject.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
+    <ClInclude Include="Scenes\MenuScene.h" />
+    <ClInclude Include="Scenes\TestGameScene.h" />
   </ItemGroup>
 </Project>

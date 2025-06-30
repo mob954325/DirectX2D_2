@@ -1,10 +1,10 @@
 ﻿#include "SunGeneratorObject.h"
 #include "Sun.h"
-#include "Utility/Singleton.h"
-#include "Utility/SceneManager.h"
+#include "Utils/Singleton.h"
+#include "Scene/SceneManager.h"
 #include <random>
 
-#include "Utility/DebugUtility.h"
+#include "Utils/DebugUtility.h"
 
 // NOTE : 0630 리소스 매니저 확인을 위한 게임오브젝트 추가
 void SunGeneratorObject::Start()
