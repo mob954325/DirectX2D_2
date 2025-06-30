@@ -87,8 +87,10 @@ void Scene::UpdateActiveObjects()
 {
 	for (GameObject* obj : activeObjects)
 	{
-		if (!obj->IsEarlyCreated() && !obj->IsMarkedForRemoval() && (obj != nullptr))
+		if (!obj->IsEarlyCreated() && !obj->IsMarkedForRemoval())
 		{
+			if (isSceneChanging) break;
+
 			obj->Update();
 		}
 	}
