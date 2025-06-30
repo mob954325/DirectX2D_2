@@ -1,7 +1,5 @@
 ﻿#include "ResourceManager.h"
 
-// NOTE : BitmapRenderer 컴포넌트에서 테스트 진행안함
-
 std::shared_ptr<BitmapResource> ResourceManager::CreateBitmapResource(std::wstring filePath)
 {
 	std::shared_ptr<BitmapResource> sharedResource;
@@ -22,12 +20,4 @@ std::shared_ptr<BitmapResource> ResourceManager::CreateBitmapResource(std::wstri
 	}
 
 	return sharedResource;
-}
-
-void ResourceManager::ReleaseAllResource()
-{
-	for (auto resource : mapBitmap)
-	{
-		// resource release		
-	}
 }
