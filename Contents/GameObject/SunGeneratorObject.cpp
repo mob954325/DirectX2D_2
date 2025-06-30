@@ -6,7 +6,7 @@
 
 #include "Utility/DebugUtility.h"
 
-
+// NOTE : 0630 리소스 매니저 확인을 위한 게임오브젝트 추가
 void SunGeneratorObject::Start()
 {
 	bitmapRenderer = AddComponent<BitmapRenderer>();
