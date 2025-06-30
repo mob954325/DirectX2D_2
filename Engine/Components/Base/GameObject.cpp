@@ -15,10 +15,28 @@ GameObject::~GameObject()
 	for (; it != components.end();)
 	{
 		(*it)->OnDestroy();
+		RemoveComponentToSystem(*it);
 		it = components.erase(it);
 	}
 
 	components.clear();
+}
+
+void GameObject::RemoveComponent(Component* targetComp)
+{
+	for (auto it = components.begin(); it != components.end();)
+	{
+		if (*it == targetComp)
+		{
+			RemoveComponentToSystem(*it);
+			delete* it;
+			it = components.erase(it);
+		}
+		else
+		{
+			++it;
+		}
+	}
 }
 
 void GameObject::DispatchComponentToSystem(Component* comp)
@@ -30,5 +48,17 @@ void GameObject::DispatchComponentToSystem(Component* comp)
 	else if (RenderComponent* rc = dynamic_cast<RenderComponent*>(comp))
 	{
 		Singleton<RenderSystem>::GetInstance().Register(rc);
+	}
+}
+
+void GameObject::RemoveComponentToSystem(Component* comp)
+{
+	if (ScriptComponent* sc = dynamic_cast<ScriptComponent*>(comp))
+	{
+		Singleton<ScriptSystem>::GetInstance().UnRegist(sc);
+	}
+	else if (RenderComponent* rc = dynamic_cast<RenderComponent*>(comp))
+	{
+		Singleton<RenderSystem>::GetInstance().UnRegist(rc);
 	}
 }

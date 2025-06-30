@@ -5,6 +5,7 @@
 #include <random>
 
 #include "Utils/DebugUtility.h"
+#include "TestPlayer.h"
 
 // NOTE : 0630 리소스 매니저 확인을 위한 게임오브젝트 추가
 void SunGeneratorObject::Start()
@@ -20,7 +21,7 @@ void SunGeneratorObject::Update()
 {
 	if (input->IsKeyDown('O'))
 	{
-		GameObject* obj = new Sun();
+		GameObject* obj = new TestPlayer();
 		objects.push_back(obj);
 
 		int randX = rand() % 1000;

@@ -58,21 +58,7 @@ public:
 		}
 	}
 
-	void RemoveComponent(Component* targetComp)
-	{
-		for (auto it = components.begin(); it != components.end();)
-		{
-			if (*it == targetComp)
-			{
-				delete* it;
-				it = components.erase(it);
-			}
-			else
-			{
-				++it;
-			}
-		}
-	}
+	void RemoveComponent(Component* targetComp);
 
 	// 오브젝트 제거 관련
 	void MarkForRemoval() { shouldRemove = true; };				// 제거할 오브젝트라고 마킹
@@ -91,6 +77,7 @@ protected:
 
 private:
 	void DispatchComponentToSystem(Component* comp);
+	void RemoveComponentToSystem(Component* comp);
 
 	std::vector<Component*> components; // 컴포넌트를 담는 컨테이너
 	bool shouldRemove = false;

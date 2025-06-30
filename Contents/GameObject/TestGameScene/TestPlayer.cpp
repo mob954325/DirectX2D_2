@@ -49,8 +49,6 @@ void TestPlayer::Start()
 	};
 
 	box->SetRect(rect);
-
-	renderLayer = EngineData::RenderLayer::GameObject;
 }
 
 void TestPlayer::Update()

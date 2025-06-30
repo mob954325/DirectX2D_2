@@ -20,16 +20,14 @@ void RenderSystem::Register(RenderComponent* comp)
 void RenderSystem::UnRegist(RenderComponent* comp)
 {
 	auto groupIt = renderComponentGroup.find(comp->owner->GetRenderLayer());
-	auto comps = (*groupIt).second;
-	auto it = comps.begin();
+	if (groupIt == renderComponentGroup.end()) return;
 
-	for (; it != comps.end(); it++)
+	auto& comps = groupIt->second;
+
+	auto it = std::find(comps.begin(), comps.end(), comp);
+	if (it != comps.end())
 	{
-		if ((*it) == comp) // 컴포넌트 찾음
-		{
-			comps.erase(it);
-			break;
-		}
+		comps.erase(it);
 	}
 }
 

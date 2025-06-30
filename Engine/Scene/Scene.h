@@ -33,11 +33,15 @@ public:
 	/// </summary>
 	void OnExit();	
 
+	/// <summary>
+	/// 제거 목록에 등록된 모든 게임 오브젝트 제거
+	/// </summary>
+	void CleanupDestroyedObjects();
+
 	void AddGameObject(GameObject* gameObject);
 	void FindRemoveObject();
 
 protected:
-	void DestroyGameObjects();
 	void AddCreatedObjects();
 	void UpdateActiveObjects();
 

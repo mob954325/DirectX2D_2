@@ -214,6 +214,7 @@ void Application::Run()
 			Singleton<GameTime>::GetInstance().UpdateTime();
 			Update();
 			Render();
+			Singleton<SceneManager>::GetInstance().GetCurrentScene()->CleanupDestroyedObjects(); // 06 30 추가 : 모든 루프가 끝나고 오브젝트 제거
 		}
 	}
 }

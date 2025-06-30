@@ -32,7 +32,7 @@ void Scene::Update()
 	UpdateImpl();
 	if (isSceneChanging) return;
 
-	DestroyGameObjects();
+	// CleanupDestroyedObjects();
 }
 
 void Scene::AddGameObject(GameObject* gameObject)
@@ -53,7 +53,7 @@ void Scene::FindRemoveObject()
 	}
 }
 
-void Scene::DestroyGameObjects()
+void Scene::CleanupDestroyedObjects()
 {
 	FindRemoveObject();
 
