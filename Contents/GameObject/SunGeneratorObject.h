@@ -4,7 +4,7 @@
 #include "Component/InputSystem.h"
 #include <vector>
 
-class Sun2 : public GameObject
+class SunGeneratorObject : public GameObject
 {
 public:
 	void Start() override;

@@ -1,4 +1,4 @@
-﻿#include "Sun2.h"
+﻿#include "SunGeneratorObject.h"
 #include "Sun.h"
 #include "Utility/Singleton.h"
 #include "Utility/SceneManager.h"
@@ -7,16 +7,16 @@
 #include "Utility/DebugUtility.h"
 
 
-void Sun2::Start()
+void SunGeneratorObject::Start()
 {
 	bitmapRenderer = AddComponent<BitmapRenderer>();
 	input = AddComponent<InputSystem>();
 
-	DebugUtility::Print(L"Sun2 Create");
+	DebugUtility::Print(L"SunGeneratorObject Create");
 	Singleton<DebugUtility>::GetInstance().PrintMemoryUsage();
 }
 
-void Sun2::Update()
+void SunGeneratorObject::Update()
 {
 	if (input->IsKeyDown('O'))
 	{
@@ -27,7 +27,6 @@ void Sun2::Update()
 		int randY = rand() % 600;
 		obj->transform->SetPosition((float)randX, (float)randY);
 		Singleton<SceneManager>::GetInstance().GetCurrentScene()->AddGameObject(obj);
-
 		Singleton<DebugUtility>::GetInstance().PrintMemoryUsage();
 	}
 
@@ -43,6 +42,6 @@ void Sun2::Update()
 	}
 }
 
-void Sun2::OnDestroy()
+void SunGeneratorObject::OnDestroy()
 {
 }

@@ -11,7 +11,7 @@
 #include "FreeCamera.h"
 #include "GameTextObject.h"
 #include "TestPlayer.h"
-#include "Sun2.h"
+#include "SunGeneratorObject.h"
 
 void GameScene::OnEnterImpl()
 {
@@ -35,8 +35,8 @@ void GameScene::OnEnterImpl()
 	m_TextObject = new GameTextObject();
 	AddGameObject(m_TextObject);
 
-	m_Sun2 = new Sun2;
-	AddGameObject(m_Sun2);
+	m_SunGeneratorObject = new SunGeneratorObject;
+	AddGameObject(m_SunGeneratorObject);
 }
 
 void GameScene::OnExitImpl()
