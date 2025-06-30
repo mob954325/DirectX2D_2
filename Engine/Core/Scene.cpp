@@ -2,6 +2,7 @@
 
 void Scene::OnEnter()
 {
+	isSceneChanging = false;
 	OnEnterImpl();
 }
 
@@ -13,21 +14,24 @@ void Scene::OnExit()
 	{
 		obj->OnDestroy();		
 		delete obj;
+		obj = nullptr;
 	}
 
 	activeObjects.clear();
+	isSceneChanging = true;
 }
 
 void Scene::Update()
 {
 	AddCreatedObjects();
+	if (isSceneChanging) return;
 
-	for (GameObject* obj : activeObjects)
-	{
-		if(!obj->IsEarlyCreated())obj->Update();
-	}
+	UpdateActiveObjects();
+	if (isSceneChanging) return;
 
 	UpdateImpl();
+	if (isSceneChanging) return;
+
 	DestroyGameObjects();
 }
 
@@ -77,4 +81,15 @@ void Scene::AddCreatedObjects()
 	}
 
 	objectsToAdd.clear();
+}
+
+void Scene::UpdateActiveObjects()
+{
+	for (GameObject* obj : activeObjects)
+	{
+		if (!obj->IsEarlyCreated() && !obj->IsMarkedForRemoval() && (obj != nullptr))
+		{
+			obj->Update();
+		}
+	}
 }

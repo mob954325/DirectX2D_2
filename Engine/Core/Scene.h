@@ -39,6 +39,7 @@ public:
 protected:
 	void DestroyGameObjects();
 	void AddCreatedObjects();
+	void UpdateActiveObjects();
 
 	/// <summary>
 	/// Scene을 상속 받은 클래스가 씬 시작 시 실행할 내용
@@ -58,5 +59,7 @@ protected:
 	std::vector<GameObject*> activeObjects;		// 매 프레임마다 업데이트되는 오브젝트들
 	std::vector<GameObject*> objectsToDestroy;	// 모든 업데이트가 끝난 시점에서 제거될 오브젝트들
 	std::vector<GameObject*> objectsToAdd;		// 다음 프레임에 activeObjects에 포함될 오브젝트들
+
+	bool isSceneChanging = false;
 };
 
