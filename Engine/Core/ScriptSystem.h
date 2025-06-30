@@ -9,7 +9,7 @@ public:
 	ScriptSystem() = default;
 	~ScriptSystem();
 
-	void Regist(ScriptComponent* comp);
+	void Register(ScriptComponent* comp);
 	void UnRegist(ScriptComponent* comp);
 	void ClearAll();
 

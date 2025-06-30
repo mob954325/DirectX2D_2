@@ -21,14 +21,14 @@ GameObject::~GameObject()
 	components.clear();
 }
 
-void GameObject::RegisterComponentWithScriptSystem(Component* comp)
+void GameObject::DispatchComponentToSystem(Component* comp)
 {
 	if (ScriptComponent* sc = dynamic_cast<ScriptComponent*>(comp))
 	{
-		Singleton<ScriptSystem>::GetInstance().Regist(sc);
+		Singleton<ScriptSystem>::GetInstance().Register(sc);
 	}
 	else if (RenderComponent* rc = dynamic_cast<RenderComponent*>(comp))
 	{
-		Singleton<RenderSystem>::GetInstance().Regist(rc);
+		Singleton<RenderSystem>::GetInstance().Register(rc);
 	}
 }

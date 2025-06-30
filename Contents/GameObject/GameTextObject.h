@@ -19,5 +19,6 @@ private:
 	TextRenderer* textRenderer3{};
 
 	InputSystem* inputSystem{};
+
 };
 

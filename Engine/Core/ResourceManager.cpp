@@ -28,7 +28,6 @@ void ResourceManager::ReleaseAllResource()
 {
 	for (auto resource : mapBitmap)
 	{
-		// resource release
-		
+		// resource release		
 	}
 }

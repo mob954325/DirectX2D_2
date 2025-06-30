@@ -15,11 +15,11 @@
 
 void GameScene::OnEnterImpl()
 {
-	m_MainCamera = new FreeCamera();
-	AddGameObject(m_MainCamera);
-
 	m_TestPlayer = new TestPlayer();
 	AddGameObject(m_TestPlayer);
+
+	m_MainCamera = new FreeCamera();
+	AddGameObject(m_MainCamera);
 	
 	m_Sun = new Sun();
 	AddGameObject(m_Sun);

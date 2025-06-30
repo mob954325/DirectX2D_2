@@ -27,8 +27,8 @@ public:
 	void AddCamera(Camera* pCamera);
 private:
 	std::map<int, Scene*> scenes; // sceneIndex, Scene
-
 	std::vector<Camera*> cameras; // 카메라 참조만해서 사용 -> 원본은 현재 씬에 존재
+
 	Scene* currentScene = nullptr;
 	int currentSceneIndex = -1;
 	int sceneCount = 0;

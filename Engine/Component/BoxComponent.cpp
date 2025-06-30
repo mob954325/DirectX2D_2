@@ -3,7 +3,6 @@
 #include "GameObject.h"
 #include "EngineData.h"
 #include "Utility/SceneManager.h"
-#include "EngineData.h"
 
 void BoxComponent::OnStart()
 {

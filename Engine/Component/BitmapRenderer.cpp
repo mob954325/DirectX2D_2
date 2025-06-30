@@ -9,7 +9,7 @@
 
 void BitmapRenderer::Render(D2DRenderManager* manager)
 {
-	if (m_bitmapResource != nullptr) // m_bitmap 사용하면 터짐
+	if (m_bitmapResource != nullptr)
 	{
 		Camera* pCam = Singleton<SceneManager>::GetInstance().GetMainCamera();
 		D2D1_MATRIX_3X2_F mainCamInvertMatrix = pCam ? pCam->GetInvertMatrix() : D2D1::Matrix3x2F::Identity();

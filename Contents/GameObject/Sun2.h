@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Component/Base/GameObject.h"
 #include "Component/BitmapRenderer.h"
 #include "Component/InputSystem.h"
@@ -14,7 +14,7 @@ public:
 private:
 	std::vector<GameObject*> objects;
 
-	BitmapRenderer* bitmapRenderer;
-	InputSystem* input;
+	BitmapRenderer* bitmapRenderer{};
+	InputSystem* input{};
 };
 

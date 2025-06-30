@@ -15,6 +15,6 @@ public:
 	void SetResourceManager(ResourceManager* pManager) { resourceManager = pManager; }
 
 protected:	
-	D2DRenderManager* renderManager{}; // NOTE : 나중에 제거할 것
+	D2DRenderManager* renderManager{};
 	ResourceManager* resourceManager{};
 };

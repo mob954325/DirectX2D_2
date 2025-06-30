@@ -8,4 +8,16 @@ namespace EngineData
 
 	const static int SceenHeight = 768;
 	const static int SceenWidth = 1024;
+
+	/// <summary>
+	/// 랜더링 레이어 enum ( 숫자가 낮을 수록 먼저 렌더링됨 )
+	/// </summary>
+	enum RenderLayer
+	{
+		None = 0,
+		GameObject,
+		Player,
+		UI,
+		LayerCount
+	};
 }

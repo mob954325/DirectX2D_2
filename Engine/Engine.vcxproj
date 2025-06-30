@@ -144,6 +144,7 @@
     <ClInclude Include="Component\StatComponent.h" />
     <ClInclude Include="Core\EngineData.h" />
     <ClInclude Include="Core\ResourceManager.h" />
+    <ClInclude Include="Utility\DebugUtility.h" />
     <ClInclude Include="Utility\EventDelegate.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Component\Base\GameObject.h" />
@@ -174,6 +175,7 @@
     <ClCompile Include="Core\Scene.cpp" />
     <ClCompile Include="Component\StatComponent.cpp" />
     <ClCompile Include="Core\ResourceManager.cpp" />
+    <ClCompile Include="Utility\DebugUtility.cpp" />
     <ClCompile Include="Utility\SceneManager.cpp" />
     <ClCompile Include="Core\RenderSystem.cpp" />
     <ClCompile Include="Utility\GameTime.cpp" />

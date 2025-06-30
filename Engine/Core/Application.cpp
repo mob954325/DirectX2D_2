@@ -11,6 +11,7 @@
 #include "Input.h"
 #include "GameTime.h"
 #include "AppPaths.h"
+#include "DebugUtility.h"
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -116,11 +117,16 @@ void Application::Initialize()
 	m_ResourceManager = new ResourceManager(m_D2DRenderManager);
 
 	// RenderSystem  초기화
-	Singleton<RenderSystem>::GetInstance().Init(m_D2DRenderManager);
-	Singleton<RenderSystem>::GetInstance().SetResourceManager(m_ResourceManager); // NOTE : 나중에 제거할 것
+	Singleton<RenderSystem>::GetInstance().SetD2DRenderManager(m_D2DRenderManager);
+	Singleton<RenderSystem>::GetInstance().SetResourceManager(m_ResourceManager);
 
 	// GameTime 초기화
 	Singleton<GameTime>::GetInstance().InitTime();
+
+	// DebugUtility 초기화
+	Singleton<DebugUtility>::GetInstance().GetDxgiAdapter(m_d3dDevice, dxgiDevice);
+
+	ConsoleInitialize();
 
 	// -- Application 상속받은 클래스의 Initialize() 실행
 }
@@ -138,7 +144,9 @@ void Application::Uninitialize()
 	m_d3dDevice = nullptr;
 	m_dxgiSwapChain = nullptr;
 	m_d2dDeviceContext = nullptr;
-	m_d2dBitmapTarget = nullptr;
+	m_d2dBitmapTarget = nullptr;;
+
+	ConsoleUnInitialize();
 }
 
 void Application::MessageProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -209,6 +217,27 @@ void Application::Run()
 			Render();
 		}
 	}
+}
+
+void Application::ConsoleInitialize()
+{
+#if _DEBUG
+	AllocConsole();
+	FILE* fp;
+	freopen_s(&fp, "CONOUT$", "w", stdout);
+	SetConsoleTitle(L"윈도우 메세지 콘솔 로그");
+	printf("-- 콘솔 로그 시작 --\n\n");
+#endif
+}
+
+void Application::ConsoleUnInitialize()
+{
+#if _DEBUG
+	// 표준 출력 스트림 닫기
+	fclose(stdout);
+	// 콘솔 해제
+	FreeConsole();
+#endif
 }
 
 void Application::ResizeSwapChainBuffers()

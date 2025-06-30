@@ -9,43 +9,42 @@ void Scene::OnExit()
 {
 	OnExitImpl();
 
-	for (GameObject* obj : gameObjects)
+	for (GameObject* obj : activeObjects)
 	{
 		obj->OnDestroy();		
 		delete obj;
 	}
 
-	gameObjects.clear();
+	activeObjects.clear();
 }
 
 void Scene::Update()
 {
 	AddCreatedObjects();
 
-	for (GameObject* obj : gameObjects)
+	for (GameObject* obj : activeObjects)
 	{
-		if(!obj->GetEarlyCreatedFlag())obj->Update();
+		if(!obj->IsEarlyCreated())obj->Update();
 	}
 
 	UpdateImpl();
-
 	DestroyGameObjects();
 }
 
 void Scene::AddGameObject(GameObject* gameObject)
 {
-	pendingObjects.push_back(gameObject);
+	objectsToAdd.push_back(gameObject);
 }
 
 void Scene::FindRemoveObject()
 {
-	std::vector<GameObject*>::iterator it = gameObjects.begin();
+	std::vector<GameObject*>::iterator it = activeObjects.begin();
 
-	for (; it != gameObjects.end(); it++)
+	for (; it != activeObjects.end(); it++)
 	{
-		if ((*it)->GetRemoveFlag()) // 제거할 오브젝트 찾음
+		if ((*it)->IsMarkedForRemoval()) // 제거할 오브젝트 찾음
 		{
-			destroyList.push_back(*it);
+			objectsToDestroy.push_back(*it);
 		}
 	}
 }
@@ -54,28 +53,28 @@ void Scene::DestroyGameObjects()
 {
 	FindRemoveObject();
 
-	for (GameObject* targetObject : destroyList)
+	for (GameObject* targetObject : objectsToDestroy)
 	{
-		auto it = std::find(gameObjects.begin(), gameObjects.end(), targetObject);
-		if (it != gameObjects.end())
+		auto it = std::find(activeObjects.begin(), activeObjects.end(), targetObject);
+		if (it != activeObjects.end())
 		{
 			GameObject* obj = *it;
 			obj->OnDestroy();
-			gameObjects.erase(it); // 먼저 erase
+			activeObjects.erase(it); // 먼저 erase
 			delete obj;            // 그 다음 delete
 		}
 	}
-	destroyList.clear();
+	objectsToDestroy.clear();
 }
 
 void Scene::AddCreatedObjects()
 {
-	for (GameObject* obj : pendingObjects)
+	for (GameObject* obj : objectsToAdd)
 	{
-		gameObjects.push_back(obj);
-		obj->SetEarlyCreatedFalse();
+		activeObjects.push_back(obj);
+		obj->SetEarlyCreated();
 		obj->Start();
 	}
 
-	pendingObjects.clear();
+	objectsToAdd.clear();
 }

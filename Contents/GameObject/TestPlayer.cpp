@@ -5,6 +5,8 @@
 
 void TestPlayer::Start()
 {
+	renderLayer = EngineData::RenderLayer::Player;
+
 	playerMainCam = AddComponent<Camera>();
 	playerMainCam->AttachGameObjectToCamera(this->transform);
 	Singleton<SceneManager>::GetInstance().AddCamera(playerMainCam);
@@ -48,6 +50,7 @@ void TestPlayer::Start()
 
 	box->SetRect(rect);
 
+	renderLayer = EngineData::RenderLayer::GameObject;
 }
 
 void TestPlayer::Update()

@@ -26,6 +26,8 @@ public:
 	void Run();
 
 protected:
+	void ConsoleInitialize();
+	void ConsoleUnInitialize();
 	void ResizeSwapChainBuffers();
 
 	ComPtr<ID3D11Device>			m_d3dDevice;

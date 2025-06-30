@@ -1,7 +1,9 @@
 ﻿#pragma once
 #include "Utility/Singleton.h"
 #include "Component/Base/RenderComponent.h"
+#include "Core/EngineData.h"
 #include <vector>
+#include <map>
 
 class D2DRenderManager;
 class ResourceManager;
@@ -10,18 +12,22 @@ class RenderSystem : public Singleton<RenderSystem>
 {
 public:
 	RenderSystem() = default;
-	~RenderSystem() = default;
+	~RenderSystem();
 
-	void Init(D2DRenderManager* pRenderManager) { renderManager = pRenderManager; }
+	void SetD2DRenderManager(D2DRenderManager* pRenderManager) { renderManager = pRenderManager; }
 	void SetResourceManager(ResourceManager* pResourceManager) { resourceManager = pResourceManager; }
-	void Regist(RenderComponent* comp);
+	void Register(RenderComponent* comp);
 	void UnRegist(RenderComponent* comp);
+
+	void InitializeRenderLayers();
 	void ClearAll();
 
 	void Update(D2DRenderManager* manager);	// 컴포넌트 업데이트 실행함수
 private:
 	D2DRenderManager* renderManager{};
 	ResourceManager* resourceManager{};
-	std::vector<RenderComponent*> components; // 실제로 Update 될 컴포넌트 데이터들
+	std::map<EngineData::RenderLayer, std::vector<RenderComponent*>> renderComponentGroup;
 };
 
+// 렌더링 순서 -> EngineData 헤더에 있는 enum 순서대로 렌더링 ( 숫자가 낮을 수록 먼저 렌더링됨 ) 
+// Ex> None -> GameObject -> UI

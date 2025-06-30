@@ -3,6 +3,7 @@
 #include "Utility/Singleton.h"
 #include "Component.h"
 #include "Transform.h"
+#include "Core/EngineData.h"
 
 /// <summary>
 /// 모든 게임 오브젝트가 상속받는 클래스로 Component만 담고 Component관련 함수만 포함되어있음
@@ -39,7 +40,7 @@ public:
 		comp->owner = this;
 		components.push_back(comp);
 
-		RegisterComponentWithScriptSystem(comp);
+		DispatchComponentToSystem(comp);
 		comp->OnStart();
 
 		return comp;
@@ -73,13 +74,23 @@ public:
 		}
 	}
 
-	void SetDestroy() { shouldRemove = true; };
-	bool GetRemoveFlag() { return shouldRemove; }
+	// 오브젝트 제거 관련
+	void MarkForRemoval() { shouldRemove = true; };				// 제거할 오브젝트라고 마킹
+	bool IsMarkedForRemoval() const { return shouldRemove; }
 
-	void SetEarlyCreatedFalse() { earlyCreated = false; };
-	bool GetEarlyCreatedFlag() { return earlyCreated; }
+	// 오브젝트 추가 관련
+	void SetEarlyCreated() { earlyCreated = false; };			// 추가된 오브젝트라고 마킹
+	bool IsEarlyCreated() const { return earlyCreated; }
+	
+	// get/set
+	EngineData::RenderLayer GetRenderLayer() const { return renderLayer; }
+	int GetRenderLayerIndex() const { return (int)renderLayer; }
+
+protected:
+	EngineData::RenderLayer renderLayer = EngineData::RenderLayer::None;
+
 private:
-	void RegisterComponentWithScriptSystem(Component* comp);
+	void DispatchComponentToSystem(Component* comp);
 
 	std::vector<Component*> components; // 컴포넌트를 담는 컨테이너
 	bool shouldRemove = false;

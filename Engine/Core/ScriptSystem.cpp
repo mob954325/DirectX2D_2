@@ -12,7 +12,7 @@ ScriptSystem::~ScriptSystem()
 	components.clear();
 }
 
-void ScriptSystem::Regist(ScriptComponent* comp)
+void ScriptSystem::Register(ScriptComponent* comp)
 {
 	components.push_back(comp);
 }

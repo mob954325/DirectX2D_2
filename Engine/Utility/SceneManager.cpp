@@ -41,6 +41,7 @@ void SceneManager::ChangeScene(int sceneIndex)
 	currentScene = nextScene;
 	currentSceneIndex = nextSceneIndex;
 
+	Singleton<RenderSystem>::GetInstance().InitializeRenderLayers();
 	currentScene->OnEnter();
 }
 
@@ -65,7 +66,7 @@ Camera* SceneManager::GetMainCamera()
 	{
 		if (cam->IsMainCamera())
 		{
-			return cam;
+			return cam; // note : 볼 카메라 분리하기 
 		}
 	}
 
