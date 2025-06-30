@@ -1,5 +1,6 @@
 ﻿#include "RenderSystem.h"
-#include "GameObject.h"
+#include "Components/Rendering/RenderComponent.h"
+#include "Components/Base/GameObject.h"
 
 RenderSystem::~RenderSystem()
 {

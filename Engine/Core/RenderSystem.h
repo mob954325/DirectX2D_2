@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "Utility/Singleton.h"
-#include "Component/Base/RenderComponent.h"
+#include "Utils/Singleton.h"
+#include "Components/Rendering/RenderComponent.h"
 #include "Core/EngineData.h"
 #include <vector>
 #include <map>
