@@ -8,6 +8,8 @@
 #include "Components/Rendering/BoxComponent.h"
 #include "Utils/EventDelegate.h"
 
+#include "Components/Rendering/TextRenderer.h"
+
 class TestPlayer : public GameObject
 {
 public:
@@ -28,6 +30,8 @@ private:
 	StatComponent* hpComp{};
 	TextRenderer* text{};
 	BoxComponent* box{};
+
+	TextRenderer* animFramText{};
 
 	EventDelegate<int> OnHitAction; // 피격시 호출되는 델리게이트
 

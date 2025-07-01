@@ -5,7 +5,6 @@
 #include "Scene/SceneManager.h"
 #include "GameObject/MenuScene/MenuTextObject.h"
 
-
 void MenuScene::OnEnterImpl()
 {
 	AddGameObject(new MenuTextObject());	

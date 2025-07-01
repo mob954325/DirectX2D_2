@@ -136,7 +136,7 @@ void D2DRenderManager::CreateEffect(ID2D1Effect** skew, ID2D1Effect** shadow, Mi
 HRESULT D2DRenderManager::CreateBitmapFromFile(const wchar_t* path, ID2D1Bitmap1** outBitmap)
 {
 	ComPtr<IWICBitmapDecoder>     decoder;
-	ComPtr<IWICBitmapFrameDecode> frame;
+	ComPtr<IWICBitmapFrameDecode> frameIndex;
 	ComPtr<IWICFormatConverter>   converter;
 
 	// ① 디코더 생성
@@ -145,7 +145,7 @@ HRESULT D2DRenderManager::CreateBitmapFromFile(const wchar_t* path, ID2D1Bitmap1
 	if (FAILED(hr)) return hr;
 
 	// ② 첫 프레임 얻기
-	hr = decoder->GetFrame(0, &frame);
+	hr = decoder->GetFrame(0, &frameIndex);
 	if (FAILED(hr)) return hr;
 
 	// ③ 포맷 변환기 생성
@@ -154,7 +154,7 @@ HRESULT D2DRenderManager::CreateBitmapFromFile(const wchar_t* path, ID2D1Bitmap1
 
 	// ④ GUID_WICPixelFormat32bppPBGRA로 변환
 	hr = converter->Initialize(
-		frame.Get(),
+		frameIndex.Get(),
 		GUID_WICPixelFormat32bppPBGRA,
 		WICBitmapDitherTypeNone,
 		nullptr,

@@ -3,6 +3,8 @@
 #include "Scene/SceneManager.h"
 
 #include "Utils/GameTime.h"
+#include "Utils/JsonUtil.h"
+#include "Utils/DebugUtility.h"
 
 void AnimationRenderer::Render(D2DRenderManager* manager)
 {
@@ -12,14 +14,31 @@ void AnimationRenderer::Render(D2DRenderManager* manager)
 	{
 		timer += Singleton<GameTime>::GetInstance().GetDeltaTime();
 
-		if (timer > maxtimer)
+		// NOTE : clip.loop 처리 안함
+		//if (timer > maxtimer)
+		if (timer >= clip.duration)
 		{
+			frameIndex = 0;
 			timer = 0.0f;
-			frame++;
-			frame %= maxFrame;
+			//frameIndex++;
+			//frameIndex %= maxFrameIndex;
+			//timer = 0.0f;
+			//maxtimer = 0.4f; // test
+			//if (frameIndex == 0)
+			//{
+			//	maxtimer = clip.frames[frameIndex].duration;
+			//}
+			//else
+			//{
+			//	maxtimer = clip.frames[frameIndex - 1].duration - clip.frames[frameIndex].duration;
+			//}
+		}
+
+		if (frameIndex < clip.frames.size() && timer >= clip.frames[frameIndex].duration)
+		{
+			frameIndex++;
 		}
 	}
-
 
 	Camera* pCam = Singleton<SceneManager>::GetInstance().GetMainCamera();
 	D2D1_MATRIX_3X2_F mainCamInvertMatrix = pCam ? pCam->GetInvertMatrix() : D2D1::Matrix3x2F::Identity();
@@ -43,33 +62,46 @@ void AnimationRenderer::Render(D2DRenderManager* manager)
 
 	manager->SetBitmapTransform(finalMatrix);
 
-	D2D1_RECT_F destRect = { 0,0, (FLOAT)frameWidth, (FLOAT)frameHeight };
+	Sprite currSprite = sheet.sprites[frameIndex];
 
-	int currFrame = frame % maxFrame;
-	int indexX = currFrame % rowCount;
-	int indexY = currFrame / rowCount;
-
-	D2D1_RECT_F srcRect = 
-	{ 
-		(FLOAT)(indexX * frameWidth),
-		(FLOAT)(indexY * frameHeight),
-		(FLOAT)((indexX + 1) * frameWidth),
-		(FLOAT)((indexY + 1) * frameHeight)
+	float pivotOffsetX = currSprite.width * currSprite.pivotX;
+	float pivotOffsetY = currSprite.height * currSprite.pivotY;
+	destRect =
+	{
+		0 - pivotOffsetX,
+		0 - pivotOffsetY,
+		currSprite.width - pivotOffsetX,
+		currSprite.height - pivotOffsetY
 	};
 
-	manager->DrawBitmap(m_bitmapResource.get()->GetBitmap(), destRect, srcRect);
+	float invertedY = sheet.textureHeight - currSprite.y - currSprite.height;
+	srcRect =
+	{
+		currSprite.x,
+		invertedY,
+		currSprite.x + currSprite.width,
+		invertedY + currSprite.height
+	};
+
+	{
+		manager->DrawBitmap(m_bitmapResource.get()->GetBitmap(), destRect, srcRect);
+	}
 }
 
-void AnimationRenderer::SetFrameSize(int imageWidth, int imageHeight)
+void AnimationRenderer::GetSpriteSheet(std::wstring filePath)
 {
-	frameWidth = imageWidth;
-	frameHeight = imageHeight;
+	JsonUtil::LoadSpriteSheet(filePath, sheet);
 }
 
-void AnimationRenderer::SetFrameCount(int countX, int countY)
+void AnimationRenderer::GetAnimationClip(std::wstring filePath)
 {
-	rowCount = countX;
-	columnCount = countY;
-
-	maxFrame = rowCount * columnCount;
+	if (sheet.texture == L"")
+	{
+		throw std::runtime_error("Fail to open animation clip file, sheet is empty");
+	}
+	else
+	{
+		JsonUtil::LoadAnimationClip(filePath, clip, sheet);
+		maxFrameIndex = clip.frames.size();
+	}
 }

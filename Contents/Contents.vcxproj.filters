@@ -61,7 +61,9 @@
       <Filter>Application</Filter>
     </ClCompile>
     <ClCompile Include="Scenes\MenuScene.cpp" />
-    <ClCompile Include="Scenes\TestGameScene.cpp" />
+    <ClCompile Include="Scenes\TestGameScene.cpp">
+      <Filter>GameObject\소스\TestGameScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject\MenuScene\MenuTextObject.h">
@@ -95,6 +97,8 @@
       <Filter>Application</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\MenuScene.h" />
-    <ClInclude Include="Scenes\TestGameScene.h" />
+    <ClInclude Include="Scenes\TestGameScene.h">
+      <Filter>GameObject\헤더\TestGameScene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

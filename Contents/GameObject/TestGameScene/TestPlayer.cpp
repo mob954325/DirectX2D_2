@@ -3,6 +3,8 @@
 #include "Utils/GameTime.h"
 #include "Scene/SceneManager.h"
 
+#include <string>
+
 void TestPlayer::Start()
 {
 	renderLayer = EngineData::RenderLayer::Player;
@@ -12,14 +14,18 @@ void TestPlayer::Start()
 	Singleton<SceneManager>::GetInstance().AddCamera(playerMainCam);
 
 	idleBitmap = AddComponent<AnimationRenderer>();
-	idleBitmap->CreateBitmapResource(L"../Resource/Idle_Down(48x64).png");
-
-	idleBitmap->SetOffSet(-24, 32);
+	//idleBitmap->CreateBitmapResource(L"../Resource/Idle_Down(48x64).png");
+	//idleBitmap->GetSpriteSheet(L"../Resource/Json/Idle_Down_sprites.json");
+	//idleBitmap->GetAnimationClip(L"../Resource/Json/Idle_Down_anim.json");
+	
+	idleBitmap->CreateBitmapResource(L"../Resource/ken.png");
+	idleBitmap->GetSpriteSheet(L"../Resource/Json/ken_sprites.json");
+	idleBitmap->GetAnimationClip(L"../Resource/Json/Attack_Front_anim.json");
+	
+	//idleBitmap->SetOffSet(-24, 32);
 	transform->SetIsUnityCoords(true);
 	transform->SetScale(1.0f, 1.0f);
 
-	idleBitmap->SetFrameCount(8, 1);
-	idleBitmap->SetFrameSize(48, 64);
 	idleBitmap->Play();
 
 	input = AddComponent<InputSystem>();
@@ -49,10 +55,15 @@ void TestPlayer::Start()
 	};
 
 	box->SetRect(rect);
+
+	animFramText = AddComponent<TextRenderer>();
+	animFramText->SetViewportPosition(0.8f, 0.1f);
 }
 
 void TestPlayer::Update()
 {
+	animFramText->SetText(L"현재 애니메이션 프레임 : " + std::to_wstring(idleBitmap->GetFrame()));
+
 	// 체력 이벤트 인풋
 	if (input->IsKeyPressed('H'))
 	{

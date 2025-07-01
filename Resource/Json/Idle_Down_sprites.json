@@ -1,0 +1,79 @@
+{
+    "texture": "Idle_Down.png",
+    "textureWidth": 384,
+    "textureHeight": 64,
+    "sprites": [
+        {
+            "name": "Idle_Down_0",
+            "x": 18.0,
+            "y": 20.0,
+            "width": 14.0,
+            "height": 25.0,
+            "pivotX": 0.5,
+            "pivotY": 0.5
+        },
+        {
+            "name": "Idle_Down_1",
+            "x": 66.0,
+            "y": 20.0,
+            "width": 14.0,
+            "height": 24.0,
+            "pivotX": 0.5,
+            "pivotY": 0.5
+        },
+        {
+            "name": "Idle_Down_2",
+            "x": 114.0,
+            "y": 20.0,
+            "width": 14.0,
+            "height": 24.0,
+            "pivotX": 0.5,
+            "pivotY": 0.5
+        },
+        {
+            "name": "Idle_Down_3",
+            "x": 162.0,
+            "y": 20.0,
+            "width": 14.0,
+            "height": 25.0,
+            "pivotX": 0.5,
+            "pivotY": 0.5
+        },
+        {
+            "name": "Idle_Down_4",
+            "x": 210.0,
+            "y": 20.0,
+            "width": 14.0,
+            "height": 25.0,
+            "pivotX": 0.5,
+            "pivotY": 0.5
+        },
+        {
+            "name": "Idle_Down_5",
+            "x": 258.0,
+            "y": 20.0,
+            "width": 14.0,
+            "height": 24.0,
+            "pivotX": 0.5,
+            "pivotY": 0.5
+        },
+        {
+            "name": "Idle_Down_6",
+            "x": 306.0,
+            "y": 20.0,
+            "width": 14.0,
+            "height": 24.0,
+            "pivotX": 0.5,
+            "pivotY": 0.5
+        },
+        {
+            "name": "Idle_Down_7",
+            "x": 354.0,
+            "y": 20.0,
+            "width": 14.0,
+            "height": 25.0,
+            "pivotX": 0.5,
+            "pivotY": 0.5
+        }
+    ]
+}

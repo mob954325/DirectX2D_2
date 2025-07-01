@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -146,12 +146,13 @@
     <ClInclude Include="Core\EngineData.h" />
     <ClInclude Include="Core\RenderSystem.h" />
     <ClInclude Include="Core\ScriptSystem.h" />
+    <ClInclude Include="json.hpp" />
     <ClInclude Include="Utils\JsonUtil.h" />
     <ClInclude Include="Platform\D2DRenderManager.h" />
     <ClInclude Include="Resources\AnimationResource.h" />
     <ClInclude Include="Resources\BitmapResource.h" />
     <ClInclude Include="Resources\ResourceManager.h" />
-    <ClInclude Include="Resources\SpriteResource.h" />
+    <ClInclude Include="Resources\SpriteDatas.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Systems\Input.h" />

@@ -11,11 +11,11 @@ void GameTextObject::Start()
 
 	textRenderer = AddComponent<TextRenderer>();
 	textRenderer->SetText(L"여기는 게임 씬\n X로 MenuScene 이동");
-	textRenderer->SetPosition(20, 20);
+	textRenderer->SetPosition(2, 20);
 
 	textRenderer2 = AddComponent<TextRenderer>();
 	textRenderer2->SetText(L"WASD : 카메라 이동\n\n Y : 메인카메라를 플레이어 카메라로 변경 \n\n U : 메인카메라를 프리 카메라로 변경\n\n H : 플레이어 체력 감소 \n\n J: 플레이어 체력 초기화 \n\n O : 태양 추가\n\n P : 태양 제거");
-	textRenderer2->SetPosition(20, 80);
+	textRenderer2->SetPosition(2, 80);
 	inputSystem = AddComponent<InputSystem>();	
 
 	textRenderer3 = AddComponent<TextRenderer>(); // 중앙 확인옹 텍스트
@@ -31,12 +31,12 @@ void GameTextObject::Start()
 
 void GameTextObject::Update()
 {
+	textRenderer4->SetText(L"Fps" + std::to_wstring(Singleton<DebugUtility>::GetInstance().GetFPSCount())); // 씬 이동 시 터짐
+
 	if (inputSystem->IsKeyPressed('X'))
 	{
 		Singleton<SceneManager>::GetInstance().ChangeScene(0);
 	}
-
-	textRenderer4->SetText(L"Fps" + std::to_wstring(Singleton<DebugUtility>::GetInstance().GetFPSCount()));
 }
 
 void GameTextObject::OnDestroy()

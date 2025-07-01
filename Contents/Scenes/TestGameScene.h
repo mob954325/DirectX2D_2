@@ -19,6 +19,7 @@ private:
 	GameObject* m_Moon{};
 	GameObject* m_TextObject{};
 	GameObject* m_SunGeneratorObject{};
+	GameObject* m_TestAnim{};
 
 	std::vector<GameObject*> objects;
 };

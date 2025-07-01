@@ -5,6 +5,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <vector>
+#include <string>
 #include <assert.h>
 #include <wrl.h>		// ComPtr 사용을 위한 헤더 
 #include <d2d1.h>
