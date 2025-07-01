@@ -1,9 +1,10 @@
 ﻿#include "DebugUtility.h"
 #include <sstream>
 #include <iomanip>
-
 #include <psapi.h>  // GetProcessMemoryInfo, PROCESS_MEMORY_COUNTERS_EX
 #pragma comment(lib, "psapi.lib")
+
+#include "GameTime.h"
 
 void DebugUtility::GetDxgiAdapter(Microsoft::WRL::ComPtr<ID3D11Device> d3dDevice, Microsoft::WRL::ComPtr<IDXGIDevice> dxgiDevice)
 {
@@ -57,4 +58,22 @@ void DebugUtility::PrintMemoryUsage()
 void DebugUtility::Print(std::wstring str)
 {
 	std::cout << str.c_str() << std::endl;
+}
+
+void DebugUtility::UpdateFPSCount()
+{
+	fpsTimer += Singleton<GameTime>::GetInstance().GetDeltaTime();
+	cachedFpsCount++;
+
+	if (fpsTimer > fpsMaxTime)
+	{
+		fpsTimer = 0.0f;
+		fpsCount = cachedFpsCount;
+		cachedFpsCount = 0;
+	}
+}
+
+int DebugUtility::GetFPSCount()
+{
+	return fpsCount;
 }

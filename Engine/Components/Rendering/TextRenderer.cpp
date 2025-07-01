@@ -1,5 +1,6 @@
 ﻿#include "TextRenderer.h"
 #include "Platform/D2DRenderManager.h"
+#include "Core/EngineData.h"
 
 void TextRenderer::Render(D2DRenderManager* manager)
 {
@@ -20,4 +21,13 @@ void TextRenderer::SetPosition(float left, float top)
 {
 	this->left = left;
 	this->top = top;
+}
+
+void TextRenderer::SetViewportPosition(float viewportX, float viewportY)
+{
+	float posX = EngineData::SceenWidth * viewportX;
+	float posY = EngineData::SceenHeight * viewportY;
+
+	this->left = posX;
+	this->top = posY;
 }

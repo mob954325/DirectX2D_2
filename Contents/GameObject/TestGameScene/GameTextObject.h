@@ -17,8 +17,8 @@ private:
 	TextRenderer* textRenderer{};
 	TextRenderer* textRenderer2{};
 	TextRenderer* textRenderer3{};
+	TextRenderer* textRenderer4{};
 
 	InputSystem* inputSystem{};
-
 };
 

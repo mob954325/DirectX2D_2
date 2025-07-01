@@ -3,6 +3,7 @@
 
 #include "Utils/Singleton.h"
 #include "Core/EngineData.h"
+#include "Utils/DebugUtility.h"
 
 void GameTextObject::Start()
 {
@@ -20,6 +21,10 @@ void GameTextObject::Start()
 	textRenderer3 = AddComponent<TextRenderer>(); // 중앙 확인옹 텍스트
 	textRenderer3->SetText(L"^");
 	
+	textRenderer4 = AddComponent<TextRenderer>();
+	textRenderer4->SetText(L"Fps" + std::to_wstring(Singleton<DebugUtility>::GetInstance().GetFPSCount()));
+	textRenderer4->SetViewportPosition(0.8f, 0.0f);
+
 	D2D1_SIZE_U size = { EngineData::SceenWidth, EngineData::SceenHeight };
 	textRenderer3->SetPosition((float)(size.width / 2), (float)(size.height / 2));
 }
@@ -30,6 +35,8 @@ void GameTextObject::Update()
 	{
 		Singleton<SceneManager>::GetInstance().ChangeScene(0);
 	}
+
+	textRenderer4->SetText(L"Fps" + std::to_wstring(Singleton<DebugUtility>::GetInstance().GetFPSCount()));
 }
 
 void GameTextObject::OnDestroy()

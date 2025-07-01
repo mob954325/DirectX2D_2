@@ -10,7 +10,14 @@ public:
 	std::string FormatBytes(UINT64 bytes);
 	void PrintMemoryUsage();
 	static void Print(std::wstring str);
+	void UpdateFPSCount();
+	int GetFPSCount();
 
 private:
 	Microsoft::WRL::ComPtr<IDXGIAdapter3> dxgiAdapter;
+
+	const float fpsMaxTime = 1.0f;
+	float fpsTimer = 0.0f;
+	int cachedFpsCount = 0;
+	int fpsCount = 0;
 };

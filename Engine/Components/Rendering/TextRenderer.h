@@ -10,7 +10,7 @@ public:
 
 	void SetText(const std::wstring& text);
 	void SetPosition(float left, float top);
-
+	void SetViewportPosition(float viewportX, float viewportY);
 private:
 	std::wstring text;
 	float left = 0.0f;
