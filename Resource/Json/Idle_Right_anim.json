@@ -1,6 +1,6 @@
 {
     "clipName": "Idle_Right",
-    "loop": false,
+    "loop": true,
     "texturePath": "Assets/Editor/SpriteTool/ken.png",
     "duration": 0.5,
     "frames": [

@@ -1,6 +1,6 @@
 {
     "clipName": "Attack_Front",
-    "loop": false,
+    "loop": true,
     "texturePath": "Assets/Editor/SpriteTool/ken.png",
     "duration": 1.9166667461395264,
     "frames": [

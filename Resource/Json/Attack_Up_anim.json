@@ -1,6 +1,6 @@
 {
     "clipName": "Attack_Up",
-    "loop": false,
+    "loop": true,
     "texturePath": "Assets/Editor/SpriteTool/ken.png",
     "duration": 1.2500001192092896,
     "frames": [
