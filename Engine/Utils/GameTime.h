@@ -6,9 +6,6 @@
 class GameTime : public Singleton<GameTime>
 {
 public:
-	GameTime() = default;
-	~GameTime() = default;
-
 	void InitTime();
 	void UpdateTime();
 	float GetDeltaTime();

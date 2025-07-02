@@ -15,27 +15,27 @@
 void TestGameScene::OnEnterImpl()
 {
 	m_TestPlayer = new TestPlayer();
-	AddGameObject(m_TestPlayer);
+	AddGameObject(m_TestPlayer, "Player");
 
 	m_MainCamera = new FreeCamera();
-	AddGameObject(m_MainCamera);
+	AddGameObject(m_MainCamera, "MainCamera");
 	
 	m_Sun = new Sun();
-	AddGameObject(m_Sun);
+	AddGameObject(m_Sun, "Sun");
 	 
 	m_Earth = new Earth();
-	AddGameObject(m_Earth);
+	AddGameObject(m_Earth, "Earth");
 	m_Earth->transform->SetParent(m_Sun->transform);
 	
 	m_Moon = new Moon();
-	AddGameObject(m_Moon);
+	AddGameObject(m_Moon, "Moon");
 	m_Moon->transform->SetParent(m_Earth->transform);
 	
 	m_TextObject = new GameTextObject();
-	AddGameObject(m_TextObject);
+	AddGameObject(m_TextObject, "TextUI");
 
 	m_SunGeneratorObject = new SunGeneratorObject;
-	AddGameObject(m_SunGeneratorObject);
+	AddGameObject(m_SunGeneratorObject, "G_Sun");
 }
 
 void TestGameScene::OnExitImpl()

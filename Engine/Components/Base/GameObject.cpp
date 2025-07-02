@@ -2,8 +2,6 @@
 #include "RenderSystem.h"
 #include "ScriptSystem.h"
 
-class RenderComponent;
-class ScriptComponent;
 GameObject::GameObject()
 {
 	transform = AddComponent<Transform>();

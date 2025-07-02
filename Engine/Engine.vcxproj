@@ -147,6 +147,7 @@
     <ClInclude Include="Core\RenderSystem.h" />
     <ClInclude Include="Core\ScriptSystem.h" />
     <ClInclude Include="json.hpp" />
+    <ClInclude Include="Scene\GameObjectQuery.h" />
     <ClInclude Include="Utils\JsonUtil.h" />
     <ClInclude Include="Platform\D2DRenderManager.h" />
     <ClInclude Include="Resources\AnimationResource.h" />

@@ -38,6 +38,14 @@ void Scene::Update()
 void Scene::AddGameObject(GameObject* gameObject)
 {
 	objectsToAdd.push_back(gameObject);
+	gameObject->SetQueryInterface(this);
+}
+
+void Scene::AddGameObject(GameObject* gameObject, const std::string& name)
+{
+	objectsToAdd.push_back(gameObject);
+	gameObject->SetName(name);
+	gameObject->SetQueryInterface(this);
 }
 
 void Scene::FindRemoveObject()
@@ -51,6 +59,19 @@ void Scene::FindRemoveObject()
 			objectsToDestroy.push_back(*it);
 		}
 	}
+}
+
+GameObject* Scene::FindByName(const std::string& name) const 
+{
+	for (auto object : activeObjects)
+	{
+		if (name == object->GetName())
+		{
+			return object;
+		}
+	}
+
+	return nullptr;
 }
 
 void Scene::CleanupDestroyedObjects()

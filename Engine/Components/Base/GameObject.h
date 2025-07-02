@@ -4,6 +4,7 @@
 #include "Component.h"
 #include "Transform.h"
 #include "Core/EngineData.h"
+#include "Scene/GameObjectQuery.h"
 
 /// <summary>
 /// 모든 게임 오브젝트가 상속받는 클래스로 Component만 담고 Component관련 함수만 포함되어있음
@@ -72,8 +73,14 @@ public:
 	EngineData::RenderLayer GetRenderLayer() const { return renderLayer; }
 	int GetRenderLayerIndex() const { return (int)renderLayer; }
 
+	std::string GetName() const { return name; }
+	void SetName(const std::string& name) { this->name = name; }
+
+	void SetQueryInterface(IGameObjectQuery* q) { query = q; }
+
 protected:
 	EngineData::RenderLayer renderLayer = EngineData::RenderLayer::None;
+	IGameObjectQuery* query = nullptr;
 
 private:
 	void DispatchComponentToSystem(Component* comp);
@@ -82,5 +89,7 @@ private:
 	std::vector<Component*> components; // 컴포넌트를 담는 컨테이너
 	bool shouldRemove = false;
 	bool earlyCreated = true;
+
+	std::string name{}; // 해당 오브젝트의 이름
 };
 

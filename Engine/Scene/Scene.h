@@ -3,6 +3,7 @@
 #include "Components/Base/Component.h"
 #include "Core/ScriptSystem.h"
 #include "Core/RenderSystem.h"
+#include "Scene/GameObjectQuery.h"
 #include <vector>
 
 struct SceneState
@@ -15,7 +16,7 @@ struct SceneState
 /// <summary>
 /// SceneMnaager가 관리하는 Scene 클래스
 /// </summary>
-class Scene
+class Scene : public IGameObjectQuery
 {
 public:
 	/// <summary>
@@ -39,7 +40,10 @@ public:
 	void CleanupDestroyedObjects();
 
 	void AddGameObject(GameObject* gameObject);
+	void AddGameObject(GameObject* gameObject, const std::string& name);
 	void FindRemoveObject();
+
+	GameObject* FindByName(const std::string& name) const override;
 
 protected:
 	void AddCreatedObjects();

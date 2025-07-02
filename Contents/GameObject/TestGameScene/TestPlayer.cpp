@@ -4,6 +4,7 @@
 #include "Scene/SceneManager.h"
 
 #include <string>
+#include <iostream>
 
 void TestPlayer::Start()
 {
@@ -13,11 +14,7 @@ void TestPlayer::Start()
 	playerMainCam->AttachGameObjectToCamera(this->transform);
 	Singleton<SceneManager>::GetInstance().AddCamera(playerMainCam);
 
-	idleBitmap = AddComponent<AnimationRenderer>();
-	//idleBitmap->CreateBitmapResource(L"../Resource/Idle_Down(48x64).png");
-	//idleBitmap->GetSpriteSheet(L"../Resource/Json/Idle_Down_sprites.json");
-	//idleBitmap->GetAnimationClip(L"../Resource/Json/Idle_Down_anim.json");
-	
+	idleBitmap = AddComponent<AnimationRenderer>();	
 	idleBitmap->CreateBitmapResource(L"../Resource/ken.png");
 	idleBitmap->GetSpriteSheet(L"../Resource/Json/ken_sprites.json");
 	idleBitmap->GetAnimationClip(L"../Resource/Json/Attack_Front_anim.json");
@@ -87,6 +84,11 @@ void TestPlayer::Update()
 	else if (input->IsKeyPressed('U'))
 	{
 		playerMainCam->SetIsMainCamera(false);
+	}
+
+	if (input->IsKeyPressed('M'))
+	{
+		GameObject* sun = query->FindByName("Sun");
 	}
 
 	Move();

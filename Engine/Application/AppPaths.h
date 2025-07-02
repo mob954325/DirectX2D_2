@@ -7,13 +7,13 @@
 /// </summary>
 class AppPaths : public Singleton<AppPaths>
 {
-public:
-	AppPaths() {};
-	//~AppPaths() {};
+private:
+	std::wstring ModulePath{};
+	std::wstring WorkingPath{};
 
+public:
 	// Application::Initialize에서 초기화
 	void InitPaths();
-private:
-	std::wstring ModulePath {};
-	std::wstring WorkingPath {};
+	const std::wstring GetModulePath() { return ModulePath; }
+	const std::wstring GetWorkingPath() { return WorkingPath; }
 };
