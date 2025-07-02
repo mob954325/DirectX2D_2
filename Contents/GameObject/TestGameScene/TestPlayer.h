@@ -19,8 +19,11 @@ public:
 
 private:
 
-	void Move();
-	void CamMove();
+	void HandleMoveInput();
+	void HandlePlayerCameraInput();
+	void HandleHitInput();
+	void HandleCameraInput();
+	void HandleAnimationInput();
 
 	void OnHit(int dmg);
 

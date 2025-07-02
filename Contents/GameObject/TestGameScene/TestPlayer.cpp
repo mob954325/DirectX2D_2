@@ -16,14 +16,12 @@ void TestPlayer::Start()
 
 	idleBitmap = AddComponent<AnimationRenderer>();	
 	idleBitmap->CreateBitmapResource(L"../Resource/ken.png");
-	idleBitmap->GetSpriteSheet(L"../Resource/Json/ken_sprites.json");
-	idleBitmap->GetAnimationClip(L"../Resource/Json/Attack_Front_anim.json");
+	idleBitmap->SetSpriteSheet(L"../Resource/Json/ken_sprites.json");
+	idleBitmap->SetAnimationClip(L"../Resource/Json/Attack_Front_anim.json");
+	idleBitmap->Play();
 	
-	//idleBitmap->SetOffSet(-24, 32);
 	transform->SetIsUnityCoords(true);
 	transform->SetScale(1.0f, 1.0f);
-
-	idleBitmap->Play();
 
 	input = AddComponent<InputSystem>();
 
@@ -61,45 +59,23 @@ void TestPlayer::Update()
 {
 	animFramText->SetText(L"현재 애니메이션 프레임 : " + std::to_wstring(idleBitmap->GetFrame()));
 
-	// 체력 이벤트 인풋
-	if (input->IsKeyPressed('H'))
-	{
-		int dmg = 1;
-		OnHit(dmg);
-	}
-	else if (input->IsKeyPressed('J'))
-	{
-		hpComp->ChangeStat(maxHp);
-
-		std::wstring hpText = L"Hp : ";
-		hpText += std::to_wstring(hpComp->GetValue());
-		text->SetText(hpText);
-	}
-
-	// 카메라 설정 인풋
-	if (input->IsKeyPressed('Y'))
-	{
-		playerMainCam->SetIsMainCamera(true);
-	}
-	else if (input->IsKeyPressed('U'))
-	{
-		playerMainCam->SetIsMainCamera(false);
-	}
-
-	if (input->IsKeyPressed('M'))
+	if (input->IsKeyPressed('M')) // IGameObjectQuery로 게임 오브젝트 찾기 테스트
 	{
 		GameObject* sun = query->FindByName("Sun");
 	}
 
-	Move();
-	CamMove();
+	HandleCameraInput();
+	HandleHitInput();
+	HandleMoveInput();
+	HandlePlayerCameraInput();
+	HandleAnimationInput();
 }
 
 void TestPlayer::OnDestroy()
 {
 }
 
-void TestPlayer::Move()
+void TestPlayer::HandleMoveInput()
 {
 	if (input == nullptr) return;
 
@@ -126,7 +102,7 @@ void TestPlayer::Move()
 	transform->SetPosition(position.x + moveVec.x, position.y + moveVec.y);
 }
 
-void TestPlayer::CamMove()
+void TestPlayer::HandlePlayerCameraInput()
 {
 	if (input == nullptr) return;
 
@@ -141,8 +117,53 @@ void TestPlayer::CamMove()
 
 	float deltaTime = Singleton<GameTime>::GetInstance().GetDeltaTime();
 	D2D1_VECTOR_2F moveVec = { deltaTime * inputVec.x * speed, deltaTime * inputVec.y * speed };
+}
 
-	//playerMainCam->SetPosition(positionVec.x + moveVec.x, positionVec.y + moveVec.y);
+void TestPlayer::HandleHitInput()
+{
+	// 체력 이벤트 인풋
+	if (input->IsKeyPressed('H'))
+	{
+		int dmg = 1;
+		OnHit(dmg);
+	}
+	else if (input->IsKeyPressed('J'))
+	{
+		hpComp->ChangeStat(maxHp);
+
+		std::wstring hpText = L"Hp : ";
+		hpText += std::to_wstring(hpComp->GetValue());
+		text->SetText(hpText);
+	}
+}
+
+void TestPlayer::HandleCameraInput()
+{
+	// 카메라 설정 인풋
+	if (input->IsKeyPressed('Y'))
+	{
+		playerMainCam->SetIsMainCamera(true);
+	}
+	else if (input->IsKeyPressed('U'))
+	{
+		playerMainCam->SetIsMainCamera(false);
+	}
+}
+
+void TestPlayer::HandleAnimationInput()
+{
+	if (input->IsKeyPressed('1'))
+	{
+		idleBitmap->SetAnimationClip(L"../Resource/Json/Attack_Front_anim.json");
+	}
+	if (input->IsKeyPressed('2'))
+	{
+		idleBitmap->SetAnimationClip(L"../Resource/Json/Attack_Up_anim.json");
+	}
+	if (input->IsKeyPressed('3'))
+	{
+		idleBitmap->SetAnimationClip(L"../Resource/Json/Idle_Right_anim.json");
+	}
 }
 
 void TestPlayer::OnHit(int dmg)
