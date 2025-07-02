@@ -16,7 +16,7 @@
 class SceneManager : public Singleton<SceneManager>
 {
 public:
-	~SceneManager();
+	friend class Singleton<SceneManager>;
 
 	void Update();
 	void ChangeScene(int sceneIndex);
@@ -26,6 +26,9 @@ public:
 	Camera* GetMainCamera();
 	void AddCamera(Camera* pCamera);
 private:
+	SceneManager() = default;
+	~SceneManager();
+
 	std::map<int, Scene*> scenes; // sceneIndex, Scene
 	std::vector<Camera*> cameras; // 카메라 참조만해서 사용 -> 원본은 현재 씬에 존재
 

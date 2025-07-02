@@ -6,8 +6,7 @@
 class ScriptSystem : public Singleton<ScriptSystem>
 {
 public:
-	ScriptSystem() = default;
-	~ScriptSystem();
+	friend class Singleton<ScriptSystem>;
 
 	void Register(ScriptComponent* comp);
 	void UnRegist(ScriptComponent* comp);
@@ -15,6 +14,9 @@ public:
 
 	void Update();	// 컴포넌트 업데이트 실행함수
 private:
+	ScriptSystem() = default;
+	~ScriptSystem();
+
 	std::vector<ScriptComponent*> components; // 실제로 Update 될 컴포넌트 데이터들
 };
 

@@ -11,8 +11,7 @@ class ResourceManager;
 class RenderSystem : public Singleton<RenderSystem>
 {
 public:
-	RenderSystem() = default;
-	~RenderSystem();
+	friend class Singleton<RenderSystem>;
 
 	void SetD2DRenderManager(D2DRenderManager* pRenderManager) { renderManager = pRenderManager; }
 	void SetResourceManager(ResourceManager* pResourceManager) { resourceManager = pResourceManager; }
@@ -24,6 +23,9 @@ public:
 
 	void Update(D2DRenderManager* manager);	// 컴포넌트 업데이트 실행함수
 private:
+	RenderSystem() = default;
+	~RenderSystem();
+
 	D2DRenderManager* renderManager{};
 	ResourceManager* resourceManager{};
 	std::map<EngineData::RenderLayer, std::vector<RenderComponent*>> renderComponentGroup;

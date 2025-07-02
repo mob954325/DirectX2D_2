@@ -5,6 +5,8 @@
 class DebugUtility : public Singleton<DebugUtility>
 {
 public:
+	friend class Singleton<DebugUtility>;
+
 	void GetDxgiAdapter(Microsoft::WRL::ComPtr<ID3D11Device> d3dDevice, Microsoft::WRL::ComPtr<IDXGIDevice> dxgiDevice);
 
 	std::string FormatBytes(UINT64 bytes);
@@ -14,6 +16,9 @@ public:
 	int GetFPSCount();
 
 private:
+	DebugUtility() = default;
+	~DebugUtility() = default;
+
 	Microsoft::WRL::ComPtr<IDXGIAdapter3> dxgiAdapter;
 
 	const float fpsMaxTime = 1.0f;

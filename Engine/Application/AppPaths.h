@@ -11,9 +11,13 @@ private:
 	std::wstring ModulePath{};
 	std::wstring WorkingPath{};
 
+	AppPaths() = default;
+	~AppPaths() = default;
+
 public:
-	// Application::Initialize에서 초기화
-	void InitPaths();
+	friend class Singleton<AppPaths>;
+
+	void InitPaths(); // Application::Initialize에서 초기화
 	const std::wstring GetModulePath() { return ModulePath; }
 	const std::wstring GetWorkingPath() { return WorkingPath; }
 };
