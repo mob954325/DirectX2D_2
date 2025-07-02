@@ -8,8 +8,8 @@ class AnimationRenderer : public BitmapRenderer
 {
 public:
 	void Render(D2DRenderManager* manager) override;
-	void GetSpriteSheet(std::wstring filePath); 
-	void GetAnimationClip(std::wstring filePath);
+	void SetSpriteSheet(std::wstring filePath); 
+	void SetAnimationClip(std::wstring filePath);
 
 	int GetFrame() { return frameIndex; }
 

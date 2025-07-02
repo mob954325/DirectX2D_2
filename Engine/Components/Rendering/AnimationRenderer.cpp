@@ -9,29 +9,13 @@
 void AnimationRenderer::Render(D2DRenderManager* manager)
 {
 	if (!m_bitmapResource) return;
-
-	if (isPlay)
-	{
-		timer += Singleton<GameTime>::GetInstance().GetDeltaTime();
-
-		if (clip.loop && timer >= clip.duration)
-		{
-			frameIndex = 0;
-			timer = 0.0f;
-		}
-
-		if (frameIndex < clip.frames.size() && timer >= clip.frames[frameIndex].duration)
-		{
-			frameIndex++;
-		}
-	}
 	
 	// 출력할 최종 위치 설정
 	CalculateFinalMatrix();
 	manager->SetBitmapTransform(finalMatrix);
 
 	// Spirte 정보에 맞게 위치 조정
-	Sprite currSprite = sheet.sprites[frameIndex];
+	Sprite currSprite = sheet.sprites[clip.frames[frameIndex].spriteSheetIndex];
 	float pivotOffsetX = currSprite.width * currSprite.pivotX;
 	float pivotOffsetY = currSprite.height * currSprite.pivotY;
 	destRect =
@@ -51,17 +35,36 @@ void AnimationRenderer::Render(D2DRenderManager* manager)
 		invertedY + currSprite.height
 	};
 
+	manager->DrawBitmap(m_bitmapResource.get()->GetBitmap(), destRect, srcRect);
+
+	if (isPlay)
 	{
-		manager->DrawBitmap(m_bitmapResource.get()->GetBitmap(), destRect, srcRect);
+		timer += Singleton<GameTime>::GetInstance().GetDeltaTime();
+
+		if (timer >= clip.duration)
+		{
+			if (clip.loop)
+			{
+				frameIndex = 0;
+				timer = 0.0f;
+			}
+		}
+		else 
+		{
+			if (frameIndex < clip.frames.size() - 1 && timer >= clip.frames[frameIndex].duration)
+			{
+				frameIndex++;
+			}
+		}
 	}
 }
 
-void AnimationRenderer::GetSpriteSheet(std::wstring filePath)
+void AnimationRenderer::SetSpriteSheet(std::wstring filePath)
 {
 	JsonUtil::LoadSpriteSheet(filePath, sheet);
 }
 
-void AnimationRenderer::GetAnimationClip(std::wstring filePath)
+void AnimationRenderer::SetAnimationClip(std::wstring filePath)
 {
 	if (sheet.texture == L"")
 	{
@@ -71,5 +74,7 @@ void AnimationRenderer::GetAnimationClip(std::wstring filePath)
 	{
 		JsonUtil::LoadAnimationClip(filePath, clip, sheet);
 		maxFrameIndex = clip.frames.size();
+		frameIndex = 0;
+		timer = 0;
 	}
 }
