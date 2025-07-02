@@ -11,25 +11,7 @@ void BitmapRenderer::Render(D2DRenderManager* manager)
 {
 	if (m_bitmapResource != nullptr)
 	{
-		Camera* pCam = Singleton<SceneManager>::GetInstance().GetMainCamera();
-		D2D1_MATRIX_3X2_F mainCamInvertMatrix = pCam ? pCam->GetInvertMatrix() : D2D1::Matrix3x2F::Identity();
-
-		// 최종 변환 값 계산
-		if (owner->transform->IsUnityCoords())
-		{
-			finalMatrix =
-				unityRenderMatrix *					// Render Matrix
-				owner->transform->ToWorldMatrix() *	// m_transform world matrix 
-				mainCamInvertMatrix *				// MainCamera invert matrix
-				unityCoordMatrix;					// unity coord Matrix
-		}
-		else
-		{
-			finalMatrix =
-				normalRenderMatrix *				// Render Matrix
-				owner->transform->ToWorldMatrix() *	// m_transform world matrix 
-				mainCamInvertMatrix;				// MainCamera invert matrix	
-		}
+		CalculateFinalMatrix();
 
 		manager->SetBitmapTransform(finalMatrix);
 		manager->DrawBitmap(m_bitmapResource.get()->GetBitmap());
@@ -71,4 +53,27 @@ void BitmapRenderer::SetOffSet(float x, float y)
 std::shared_ptr<BitmapResource> BitmapRenderer::GetResource()
 {
 	return m_bitmapResource;
+}
+
+void BitmapRenderer::CalculateFinalMatrix()
+{
+	Camera* pCam = Singleton<SceneManager>::GetInstance().GetMainCamera();
+	D2D1_MATRIX_3X2_F mainCamInvertMatrix = pCam ? pCam->GetInvertMatrix() : D2D1::Matrix3x2F::Identity();
+
+	// 최종 변환 값 계산
+	if (owner->transform->IsUnityCoords())
+	{
+		finalMatrix =
+			unityRenderMatrix *					// Render Matrix
+			owner->transform->ToWorldMatrix() *	// m_transform world matrix 
+			mainCamInvertMatrix *				// MainCamera invert matrix
+			unityCoordMatrix;					// unity coord Matrix
+	}
+	else
+	{
+		finalMatrix =
+			normalRenderMatrix *				// Render Matrix
+			owner->transform->ToWorldMatrix() *	// m_transform world matrix 
+			mainCamInvertMatrix;				// MainCamera invert matrix	
+	}
 }
