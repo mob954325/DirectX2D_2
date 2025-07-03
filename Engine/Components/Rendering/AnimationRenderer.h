@@ -9,7 +9,17 @@ class AnimationRenderer : public BitmapRenderer
 {
 public:
 	void Render(D2DRenderManager* manager) override;
-	void SetSpriteSheet(std::wstring filePath); 
+
+	/// <summary>
+	/// SpriteSheet json 파일 찾기
+	/// </summary>
+	/// <param name="filePath">파일 경로</param>
+	void SetSpriteSheet(std::wstring filePath);
+
+	/// <summary>
+	/// AnimationClip json 파일 찾기
+	/// </summary>
+	/// <param name="filePath">파일 경로</param>
 	void SetAnimationClip(std::wstring filePath);
 
 	int GetFrame() { return frameIndex; }
