@@ -1,6 +1,6 @@
 ﻿#include "SceneManager.h"
-#include "ScriptSystem.h"
-#include "RenderSystem.h"
+#include "Systems/ScriptSystem.h"
+#include "Systems/RenderSystem.h"
 
 SceneManager::~SceneManager()
 {

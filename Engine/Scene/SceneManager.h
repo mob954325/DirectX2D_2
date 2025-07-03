@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "Core/ScriptSystem.h"
-#include "Core/RenderSystem.h"
+#include "Systems/ScriptSystem.h"
+#include "Systems/RenderSystem.h"
 #include "Utils/Singleton.h"
 #include "Scene/Scene.h"
 #include "Components/Camera/Camera.h"

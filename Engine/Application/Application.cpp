@@ -1,14 +1,14 @@
 ﻿#include "pch.h"
 #include "Application.h"
-#include "EngineData.h"
+#include "Datas/EngineData.h"
 
 #include "Scene/SceneManager.h"
 #include "Platform/D2DRenderManager.h"
-#include "Core/ScriptSystem.h"
-#include "Core/RenderSystem.h"
+#include "Systems/ScriptSystem.h"
+#include "Systems/RenderSystem.h"
 
 #include "Utils/Singleton.h"
-#include "Systems/Input.h"
+#include "Platform/Input.h"
 #include "Utils/GameTime.h"
 #include "AppPaths.h"
 #include "Utils/DebugUtility.h"

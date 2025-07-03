@@ -1,5 +1,5 @@
 ﻿#include "BitmapResource.h"
-#include "RenderSystem.h"
+#include "Systems/RenderSystem.h"
 #include "Utils/Singleton.h"
 
 Microsoft::WRL::ComPtr<ID2D1Bitmap1> BitmapResource::GetBitmap()

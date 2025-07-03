@@ -3,8 +3,10 @@
 #include "Scene/SceneManager.h"
 
 #include "Utils/GameTime.h"
-#include "Utils/JsonUtil.h"
+#include "Datas/SpriteDatas.h"
 #include "Utils/DebugUtility.h"
+#include "Resources/Loaders/SpriteSheetLoader.h"
+#include "Resources/Loaders/AnimationClipLoader.h"
 
 void AnimationRenderer::Render(D2DRenderManager* manager)
 {
@@ -61,7 +63,7 @@ void AnimationRenderer::Render(D2DRenderManager* manager)
 
 void AnimationRenderer::SetSpriteSheet(std::wstring filePath)
 {
-	JsonUtil::LoadSpriteSheet(filePath, sheet);
+	SpriteSheetLoader::LoadSpriteSheet(filePath, sheet);
 }
 
 void AnimationRenderer::SetAnimationClip(std::wstring filePath)
@@ -72,7 +74,7 @@ void AnimationRenderer::SetAnimationClip(std::wstring filePath)
 	}
 	else
 	{
-		JsonUtil::LoadAnimationClip(filePath, clip, sheet);
+		AnimationClipLoader::LoadAnimationClip(filePath, clip, sheet);
 		maxFrameIndex = clip.frames.size();
 		frameIndex = 0;
 		timer = 0;

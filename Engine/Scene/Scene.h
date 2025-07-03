@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include "Components/Base/GameObject.h"
 #include "Components/Base/Component.h"
-#include "Core/ScriptSystem.h"
-#include "Core/RenderSystem.h"
+#include "Systems/ScriptSystem.h"
+#include "Systems/RenderSystem.h"
 #include "Scene/GameObjectQuery.h"
 #include <vector>
 

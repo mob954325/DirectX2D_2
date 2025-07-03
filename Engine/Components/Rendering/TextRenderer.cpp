@@ -1,6 +1,6 @@
 ﻿#include "TextRenderer.h"
 #include "Platform/D2DRenderManager.h"
-#include "Core/EngineData.h"
+#include "Datas/EngineData.h"
 
 void TextRenderer::Render(D2DRenderManager* manager)
 {

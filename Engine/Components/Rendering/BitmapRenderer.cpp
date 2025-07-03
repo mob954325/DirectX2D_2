@@ -4,7 +4,7 @@
 #include "Scene/SceneManager.h"
 #include "Resources/ResourceManager.h"
 #include "Components/Camera/Camera.h"
-#include "EngineData.h"
+#include "Datas/EngineData.h"
 #include "Resources/BitmapResource.h"
 
 void BitmapRenderer::Render(D2DRenderManager* manager)

@@ -129,6 +129,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Datas\AnimationDatas.h" />
+    <ClInclude Include="Resources\Loaders\AnimationClipLoader.h" />
     <ClInclude Include="Application\Application.h" />
     <ClInclude Include="Application\AppPaths.h" />
     <ClInclude Include="Components\Base\Component.h" />
@@ -143,20 +145,21 @@
     <ClInclude Include="Components\Rendering\BoxComponent.h" />
     <ClInclude Include="Components\Rendering\RenderComponent.h" />
     <ClInclude Include="Components\Rendering\TextRenderer.h" />
-    <ClInclude Include="Core\EngineData.h" />
-    <ClInclude Include="Core\RenderSystem.h" />
-    <ClInclude Include="Core\ScriptSystem.h" />
-    <ClInclude Include="json.hpp" />
+    <ClInclude Include="Datas\EngineData.h" />
+    <ClInclude Include="Resources\Loaders\SpriteSheetLoader.h" />
+    <ClInclude Include="Utils\StringConvert.h" />
+    <ClInclude Include="Systems\RenderSystem.h" />
+    <ClInclude Include="Systems\ScriptSystem.h" />
+    <ClInclude Include="External\json.hpp" />
     <ClInclude Include="Scene\GameObjectQuery.h" />
-    <ClInclude Include="Utils\JsonUtil.h" />
     <ClInclude Include="Platform\D2DRenderManager.h" />
     <ClInclude Include="Resources\AnimationResource.h" />
     <ClInclude Include="Resources\BitmapResource.h" />
     <ClInclude Include="Resources\ResourceManager.h" />
-    <ClInclude Include="Resources\SpriteDatas.h" />
+    <ClInclude Include="Datas\SpriteDatas.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
-    <ClInclude Include="Systems\Input.h" />
+    <ClInclude Include="Platform\Input.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Utils\DebugUtility.h" />
@@ -165,6 +168,7 @@
     <ClInclude Include="Utils\Singleton.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Resources\Loaders\AnimationClipLoader.cpp" />
     <ClCompile Include="Application\Application.cpp" />
     <ClCompile Include="Application\AppPaths.cpp" />
     <ClCompile Include="Components\Base\GameObject.cpp" />
@@ -176,15 +180,16 @@
     <ClCompile Include="Components\Rendering\BitmapRenderer.cpp" />
     <ClCompile Include="Components\Rendering\BoxComponent.cpp" />
     <ClCompile Include="Components\Rendering\TextRenderer.cpp" />
-    <ClCompile Include="Core\ScriptSystem.cpp" />
-    <ClCompile Include="Utils\JsonUtil.cpp" />
+    <ClCompile Include="Resources\Loaders\SpriteSheetLoader.cpp" />
+    <ClCompile Include="Utils\StringConvert.cpp" />
+    <ClCompile Include="Systems\ScriptSystem.cpp" />
     <ClCompile Include="Platform\D2DRenderManager.cpp" />
     <ClCompile Include="Resources\BitmapResource.cpp" />
     <ClCompile Include="Resources\ResourceManager.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
-    <ClCompile Include="Systems\Input.cpp" />
-    <ClCompile Include="Core\RenderSystem.cpp" />
+    <ClCompile Include="Platform\Input.cpp" />
+    <ClCompile Include="Systems\RenderSystem.cpp" />
     <ClCompile Include="MyD2DEngine.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Utils\DebugUtility.cpp" />

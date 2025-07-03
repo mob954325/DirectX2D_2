@@ -1,4 +1,4 @@
-﻿#include "Core/ScriptSystem.h"
+﻿#include "Systems/ScriptSystem.h"
 
 ScriptSystem::~ScriptSystem()
 {

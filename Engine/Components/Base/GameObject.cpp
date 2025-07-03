@@ -1,6 +1,6 @@
 ﻿#include "GameObject.h"
-#include "RenderSystem.h"
-#include "ScriptSystem.h"
+#include "Systems/RenderSystem.h"
+#include "Systems/ScriptSystem.h"
 
 GameObject::GameObject()
 {

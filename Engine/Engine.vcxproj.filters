@@ -30,9 +30,6 @@
     <Filter Include="소스 파일\Components\Rendering">
       <UniqueIdentifier>{771ed8b6-073b-463e-aea2-aeba11eaf35a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Core">
-      <UniqueIdentifier>{0461d726-9a82-4541-95af-a6c1f0d4f8cf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Platform">
       <UniqueIdentifier>{59684d07-d153-42e2-b6f8-c1457a1f7889}</UniqueIdentifier>
     </Filter>
@@ -53,9 +50,6 @@
     </Filter>
     <Filter Include="헤더 파일\Components">
       <UniqueIdentifier>{be2d8842-41ae-46fc-ade8-90907a54e503}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\Core">
-      <UniqueIdentifier>{ade57883-83fb-42a3-9f41-5757bccdccf9}</UniqueIdentifier>
     </Filter>
     <Filter Include="헤더 파일\Utils">
       <UniqueIdentifier>{d60a8474-5227-4203-9875-2b619a149c48}</UniqueIdentifier>
@@ -86,6 +80,15 @@
     </Filter>
     <Filter Include="헤더 파일\Components\Physics">
       <UniqueIdentifier>{39c1da16-0be1-495b-a96c-84f8e11a839d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Datas">
+      <UniqueIdentifier>{839160de-86ba-4c62-8272-4a956ed4456e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Resources\Loader">
+      <UniqueIdentifier>{8b82b74c-7e2c-4cd8-a3e3-db9eb3f3e27c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Resources\Loader">
+      <UniqueIdentifier>{01c98fe4-53f4-4a5d-9e32-c2fcd74edd80}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -125,9 +128,6 @@
     <ClInclude Include="Utils\DebugUtility.h">
       <Filter>헤더 파일\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Core\EngineData.h">
-      <Filter>헤더 파일\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Utils\EventDelegate.h">
       <Filter>헤더 파일\Utils</Filter>
     </ClInclude>
@@ -137,17 +137,11 @@
     <ClInclude Include="Utils\GameTime.h">
       <Filter>헤더 파일\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Systems\Input.h">
-      <Filter>헤더 파일\Systems</Filter>
-    </ClInclude>
     <ClInclude Include="Components\Logic\InputSystem.h">
       <Filter>헤더 파일\Components\Logic</Filter>
     </ClInclude>
     <ClInclude Include="Components\Rendering\RenderComponent.h">
       <Filter>헤더 파일\Components\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\RenderSystem.h">
-      <Filter>헤더 파일\Core</Filter>
     </ClInclude>
     <ClInclude Include="Resources\ResourceManager.h">
       <Filter>헤더 파일\Resources</Filter>
@@ -160,9 +154,6 @@
     </ClInclude>
     <ClInclude Include="Components\Logic\ScriptComponent.h">
       <Filter>헤더 파일\Components\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\ScriptSystem.h">
-      <Filter>헤더 파일\Core</Filter>
     </ClInclude>
     <ClInclude Include="Utils\Singleton.h">
       <Filter>헤더 파일\Utils</Filter>
@@ -179,17 +170,38 @@
     <ClInclude Include="Resources\AnimationResource.h">
       <Filter>헤더 파일\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="Utils\JsonUtil.h">
-      <Filter>헤더 파일\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="json.hpp">
+    <ClInclude Include="External\json.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Scene\GameObjectQuery.h">
       <Filter>헤더 파일\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\SpriteDatas.h">
-      <Filter>헤더 파일\Resources</Filter>
+    <ClInclude Include="Platform\Input.h">
+      <Filter>헤더 파일\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\RenderSystem.h">
+      <Filter>헤더 파일\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\ScriptSystem.h">
+      <Filter>헤더 파일\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Datas\EngineData.h">
+      <Filter>헤더 파일\Datas</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Loaders\AnimationClipLoader.h">
+      <Filter>헤더 파일\Resources\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Loaders\SpriteSheetLoader.h">
+      <Filter>헤더 파일\Resources\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\StringConvert.h">
+      <Filter>헤더 파일\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Datas\AnimationDatas.h">
+      <Filter>헤더 파일\Datas</Filter>
+    </ClInclude>
+    <ClInclude Include="Datas\SpriteDatas.h">
+      <Filter>헤더 파일\Datas</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -229,12 +241,6 @@
     <ClCompile Include="Components\Rendering\TextRenderer.cpp">
       <Filter>소스 파일\Components\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="Core\RenderSystem.cpp">
-      <Filter>소스 파일\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\ScriptSystem.cpp">
-      <Filter>소스 파일\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Resources\ResourceManager.cpp">
       <Filter>소스 파일\Resources</Filter>
     </ClCompile>
@@ -253,16 +259,28 @@
     <ClCompile Include="Utils\GameTime.cpp">
       <Filter>소스 파일\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Systems\Input.cpp">
-      <Filter>소스 파일\Systems</Filter>
-    </ClCompile>
     <ClCompile Include="Scene\Scene.cpp">
       <Filter>소스 파일\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Scene\SceneManager.cpp">
       <Filter>소스 파일\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Utils\JsonUtil.cpp">
+    <ClCompile Include="Platform\Input.cpp">
+      <Filter>소스 파일\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\RenderSystem.cpp">
+      <Filter>소스 파일\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\ScriptSystem.cpp">
+      <Filter>소스 파일\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Loaders\AnimationClipLoader.cpp">
+      <Filter>소스 파일\Resources\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Loaders\SpriteSheetLoader.cpp">
+      <Filter>소스 파일\Resources\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\StringConvert.cpp">
       <Filter>소스 파일\Utils</Filter>
     </ClCompile>
   </ItemGroup>

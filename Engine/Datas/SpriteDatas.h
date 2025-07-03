@@ -17,19 +17,3 @@ struct SpriteSheet
 	std::vector<Sprite> sprites;		// 시트에 있는 Sprite 목록
 	std::unordered_map<std::wstring, int> spriteIndexMap;	// std::wstring으로 찾기 위한 인덱스 맵 <이름, 인덱스>
 };
-
-struct FrameInfo
-{
-	std::wstring sprite;
-	int spriteSheetIndex;
-	float duration;
-};
-
-struct AnimationClip	
-{
-	std::wstring clipName = L"";
-	std::wstring texturePath = L"";
-	bool loop;
-	float duration; // 전체 애니메이션 시간
-	std::vector<FrameInfo> frames;
-}; 

@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "Utils/Singleton.h"
 #include "Components/Rendering/RenderComponent.h"
-#include "Core/EngineData.h"
+#include "Datas/EngineData.h"
 #include <vector>
 #include <map>
 

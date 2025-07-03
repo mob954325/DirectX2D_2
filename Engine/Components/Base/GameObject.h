@@ -3,7 +3,7 @@
 #include "Utils/Singleton.h"
 #include "Component.h"
 #include "Transform.h"
-#include "Core/EngineData.h"
+#include "Datas/EngineData.h"
 #include "Scene/GameObjectQuery.h"
 
 /// <summary>

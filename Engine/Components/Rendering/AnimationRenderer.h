@@ -1,5 +1,6 @@
 ﻿#pragma once
-#include "Resources/SpriteDatas.h"
+#include "Datas/SpriteDatas.h"
+#include "Datas/AnimationDatas.h"
 #include "BitmapRenderer.h"
 
 // 

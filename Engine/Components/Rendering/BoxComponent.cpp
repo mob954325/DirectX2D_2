@@ -1,7 +1,7 @@
 ﻿#include "BoxComponent.h"
 #include "Platform/D2DRenderManager.h"
 #include "Components/Base/GameObject.h"
-#include "EngineData.h"
+#include "Datas/EngineData.h"
 #include "Scene/SceneManager.h"
 
 void BoxComponent::OnStart()

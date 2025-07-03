@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "D2DRenderManager.h"
 #include "Utils/Singleton.h"
-#include "RenderSystem.h"
+#include "Systems/RenderSystem.h"
 
 void D2DRenderManager::Initialize()
 {
