@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Components/Logic/ScriptComponent.h"
-#include "Systems/Input.h"
+#include "Platform/Input.h"
 class InputSystem : public ScriptComponent
 {
 public:

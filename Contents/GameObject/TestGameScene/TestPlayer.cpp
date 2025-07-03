@@ -10,33 +10,39 @@ void TestPlayer::Start()
 {
 	renderLayer = EngineData::RenderLayer::Player;
 
+	// Player camera init
 	playerMainCam = AddComponent<Camera>();
 	playerMainCam->AttachGameObjectToCamera(this->transform);
 	Singleton<SceneManager>::GetInstance().AddCamera(playerMainCam);
 
+	// animation renderer init
 	idleBitmap = AddComponent<AnimationRenderer>();	
 	idleBitmap->CreateBitmapResource(L"../Resource/ken.png");
 	idleBitmap->SetSpriteSheet(L"../Resource/Json/ken_sprites.json");
 	idleBitmap->SetAnimationClip(L"../Resource/Json/Attack_Front_anim.json");
 	idleBitmap->Play();
 	
+	// set transform
 	transform->SetIsUnityCoords(true);
 	transform->SetScale(1.0f, 1.0f);
 
+	// input init
 	input = AddComponent<InputSystem>();
 
+	// statcomponent(hp) init
 	hpComp = AddComponent<StatComponent>();
 	hpComp->ChangeStat(maxHp);
 	OnHitAction += hpComp->GetValueFunctionObject();
 	
+	// text init
 	text = AddComponent<TextRenderer>();
 	text->SetPosition(700, 20);
 
-	// Text 초기화
 	std::wstring hpText = L"Hp : ";
 	hpText += std::to_wstring(hpComp->GetValue());
 	text->SetText(hpText);
 
+	// box component init
 	box = AddComponent<BoxComponent>();
 	box->SetIsShow(true);
 	box->SetWidth(2.0f);
@@ -51,8 +57,13 @@ void TestPlayer::Start()
 
 	box->SetRect(rect);
 
+	// animFramText init
 	animFramText = AddComponent<TextRenderer>();
 	animFramText->SetViewportPosition(0.8f, 0.1f);
+
+	// animator init
+	animator = AddComponent<Animator>();
+	animator->SetAnimationController(L"../Resource/Json/TestPlayer_AnimController.json");
 }
 
 void TestPlayer::Update()

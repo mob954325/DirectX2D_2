@@ -6,9 +6,8 @@
 #include "Components/Logic/StatComponent.h"
 #include "Components/Rendering/TextRenderer.h"
 #include "Components/Rendering/BoxComponent.h"
+#include "Components/Logic/Animator.h"
 #include "Utils/EventDelegate.h"
-
-#include "Components/Rendering/TextRenderer.h"
 
 class TestPlayer : public GameObject
 {
@@ -34,6 +33,7 @@ private:
 	TextRenderer* text{};
 	BoxComponent* box{};
 
+	Animator* animator{};
 	TextRenderer* animFramText{};
 
 	EventDelegate<int> OnHitAction; // 피격시 호출되는 델리게이트

@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "pch.h"
+#include <unordered_map>
 
 struct Parameter
 {
@@ -40,4 +41,25 @@ struct State
 	float clipLength = 1.0f;	// 초 단위 
 	bool loop = false;			// 루프 여부
 	std::vector<Transition> transitions; // 전이 목록
+}; 
+
+struct AnimatorController
+{
+	std::string controllerName; // 컨트롤러 이름
+	std::vector<Parameter> parameters; // 컨트롤러 파라미터 목록
+
+	std::string defaultState; // 기본 상태 이름	
+	std::vector<State> states;
+	std::unordered_map<std::string, int> stateNameToIndex;
+	std::vector<AnyStateTransition> anyStateTransitions; // Any State 전이 목록
+
+	State* GetState(const std::string& stateName)
+	{
+		auto it = stateNameToIndex.find(stateName);
+		if (it != stateNameToIndex.end()) 
+		{
+			return &states[it->second]; // 상태가 존재하면 해당 상태 반환
+		}
+		return nullptr; // 상태가 존재하지 않으면 nullptr 반환
+	}
 };

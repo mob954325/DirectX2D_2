@@ -1,0 +1,97 @@
+{
+    "controllerName": "TestPlayer",
+    "parameters": [
+        {
+            "name": "speed",
+            "type": "Float",
+            "defaultFloat": 0.0,
+            "defaultInt": 0,
+            "defaultBool": false
+        },
+        {
+            "name": "hit",
+            "type": "Bool",
+            "defaultFloat": 0.0,
+            "defaultInt": 0,
+            "defaultBool": false
+        }
+    ],
+    "defaultState": "Idle",
+    "states": [
+        {
+            "name": "Idle",
+            "motionName": "",
+            "clipLength": 0.0,
+            "loop": false,
+            "transitions": [
+                {
+                    "fromState": "Idle",
+                    "toState": "Move",
+                    "exitTime": 0.75,
+                    "hasExitTime": true,
+                    "conditions": [
+                        {
+                            "parameter": "speed",
+                            "mode": "Greater",
+                            "threshold": 0.10000000149011612
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Move",
+            "motionName": "",
+            "clipLength": 0.0,
+            "loop": false,
+            "transitions": [
+                {
+                    "fromState": "Move",
+                    "toState": "Idle",
+                    "exitTime": 0.75,
+                    "hasExitTime": true,
+                    "conditions": [
+                        {
+                            "parameter": "speed",
+                            "mode": "Less",
+                            "threshold": 0.10000000149011612
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Action",
+            "motionName": "",
+            "clipLength": 0.0,
+            "loop": false,
+            "transitions": [
+                {
+                    "fromState": "Action",
+                    "toState": "Exit",
+                    "exitTime": 0.75,
+                    "hasExitTime": true,
+                    "conditions": [
+                        {
+                            "parameter": "",
+                            "mode": "Always",
+                            "threshold": 0.0
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "anyStateTransitions": [
+        {
+            "toState": "Action",
+            "conditions": [
+                {
+                    "parameter": "hit",
+                    "mode": "If",
+                    "threshold": 0.0
+                }
+            ]
+        }
+    ]
+}

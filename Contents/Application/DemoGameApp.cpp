@@ -2,7 +2,7 @@
 #include "Platform/D2DRenderManager.h"
 #include "Scene/SceneManager.h"
 #include "Utils/Singleton.h"
-#include "Systems/Input.h"
+#include "Platform/Input.h"
 #include "Utils/GameTime.h"
 
 #include "Scenes/MenuScene.h"

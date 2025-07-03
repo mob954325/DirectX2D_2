@@ -203,6 +203,18 @@
     <ClInclude Include="Datas\SpriteDatas.h">
       <Filter>헤더 파일\Datas</Filter>
     </ClInclude>
+    <ClInclude Include="Resources\Loaders\AnimationControllerLoader.h">
+      <Filter>헤더 파일\Resources\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Datas\AnimationControllerDatas.h">
+      <Filter>헤더 파일\Datas</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Logic\Animator.h">
+      <Filter>헤더 파일\Components\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Logic\AnimatorController.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -282,6 +294,15 @@
     </ClCompile>
     <ClCompile Include="Utils\StringConvert.cpp">
       <Filter>소스 파일\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Loaders\AnimationControllerLoader.cpp">
+      <Filter>소스 파일\Resources\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Logic\Animator.cpp">
+      <Filter>소스 파일\Components\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Logic\AnimatorController.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
