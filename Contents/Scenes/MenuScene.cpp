@@ -1,7 +1,7 @@
 ﻿#include "MenuScene.h"
 
 #include "Utils/Singleton.h"
-#include "Systems/Input.h"
+#include "Platform/Input.h"
 #include "Scene/SceneManager.h"
 #include "GameObject/MenuScene/MenuTextObject.h"
 
