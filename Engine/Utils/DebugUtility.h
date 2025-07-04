@@ -12,6 +12,7 @@ public:
 	std::string FormatBytes(UINT64 bytes);
 	void PrintMemoryUsage();
 	static void Print(std::wstring str);
+	static void Print(std::string str);
 	void UpdateFPSCount();
 	int GetFPSCount();
 

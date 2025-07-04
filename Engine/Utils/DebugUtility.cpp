@@ -60,6 +60,11 @@ void DebugUtility::Print(std::wstring str)
 	std::cout << str.c_str() << std::endl;
 }
 
+void DebugUtility::Print(std::string str)
+{
+	std::cout << str << std::endl;
+}
+
 void DebugUtility::UpdateFPSCount()
 {
 	fpsTimer += Singleton<GameTime>::GetInstance().GetDeltaTime();
