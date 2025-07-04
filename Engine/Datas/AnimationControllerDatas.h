@@ -45,13 +45,13 @@ struct State
 
 struct AnimatorController
 {
-	std::string controllerName; // 컨트롤러 이름
-	std::vector<Parameter> parameters; // 컨트롤러 파라미터 목록
+	std::string controllerName;			// 컨트롤러 이름
+	std::vector<Parameter> parameters;	// 컨트롤러 파라미터 목록
 
-	std::string defaultState; // 기본 상태 이름	
-	std::vector<State> states;
+	std::string defaultState;	// 기본 상태 이름	
+	std::vector<State> states;	// 상태 목록
 	std::unordered_map<std::string, int> stateNameToIndex;
-	std::vector<AnyStateTransition> anyStateTransitions; // Any State 전이 목록
+	std::vector<AnyStateTransition> anyStateTransitions;	// Any State 전이 목록
 
 	State* GetState(const std::string& stateName)
 	{
