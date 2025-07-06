@@ -2,7 +2,7 @@
     "controllerName": "TestPlayer",
     "parameters": [
         {
-            "name": "speed",
+            "name": "Speed",
             "type": "Float",
             "defaultFloat": 0.0,
             "defaultInt": 0,
@@ -10,7 +10,7 @@
         },
         {
             "name": "hit",
-            "type": "Bool",
+            "type": "Trigger",
             "defaultFloat": 0.0,
             "defaultInt": 0,
             "defaultBool": false
@@ -20,18 +20,18 @@
     "states": [
         {
             "name": "Idle",
-            "motionName": "",
+            "motionName": "Player-Idle",
             "clipLength": 0.0,
             "loop": false,
             "transitions": [
                 {
                     "fromState": "Idle",
                     "toState": "Move",
-                    "exitTime": 0.75,
-                    "hasExitTime": true,
+                    "exitTime": -1.0,
+                    "hasExitTime": false,
                     "conditions": [
                         {
-                            "parameter": "speed",
+                            "parameter": "Speed",
                             "mode": "Greater",
                             "threshold": 0.10000000149011612
                         }
@@ -41,7 +41,7 @@
         },
         {
             "name": "Move",
-            "motionName": "",
+            "motionName": "Player-Move",
             "clipLength": 0.0,
             "loop": false,
             "transitions": [
@@ -52,7 +52,7 @@
                     "hasExitTime": true,
                     "conditions": [
                         {
-                            "parameter": "speed",
+                            "parameter": "Speed",
                             "mode": "Less",
                             "threshold": 0.10000000149011612
                         }
@@ -61,16 +61,16 @@
             ]
         },
         {
-            "name": "Action",
-            "motionName": "",
-            "clipLength": 0.0,
+            "name": "Hit",
+            "motionName": "Player-Hit",
+            "clipLength": 0.75,
             "loop": false,
             "transitions": [
                 {
-                    "fromState": "Action",
+                    "fromState": "Hit",
                     "toState": "Exit",
-                    "exitTime": 0.75,
-                    "hasExitTime": true,
+                    "exitTime": -1.0,
+                    "hasExitTime": false,
                     "conditions": [
                         {
                             "parameter": "",
@@ -84,7 +84,7 @@
     ],
     "anyStateTransitions": [
         {
-            "toState": "Action",
+            "toState": "Hit",
             "conditions": [
                 {
                     "parameter": "hit",
