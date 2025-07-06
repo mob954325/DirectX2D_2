@@ -93,20 +93,65 @@ void AnimationControllerLoader::LoadAnimatorController(const std::wstring& fileP
 		out.parameters = in["parameters"].get<std::vector<Parameter>>();
 		out.defaultState = in["defaultState"];
 
+		// parameters 타입 데이터 저장
+		for (int i = 0; i < out.parameters.size(); i++)
+		{
+			Parameter currParam = out.parameters[i];
+			ParameterType type = ParameterType::Int;
+			if (currParam.type == "Int")
+			{
+				type = ParameterType::Int;
+			}
+			else if (currParam.type == "Float")
+			{
+				type = ParameterType::Float;
+			}
+			else if (currParam.type == "Bool")
+			{
+				type = ParameterType::Bool;
+			}
+			else if (currParam.type == "Trigger")
+			{
+				type = ParameterType::Trigger;
+			}
+
+			out.paramNameToType[currParam.name] = type;
+		}
+
 		if (in.contains("states")) 
 		{
 			out.states = in["states"].get<std::vector<State>>(); // 
 		}
 
-		for (int i = 0; i < out.states.size(); ++i) 
+		// State내용 설정
+		for (int i = 0; i < out.states.size(); ++i)
 		{
 			out.stateNameToIndex[out.states[i].name] = i;
-			out.states[i].index = i; // 상태 인덱스 설정
+			out.states[i].index = i; // 상태 인덱스 설정			
+
+			// 현재 State의 Transition 찾기
+			for (auto& trans : out.states[i].transitions)
+			{
+				// Transition의 Condition 찾기
+				for (auto& condi : trans.conditions)
+				{
+					condi.type = out.paramNameToType[condi.parameter]; // condition 타입 저장
+				}
+			}
 		}
 
-		if (in.contains("anyStateTransitions")) 
+		if (in.contains("anyStateTransitions"))
 		{
 			out.anyStateTransitions = in["anyStateTransitions"].get<std::vector<AnyStateTransition>>();
+
+			// AnyTransition의 Condition 찾기
+			for (auto& state : out.anyStateTransitions)
+			{
+				for (auto& condi : state.conditions)
+				{
+					condi.type = out.paramNameToType[condi.parameter]; // condition 타입 저장
+				}
+			}
 		}
 	}
 	else 

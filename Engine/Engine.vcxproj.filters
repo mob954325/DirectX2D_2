@@ -212,7 +212,7 @@
     <ClInclude Include="Components\Logic\Animator.h">
       <Filter>헤더 파일\Components\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="Components\Logic\AnimatorController.h">
+    <ClInclude Include="Components\Logic\FSMInstance.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -301,7 +301,7 @@
     <ClCompile Include="Components\Logic\Animator.cpp">
       <Filter>소스 파일\Components\Logic</Filter>
     </ClCompile>
-    <ClCompile Include="Components\Logic\AnimatorController.cpp">
+    <ClCompile Include="Components\Logic\FSMInstance.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

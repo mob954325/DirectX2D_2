@@ -62,8 +62,25 @@ void TestPlayer::Start()
 	animFramText->SetViewportPosition(0.8f, 0.1f);
 
 	// animator init
-	animator = AddComponent<Animator>();
-	animator->SetAnimationController(L"../Resource/Json/TestPlayer_AnimController.json");
+	//animator = AddComponent<Animator>();
+	//animator->SetAnimationController(L"../Resource/Json/TestPlayer_AnimController.json");
+
+	AnimationControllerLoader::LoadAnimatorController(L"../Resource/Json/TestPlayer_AnimController.json", ac);
+	fsmInstance = AddComponent<FSMInstance>();
+	fsmInstance->SetAnimationController(ac);
+
+	idleState = new IdleState();
+	idleState->player = this;
+	moveState = new MoveState();
+	moveState->player = this;
+	hitState = new HitState();
+	hitState->player = this;
+
+	fsmInstance->SetStateBehavior("Idle", idleState);
+	fsmInstance->SetStateBehavior("Move", moveState);
+	fsmInstance->SetStateBehavior("Hit", hitState);
+
+	fsmInstance->OnStart();
 }
 
 void TestPlayer::Update()
@@ -84,6 +101,11 @@ void TestPlayer::Update()
 
 void TestPlayer::OnDestroy()
 {
+	fsmInstance->OnEnd();
+
+	delete idleState;
+	delete moveState;
+	delete hitState;
 }
 
 void TestPlayer::HandleMoveInput()
@@ -108,6 +130,15 @@ void TestPlayer::HandleMoveInput()
 	if (input->IsKeyDown(VK_DOWN))
 	{
 		moveVec.y -= speed;
+	}
+
+	if (moveVec.x == 0 && moveVec.y == 0)
+	{
+		fsmInstance->SetFloat("Speed", 0);
+	}
+	else
+	{
+		fsmInstance->SetFloat("Speed", 1);
 	}
 
 	transform->SetPosition(position.x + moveVec.x, position.y + moveVec.y);
@@ -163,18 +194,18 @@ void TestPlayer::HandleCameraInput()
 
 void TestPlayer::HandleAnimationInput()
 {
-	if (input->IsKeyPressed('1'))
-	{
-		idleBitmap->SetAnimationClip(L"../Resource/Json/Attack_Front_anim.json");
-	}
-	if (input->IsKeyPressed('2'))
-	{
-		idleBitmap->SetAnimationClip(L"../Resource/Json/Attack_Up_anim.json");
-	}
-	if (input->IsKeyPressed('3'))
-	{
-		idleBitmap->SetAnimationClip(L"../Resource/Json/Idle_Right_anim.json");
-	}
+	//if (input->IsKeyPressed('1'))
+	//{
+	//	idleBitmap->SetAnimationClip(L"../Resource/Json/Attack_Front_anim.json");
+	//}
+	//if (input->IsKeyPressed('2'))
+	//{
+	//	idleBitmap->SetAnimationClip(L"../Resource/Json/Attack_Up_anim.json");
+	//}
+	//if (input->IsKeyPressed('3'))
+	//{
+	//	idleBitmap->SetAnimationClip(L"../Resource/Json/Idle_Right_anim.json");
+	//}
 }
 
 void TestPlayer::OnHit(int dmg)
@@ -188,4 +219,47 @@ void TestPlayer::OnHit(int dmg)
 	std::wstring hpText = L"Hp : ";
 	hpText += std::to_wstring(hpComp->GetValue());
 	text->SetText(hpText);
+	fsmInstance->SetTrigger("hit");
+}
+
+// idle
+void IdleState::OnStateEnter()
+{
+	player->GetRenderer()->SetAnimationClip(L"../Resource/Json/Idle_Right_anim.json");
+}
+
+void IdleState::OnStateUpdate()
+{
+}
+
+void IdleState::OnStateExit()
+{
+}
+
+// move
+void MoveState::OnStateEnter()
+{
+	player->GetRenderer()->SetAnimationClip(L"../Resource/Json/Attack_Front_anim.json");
+}
+
+void MoveState::OnStateUpdate()
+{
+}
+
+void MoveState::OnStateExit()
+{
+}
+
+// hit
+void HitState::OnStateEnter()
+{
+	player->GetRenderer()->SetAnimationClip(L"../Resource/Json/Attack_Up_anim.json");
+}
+
+void HitState::OnStateUpdate()
+{
+}
+
+void HitState::OnStateExit()
+{
 }

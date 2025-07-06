@@ -2,6 +2,11 @@
 #include "pch.h"
 #include <unordered_map>
 
+enum ParameterType
+{
+	Int, Float, Bool, Trigger
+};
+
 struct Parameter
 {
 	std::string name;			// 파라미터 이름
@@ -15,6 +20,8 @@ struct Condition
 {
 	std::string parameter;	// 조건 파라미터 이름
 	std::string mode;		// 조건 모드 (예: Greater, IfNot 등)
+	ParameterType type;		// 파라미터 타입 (Int, Float, Bool, Trigger)
+
 	float threshold = 0.0f; // 조건 임계값
 };
 
@@ -51,12 +58,13 @@ struct AnimatorController
 	std::string defaultState;	// 기본 상태 이름	
 	std::vector<State> states;	// 상태 목록
 	std::unordered_map<std::string, int> stateNameToIndex;
+	std::unordered_map<std::string, ParameterType> paramNameToType; // 파라미터 이름으로 해당 파라미터의 타입 저장
 	std::vector<AnyStateTransition> anyStateTransitions;	// Any State 전이 목록
 
 	State* GetState(const std::string& stateName)
 	{
 		auto it = stateNameToIndex.find(stateName);
-		if (it != stateNameToIndex.end()) 
+		if (it != stateNameToIndex.end())
 		{
 			return &states[it->second]; // 상태가 존재하면 해당 상태 반환
 		}
