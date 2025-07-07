@@ -2,6 +2,8 @@
 #include "Utils/Singleton.h"
 #include "Utils/GameTime.h"
 #include "Scene/SceneManager.h"
+#include "Utils/DebugUtility.h"
+#include "Resources/Loaders/AnimationControllerLoader.h"
 
 #include <string>
 #include <iostream>
@@ -19,7 +21,7 @@ void TestPlayer::Start()
 	idleBitmap = AddComponent<AnimationRenderer>();	
 	idleBitmap->CreateBitmapResource(L"../Resource/ken.png");
 	idleBitmap->SetSpriteSheet(L"../Resource/Json/ken_sprites.json");
-	idleBitmap->SetAnimationClip(L"../Resource/Json/Attack_Front_anim.json");
+	idleBitmap->SetAnimationClip(L"../Resource/Json/Dead_Normal_anim.json");
 	idleBitmap->Play();
 	
 	// set transform
@@ -69,16 +71,23 @@ void TestPlayer::Start()
 	fsmInstance = AddComponent<FSMInstance>();
 	fsmInstance->SetAnimationController(ac);
 
+	// state 클래스들 초기화
 	idleState = new IdleState();
 	idleState->player = this;
 	moveState = new MoveState();
 	moveState->player = this;
 	hitState = new HitState();
 	hitState->player = this;
+	deadState = new DeadState();
+	deadState->player = this;
+	attackState = new AttackState();
+	attackState->player = this;
 
 	fsmInstance->SetStateBehavior("Idle", idleState);
 	fsmInstance->SetStateBehavior("Move", moveState);
 	fsmInstance->SetStateBehavior("Hit", hitState);
+	fsmInstance->SetStateBehavior("Dead", deadState);
+	fsmInstance->SetStateBehavior("Attack", attackState);
 
 	fsmInstance->OnStart();
 }
@@ -90,6 +99,11 @@ void TestPlayer::Update()
 	if (input->IsKeyPressed('M')) // IGameObjectQuery로 게임 오브젝트 찾기 테스트
 	{
 		GameObject* sun = query->FindByName("Sun");
+	}
+
+	if (input->IsKeyPressed('N'))
+	{
+		fsmInstance->SetTrigger("attack");
 	}
 
 	HandleCameraInput();
@@ -132,13 +146,14 @@ void TestPlayer::HandleMoveInput()
 		moveVec.y -= speed;
 	}
 
+	// fsm 움직임 갱신
 	if (moveVec.x == 0 && moveVec.y == 0)
 	{
-		fsmInstance->SetFloat("Speed", 0);
+		fsmInstance->SetFloat("speed", 0);
 	}
 	else
 	{
-		fsmInstance->SetFloat("Speed", 1);
+		fsmInstance->SetFloat("speed", 1);
 	}
 
 	transform->SetPosition(position.x + moveVec.x, position.y + moveVec.y);
@@ -150,15 +165,27 @@ void TestPlayer::HandlePlayerCameraInput()
 
 	D2D1_VECTOR_2F inputVec = { 0,0 };
 
-	if (input->IsKeyDown('K'))	inputVec.y -= 1.0f;
-	if (input->IsKeyDown('I'))	inputVec.y += 1.0f;
-	if (input->IsKeyDown('J'))	inputVec.x -= 1.0f;
-	if (input->IsKeyDown('L')) inputVec.x += 1.0f;
+	if (input->IsKeyDown('K'))
+	{
+		inputVec.y -= 1.0f;
+	}
+	if (input->IsKeyDown('I'))
+	{
+		inputVec.y += 1.0f;
+	}
+	if (input->IsKeyDown('J'))
+	{
+		inputVec.x -= 1.0f;
+	}
+	if (input->IsKeyDown('L'))
+	{
+		inputVec.x += 1.0f;
+	}
 
-	D2D1_VECTOR_2F positionVec = { playerMainCam->GetTransform().GetPosition().x, playerMainCam->GetTransform().GetPosition().y};
+	D2D1_VECTOR_2F positionVec = playerMainCam->GetTransform().GetPosition();
+	D2D1_VECTOR_2F moveVec = { inputVec.x * camSpeed, inputVec.y * camSpeed };
 
-	float deltaTime = Singleton<GameTime>::GetInstance().GetDeltaTime();
-	D2D1_VECTOR_2F moveVec = { deltaTime * inputVec.x * speed, deltaTime * inputVec.y * speed };
+	playerMainCam->GetTransform().SetPosition(positionVec.x + moveVec.x, positionVec.y + moveVec.y);
 }
 
 void TestPlayer::HandleHitInput()
@@ -176,6 +203,8 @@ void TestPlayer::HandleHitInput()
 		std::wstring hpText = L"Hp : ";
 		hpText += std::to_wstring(hpComp->GetValue());
 		text->SetText(hpText);
+
+		fsmInstance->SetBool("isDead", false); // fsm 사망상태 탈출
 	}
 }
 
@@ -212,14 +241,23 @@ void TestPlayer::OnHit(int dmg)
 {
 	int currentHp = hpComp->GetValue();
 
-	if (currentHp <= 0) return;
-
-	OnHitAction.Invoke(currentHp - dmg);
-
+	// set Text
 	std::wstring hpText = L"Hp : ";
 	hpText += std::to_wstring(hpComp->GetValue());
 	text->SetText(hpText);
-	fsmInstance->SetTrigger("hit");
+
+	// check hp
+	if (currentHp <= 0)
+	{
+		// fsm 사망상태 활성화
+		fsmInstance->SetBool("isDead", true);
+		fsmInstance->SetTrigger("dead");
+	}
+	else
+	{
+		OnHitAction.Invoke(currentHp - dmg);
+		fsmInstance->SetTrigger("hit"); // fsm 피격 상태 활성화
+	}
 }
 
 // idle
@@ -239,7 +277,7 @@ void IdleState::OnStateExit()
 // move
 void MoveState::OnStateEnter()
 {
-	player->GetRenderer()->SetAnimationClip(L"../Resource/Json/Attack_Front_anim.json");
+	player->GetRenderer()->SetAnimationClip(L"../Resource/Json/Move_Front_anim.json");
 }
 
 void MoveState::OnStateUpdate()
@@ -253,7 +291,7 @@ void MoveState::OnStateExit()
 // hit
 void HitState::OnStateEnter()
 {
-	player->GetRenderer()->SetAnimationClip(L"../Resource/Json/Attack_Up_anim.json");
+	player->GetRenderer()->SetAnimationClip(L"../Resource/Json/Hit_Normal_anim.json");
 }
 
 void HitState::OnStateUpdate()
@@ -261,5 +299,33 @@ void HitState::OnStateUpdate()
 }
 
 void HitState::OnStateExit()
+{
+}
+
+// dead
+void DeadState::OnStateEnter()
+{
+	player->GetRenderer()->SetAnimationClip(L"../Resource/Json/Dead_Normal_anim.json");
+}
+
+void DeadState::OnStateUpdate()
+{
+}
+
+void DeadState::OnStateExit()
+{
+}
+
+// attack
+void AttackState::OnStateEnter()
+{
+	player->GetRenderer()->SetAnimationClip(L"../Resource/Json/Attack_Front_anim.json");
+}
+
+void AttackState::OnStateUpdate()
+{
+}
+
+void AttackState::OnStateExit()
 {
 }

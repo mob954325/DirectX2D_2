@@ -6,13 +6,14 @@
 #include "Components/Logic/StatComponent.h"
 #include "Components/Rendering/TextRenderer.h"
 #include "Components/Rendering/BoxComponent.h"
-#include "Components/Logic/Animator.h"
 #include "Components/Logic/FSMInstance.h"
 #include "Utils/EventDelegate.h"
 
 class IdleState;
 class MoveState;
+class DeadState;
 class HitState;
+class AttackState;
 
 class TestPlayer : public GameObject
 {
@@ -43,9 +44,12 @@ private:
 	IdleState* idleState;
 	MoveState* moveState;
 	HitState* hitState;
+	DeadState* deadState;
+	AttackState* attackState;
 
-	float speed = 5.0f;
-	int maxHp = 10;
+	float speed = 2.0f;
+	float camSpeed = 5.0f;
+	int maxHp = 3;
 
 public:
 	void Start() override;
@@ -55,6 +59,7 @@ public:
 	AnimationRenderer* GetRenderer() { return idleBitmap; }
 };
 
+#pragma region States
 class IdleState : public IStateBehaviorBase
 {
 public:
@@ -84,3 +89,25 @@ public:
 	void OnStateUpdate() override;
 	void OnStateExit() override;
 };
+
+class DeadState : public IStateBehaviorBase
+{
+public:
+	TestPlayer* player;
+
+	void OnStateEnter() override;
+	void OnStateUpdate() override;
+	void OnStateExit() override;
+};
+
+class AttackState : public IStateBehaviorBase
+{
+public:
+	TestPlayer* player;
+
+	void OnStateEnter() override;
+	void OnStateUpdate() override;
+	void OnStateExit() override;
+};
+#pragma endregion
+

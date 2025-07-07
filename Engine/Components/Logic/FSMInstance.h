@@ -3,11 +3,10 @@
 #include "Datas/AnimationControllerDatas.h"
 #include "unordered_map"
 #include "vector"
-// 1. 파라미터 타입
-// 2. 각 타입별 컨테이너
-// 3. Update
-// 3.1. 컨디션 체크
 
+/// <summary>
+/// 특정 상태의 실행 내용이 들어있는 클래스
+/// </summary>
 class IStateBehaviorBase
 {
 public:
@@ -16,6 +15,9 @@ public:
 	virtual void OnStateExit() = 0;
 };
 
+/// <summary>
+/// animatorContorller를 데이터를 받아 fsm을 실행하는 클래스
+/// </summary>
 class FSMInstance : public ScriptComponent
 {
 private:

@@ -168,7 +168,7 @@ void FSMInstance::RegisterFloatParameters()
 	{
 		if (it->type == "Float")
 		{
-			floatParams[it->name] = it->defaultInt;
+			floatParams[it->name] = it->defaultFloat;
 		}
 
 		it++;
@@ -302,7 +302,7 @@ void FSMInstance::Update()
 		currentClipTimeRatio = elapsedTime / clipLength;					// 현재 시간 비율 (0.0 - 1.0)
 	}
 
-	std::cout << std::to_string(currentClipTimeRatio) << "--" << controller->states[currentStateIndex].motionName << std::endl;
+	// std::cout << std::to_string(currentClipTimeRatio) << "--" << controller->states[currentStateIndex].motionName << std::endl;
 
 	if (currentClipTimeRatio >= 1.0f)
 	{

@@ -14,7 +14,7 @@ void GameTextObject::Start()
 	textRenderer->SetPosition(2, 20);
 
 	textRenderer2 = AddComponent<TextRenderer>();
-	textRenderer2->SetText(L"WASD : 카메라 이동\n\n Y : 메인카메라를 플레이어 카메라로 변경 \n\n U : 메인카메라를 프리 카메라로 변경\n\n H : 플레이어 체력 감소 \n\n J: 플레이어 체력 초기화 \n\n O : 태양 추가\n\n P : 태양 제거 \n\n 1, 2, 3 : 애니메이션 실행");
+	textRenderer2->SetText(L"WASD : 카메라 이동\n\n Y : 메인카메라를 플레이어 카메라로 변경 \n\n U : 메인카메라를 프리 카메라로 변경\n\n H : 플레이어 체력 감소 \n\n J: 플레이어 체력 초기화 \n\n O : 태양 추가\n\n P : 태양 제거 \n\n 1, 2, 3 : 애니메이션 실행 \n\n N : 공격 실행");
 	textRenderer2->SetPosition(2, 80);
 	inputSystem = AddComponent<InputSystem>();	
 

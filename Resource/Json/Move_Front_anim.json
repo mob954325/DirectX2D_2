@@ -1,32 +1,28 @@
 {
-    "clipName": "Idle_Right",
+    "clipName": "Move_Front",
     "loop": true,
     "texturePath": "Assets/Sprites/ken.png",
-    "duration": 0.5,
+    "duration": 0.4166666865348816,
     "frames": [
         {
-            "sprite": "Idle_Right_0",
+            "sprite": "Move_Front_0",
             "time": 0.0
         },
         {
-            "sprite": "Idle_Right_1",
+            "sprite": "Move_Front_1",
             "time": 0.0833333358168602
         },
         {
-            "sprite": "Idle_Right_2",
+            "sprite": "Move_Front_2",
             "time": 0.1666666716337204
         },
         {
-            "sprite": "Idle_Right_3",
+            "sprite": "Move_Front_3",
             "time": 0.25
         },
         {
-            "sprite": "Idle_Right_4",
+            "sprite": "Move_Front_4",
             "time": 0.3333333432674408
-        },
-        {
-            "sprite": "Idle_Right_5",
-            "time": 0.4166666865348816
         }
     ],
     "events": []

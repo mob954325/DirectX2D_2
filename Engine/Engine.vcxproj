@@ -129,7 +129,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Components\Logic\Animator.h" />
     <ClInclude Include="Components\Logic\FSMInstance.h" />
     <ClInclude Include="Datas\AnimationControllerDatas.h" />
     <ClInclude Include="Resources\Loaders\AnimationControllerLoader.h" />
@@ -172,7 +171,6 @@
     <ClInclude Include="Utils\Singleton.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Components\Logic\Animator.cpp" />
     <ClCompile Include="Components\Logic\FSMInstance.cpp" />
     <ClCompile Include="Resources\Loaders\AnimationControllerLoader.cpp" />
     <ClCompile Include="Resources\Loaders\AnimationClipLoader.cpp" />
