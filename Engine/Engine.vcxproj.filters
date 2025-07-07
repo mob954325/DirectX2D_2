@@ -90,6 +90,9 @@
     <Filter Include="소스 파일\Resources\Loader">
       <UniqueIdentifier>{01c98fe4-53f4-4a5d-9e32-c2fcd74edd80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\External">
+      <UniqueIdentifier>{4ddf5507-b336-47a4-a7c9-f36d56800357}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -170,9 +173,6 @@
     <ClInclude Include="Resources\AnimationResource.h">
       <Filter>헤더 파일\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="External\json.hpp">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Scene\GameObjectQuery.h">
       <Filter>헤더 파일\Scene</Filter>
     </ClInclude>
@@ -209,8 +209,11 @@
     <ClInclude Include="Datas\AnimationControllerDatas.h">
       <Filter>헤더 파일\Datas</Filter>
     </ClInclude>
+    <ClInclude Include="External\json.hpp">
+      <Filter>헤더 파일\External</Filter>
+    </ClInclude>
     <ClInclude Include="Components\Logic\FSMInstance.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Components\Logic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -296,7 +299,7 @@
       <Filter>소스 파일\Resources\Loader</Filter>
     </ClCompile>
     <ClCompile Include="Components\Logic\FSMInstance.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Components\Logic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
