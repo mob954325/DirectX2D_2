@@ -26,6 +26,12 @@ void SunGeneratorObject::Update()
 	{
 		GameObject* obj = new Sun();
 		objects.push_back(obj);
+		
+		std::string name = "Sun";
+		std::string index = std::to_string((int)objects.size());
+		std::string finalName = name + index;
+		
+		obj->SetName(finalName);
 
 		int randX = rand() % 1000;
 		int randY = rand() % 600;

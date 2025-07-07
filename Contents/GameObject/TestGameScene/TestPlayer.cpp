@@ -98,7 +98,15 @@ void TestPlayer::Update()
 
 	if (input->IsKeyPressed('M')) // IGameObjectQuery로 게임 오브젝트 찾기 테스트
 	{
-		GameObject* sun = query->FindByName("Sun");
+		GameObject* sun = query->FindByName("Sun11");
+		if (sun != nullptr)
+		{
+			DebugUtility::Print("--- Found Sun !!");
+		}
+		else
+		{
+			DebugUtility::Print("--- Target Sun is not exist");
+		}
 	}
 
 	if (input->IsKeyPressed('N'))
