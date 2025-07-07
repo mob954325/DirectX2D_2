@@ -5,7 +5,7 @@
 #include "Components/Base/Transform.h"
 #include "Resources/BitmapResource.h"
 
-class BitmapRenderer : public RenderComponent
+class BitmapRenderer : public RenderComponent // 질문1, 질문6 -2
 {
 public:
 	BitmapRenderer() {};

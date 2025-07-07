@@ -16,7 +16,7 @@ struct SceneState
 /// <summary>
 /// SceneMnaager가 관리하는 Scene 클래스
 /// </summary>
-class Scene : public IGameObjectQuery
+class Scene : public IGameObjectQuery // 질문5
 {
 public:
 	/// <summary>

@@ -7,7 +7,7 @@
 #include "Datas/EngineData.h"
 #include "Resources/BitmapResource.h"
 
-void BitmapRenderer::Render(D2DRenderManager* manager)
+void BitmapRenderer::Render(D2DRenderManager* manager) // 질문4 -2
 {
 	if (m_bitmapResource != nullptr)
 	{

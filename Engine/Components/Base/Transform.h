@@ -18,7 +18,7 @@
 //                           |          |
 // (-width / 2, -height / 2) +----------+ (width / 2, -height / 2) 
 
-class Transform : public Component
+class Transform : public Component // 질문1, 질문2
 {
 protected:
 	Transform* parent = nullptr;

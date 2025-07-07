@@ -15,3 +15,5 @@ public:
 private:
 	Input* input{};
 };
+
+// NOTE9

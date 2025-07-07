@@ -21,7 +21,7 @@ void Scene::OnExit()
 	isSceneChanging = true;
 }
 
-void Scene::Update()
+void Scene::Update() // 질문8
 {
 	AddCreatedObjects();
 	if (isSceneChanging) return;

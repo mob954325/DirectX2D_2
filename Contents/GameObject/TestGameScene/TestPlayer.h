@@ -15,7 +15,7 @@ class DeadState;
 class HitState;
 class AttackState;
 
-class TestPlayer : public GameObject
+class TestPlayer : public GameObject // 질문11
 {
 private:
 	void HandleMoveInput();

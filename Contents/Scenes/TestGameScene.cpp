@@ -12,7 +12,7 @@
 #include "GameObject/TestGameScene/TestPlayer.h"
 #include "GameObject/TestGameScene/SunGeneratorObject.h"
 
-void TestGameScene::OnEnterImpl()
+void TestGameScene::OnEnterImpl() // 질문11
 {
 	m_TestPlayer = new TestPlayer();
 	AddGameObject(m_TestPlayer, "Player");
