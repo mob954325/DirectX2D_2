@@ -74,7 +74,7 @@ GameObject* Scene::FindByName(const std::string& name) const
 	return nullptr;
 }
 
-void Scene::CleanupDestroyedObjects()
+void Scene::CleanUpDestroyedObjects()
 {
 	FindRemoveObject();
 
