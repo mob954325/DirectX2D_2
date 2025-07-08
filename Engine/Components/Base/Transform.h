@@ -18,7 +18,7 @@
 //                           |          |
 // (-width / 2, -height / 2) +----------+ (width / 2, -height / 2) 
 
-class Transform : public Component // 질문1, 질문2
+class Transform : public Component 
 {
 protected:
 	Transform* parent = nullptr;
@@ -36,6 +36,8 @@ public:
 	Transform()
 		: position({ 0.0f, 0.0f }), rotation(0.0f), scale({1.0f, 1.0f}) { }
 
+	void OnEnd() override;
+
 	// get, set
 	D2D1_VECTOR_2F GetPosition() const { return position; }
 	void SetPosition(float x, float y) { dirty = true; position.x = x; position.y = y; }
@@ -51,6 +53,8 @@ public:
 
 	bool IsUnityCoords() { return isUnityCoords; }
 	void SetIsUnityCoords(bool value) { isUnityCoords = value; }
+
+	bool IsDirty();
 
 	/// <summary>
 	/// 매트릭스로 transform 값 설정

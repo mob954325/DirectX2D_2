@@ -7,7 +7,7 @@ using namespace Microsoft::WRL;
 
 class RenderSystem;
 // Direct2D 코드 재활용 하기 위한 클래스 | IRenderer
-class D2DRenderManager // 질문4 -1
+class D2DRenderManager 
 {
 public:
 	void Initialize();

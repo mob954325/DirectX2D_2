@@ -5,7 +5,7 @@
 #include "Components/Base/Transform.h"
 #include "Resources/BitmapResource.h"
 
-class BitmapRenderer : public RenderComponent // 질문1, 질문6 -2
+class BitmapRenderer : public RenderComponent 
 {
 public:
 	BitmapRenderer() {};
@@ -16,8 +16,7 @@ public:
 	void OnDestroy() override;
 
 	void CreateBitmapResource(std::wstring filePath);
-	void SetScreenSize(int width, int height);
-	void SetOffSet(float x, float y);
+	void SetRenderAnchor(float x, float y);
 
 	std::shared_ptr<BitmapResource> GetResource();
 

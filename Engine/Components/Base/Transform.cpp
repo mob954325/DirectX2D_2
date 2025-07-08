@@ -1,6 +1,20 @@
 ﻿#include "pch.h"
 #include "Transform.h"
 
+bool Transform::IsDirty()
+{
+	if (parent != nullptr)
+	{
+		return dirty || parent->IsDirty();
+	}
+	else
+	{
+		return dirty;
+	}
+
+	return false;
+}
+
 void Transform::SetTransformToMatrix(D2D1_MATRIX_3X2_F matrix)
 {
 }
@@ -16,7 +30,7 @@ D2D1_MATRIX_3X2_F Transform::ToLocalMatrix()
 			D2D1::Matrix3x2F::Scale(scale.x, scale.y) *
 			D2D1::Matrix3x2F::Rotation(rotation) *
 			D2D1::Matrix3x2F::Translation(position.x, position.y);
-		dirty = false;
+		//dirty = false;
 	}
 
 	return cachedMatrix;
@@ -77,4 +91,9 @@ void Transform::Reset()
 	SetPosition(0.0f, 0.0f);
 	SetRotation(0.0f);
 	SetScale(1.0f, 1.0f);
+}
+
+void Transform::OnEnd()
+{
+	if (dirty) dirty = false;
 }

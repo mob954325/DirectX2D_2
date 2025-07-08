@@ -34,7 +34,7 @@ void TestPlayer::Start()
 	// statcomponent(hp) init
 	hpComp = AddComponent<StatComponent>();
 	hpComp->ChangeStat(maxHp);
-	OnHitAction += hpComp->GetValueFunctionObject(); // 질문7
+	OnHitAction += hpComp->GetValueFunctionObject();
 	
 	// text init
 	text = AddComponent<TextRenderer>();

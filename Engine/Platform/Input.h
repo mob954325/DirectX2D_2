@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include "Utils/Singleton.h"
 
-class Input // 질문9
+class Input
 {
 public:
 	Input() = default;

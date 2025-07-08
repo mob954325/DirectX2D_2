@@ -1,6 +1,6 @@
 ﻿#include "ResourceManager.h"
 
-std::shared_ptr<BitmapResource> ResourceManager::CreateBitmapResource(std::wstring filePath)  // 질문6
+std::shared_ptr<BitmapResource> ResourceManager::CreateBitmapResource(std::wstring filePath) 
 {
 	std::shared_ptr<BitmapResource> sharedResource;
 	auto it = mapBitmap.find(filePath);

@@ -162,17 +162,17 @@ void Application::MessageProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_SIZE:
 	{
-		//if (wParam == SIZE_MINIMIZED)
-		//	break; // 최소화는 무시
-
-		//UINT width = LOWORD(lParam); // 새 너비
-		//UINT height = HIWORD(lParam); // 새 높이			
-		//if (m_Width != width || m_Height != height)
-		//{
-		//	m_Width = width;
-		//	m_Height = height;
-		//	m_resized = true;
-		//}
+		// if (wParam == SIZE_MINIMIZED)
+		// 	break; // 최소화는 무시
+		// 
+		// UINT width = LOWORD(lParam); // 새 너비
+		// UINT height = HIWORD(lParam); // 새 높이			
+		// if (EngineData::SceenWidth != width || EngineData::SceenHeight != height)
+		// {
+		// 	m_Width = width;
+		// 	m_Height = height;
+		// 	m_resized = true;
+		// }
 	}
 	break;
 	case WM_EXITSIZEMOVE:

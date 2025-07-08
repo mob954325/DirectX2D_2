@@ -3,7 +3,7 @@
 #include "Utils/Singleton.h"
 #include "Components/Logic/ScriptComponent.h"
 
-class ScriptSystem : public Singleton<ScriptSystem> // 질문3
+class ScriptSystem : public Singleton<ScriptSystem>
 {
 public:
 	friend class Singleton<ScriptSystem>;

@@ -7,14 +7,14 @@
 #include "Datas/EngineData.h"
 #include "Resources/BitmapResource.h"
 
-void BitmapRenderer::Render(D2DRenderManager* manager) // 질문4 -2
+void BitmapRenderer::Render(D2DRenderManager* manager)
 {
 	if (m_bitmapResource != nullptr)
 	{
 		CalculateFinalMatrix();
 
 		manager->SetBitmapTransform(finalMatrix);
-		manager->DrawBitmap(m_bitmapResource.get()->GetBitmap());
+		manager->DrawBitmap(m_bitmapResource->GetBitmap());
 	}
 }
 
@@ -36,13 +36,7 @@ void BitmapRenderer::CreateBitmapResource(std::wstring filePath)
 	m_bitmapResource = resourceManager->CreateBitmapResource(filePath);
 }
 
-void BitmapRenderer::SetScreenSize(int width, int height)
-{
-	screenWidth = width; screenHeight = height;
-	unityCoordMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation((FLOAT)(screenWidth / 2), (FLOAT)(screenHeight / 2));
-}
-
-void BitmapRenderer::SetOffSet(float x, float y)
+void BitmapRenderer::SetRenderAnchor(float x, float y)
 {
 	offsetX = x; offsetY = y;
 
@@ -55,7 +49,7 @@ std::shared_ptr<BitmapResource> BitmapRenderer::GetResource()
 	return m_bitmapResource;
 }
 
-void BitmapRenderer::CalculateFinalMatrix()
+void BitmapRenderer::CalculateFinalMatrix() // -> ??
 {
 	Camera* pCam = Singleton<SceneManager>::GetInstance().GetMainCamera();
 	D2D1_MATRIX_3X2_F mainCamInvertMatrix = pCam ? pCam->GetInvertMatrix() : D2D1::Matrix3x2F::Identity();

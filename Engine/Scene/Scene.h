@@ -16,7 +16,7 @@ struct SceneState
 /// <summary>
 /// SceneMnaager가 관리하는 Scene 클래스
 /// </summary>
-class Scene : public IGameObjectQuery // 질문5
+class Scene : public IGameObjectQuery
 {
 public:
 	/// <summary>
@@ -28,6 +28,11 @@ public:
 	/// 게임 오브젝트 파괴 리스트 순환 후 UpdateImpl() 호출
 	/// </summary>
 	void Update();
+
+	/// <summary>
+	/// 모든 업데이트 끝나고 실행
+	/// </summary>
+	void LateUpdate();
 
 	/// <summary>
 	/// 등록된 오브젝트 OnDestroy() 실행

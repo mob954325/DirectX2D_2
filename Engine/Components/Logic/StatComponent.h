@@ -2,7 +2,7 @@
 #include <functional>
 #include "Components/Base/Component.h"
 
-class StatComponent : public Component // 질문1
+class StatComponent : public Component
 {
 public:
 	StatComponent() = default;
