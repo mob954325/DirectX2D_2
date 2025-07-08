@@ -1,9 +1,6 @@
 ﻿#pragma once
 #include "Components/Base/Component.h"
 
-/// <summary>
-/// 
-/// </summary>
 class ScriptComponent : public Component
 {
 public:

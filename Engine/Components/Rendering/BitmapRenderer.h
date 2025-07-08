@@ -16,20 +16,20 @@ public:
 	void OnDestroy() override;
 
 	void CreateBitmapResource(std::wstring filePath);
-	void SetRenderAnchor(float x, float y);
+	//void SetRenderAnchor(float x, float y);
 
 	std::shared_ptr<BitmapResource> GetResource();
 
 protected:
-	void CalculateFinalMatrix();
+	//void CalculateFinalMatrix();
 
-	D2D1_MATRIX_3X2_F unityCoordMatrix = D2D1::Matrix3x2F::Identity(); // 유니티 좌표 전환 메트릭스
-	D2D1_MATRIX_3X2_F normalRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, 1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
-	D2D1_MATRIX_3X2_F unityRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
+	//D2D1_MATRIX_3X2_F unityCoordMatrix = D2D1::Matrix3x2F::Identity(); // 유니티 좌표 전환 메트릭스
+	//D2D1_MATRIX_3X2_F normalRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, 1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
+	//D2D1_MATRIX_3X2_F unityRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
 
 	std::shared_ptr<BitmapResource> m_bitmapResource;
 	D2D1_RECT_F destRect = {};
-	D2D1_MATRIX_3X2_F finalMatrix = {};
+	// D2D1_MATRIX_3X2_F finalMatrix = {};
 
 	int screenWidth = 0;
 	int screenHeight = 0;

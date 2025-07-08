@@ -28,6 +28,15 @@ protected:
 	D2D1_VECTOR_2F scale;
 	D2D1_MATRIX_3X2_F cachedMatrix = D2D1::Matrix3x2F::Identity();
 
+	D2D1_MATRIX_3X2_F unityCoordMatrix = D2D1::Matrix3x2F::Identity(); // 유니티 좌표 전환 메트릭스
+	D2D1_MATRIX_3X2_F normalRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, 1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
+	D2D1_MATRIX_3X2_F unityRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
+
+	D2D1_MATRIX_3X2_F finalMatrix = {};
+
+	float offsetX = 0.0f;
+	float offsetY = 0.0f;
+
 	bool dirty = true;	// 행렬 반복 연산 제거용 플래그 변수 ( true : transform 값이 갱신됨 )
 	bool isUnityCoords = true;
 
@@ -36,6 +45,7 @@ public:
 	Transform()
 		: position({ 0.0f, 0.0f }), rotation(0.0f), scale({1.0f, 1.0f}) { }
 
+	void OnStart() override;
 	void OnEnd() override;
 
 	// get, set
@@ -54,6 +64,9 @@ public:
 	bool IsUnityCoords() { return isUnityCoords; }
 	void SetIsUnityCoords(bool value) { isUnityCoords = value; }
 
+	void SetRenderAnchor(float x, float y);
+
+	D2D1_MATRIX_3X2_F CalculateFinalMatrix();
 	bool IsDirty();
 
 	/// <summary>

@@ -1,5 +1,44 @@
 ﻿#include "pch.h"
 #include "Transform.h"
+#include "Utils/Singleton.h"
+#include "Scene/SceneManager.h"
+#include "Components/Camera/Camera.h"
+
+void Transform::SetRenderAnchor(float x, float y)
+{
+	offsetX = x; offsetY = y;
+
+	normalRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, 1.0) * D2D1::Matrix3x2F::Translation(offsetX, -offsetY);
+	unityRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
+}
+
+D2D1_MATRIX_3X2_F Transform::CalculateFinalMatrix()
+{
+	Camera* pCam = Singleton<SceneManager>::GetInstance().GetMainCamera();
+	D2D1_MATRIX_3X2_F mainCamInvertMatrix = pCam ? pCam->GetInvertMatrix() : D2D1::Matrix3x2F::Identity();
+
+	if (IsDirty()) // <-- NOTE: 이거 false 위치 잡아야함
+	{
+		// 최종 변환 값 계산
+		if (owner->transform->IsUnityCoords())
+		{
+			finalMatrix =
+				unityRenderMatrix *					// Render Matrix
+				owner->transform->ToWorldMatrix() *	// m_transform world matrix 
+				mainCamInvertMatrix *				// MainCamera invert matrix
+				unityCoordMatrix;					// unity coord Matrix
+		}
+		else
+		{
+			finalMatrix =
+				normalRenderMatrix *				// Render Matrix
+				owner->transform->ToWorldMatrix() *	// m_transform world matrix 
+				mainCamInvertMatrix;				// MainCamera invert matrix	
+		}
+	}
+
+	return finalMatrix;
+}
 
 bool Transform::IsDirty()
 {
@@ -91,6 +130,11 @@ void Transform::Reset()
 	SetPosition(0.0f, 0.0f);
 	SetRotation(0.0f);
 	SetScale(1.0f, 1.0f);
+}
+
+void Transform::OnStart()
+{
+	unityCoordMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation((FLOAT)(EngineData::SceenWidth / 2), (FLOAT)(EngineData::SceenHeight / 2));
 }
 
 void Transform::OnEnd()
