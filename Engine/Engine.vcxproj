@@ -130,7 +130,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Components\Logic\FSMInstance.h" />
+    <ClInclude Include="Components\Physics\PhysicComponent.h" />
     <ClInclude Include="Datas\AnimationControllerDatas.h" />
+    <ClInclude Include="Systems\PhysicSystem.h" />
     <ClInclude Include="Resources\Loaders\AnimationControllerLoader.h" />
     <ClInclude Include="Datas\AnimationDatas.h" />
     <ClInclude Include="Resources\Loaders\AnimationClipLoader.h" />
@@ -172,6 +174,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Components\Logic\FSMInstance.cpp" />
+    <ClCompile Include="Systems\PhysicSystem.cpp" />
     <ClCompile Include="Resources\Loaders\AnimationControllerLoader.cpp" />
     <ClCompile Include="Resources\Loaders\AnimationClipLoader.cpp" />
     <ClCompile Include="Application\Application.cpp" />

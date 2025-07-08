@@ -215,6 +215,12 @@
     <ClInclude Include="Components\Logic\FSMInstance.h">
       <Filter>헤더 파일\Components\Logic</Filter>
     </ClInclude>
+    <ClInclude Include="Systems\PhysicSystem.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Physics\PhysicComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -300,6 +306,9 @@
     </ClCompile>
     <ClCompile Include="Components\Logic\FSMInstance.cpp">
       <Filter>소스 파일\Components\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\PhysicSystem.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
