@@ -7,6 +7,7 @@
 #include "Systems/ScriptSystem.h"
 #include "Systems/RenderSystem.h"
 #include "Systems/TransformSystem.h"
+#include "Components/Camera/CameraManager.h"
 
 #include "Utils/Singleton.h"
 #include "Platform/Input.h"
@@ -198,6 +199,7 @@ void Application::Update()
 	Singleton<ScriptSystem>::GetInstance().Update();	// 컴포넌트 업데이트
 	Singleton<SceneManager>::GetInstance().Update();	// 씬 내용 업데이트
 	Singleton<TransformSystem>::GetInstance().Update();	// transform 연산 업데이트 
+	Singleton<CameraManager>::GetInstance().Update();	// 카메라 순서 업데이트
 }
 
 void Application::Run()

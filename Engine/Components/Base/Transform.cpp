@@ -1,7 +1,8 @@
 ﻿#include "pch.h"
+#include "GameObject.h"
 #include "Transform.h"
 #include "Utils/Singleton.h"
-#include "Scene/SceneManager.h"
+#include "Components/Camera/CameraManager.h"
 #include "Components/Camera/Camera.h"
 #include "math.h"
 
@@ -15,7 +16,7 @@ void Transform::SetRenderAnchor(float x, float y)
 
 void Transform::CalculateFinalMatrix()
 {
-	Camera* pCam = Singleton<SceneManager>::GetInstance().GetMainCamera();
+	Camera* pCam = Singleton<CameraManager>::GetInstance().GetActiveCamera();
 	D2D1_MATRIX_3X2_F mainCamInvertMatrix = pCam ? pCam->GetInvertMatrix() : D2D1::Matrix3x2F::Identity();
 
 	if (IsDirty())
@@ -41,13 +42,28 @@ void Transform::CalculateFinalMatrix()
 
 bool Transform::IsDirty()
 {
-	if (parent != nullptr)
+	Camera* pCam = Singleton<CameraManager>::GetInstance().GetActiveCamera();
+	if (pCam != nullptr)
 	{
-		return dirty || parent->IsDirty();
+		if (parent != nullptr)
+		{
+			return dirty || parent->IsDirty() || pCam->GetTransform().IsDirty();		
+		}
+		else
+		{
+			return dirty || pCam->GetTransform().IsDirty();
+		}
 	}
 	else
 	{
-		return dirty;
+		if (parent != nullptr)
+		{
+			return dirty || parent->IsDirty();
+		}
+		else
+		{
+			return dirty;
+		}
 	}
 }
 

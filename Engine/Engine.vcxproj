@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Components\Camera\CameraManager.h" />
     <ClInclude Include="Components\Logic\FSMInstance.h" />
     <ClInclude Include="Components\Physics\PhysicComponent.h" />
     <ClInclude Include="Datas\AnimationControllerDatas.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="Utils\Singleton.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Components\Camera\CameraManager.cpp" />
     <ClCompile Include="Components\Logic\FSMInstance.cpp" />
     <ClCompile Include="Systems\PhysicSystem.cpp" />
     <ClCompile Include="Resources\Loaders\AnimationControllerLoader.cpp" />

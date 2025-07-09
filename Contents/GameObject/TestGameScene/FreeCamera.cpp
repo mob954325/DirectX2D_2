@@ -1,11 +1,13 @@
 ﻿#include "FreeCamera.h"
 #include "Scene/SceneManager.h"
+#include "Components/Camera/CameraManager.h"
 
 void FreeCamera::Start()
 {
 	camera = AddComponent<Camera>();
-	camera->SetIsMainCamera(true);
-	camera->AttachGameObjectToCamera(this->transform);
+	// camera->SetIsMainCamera(true);
+	Singleton<CameraManager>::GetInstance().Register(new CameraInfo(camera->GetPriority(), camera)); // NOTE: 임시
+	// camera->AttachGameObjectToCamera(this->transform);
 	Singleton<SceneManager>::GetInstance().AddCamera(camera);
 
 	inputSystem = AddComponent<InputSystem>();

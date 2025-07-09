@@ -4,6 +4,7 @@
 #include "Scene/SceneManager.h"
 #include "Utils/DebugUtility.h"
 #include "Resources/Loaders/AnimationControllerLoader.h"
+#include "Components/Camera/CameraManager.h"
 
 #include <string>
 #include <iostream>
@@ -14,8 +15,10 @@ void TestPlayer::Start()
 
 	// Player camera init
 	playerMainCam = AddComponent<Camera>();
-	playerMainCam->AttachGameObjectToCamera(this->transform);
-	Singleton<SceneManager>::GetInstance().AddCamera(playerMainCam);
+	//playerMainCam->AttachGameObjectToCamera(this->transform);
+	// Singleton<SceneManager>::GetInstance().AddCamera(playerMainCam);
+	Singleton<CameraManager>::GetInstance().Register(new CameraInfo(playerMainCam->GetPriority(), playerMainCam)); // NOTE: 임시
+	playerMainCam->SetPriority(11);
 
 	// animation renderer init
 	idleBitmap = AddComponent<AnimationRenderer>();	
@@ -221,11 +224,11 @@ void TestPlayer::HandleCameraInput()
 	// 카메라 설정 인풋
 	if (input->IsKeyPressed('Y'))
 	{
-		playerMainCam->SetIsMainCamera(true);
+		playerMainCam->SetPriority(1);
 	}
 	else if (input->IsKeyPressed('U'))
 	{
-		playerMainCam->SetIsMainCamera(false);
+		playerMainCam->SetPriority(11);
 	}
 }
 

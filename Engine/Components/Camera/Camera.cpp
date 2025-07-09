@@ -1,4 +1,5 @@
 ﻿#include "Camera.h"
+#include "Components/Base/GameObject.h"
 
 void Camera::OnStart()
 {
@@ -9,9 +10,7 @@ void Camera::OnDestroy()
 {
 	if (isLocalTransform)
 	{
-		// 해당 객체에서 만든 트랜스폼 메모리 해제
 		delete localTransform;
-		delete gameObjectTransform;
 	}
 }
 
@@ -25,14 +24,14 @@ void Camera::SetIsMainCamera(bool value)
 	isMainCamera = value;
 }
 
-void Camera::AttachGameObjectToCamera(Transform* pTransform)
-{
-	gameObjectTransform = pTransform;
-}
-
 D2D1_MATRIX_3X2_F Camera::GetMatrix() const
 {
-	D2D1_MATRIX_3X2_F attached = gameObjectTransform->ToWorldMatrix();
+	if (owner == nullptr)
+	{
+		return D2D1::Matrix3x2F::Identity();
+	}
+		
+	D2D1_MATRIX_3X2_F attached = owner->transform->ToWorldMatrix();
 	D2D1_MATRIX_3X2_F local = localTransform->ToWorldMatrix();
 	D2D1_MATRIX_3X2_F resultMatrix = attached * local;
 
@@ -50,4 +49,15 @@ D2D1_MATRIX_3X2_F Camera::GetInvertMatrix() const
 Transform& Camera::GetTransform() const
 {
 	return *localTransform;
+}
+
+int& Camera::GetPriority()
+{
+	return priority;
+}
+
+void Camera::SetPriority(int value)
+{
+	priority = value;
+	isPriorityChanged = true;
 }

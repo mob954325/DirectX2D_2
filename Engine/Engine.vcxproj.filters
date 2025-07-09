@@ -224,6 +224,9 @@
     <ClInclude Include="Components\Physics\PhysicComponent.h">
       <Filter>헤더 파일\Components\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Components\Camera\CameraManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -315,6 +318,9 @@
     </ClCompile>
     <ClCompile Include="Systems\TransformSystem.cpp">
       <Filter>소스 파일\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Camera\CameraManager.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

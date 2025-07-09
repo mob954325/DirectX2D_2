@@ -33,6 +33,11 @@ void TransformSystem::Update()
 	}
 }
 
+void TransformSystem::ClearAll()
+{
+	components.clear();	
+}
+
 TransformSystem::~TransformSystem()
 {
 	components.clear();

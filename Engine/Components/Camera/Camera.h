@@ -14,20 +14,30 @@
 class Camera : public Component
 {
 public:
-	void OnStart() override;	// 임시
+	void OnStart() override;	// 임시		
 	void OnDestroy() override;
 
+	// flag
 	bool IsMainCamera();
+
+	// getter, setter
 	void SetIsMainCamera(bool value);
-	void AttachGameObjectToCamera(Transform* pTransform);
 	D2D1_MATRIX_3X2_F GetMatrix() const;
 	D2D1_MATRIX_3X2_F GetInvertMatrix() const;
 
 	Transform& GetTransform() const;
+
+	int& GetPriority();
+	void SetPriority(int value);
+
+	bool IsPriorityChanged() { return isPriorityChanged; }
+	void ResetIsPriorityChanged() { isPriorityChanged = false; }
+
 private:
+	int priority = 10;
+	bool isPriorityChanged = false;
 	bool isMainCamera = false;
 	bool isLocalTransform = false;	  // 참조한 트랜스폼이 아닌 직접 만든 트랜스폼인지 확인하는 변수
-	Transform* gameObjectTransform{}; // 이걸 부착한 게임 오브젝트의 트랜스폼을 참조
 	Transform* localTransform{};	  // 카메라가 가지고 있는 Transform
 };
 

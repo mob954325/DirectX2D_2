@@ -1,6 +1,8 @@
 ﻿#include "SceneManager.h"
 #include "Systems/ScriptSystem.h"
 #include "Systems/RenderSystem.h"
+#include "Systems/TransformSystem.h"
+#include "Components/Camera/CameraManager.h"
 
 SceneManager::~SceneManager()
 {
@@ -30,6 +32,8 @@ void SceneManager::ChangeScene(int sceneIndex)
 		cameras.clear();
 		Singleton<ScriptSystem>::GetInstance().ClearAll();
 		Singleton<RenderSystem>::GetInstance().ClearAll();
+		Singleton<TransformSystem>::GetInstance().ClearAll();
+		Singleton<CameraManager>::GetInstance().ClearAll();
 	}
 
 	// 씬 교체

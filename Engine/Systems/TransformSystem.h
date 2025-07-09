@@ -10,6 +10,8 @@ public:
 	void Register(Transform* pTransform);
 	void Unregister(Transform* pTransform);
 	void Update();
+	void ClearAll();
+
 private:
 	TransformSystem() = default;
 	~TransformSystem();
