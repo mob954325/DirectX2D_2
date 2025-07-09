@@ -216,13 +216,13 @@
       <Filter>헤더 파일\Components\Logic</Filter>
     </ClInclude>
     <ClInclude Include="Systems\PhysicSystem.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Physics\PhysicComponent.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Systems</Filter>
     </ClInclude>
     <ClInclude Include="Systems\TransformSystem.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Physics\PhysicComponent.h">
+      <Filter>헤더 파일\Components\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -311,10 +311,10 @@
       <Filter>소스 파일\Components\Logic</Filter>
     </ClCompile>
     <ClCompile Include="Systems\PhysicSystem.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Systems</Filter>
     </ClCompile>
     <ClCompile Include="Systems\TransformSystem.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Systems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
