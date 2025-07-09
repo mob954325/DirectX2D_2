@@ -16,11 +16,6 @@ public:
 
 
 private:
-	D2D1_MATRIX_3X2_F unityCoordMatrix = D2D1::Matrix3x2F::Identity();
-	D2D1_MATRIX_3X2_F normalRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, 1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
-	D2D1_MATRIX_3X2_F unityRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
-	D2D1_MATRIX_3X2_F finalMatrix = {};
-
 	D2D1_POINT_2F MatrixTransform(const D2D1_POINT_2F& point, const D2D1_MATRIX_3X2_F& matrix);
 
 	D2D1_RECT_F rect{};

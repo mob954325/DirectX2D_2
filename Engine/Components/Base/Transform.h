@@ -50,13 +50,13 @@ public:
 
 	// get, set
 	D2D1_VECTOR_2F GetPosition() const { return position; }
-	void SetPosition(float x, float y) { dirty = true; position.x = x; position.y = y; }
+	void SetPosition(float x, float y);
 
 	float GetRotation() const { return rotation; }
-	void SetRotation(float rotValue) { dirty = true; rotation = rotValue; }
+	void SetRotation(float rotValue);
 
 	D2D1_VECTOR_2F GetScale() const { return scale; }
-	void SetScale(float scaleX, float scaleY) { dirty = true; scale.x = scaleX; scale.y = scaleY; }
+	void SetScale(float scaleX, float scaleY); 
 
 	Transform* GetParent() const { return parent; }
 	void SetParent(Transform* t) { parent = t; }
@@ -66,7 +66,9 @@ public:
 
 	void SetRenderAnchor(float x, float y);
 
-	D2D1_MATRIX_3X2_F CalculateFinalMatrix();
+	void CalculateFinalMatrix(); // ??
+	D2D1_MATRIX_3X2_F GetFinalMatrix() { return finalMatrix; }// NOTE: 랜더러에 이거 추가하기
+	void ResetDirty() { dirty = false; }
 	bool IsDirty();
 
 	/// <summary>

@@ -1,4 +1,6 @@
 ﻿#include "Scene.h"
+#include "Utils/Singleton.h"
+#include "Systems/TransformSystem.h"
 
 void Scene::OnEnter()
 {
@@ -31,14 +33,13 @@ void Scene::Update()
 
 	UpdateImpl();
 	if (isSceneChanging) return;
-
-	// CleanupDestroyedObjects();
 }
 
 void Scene::AddGameObject(GameObject* gameObject)
 {
 	objectsToAdd.push_back(gameObject);
 	gameObject->SetQueryInterface(this);
+	Singleton<TransformSystem>::GetInstance().Register(gameObject->transform); // NOTE: 0709추가 TransformSystem에 transform 추가
 }
 
 void Scene::AddGameObject(GameObject* gameObject, const std::string& name)
@@ -46,6 +47,7 @@ void Scene::AddGameObject(GameObject* gameObject, const std::string& name)
 	objectsToAdd.push_back(gameObject);
 	gameObject->SetName(name);
 	gameObject->SetQueryInterface(this);
+	Singleton<TransformSystem>::GetInstance().Register(gameObject->transform);
 }
 
 void Scene::FindRemoveObject()

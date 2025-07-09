@@ -104,7 +104,7 @@ void D2DRenderManager::PrintText(const wchar_t* str, float left, float top)
 	m_d2dDeviceContext->DrawTextW(str, (UINT32)wcslen(str), m_pDWriteTextFormat.Get(), D2D1::RectF(left, top, left + 300, top + 250), m_pBrush.Get());
 }
 
-void D2DRenderManager::CreateEffect(ID2D1Effect** skew, ID2D1Effect** shadow, Microsoft::WRL::ComPtr<ID2D1Bitmap> bitmap)
+void D2DRenderManager::CreateEffect(ID2D1Effect** skew, ID2D1Effect** shadow, Microsoft::WRL::ComPtr<ID2D1Bitmap> bitmap) // ?
 {
 	// AffineTransform2D 이펙트 생성	
 	HRESULT hr = m_d2dDeviceContext->CreateEffect(CLSID_D2D12DAffineTransform, skew);

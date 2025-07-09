@@ -6,6 +6,7 @@
 #include "Platform/D2DRenderManager.h"
 #include "Systems/ScriptSystem.h"
 #include "Systems/RenderSystem.h"
+#include "Systems/TransformSystem.h"
 
 #include "Utils/Singleton.h"
 #include "Platform/Input.h"
@@ -55,8 +56,7 @@ void Application::Initialize()
 
 	m_hwnd = CreateWindowEx(0, 
 		EngineData::WindowName.c_str(), EngineData::TitleName.c_str(),
-		WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,
-		CW_USEDEFAULT, CW_USEDEFAULT,
+		WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
 		clientRect.right - clientRect.left, clientRect.bottom - clientRect.top,
 		nullptr, nullptr, m_hInstance, this);
 	ShowWindow(m_hwnd, SW_SHOW);
@@ -162,17 +162,17 @@ void Application::MessageProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_SIZE:
 	{
-		// if (wParam == SIZE_MINIMIZED)
-		// 	break; // 최소화는 무시
-		// 
-		// UINT width = LOWORD(lParam); // 새 너비
-		// UINT height = HIWORD(lParam); // 새 높이			
-		// if (EngineData::SceenWidth != width || EngineData::SceenHeight != height)
-		// {
-		// 	m_Width = width;
-		// 	m_Height = height;
-		// 	m_resized = true;
-		// }
+		if (wParam == SIZE_MINIMIZED)
+			break; // 최소화는 무시
+		
+		UINT width = LOWORD(lParam); // 새 너비
+		UINT height = HIWORD(lParam); // 새 높이			
+		if (EngineData::SceenWidth != width || EngineData::SceenHeight != height)
+		{
+			EngineData::SceenWidth = width;
+			EngineData::SceenHeight = height;
+			m_resized = true;
+		}
 	}
 	break;
 	case WM_EXITSIZEMOVE:
@@ -195,8 +195,9 @@ void Application::Render()
 
 void Application::Update()
 {
-	Singleton<ScriptSystem>::GetInstance().Update(); // 컴포넌트 업데이트
-	Singleton<SceneManager>::GetInstance().Update(); // 씬 내용 업데이트
+	Singleton<ScriptSystem>::GetInstance().Update();	// 컴포넌트 업데이트
+	Singleton<SceneManager>::GetInstance().Update();	// 씬 내용 업데이트
+	Singleton<TransformSystem>::GetInstance().Update();	// transform 연산 업데이트 
 }
 
 void Application::Run()
@@ -243,30 +244,30 @@ void Application::ConsoleUnInitialize()
 
 void Application::ResizeSwapChainBuffers()
 {
-	//if (!m_dxgiSwapChain || !m_d2dDeviceContext) return;
+	if (!m_dxgiSwapChain || !m_d2dDeviceContext) return;
 
-	//m_d2dDeviceContext->SetTarget(nullptr);
-	//m_d2dBitmapTarget.Reset();
+	m_d2dDeviceContext->SetTarget(nullptr);
+	m_d2dBitmapTarget.Reset();
 
-	//// 1. 스왑체인 버퍼 리사이즈
-	//HRESULT hr = m_dxgiSwapChain->ResizeBuffers(0, m_Width, m_Height, DXGI_FORMAT_UNKNOWN, 0);
-	//if (FAILED(hr))
-	//{
-	//	// 오류 로그 출력
-	//	return;
-	//}
+	// 1. 스왑체인 버퍼 리사이즈
+	HRESULT hr = m_dxgiSwapChain->ResizeBuffers(0, EngineData::SceenWidth, EngineData::SceenHeight, DXGI_FORMAT_UNKNOWN, 0);
+	if (FAILED(hr))
+	{
+		// 오류 로그 출력
+		return;
+	}
 
-	//// 2. 백버퍼 다시 얻고 D2D Bitmap 다시 생성
-	//ComPtr<IDXGISurface> backBuffer;
-	//m_dxgiSwapChain->GetBuffer(0, IID_PPV_ARGS(&backBuffer));
+	// 2. 백버퍼 다시 얻고 D2D Bitmap 다시 생성
+	ComPtr<IDXGISurface> backBuffer;
+	m_dxgiSwapChain->GetBuffer(0, IID_PPV_ARGS(&backBuffer));
 
-	//D2D1_BITMAP_PROPERTIES1 bmpProps = D2D1::BitmapProperties1(
-	//	D2D1_BITMAP_OPTIONS_TARGET | D2D1_BITMAP_OPTIONS_CANNOT_DRAW,
-	//	D2D1::PixelFormat(DXGI_FORMAT_B8G8R8A8_UNORM, D2D1_ALPHA_MODE_PREMULTIPLIED)
-	//);
-	//m_d2dDeviceContext->CreateBitmapFromDxgiSurface(backBuffer.Get(), &bmpProps, m_d2dBitmapTarget.GetAddressOf());
-	//m_d2dDeviceContext->SetTarget(m_d2dBitmapTarget.Get());
+	D2D1_BITMAP_PROPERTIES1 bmpProps = D2D1::BitmapProperties1(
+		D2D1_BITMAP_OPTIONS_TARGET | D2D1_BITMAP_OPTIONS_CANNOT_DRAW,
+		D2D1::PixelFormat(DXGI_FORMAT_B8G8R8A8_UNORM, D2D1_ALPHA_MODE_PREMULTIPLIED)
+	);
+	m_d2dDeviceContext->CreateBitmapFromDxgiSurface(backBuffer.Get(), &bmpProps, m_d2dBitmapTarget.GetAddressOf());
+	m_d2dDeviceContext->SetTarget(m_d2dBitmapTarget.Get());
 
-	//// 렌더 매니저에도 다시 설정
-	//m_D2DRenderManager->SetD2D1DeviceContext7(m_d2dDeviceContext.Get());
+	// 렌더 매니저에도 다시 설정
+	m_D2DRenderManager->SetD2D1DeviceContext7(m_d2dDeviceContext.Get());
 }

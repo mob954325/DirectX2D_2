@@ -3,6 +3,7 @@
 #include "Utils/Singleton.h"
 #include "Scene/SceneManager.h"
 #include "Components/Camera/Camera.h"
+#include "math.h"
 
 void Transform::SetRenderAnchor(float x, float y)
 {
@@ -12,13 +13,13 @@ void Transform::SetRenderAnchor(float x, float y)
 	unityRenderMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation(offsetX, offsetY);
 }
 
-D2D1_MATRIX_3X2_F Transform::CalculateFinalMatrix()
+void Transform::CalculateFinalMatrix()
 {
 	Camera* pCam = Singleton<SceneManager>::GetInstance().GetMainCamera();
 	D2D1_MATRIX_3X2_F mainCamInvertMatrix = pCam ? pCam->GetInvertMatrix() : D2D1::Matrix3x2F::Identity();
 
-	if (IsDirty()) // <-- NOTE: 이거 false 위치 잡아야함
-	{
+	if (IsDirty())
+	{		
 		// 최종 변환 값 계산
 		if (owner->transform->IsUnityCoords())
 		{
@@ -36,8 +37,6 @@ D2D1_MATRIX_3X2_F Transform::CalculateFinalMatrix()
 				mainCamInvertMatrix;				// MainCamera invert matrix	
 		}
 	}
-
-	return finalMatrix;
 }
 
 bool Transform::IsDirty()
@@ -50,8 +49,6 @@ bool Transform::IsDirty()
 	{
 		return dirty;
 	}
-
-	return false;
 }
 
 void Transform::SetTransformToMatrix(D2D1_MATRIX_3X2_F matrix)
@@ -140,4 +137,33 @@ void Transform::OnStart()
 void Transform::OnEnd()
 {
 	if (dirty) dirty = false;
+}
+
+void Transform::SetPosition(float x, float y)
+{
+	if ((abs(position.x - x) > FLT_EPSILON) || (abs(position.y - y) > FLT_EPSILON))
+	{
+		position.x = x; 
+		position.y = y;
+		dirty = true; 
+	}
+}
+
+void Transform::SetRotation(float rotValue)
+{
+	if (abs(rotation - rotValue) > FLT_EPSILON)
+	{
+		rotation = rotValue;
+		dirty = true; 
+	}
+}
+
+void Transform::SetScale(float scaleX, float scaleY)
+{
+	if ((abs(scale.x - scaleX) > FLT_EPSILON) || (abs(scale.y - scaleY) > FLT_EPSILON))
+	{
+		scale.x = scaleX; 
+		scale.y = scaleY;
+		dirty = true;
+	}
 }
