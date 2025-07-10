@@ -64,7 +64,7 @@ public:
 	bool IsUnityCoords() { return isUnityCoords; }
 	void SetIsUnityCoords(bool value) { isUnityCoords = value; }
 
-	void SetRenderAnchor(float x, float y);
+	void SetOffset(float x, float y);
 
 	void CalculateFinalMatrix(); // ??
 	D2D1_MATRIX_3X2_F GetFinalMatrix() { return finalMatrix; }// NOTE: 랜더러에 이거 추가하기

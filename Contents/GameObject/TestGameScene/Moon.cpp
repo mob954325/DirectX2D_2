@@ -9,7 +9,7 @@ void Moon::Start()
 	transform->SetScale(0.5f, 0.5f);
 	transform->SetPosition(0.0f, 1000.0f);
 	transform->SetIsUnityCoords(true);
-	transform->SetRenderAnchor(-bitmapRenderer->GetResource().get()->GetBitmap()->GetSize().width / 2, bitmapRenderer->GetResource().get()->GetBitmap()->GetSize().height / 2);
+	transform->SetOffset(-bitmapRenderer->GetResource().get()->GetBitmap()->GetSize().width / 2, bitmapRenderer->GetResource().get()->GetBitmap()->GetSize().height / 2);
 }
 
 void Moon::Update()

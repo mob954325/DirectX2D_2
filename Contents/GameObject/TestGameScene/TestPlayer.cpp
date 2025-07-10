@@ -40,27 +40,28 @@ void TestPlayer::Start()
 	OnHitAction += hpComp->GetValueFunctionObject();
 	
 	// text init
-	text = AddComponent<TextRenderer>();
-	text->SetPosition(700, 20);
+	hpText = AddComponent<TextRenderer>();
+	hpText->SetPosition(700, 20);
 
-	std::wstring hpText = L"Hp : ";
-	hpText += std::to_wstring(hpComp->GetValue());
-	text->SetText(hpText);
+	std::wstring str = L"Hp : ";
+	str += std::to_wstring(hpComp->GetValue());
+	hpText->SetText(str);
 
 	// box component init
 	box = AddComponent<BoxComponent>();
 	box->SetIsShow(true);
 	box->SetWidth(2.0f);
 	D2D1_SIZE_F size = idleBitmap->GetResource().get()->GetBitmap()->GetSize();
-	D2D1_RECT_F rect // NOTE: 임시 값 조정 
-	{
-		-48 / 2,
-		-64 / 2,
-		48 / 2,
-		64 / 2,
-	};
 
-	box->SetRect(rect);
+	D2D1_VECTOR_2F posVec = transform->GetPosition();
+	box->SetRect(
+		{
+			posVec.x - 30 / 0.5f,
+			posVec.y - 30 / 0.5f,
+			posVec.x + 30 / 0.5f,
+			posVec.y + 30 / 0.5f
+		}
+	);
 
 	// animFramText init
 	animFramText = AddComponent<TextRenderer>();
@@ -93,6 +94,10 @@ void TestPlayer::Start()
 	fsmInstance->SetStateBehavior("Attack", attackState);
 
 	fsmInstance->OnStart();
+
+	// player position text init
+	playerPosText = AddComponent<TextRenderer>();
+	playerPosText->SetViewportPosition(0.5f, 0.9f);
 }
 
 void TestPlayer::Update()
@@ -122,6 +127,12 @@ void TestPlayer::Update()
 	HandleMoveInput();
 	HandlePlayerCameraInput();
 	HandleAnimationInput();
+
+	std::wstring str = L"x : ";
+	str += std::to_wstring(transform->GetPosition().x);
+	str += L" y : ";
+	str += std::to_wstring(transform->GetPosition().y);
+	playerPosText->SetText(str);
 }
 
 void TestPlayer::OnDestroy()
@@ -211,9 +222,9 @@ void TestPlayer::HandleHitInput()
 	{
 		hpComp->ChangeStat(maxHp);
 
-		std::wstring hpText = L"Hp : ";
-		hpText += std::to_wstring(hpComp->GetValue());
-		text->SetText(hpText);
+		std::wstring hpStr = L"Hp : ";
+		hpStr += std::to_wstring(hpComp->GetValue());
+		hpText->SetText(hpStr);
 
 		fsmInstance->SetBool("isDead", false); // fsm 사망상태 탈출
 	}
@@ -253,9 +264,9 @@ void TestPlayer::OnHit(int dmg)
 	int currentHp = hpComp->GetValue();
 
 	// set Text
-	std::wstring hpText = L"Hp : ";
-	hpText += std::to_wstring(hpComp->GetValue());
-	text->SetText(hpText);
+	std::wstring str = L"Hp : ";
+	str += std::to_wstring(hpComp->GetValue());
+	hpText->SetText(str);
 
 	// check hp
 	if (currentHp <= 0)

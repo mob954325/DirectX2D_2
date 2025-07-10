@@ -49,8 +49,12 @@ void D2DRenderManager::Render()
 
 	Singleton<RenderSystem>::GetInstance().Update(this);
 
+	HRESULT hr = m_d2dDeviceContext->EndDraw();
 
-	m_d2dDeviceContext->EndDraw();
+	if (hr == D2DERR_RECREATE_TARGET)
+	{
+		std::cout << "D2DERR_RECREATE_TARGET" << std::endl;
+	}
 }
 
 void D2DRenderManager::SetD2D1DeviceContext7(ID2D1DeviceContext7* pD2D1DeviceContext7)

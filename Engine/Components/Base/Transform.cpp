@@ -6,7 +6,7 @@
 #include "Components/Camera/Camera.h"
 #include "math.h"
 
-void Transform::SetRenderAnchor(float x, float y)
+void Transform::SetOffset(float x, float y)
 {
 	offsetX = x; offsetY = y;
 

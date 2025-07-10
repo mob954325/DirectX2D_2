@@ -158,8 +158,6 @@ void Application::MessageProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		m_isWindowOpen = false;
 		break;
 	case WM_KEYDOWN:
-		if (wParam == VK_SPACE)
-			//g_useScreenEffect = !g_useScreenEffect;
 		break;
 	case WM_SIZE:
 	{

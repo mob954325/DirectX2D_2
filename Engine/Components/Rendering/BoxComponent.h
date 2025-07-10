@@ -21,12 +21,9 @@ private:
 	D2D1_RECT_F rect{};
 
 	ID2D1SolidColorBrush* brush{};
-	FLOAT width = 1.0f;
+	FLOAT width = 0.8f;
 	ID2D1StrokeStyle* strokeStyle = (ID2D1StrokeStyle*)0;
 
 	bool isShow = false;
-
-	float offsetX = 0.0f;
-	float offsetY = 0.0f;
 };
 

@@ -30,11 +30,11 @@ private:
 	AnimationRenderer* idleBitmap{};
 	InputSystem* input{};
 	StatComponent* hpComp{};
-	TextRenderer* text{};
 	BoxComponent* box{};
 
-	//Animator* animator{};
+	TextRenderer* hpText{};
 	TextRenderer* animFramText{};
+	TextRenderer* playerPosText{};
 
 	EventDelegate<int> OnHitAction; // 피격시 호출되는 델리게이트
 

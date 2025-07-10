@@ -8,7 +8,7 @@ void Sun::Start()
 	SetName("Sun");
 	transform->SetScale(0.1f, 0.1f);
 	transform->SetIsUnityCoords(true);
-	transform->SetRenderAnchor(-512, 512);
+	transform->SetOffset(-512, 512);
 }
 
 void Sun::Update()
