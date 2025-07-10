@@ -1,7 +1,7 @@
 {
     "clipName": "Attack_Up",
-    "loop": true,
-    "texturePath": "Assets/Editor/SpriteTool/ken.png",
+    "loop": false,
+    "texturePath": "Assets/Sprites/ken.png",
     "duration": 1.2500001192092896,
     "frames": [
         {
@@ -64,5 +64,6 @@
             "sprite": "Attack_Up_14",
             "time": 1.1666667461395264
         }
-    ]
+    ],
+    "events": []
 }
