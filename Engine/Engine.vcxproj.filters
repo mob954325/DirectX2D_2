@@ -230,6 +230,9 @@
     <ClInclude Include="Components\Physics\AABB.h">
       <Filter>헤더 파일\Components\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Math\Vector2D.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -327,6 +330,9 @@
     </ClCompile>
     <ClCompile Include="Components\Physics\AABB.cpp">
       <Filter>소스 파일\Components\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vector2D.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
