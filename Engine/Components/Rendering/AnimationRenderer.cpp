@@ -28,13 +28,12 @@ void AnimationRenderer::Render(D2DRenderManager* manager)
 		currSprite.height - pivotOffsetY
 	};
 
-	float invertedY = sheet.textureHeight - currSprite.y - currSprite.height;
 	srcRect =
 	{
 		currSprite.x,
-		invertedY,
+		currSprite.y,
 		currSprite.x + currSprite.width,
-		invertedY + currSprite.height
+		currSprite.y - currSprite.height
 	};
 
 	manager->DrawBitmap(m_bitmapResource.get()->GetBitmap(), destRect, srcRect);
