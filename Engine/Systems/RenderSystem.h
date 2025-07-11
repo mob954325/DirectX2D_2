@@ -28,7 +28,7 @@ private:
 
 	D2DRenderManager* renderManager{};
 	ResourceManager* resourceManager{};
-	std::map<EngineData::RenderLayer, std::vector<RenderComponent*>> renderComponentGroup;
+	std::map<EngineData::RenderLayer, std::vector<RenderComponent*>> renderComponentGroup; // TODO : 컴포넌트별로 순서도 추가
 };
 
 // 렌더링 순서 -> EngineData 헤더에 있는 enum 순서대로 렌더링 ( 숫자가 낮을 수록 먼저 렌더링됨 ) 
