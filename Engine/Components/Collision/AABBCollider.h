@@ -5,7 +5,7 @@
 /// <summary>
 /// owner의 transform의 값을 기준으로 AABB 충돌 판정 컴포넌트
 /// </summary>
-class AABB : public CollisionComponent, ICollider
+class AABBCollider : public CollisionComponent, ICollider
 {
 public:
 	void FixedUpdate(const std::vector<CollisionComponent>& others) override;
