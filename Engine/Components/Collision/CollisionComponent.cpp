@@ -1,11 +1,12 @@
 ﻿#include "CollisionComponent.h"
+#include "Components/Base/GameObject.h"
 
-void Collision::SetTrigger(bool value)
+void CollisionComponent::SetTrigger(bool value)
 {
 	isTrigger = value;
 }
 
-bool Collision::IsTrigger()
+bool CollisionComponent::IsTrigger()
 {
 	return isTrigger;
 }
