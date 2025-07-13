@@ -7,6 +7,7 @@
 
 #include "Scenes/MenuScene.h"
 #include "Scenes/TestGameScene.h"
+#include "Scenes/TestCollisionScene.h"
 
 void DemoGameApp::Initialize()
 {
@@ -14,6 +15,7 @@ void DemoGameApp::Initialize()
 
 	Singleton<SceneManager>::GetInstance().AddScene(new MenuScene());
 	Singleton<SceneManager>::GetInstance().AddScene(new TestGameScene());
+	Singleton<SceneManager>::GetInstance().AddScene(new TestCollisionScene());
 	Singleton<SceneManager>::GetInstance().ChangeScene(0);
 }
 

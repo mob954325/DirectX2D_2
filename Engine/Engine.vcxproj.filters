@@ -227,9 +227,6 @@
     <ClInclude Include="Components\Camera\CameraManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Components\Physics\AABB.h">
-      <Filter>헤더 파일\Components\Physics</Filter>
-    </ClInclude>
     <ClInclude Include="Math\Vector2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -240,6 +237,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Components\Collision\ICollider.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\CollisionSystem.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -337,20 +337,20 @@
     <ClCompile Include="Components\Camera\CameraManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Components\Physics\AABB.cpp">
-      <Filter>소스 파일\Components\Physics</Filter>
-    </ClCompile>
     <ClCompile Include="Components\Collision\AABBCollider.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Components\Collision\CollisionComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Systems\CollisionSystem.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vector2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="x64\Debug\AABB.obj" />
   </ItemGroup>
 </Project>

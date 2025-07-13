@@ -4,7 +4,7 @@
 enum ColliderType
 {
 	Circle = 0,
-	AABBCollider
+	AABB
 };
 
 /// <summary>

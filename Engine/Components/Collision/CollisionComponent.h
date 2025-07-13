@@ -11,7 +11,7 @@ struct Bounds
 class CollisionComponent : public Component
 {
 public:
-	virtual void FixedUpdate(const std::vector<CollisionComponent>& others) = 0;
+	virtual void FixedUpdate(const std::vector<CollisionComponent*>& others) = 0;
 
 	void SetTrigger(bool value);
 	bool IsTrigger();

@@ -98,6 +98,10 @@ void TestPlayer::Start()
 	// player position text init
 	playerPosText = AddComponent<TextRenderer>();
 	playerPosText->SetViewportPosition(0.5f, 0.9f);
+
+	// player collider init
+	aabbCollider = AddComponent<AABBCollider>();
+	aabbCollider->SetSize(30, 30, 1);
 }
 
 void TestPlayer::Update()

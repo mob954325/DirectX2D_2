@@ -16,9 +16,14 @@ void MenuTextObject::Start()
 
 void MenuTextObject::Update()
 {
-	if (inputSystem->IsKeyPressed('Z'))
+	if (inputSystem->IsKeyPressed('X'))
 	{
 		Singleton<SceneManager>::GetInstance().ChangeScene(1);
+	}
+
+	if (inputSystem->IsKeyPressed('Z'))
+	{
+		Singleton<SceneManager>::GetInstance().ChangeScene(2);
 	}
 }
 

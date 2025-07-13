@@ -35,6 +35,11 @@ void GameTextObject::Update()
 
 	if (inputSystem->IsKeyPressed('X'))
 	{
+		Singleton<SceneManager>::GetInstance().ChangeScene(2);
+	}
+
+	if (inputSystem->IsKeyPressed('Z'))
+	{
 		Singleton<SceneManager>::GetInstance().ChangeScene(0);
 	}
 }

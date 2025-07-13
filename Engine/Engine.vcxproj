@@ -129,10 +129,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Systems\CollisionSystem.h" />
     <ClInclude Include="Components\Collision\AABBCollider.h" />
     <ClInclude Include="Components\Collision\CollisionComponent.h" />
     <ClInclude Include="Components\Collision\ICollider.h" />
-    <ClInclude Include="Components\Physics\AABB.h" />
     <ClInclude Include="Components\Camera\CameraManager.h" />
     <ClInclude Include="Components\Logic\FSMInstance.h" />
     <ClInclude Include="Components\Physics\PhysicComponent.h" />
@@ -180,9 +180,10 @@
     <ClInclude Include="Math\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Math\Vector2.cpp" />
+    <ClCompile Include="Systems\CollisionSystem.cpp" />
     <ClCompile Include="Components\Collision\AABBCollider.cpp" />
     <ClCompile Include="Components\Collision\CollisionComponent.cpp" />
-    <ClCompile Include="Components\Physics\AABB.cpp" />
     <ClCompile Include="Components\Camera\CameraManager.cpp" />
     <ClCompile Include="Components\Logic\FSMInstance.cpp" />
     <ClCompile Include="Systems\PhysicSystem.cpp" />
@@ -217,9 +218,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="x64\Debug\AABB.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

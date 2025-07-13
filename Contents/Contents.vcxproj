@@ -142,6 +142,8 @@
     <ClCompile Include="GameObject\TestGameScene\SunGeneratorObject.cpp" />
     <ClCompile Include="Scenes\MenuScene.cpp" />
     <ClCompile Include="Scenes\TestGameScene.cpp" />
+    <ClCompile Include="Scenes\TestCollisionScene.cpp" />
+    <ClCompile Include="GameObject\TestCollisionScene\TestGround.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\DemoGameApp.h" />
@@ -156,6 +158,8 @@
     <ClInclude Include="GameObject\TestGameScene\SunGeneratorObject.h" />
     <ClInclude Include="Scenes\MenuScene.h" />
     <ClInclude Include="Scenes\TestGameScene.h" />
+    <ClInclude Include="Scenes\TestCollisionScene.h" />
+    <ClInclude Include="GameObject\TestCollisionScene\TestGround.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

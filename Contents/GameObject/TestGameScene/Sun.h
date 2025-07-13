@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Components/Base/GameObject.h"
 #include "Components/Rendering/BitmapRenderer.h"
+#include "Components/Collision/AABBCollider.h"
 
 class Sun : public GameObject
 {
@@ -11,6 +12,7 @@ public:
 
 protected:
 	BitmapRenderer* bitmapRenderer {};
+	AABBCollider* aabbCollision{};
 
 	float baseRotateSpeed = 360.0f;	
 	float sunRotateRatio = 0.1f;
