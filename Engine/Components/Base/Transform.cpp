@@ -67,6 +67,15 @@ bool Transform::IsDirty()
 	}
 }
 
+void Transform::Translate(const D2D1_VECTOR_2F& delta)
+{
+	float x = position.x + delta.x;
+	float y = position.y + delta.y;
+
+	position = { x, y };
+	dirty = true;
+}
+
 void Transform::SetTransformToMatrix(D2D1_MATRIX_3X2_F matrix)
 {
 }
@@ -82,7 +91,6 @@ D2D1_MATRIX_3X2_F Transform::ToLocalMatrix()
 			D2D1::Matrix3x2F::Scale(scale.x, scale.y) *
 			D2D1::Matrix3x2F::Rotation(rotation) *
 			D2D1::Matrix3x2F::Translation(position.x, position.y);
-		//dirty = false;
 	}
 
 	return cachedMatrix;

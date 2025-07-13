@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Components\Physics\Rigidbody2D.h" />
     <ClInclude Include="Systems\CollisionSystem.h" />
     <ClInclude Include="Components\Collision\AABBCollider.h" />
     <ClInclude Include="Components\Collision\CollisionComponent.h" />
@@ -181,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\Vector2.cpp" />
+    <ClCompile Include="Components\Physics\Rigidbody2D.cpp" />
     <ClCompile Include="Systems\CollisionSystem.cpp" />
     <ClCompile Include="Components\Collision\AABBCollider.cpp" />
     <ClCompile Include="Components\Collision\CollisionComponent.cpp" />

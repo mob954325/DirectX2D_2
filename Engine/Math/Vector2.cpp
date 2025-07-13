@@ -14,31 +14,31 @@ Vector2::Vector2(int valueX, int valueY)
 
 const Vector2& Vector2::Down()
 {
-	static const Vector2 down(0.0f, 0.0f);
+	static const Vector2 down(0.0f, -1.0f);
 	return down;
 }
 
 const Vector2& Vector2::Left()
 {
-	static const Vector2 left(0.0f, 0.0f);
+	static const Vector2 left(-1.0f, 0.0f);
 	return left;
 }
 
 const Vector2& Vector2::One()
 {
-	static const Vector2 one(0.0f, 0.0f);
+	static const Vector2 one(1.0f, 1.0f);
 	return one;
 }
 
 const Vector2& Vector2::Right()
 {
-	static const Vector2 right(0.0f, 0.0f);
+	static const Vector2 right(0.0f, 1.0f);
 	return right;
 }
 
 const Vector2& Vector2::Up()
 {
-	static const Vector2 up(0.0f, 0.0f);
+	static const Vector2 up(0.0f, 1.0f);
 	return up;
 }
 

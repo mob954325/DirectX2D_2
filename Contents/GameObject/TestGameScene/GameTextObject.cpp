@@ -33,12 +33,11 @@ void GameTextObject::Update()
 {
 	textRenderer4->SetText(L"Fps" + std::to_wstring(Singleton<DebugUtility>::GetInstance().GetFPSCount())); // 씬 이동 시 터짐
 
-	if (inputSystem->IsKeyPressed('X'))
+	if (inputSystem->IsKeyPressed('3'))
 	{
 		Singleton<SceneManager>::GetInstance().ChangeScene(2);
 	}
-
-	if (inputSystem->IsKeyPressed('Z'))
+	else if (inputSystem->IsKeyPressed('1'))
 	{
 		Singleton<SceneManager>::GetInstance().ChangeScene(0);
 	}
