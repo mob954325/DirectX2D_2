@@ -7,6 +7,8 @@
 #include "Components/Rendering/TextRenderer.h"
 #include "Components/Rendering/BoxComponent.h"
 #include "Components/Logic/FSMInstance.h"
+#include "Components/Collision/AABBCollider.h"
+
 #include "Utils/EventDelegate.h"
 
 class IdleState;
@@ -46,6 +48,8 @@ private:
 	HitState* hitState;
 	DeadState* deadState;
 	AttackState* attackState;
+
+	AABBCollider* aabbCollider;
 
 	float speed = 2.0f;
 	float camSpeed = 5.0f;

@@ -1,6 +1,7 @@
 ﻿#include "GameObject.h"
 #include "Systems/RenderSystem.h"
 #include "Systems/ScriptSystem.h"
+#include "Systems/CollisionSystem.h"
 
 GameObject::GameObject()
 {
@@ -47,6 +48,10 @@ void GameObject::DispatchComponentToSystem(Component* comp)
 	{
 		Singleton<RenderSystem>::GetInstance().Register(rc);
 	}
+	else if (CollisionComponent* cc = dynamic_cast<CollisionComponent*>(comp))
+	{
+		Singleton<CollisionSystem>::GetInstance().Register(cc);
+	}
 }
 
 void GameObject::RemoveComponentToSystem(Component* comp)
@@ -58,5 +63,9 @@ void GameObject::RemoveComponentToSystem(Component* comp)
 	else if (RenderComponent* rc = dynamic_cast<RenderComponent*>(comp))
 	{
 		Singleton<RenderSystem>::GetInstance().UnRegist(rc);
+	}
+	else if (RenderComponent* pc = dynamic_cast<RenderComponent*>(comp))
+	{
+		Singleton<RenderSystem>::GetInstance().Register(pc);
 	}
 }

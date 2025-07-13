@@ -129,7 +129,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Components\Physics\AABB.h" />
+    <ClInclude Include="Systems\CollisionSystem.h" />
+    <ClInclude Include="Components\Collision\AABBCollider.h" />
+    <ClInclude Include="Components\Collision\CollisionComponent.h" />
+    <ClInclude Include="Components\Collision\ICollider.h" />
     <ClInclude Include="Components\Camera\CameraManager.h" />
     <ClInclude Include="Components\Logic\FSMInstance.h" />
     <ClInclude Include="Components\Physics\PhysicComponent.h" />
@@ -174,9 +177,13 @@
     <ClInclude Include="Utils\EventDelegate.h" />
     <ClInclude Include="Utils\GameTime.h" />
     <ClInclude Include="Utils\Singleton.h" />
+    <ClInclude Include="Math\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Components\Physics\AABB.cpp" />
+    <ClCompile Include="Math\Vector2.cpp" />
+    <ClCompile Include="Systems\CollisionSystem.cpp" />
+    <ClCompile Include="Components\Collision\AABBCollider.cpp" />
+    <ClCompile Include="Components\Collision\CollisionComponent.cpp" />
     <ClCompile Include="Components\Camera\CameraManager.cpp" />
     <ClCompile Include="Components\Logic\FSMInstance.cpp" />
     <ClCompile Include="Systems\PhysicSystem.cpp" />

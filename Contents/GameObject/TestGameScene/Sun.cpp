@@ -9,6 +9,9 @@ void Sun::Start()
 	transform->SetScale(0.1f, 0.1f);
 	transform->SetIsUnityCoords(true);
 	transform->SetOffset(-512, 512);
+
+	aabbCollision = AddComponent<AABBCollider>();
+	aabbCollision->SetSize(30, 30, 1);
 }
 
 void Sun::Update()

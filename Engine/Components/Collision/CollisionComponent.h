@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Components/Base/Component.h"
+#include "Components/Collision/ICollider.h"
 
 struct Bounds
 {
@@ -7,13 +8,19 @@ struct Bounds
 	// vector3 extents;	// bounding box의 범위 -> 항상 bounds 크기의 절반 값
 };
 
-class Collision : public Component
+class CollisionComponent : public Component
 {
 public:
-	virtual void FixedUpdate(const std::vector<Collision>& others) = 0;
+	virtual void FixedUpdate(const std::vector<CollisionComponent*>& others) = 0;
 
 	void SetTrigger(bool value);
 	bool IsTrigger();
+
+	ICollider* collider = nullptr; // 인터페이스 주입하기
+
+protected:
+	ColliderType type;
+
 private:
 	bool isTrigger = false;
 };

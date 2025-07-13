@@ -57,6 +57,8 @@
     <ClCompile Include="Scenes\TestGameScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Scenes\TestCollisionScene.cpp" />
+    <ClCompile Include="GameObject\TestCollisionScene\TestGround.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\DemoGameApp.h">
@@ -95,5 +97,7 @@
     <ClInclude Include="GameObject\MenuScene\MenuTextObject.h">
       <Filter>GameObject\MenuScene</Filter>
     </ClInclude>
+    <ClInclude Include="Scenes\TestCollisionScene.h" />
+    <ClInclude Include="GameObject\TestCollisionScene\TestGround.h" />
   </ItemGroup>
 </Project>
