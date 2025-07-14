@@ -1,6 +1,6 @@
 ﻿#include "PhysicSystem.h"
 
-void PhysicSystem::Reister(PhysicComponent* comp)
+void PhysicSystem::Register(PhysicComponent* comp)
 {
 	components.push_back(comp);
 }

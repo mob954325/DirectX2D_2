@@ -27,18 +27,21 @@ void GameTextObject::Start()
 
 	D2D1_SIZE_U size = { EngineData::SceenWidth, EngineData::SceenHeight };
 	textRenderer3->SetPosition((float)(size.width / 2), (float)(size.height / 2));
+
+	box = AddComponent<BoxComponent>();
+	box->SetIsShow(true);
+	box->SetRect({ 0, 0, 200, 200 });
 }
 
 void GameTextObject::Update()
 {
 	textRenderer4->SetText(L"Fps" + std::to_wstring(Singleton<DebugUtility>::GetInstance().GetFPSCount())); // 씬 이동 시 터짐
 
-	if (inputSystem->IsKeyPressed('X'))
+	if (inputSystem->IsKeyPressed('3'))
 	{
 		Singleton<SceneManager>::GetInstance().LoadScene(2);
 	}
-
-	if (inputSystem->IsKeyPressed('Z'))
+	else if (inputSystem->IsKeyPressed('1'))
 	{
 		Singleton<SceneManager>::GetInstance().LoadScene(0);
 	}

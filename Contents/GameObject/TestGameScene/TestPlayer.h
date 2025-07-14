@@ -8,6 +8,7 @@
 #include "Components/Rendering/BoxComponent.h"
 #include "Components/Logic/FSMInstance.h"
 #include "Components/Collision/AABBCollider.h"
+#include "Components/Physics/Rigidbody2D.h"
 
 #include "Utils/EventDelegate.h"
 
@@ -50,6 +51,7 @@ private:
 	AttackState* attackState;
 
 	AABBCollider* aabbCollider;
+	Rigidbody2D* rigid;
 
 	float speed = 2.0f;
 	float camSpeed = 5.0f;

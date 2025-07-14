@@ -4,23 +4,30 @@
 void TestGround::Start()
 {
 	aabb = AddComponent<AABBCollider>();
-	aabb->SetSize(1024, 50, 1);
+	// aabb->SetSize(1024, 50, 1);
 
 	box = AddComponent<BoxComponent>();
 	box->SetIsShow(true);
 	box->SetRect({ -1024 / 2, -50 / 2, 1024 / 2, 50 / 2});
 	box->SetWidth(2.0f);
+
 	inputSystem = AddComponent<InputSystem>();
+
+	bitmap = AddComponent<BitmapRenderer>();
+	bitmap->CreateBitmapResource(L"../resource/Mushroom.png"); 
+
+	transform->SetIsUnityCoords(true);
+
+
 }
 
 void TestGround::Update()
 {
-	if (inputSystem->IsKeyPressed('X'))
+	if (inputSystem->IsKeyPressed('1'))
 	{
 		Singleton<SceneManager>::GetInstance().LoadScene(0);
 	}
-
-	if (inputSystem->IsKeyPressed('Z'))
+	else if (inputSystem->IsKeyPressed('2'))
 	{
 		Singleton<SceneManager>::GetInstance().LoadScene(1);
 	}

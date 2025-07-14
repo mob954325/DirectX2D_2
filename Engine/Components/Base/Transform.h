@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include "pch.h"
 #include "Component.h"
- 
+#include "Math/Vector2.h" 
+
 // 기본 좌표 [ normal setting ]
 //       (0,0) +----------+ (width, 0)
 //             |          |
@@ -66,10 +67,13 @@ public:
 
 	void SetOffset(float x, float y);
 
-	void CalculateFinalMatrix(); // ??
-	D2D1_MATRIX_3X2_F GetFinalMatrix() { return finalMatrix; }// NOTE: 랜더러에 이거 추가하기
+	void CalculateFinalMatrix();
+	D2D1_MATRIX_3X2_F GetFinalMatrix() { return finalMatrix; }
+
 	void ResetDirty() { dirty = false; }
 	bool IsDirty();
+
+	void Translate(const D2D1_VECTOR_2F& delta);
 
 	/// <summary>
 	/// 매트릭스로 transform 값 설정

@@ -11,6 +11,8 @@ protected:
 
 private:
 	GameObject* player{};
-	GameObject* dummy{};
+	GameObject* ground{};
+
+	GameObject* m_MainCamera{};
 };
 

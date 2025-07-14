@@ -2,6 +2,7 @@
 #include "Components/Base/GameObject.h"
 #include "Components/Rendering/TextRenderer.h"
 #include "Components/Logic/InputSystem.h"
+#include "Components/Rendering/BoxComponent.h"
 
 class GameTextObject : public GameObject
 {
@@ -20,5 +21,7 @@ private:
 	TextRenderer* textRenderer4{};
 
 	InputSystem* inputSystem{};
+
+	BoxComponent* box{};
 };
 

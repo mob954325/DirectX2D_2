@@ -90,7 +90,7 @@ void TestPlayer::Start()
 	fsmInstance->SetStateBehavior("Idle", idleState);
 	fsmInstance->SetStateBehavior("Move", moveState);
 	fsmInstance->SetStateBehavior("Hit", hitState);
-	fsmInstance->SetStateBehavior("Dead", deadState);
+	fsmInstance->SetStateBehavior("Dead", deadState); 
 	fsmInstance->SetStateBehavior("Attack", attackState);
 
 	fsmInstance->OnStart();
@@ -102,6 +102,8 @@ void TestPlayer::Start()
 	// player collider init
 	aabbCollider = AddComponent<AABBCollider>();
 	aabbCollider->SetSize(30, 30, 1);
+
+	rigid = AddComponent<Rigidbody2D>();
 }
 
 void TestPlayer::Update()

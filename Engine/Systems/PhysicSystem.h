@@ -7,7 +7,7 @@ class PhysicSystem : public Singleton<PhysicSystem>
 public:
 	friend class Singleton<PhysicSystem>;
 
-	void Reister(PhysicComponent* comp);
+	void Register(PhysicComponent* comp);
 	void UnRegister(PhysicComponent* comp);
 	void ClearAll();
 

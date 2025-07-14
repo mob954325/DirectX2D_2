@@ -22,4 +22,6 @@ private:
 	GameObject* m_TestAnim{};
 
 	std::vector<GameObject*> objects;
+
+	GameObject* rigidTest{};
 };

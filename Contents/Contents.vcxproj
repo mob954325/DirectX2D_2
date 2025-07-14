@@ -144,6 +144,7 @@
     <ClCompile Include="Scenes\TestGameScene.cpp" />
     <ClCompile Include="Scenes\TestCollisionScene.cpp" />
     <ClCompile Include="GameObject\TestCollisionScene\TestGround.cpp" />
+    <ClCompile Include="GameObject\TestCollisionScene\TestRigidbodyObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\DemoGameApp.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Scenes\TestGameScene.h" />
     <ClInclude Include="Scenes\TestCollisionScene.h" />
     <ClInclude Include="GameObject\TestCollisionScene\TestGround.h" />
+    <ClInclude Include="GameObject\TestCollisionScene\TestRigidbodyObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
