@@ -25,7 +25,7 @@ void BoxComponent::Render(D2DRenderManager* render)
 	{
 		D2D1_MATRIX_3X2_F mat = owner->transform->GetFinalMatrix();
 
-		D2D1_VECTOR_2F pos = owner->transform->GetPosition();
+		Vector2 pos = owner->transform->GetPosition();
 		render->SetBitmapTransform(mat);
 		render->DrawRectangle(rect, brush, width, strokeStyle);
 	}

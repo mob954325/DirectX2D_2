@@ -51,7 +51,7 @@ void TestPlayer::Start()
 	box->SetWidth(2.0f);
 	D2D1_SIZE_F size = idleBitmap->GetResource().get()->GetBitmap()->GetSize();
 
-	D2D1_VECTOR_2F posVec = transform->GetPosition();
+	Vector2 posVec = transform->GetPosition();
 	box->SetRect(
 		{
 			posVec.x - 30 / 0.5f,
@@ -152,8 +152,8 @@ void TestPlayer::HandleMoveInput()
 {
 	if (input == nullptr) return;
 
-	D2D1_VECTOR_2F position = transform->GetPosition();
-	D2D1_VECTOR_2F moveVec = { 0,0 };
+	Vector2 position = transform->GetPosition();
+	Vector2 moveVec = { 0,0 };
 
 	if (input->IsKeyDown(VK_RIGHT))
 	{
@@ -189,7 +189,7 @@ void TestPlayer::HandlePlayerCameraInput()
 {
 	if (input == nullptr) return;
 
-	D2D1_VECTOR_2F inputVec = { 0,0 };
+	Vector2 inputVec = { 0,0 };
 
 	if (input->IsKeyDown('K'))
 	{
@@ -208,8 +208,8 @@ void TestPlayer::HandlePlayerCameraInput()
 		inputVec.x += 1.0f;
 	}
 
-	D2D1_VECTOR_2F positionVec = playerMainCam->GetTransform().GetPosition();
-	D2D1_VECTOR_2F moveVec = { inputVec.x * camSpeed, inputVec.y * camSpeed };
+	Vector2 positionVec = playerMainCam->GetTransform().GetPosition();
+	Vector2 moveVec = { inputVec.x * camSpeed, inputVec.y * camSpeed };
 
 	playerMainCam->GetTransform().SetPosition(positionVec.x + moveVec.x, positionVec.y + moveVec.y);
 }

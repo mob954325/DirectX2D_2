@@ -35,7 +35,7 @@ void Rigidbody2D::Intergrate()
 		velocity += accelration * Singleton<GameTime>::GetInstance().GetDeltaTime();		// 가속도 계산
 		Vector2 deltaPos = velocity * Singleton<GameTime>::GetInstance().GetDeltaTime();	// transform에 반영할 값
 
-		D2D1_VECTOR_2F d2d1Vec = { deltaPos.x, deltaPos.y };
+		Vector2 d2d1Vec = { deltaPos.x, deltaPos.y };
 		owner->transform->Translate(d2d1Vec);
 		accelration = Vector2::Zero();
 	}

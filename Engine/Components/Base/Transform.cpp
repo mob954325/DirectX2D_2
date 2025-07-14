@@ -72,7 +72,7 @@ bool Transform::IsDirty()
 	}
 }
 
-void Transform::Translate(const D2D1_VECTOR_2F& delta)
+void Transform::Translate(const Vector2& delta)
 {
 	float x = position.x + delta.x;
 	float y = position.y + delta.y;

@@ -99,7 +99,7 @@ void AABBCollider::SetSize(float width, float height, float scale)
 
 	if (box != nullptr)
 	{
-		D2D1_VECTOR_2F posVec = owner->transform->GetPosition();
+		Vector2 posVec = owner->transform->GetPosition();
 		box->SetRect
 		({
 			posVec.x - width / 2 * scale,

@@ -7,7 +7,7 @@ void TestGround::Start()
 	box->SetIsShow(true);
 	box->SetWidth(2.0f);
 
-	D2D1_VECTOR_2F posVec = transform->GetPosition();
+	Vector2 posVec = transform->GetPosition();
 	box->SetRect({ -1024 / 2, -50 / 2, 1024 / 2, 50 / 2 });
 
 	aabb = AddComponent<AABBCollider>();
