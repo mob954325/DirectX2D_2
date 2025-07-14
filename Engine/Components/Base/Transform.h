@@ -68,7 +68,7 @@ public:
 	void SetOffset(float x, float y);
 
 	void CalculateFinalMatrix();
-	D2D1_MATRIX_3X2_F GetFinalMatrix() { return finalMatrix; }
+	D2D1_MATRIX_3X2_F GetFinalMatrix();
 
 	void ResetDirty() { dirty = false; }
 	bool IsDirty();

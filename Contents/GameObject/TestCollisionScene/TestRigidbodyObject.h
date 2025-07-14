@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Components/Base/GameObject.h"
 #include "Components/Rendering/AnimationRenderer.h"
 #include "Components/Camera/Camera.h"

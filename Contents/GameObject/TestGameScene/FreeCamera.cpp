@@ -5,9 +5,7 @@
 void FreeCamera::Start()
 {
 	camera = AddComponent<Camera>();
-	// camera->SetIsMainCamera(true);
 	Singleton<CameraManager>::GetInstance().Register(new CameraInfo(camera->GetPriority(), camera)); // NOTE: 임시
-	// camera->AttachGameObjectToCamera(this->transform);
 
 	inputSystem = AddComponent<InputSystem>();
 }

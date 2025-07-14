@@ -1,5 +1,6 @@
 ﻿#include "TestRigidbodyObject.h"
 #include "Math/Vector2.h"
+#include "Datas/EngineData.h"
 
 void TestRigidbodyObject::Start()
 {
@@ -10,7 +11,7 @@ void TestRigidbodyObject::Start()
 
 	rigid = AddComponent<Rigidbody2D>();
 	transform->SetPosition(0, 400.0f);
-	transform->SetIsUnityCoords(true);
+	//transform->SetIsUnityCoords(true);
 }
 
 void TestRigidbodyObject::Update()
@@ -56,5 +57,5 @@ void TestRigidbodyObject::HandleMoveInput()
 	}
 
 	vec = vec * speed * 1000;
-	rigid->ApplyForce(vec);
+	//rigid->ApplyForce(vec);
 }

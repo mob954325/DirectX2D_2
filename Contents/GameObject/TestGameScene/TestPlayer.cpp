@@ -15,8 +15,6 @@ void TestPlayer::Start()
 
 	// Player camera init
 	playerMainCam = AddComponent<Camera>();
-	//playerMainCam->AttachGameObjectToCamera(this->transform);
-	// Singleton<SceneManager>::GetInstance().AddCamera(playerMainCam);
 	Singleton<CameraManager>::GetInstance().Register(new CameraInfo(playerMainCam->GetPriority(), playerMainCam)); // NOTE: 임시
 	playerMainCam->SetPriority(11);
 

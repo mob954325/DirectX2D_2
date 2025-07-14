@@ -1,36 +1,23 @@
 ﻿#include "TestGround.h"
-#include "Scene/SceneManager.h"
+#include "Datas/EngineData.h"
 
 void TestGround::Start()
 {
-	aabb = AddComponent<AABBCollider>();
-	// aabb->SetSize(1024, 50, 1);
-
+	//renderLayer = EngineData::RenderLayer::GameObject; // NOTE: 왜 이게 없으면 rigidbody가 존재할 때 같이 떨어질까?
 	box = AddComponent<BoxComponent>();
 	box->SetIsShow(true);
-	box->SetRect({ -1024 / 2, -50 / 2, 1024 / 2, 50 / 2});
 	box->SetWidth(2.0f);
 
-	inputSystem = AddComponent<InputSystem>();
+	D2D1_VECTOR_2F posVec = transform->GetPosition();
+	box->SetRect({ -1024 / 2, -50 / 2, 1024 / 2, 50 / 2 });
 
-	bitmap = AddComponent<BitmapRenderer>();
-	bitmap->CreateBitmapResource(L"../resource/Mushroom.png"); 
-
-	transform->SetIsUnityCoords(true);
-
-
+	aabb = AddComponent<AABBCollider>();
+	//aabb->SetSize(1024, 50, 1);
 }
 
 void TestGround::Update()
 {
-	if (inputSystem->IsKeyPressed('1'))
-	{
-		Singleton<SceneManager>::GetInstance().LoadScene(0);
-	}
-	else if (inputSystem->IsKeyPressed('2'))
-	{
-		Singleton<SceneManager>::GetInstance().LoadScene(1);
-	}
+	std::cout << " - transform : " << transform->GetPosition().x << " " << transform->GetPosition().y << std::endl;
 }
 
 void TestGround::OnDestroy()

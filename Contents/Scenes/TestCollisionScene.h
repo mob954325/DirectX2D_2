@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Scene/Scene.h"
 #include "Components/Base/GameObject.h"
 
@@ -12,6 +12,7 @@ protected:
 private:
 	GameObject* player{};
 	GameObject* ground{};
+	GameObject* sun{};
 
 	GameObject* m_MainCamera{};
 };
