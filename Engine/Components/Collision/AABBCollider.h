@@ -17,7 +17,7 @@ public:
 	Vector2 GetCenter() const override;
 
 	// 충돌 확인용 인터페이스
-	bool CheckCollision(ICollider* other) const override;
+	bool CheckCollision(ICollider* other, CollisionInfo& outCollisionInfo) const override;
 	bool CheckCollisionWithAABB(ICollider* other) const;
 
 	void OnCreate() override;

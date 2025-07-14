@@ -22,7 +22,8 @@ void AABBCollider::FixedUpdate(const std::vector<CollisionComponent*>& others, s
 			continue;
 		}
 
-		if (CheckCollision(other))
+		CollisionInfo outInfo{ nullptr, nullptr, Vector2::Zero(), 0.0f }; // 충돌 정보
+		if (CheckCollision(other, outInfo))
 		{
 			std::cout << " ----- " << (*it)->owner->GetName() << ", " << this->owner->GetName() << "충돌됨" << std::endl;
 
@@ -41,7 +42,7 @@ Vector2 AABBCollider::GetCenter() const
 	return Vector2(owner->transform->GetPosition().x, owner->transform->GetPosition().y);
 }
 
-bool AABBCollider::CheckCollision(ICollider* other) const
+bool AABBCollider::CheckCollision(ICollider* other, CollisionInfo& outCollisionInfo) const
 {
 	ColliderType type = other->GetColliderType();
 	switch (type)
