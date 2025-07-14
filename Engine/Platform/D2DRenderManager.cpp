@@ -71,7 +71,7 @@ void D2DRenderManager::SetD2D1DeviceContext7(ID2D1DeviceContext7* pD2D1DeviceCon
 
 void D2DRenderManager::SetBitmapTransform(D2D1_MATRIX_3X2_F& finalMatrix)
 {
-	m_d2dDeviceContext->SetTransform(finalMatrix); // NOTE: 이게 뭐하는거임 ??
+	m_d2dDeviceContext->SetTransform(finalMatrix); // NOTE: Direct2D가 이후에 그릴 모든 도형/텍스트/이미지 등에 적용활 좌표 변환 행렬 설정 함수
 }
 
 void D2DRenderManager::DrawBitmap(Microsoft::WRL::ComPtr<ID2D1Bitmap1> bitmap)
