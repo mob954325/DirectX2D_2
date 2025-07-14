@@ -25,7 +25,6 @@ void Rigidbody2D::ApplyForce(const Vector2& forceVec)
 
 void Rigidbody2D::Intergrate()
 {
-	// NOTE: 적용 시 왠지는 모르겠는데 TestColliderScene에서 모든 오브젝트가 움직임 ?
 	if (!isKinematic)
 	{
 		if (useGravity)

@@ -15,7 +15,7 @@ void TestPlayer::Start()
 
 	// Player camera init
 	playerMainCam = AddComponent<Camera>();
-	Singleton<CameraManager>::GetInstance().Register(new CameraInfo(playerMainCam->GetPriority(), playerMainCam)); // NOTE: 임시
+	Singleton<CameraManager>::GetInstance().Register(new CameraInfo(playerMainCam->GetPriority(), playerMainCam));
 	playerMainCam->SetPriority(11);
 
 	// animation renderer init

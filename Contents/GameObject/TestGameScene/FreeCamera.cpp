@@ -5,7 +5,7 @@
 void FreeCamera::Start()
 {
 	camera = AddComponent<Camera>();
-	Singleton<CameraManager>::GetInstance().Register(new CameraInfo(camera->GetPriority(), camera)); // NOTE: 임시
+	Singleton<CameraManager>::GetInstance().Register(new CameraInfo(camera->GetPriority(), camera));
 
 	inputSystem = AddComponent<InputSystem>();
 }
