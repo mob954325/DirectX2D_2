@@ -130,7 +130,6 @@ void Application::Initialize()
 	Singleton<DebugUtility>::GetInstance().GetDxgiAdapter(m_d3dDevice, dxgiDevice);
 
 	ConsoleInitialize();
-
 	// -- Application 상속받은 클래스의 Initialize() 실행
 }
 
@@ -202,6 +201,8 @@ void Application::Update()
 	Singleton<SceneManager>::GetInstance().Update();	// 씬 내용 업데이트
 	Singleton<TransformSystem>::GetInstance().Update();	// transform 연산 업데이트 
 	Singleton<CameraManager>::GetInstance().Update();	// 카메라 순서 업데이트
+
+	Singleton<SceneManager>::GetInstance().CheckSceneLoad();	// 씬 교체 확인 
 }
 
 void Application::Run()

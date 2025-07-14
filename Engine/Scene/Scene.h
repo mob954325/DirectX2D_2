@@ -6,9 +6,15 @@
 #include "Scene/GameObjectQuery.h"
 #include <vector>
 
-struct SceneState
-{
-	// ??
+/// <summary>
+/// 현재 씬 상태 enum
+/// </summary>
+enum SceneState
+{	
+	Enter = 0,		// 씬 전환 후 시작 시
+	Playing,		// 씬 업데이트 중이고 씬 교체가 없을 때
+	ReadyToExit,	// 다음 프레임에 씬 교체가 시작될 때
+	Exit,			// 씬 내 데이터 정리 후 Enter 전 
 };
 
 // NOTE : AddGameObject한 객체는 Scene내부에서 delete를 호출해서 메모리 해제를 함
@@ -18,6 +24,8 @@ struct SceneState
 /// </summary>
 class Scene : public IGameObjectQuery
 {
+friend class SceneManager; // NOTE: SceneManager가 직접적으로 접근하게 만들고싶어서 선언 (25.07.14)
+
 public:
 	/// <summary>
 	/// 등록된 오브젝트의 Start문 실행
@@ -73,6 +81,7 @@ protected:
 	std::vector<GameObject*> objectsToDestroy;	// 모든 업데이트가 끝난 시점에서 제거될 오브젝트들
 	std::vector<GameObject*> objectsToAdd;		// 다음 프레임에 activeObjects에 포함될 오브젝트들
 
-	bool isSceneChanging = false;
+	SceneState state = SceneState::Exit;
+	// bool isSceneChanging = false;
 };
 

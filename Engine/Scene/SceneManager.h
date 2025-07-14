@@ -18,21 +18,21 @@ class SceneManager : public Singleton<SceneManager>
 public:
 	friend class Singleton<SceneManager>;
 
+	void Init();
 	void Update();
-	void ChangeScene(int sceneIndex);
+	void LoadScene(int sceneIndex);
+	void CheckSceneLoad();
 	void AddScene(Scene* pScene);
 	Scene* GetCurrentScene();
 
-	Camera* GetMainCamera();
-	void AddCamera(Camera* pCamera);
 private:
 	SceneManager() = default;
 	~SceneManager();
 
 	std::map<int, Scene*> scenes; // sceneIndex, Scene
-	std::vector<Camera*> cameras; // 카메라 참조만해서 사용 -> 원본은 현재 씬에 존재
 
 	Scene* currentScene = nullptr;
 	int currentSceneIndex = -1;
+	int targetSceneIndex = -1; // 변경할 목표 씬 인덱스
 	int sceneCount = 0;
 };

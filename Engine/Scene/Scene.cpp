@@ -4,8 +4,10 @@
 
 void Scene::OnEnter()
 {
-	isSceneChanging = false;
+	state = SceneState::Enter;
 	OnEnterImpl();
+
+	state = SceneState::Playing;
 }
 
 void Scene::OnExit()
@@ -20,19 +22,20 @@ void Scene::OnExit()
 	}
 
 	activeObjects.clear();
-	isSceneChanging = true;
+
+	state = SceneState::Exit;
 }
 
 void Scene::Update()
 {
 	AddCreatedObjects();
-	if (isSceneChanging) return;
+	if (state == SceneState::ReadyToExit) return;
 
 	UpdateActiveObjects();
-	if (isSceneChanging) return;
+	if (state == SceneState::ReadyToExit) return;
 
 	UpdateImpl();
-	if (isSceneChanging) return;
+	if (state == SceneState::ReadyToExit) return;
 }
 
 void Scene::AddGameObject(GameObject* gameObject)
@@ -112,7 +115,8 @@ void Scene::UpdateActiveObjects()
 	{
 		if (!obj->IsEarlyCreated() && !obj->IsMarkedForRemoval())
 		{
-			if (isSceneChanging) break;
+			// if (isSceneChanging) break;
+			if (state == SceneState::ReadyToExit) break;
 
 			obj->Update();
 		}

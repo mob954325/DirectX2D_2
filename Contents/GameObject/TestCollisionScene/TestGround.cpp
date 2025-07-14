@@ -1,4 +1,4 @@
-#include "TestGround.h"
+﻿#include "TestGround.h"
 #include "Scene/SceneManager.h"
 
 void TestGround::Start()
@@ -17,12 +17,12 @@ void TestGround::Update()
 {
 	if (inputSystem->IsKeyPressed('X'))
 	{
-		Singleton<SceneManager>::GetInstance().ChangeScene(0);
+		Singleton<SceneManager>::GetInstance().LoadScene(0);
 	}
 
 	if (inputSystem->IsKeyPressed('Z'))
 	{
-		Singleton<SceneManager>::GetInstance().ChangeScene(1);
+		Singleton<SceneManager>::GetInstance().LoadScene(1);
 	}
 }
 
