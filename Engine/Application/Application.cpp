@@ -201,8 +201,6 @@ void Application::Update()
 	Singleton<SceneManager>::GetInstance().Update();	// 씬 내용 업데이트
 	Singleton<TransformSystem>::GetInstance().Update();	// transform 연산 업데이트 
 	Singleton<CameraManager>::GetInstance().Update();	// 카메라 순서 업데이트
-
-	Singleton<SceneManager>::GetInstance().CheckSceneLoad();	// 씬 교체 확인 
 }
 
 void Application::Run()
@@ -222,6 +220,8 @@ void Application::Run()
 			Update();
 			Render();
 			Singleton<SceneManager>::GetInstance().GetCurrentScene()->CleanUpDestroyedObjects(); // 06 30 추가 : 모든 루프가 끝나고 오브젝트 제거
+			Singleton<SceneManager>::GetInstance().CheckSceneLoad();	// 씬 교체 확인 
+
 		}
 	}
 }
