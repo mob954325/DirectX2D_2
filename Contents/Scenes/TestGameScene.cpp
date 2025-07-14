@@ -11,6 +11,7 @@
 #include "GameObject/TestGameScene/GameTextObject.h"
 #include "GameObject/TestGameScene/TestPlayer.h"
 #include "GameObject/TestGameScene/SunGeneratorObject.h"
+#include "GameObject/TestCollisionScene/TestGround.h"
 
 void TestGameScene::OnEnterImpl()
 {
@@ -36,6 +37,9 @@ void TestGameScene::OnEnterImpl()
 
 	m_SunGeneratorObject = new SunGeneratorObject;
 	AddGameObject(m_SunGeneratorObject, "G_Sun");
+
+	rigidTest = new TestGround;
+	AddGameObject(rigidTest, "Test_rigid");
 }
 
 void TestGameScene::OnExitImpl()

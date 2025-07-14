@@ -27,6 +27,10 @@ void GameTextObject::Start()
 
 	D2D1_SIZE_U size = { EngineData::SceenWidth, EngineData::SceenHeight };
 	textRenderer3->SetPosition((float)(size.width / 2), (float)(size.height / 2));
+
+	box = AddComponent<BoxComponent>();
+	box->SetIsShow(true);
+	box->SetRect({ 0, 0, 200, 200 });
 }
 
 void GameTextObject::Update()

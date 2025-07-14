@@ -35,6 +35,8 @@ void FreeCamera::Update()
 		D2D1_VECTOR_2F position = transform->GetPosition();
 		transform->SetPosition(position.x, position.y - cameraMoveSpeed);
 	}
+
+	std::cout << "--- cam : " << transform->GetPosition().x << ", " << transform->GetPosition().y << std::endl;
 }
 
 void FreeCamera::OnDestroy()

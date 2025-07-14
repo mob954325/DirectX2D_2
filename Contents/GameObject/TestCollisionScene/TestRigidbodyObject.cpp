@@ -1,4 +1,4 @@
-#include "TestRigidbodyObject.h"
+﻿#include "TestRigidbodyObject.h"
 #include "Math/Vector2.h"
 
 void TestRigidbodyObject::Start()
@@ -55,6 +55,6 @@ void TestRigidbodyObject::HandleMoveInput()
 		vec = Vector2::Down();
 	}
 
-	vec = vec * speed;
-	//rigid->ApplyForce(vec);
+	vec = vec * speed * 1000;
+	rigid->ApplyForce(vec);
 }

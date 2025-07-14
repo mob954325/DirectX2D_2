@@ -1,4 +1,4 @@
-#include "Vector2.h"
+﻿#include "Vector2.h"
 
 Vector2::Vector2(float valueX, float valueY)
 {
@@ -32,7 +32,7 @@ const Vector2& Vector2::One()
 
 const Vector2& Vector2::Right()
 {
-	static const Vector2 right(0.0f, 1.0f);
+	static const Vector2 right(1.0f, 0.0f);
 	return right;
 }
 
