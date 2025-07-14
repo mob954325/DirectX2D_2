@@ -130,6 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Components\Physics\Rigidbody2D.h" />
+    <ClInclude Include="Datas\CollisionInfo.h" />
     <ClInclude Include="Systems\CollisionSystem.h" />
     <ClInclude Include="Components\Collision\AABBCollider.h" />
     <ClInclude Include="Components\Collision\CollisionComponent.h" />

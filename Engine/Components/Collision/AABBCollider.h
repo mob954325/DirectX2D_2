@@ -2,6 +2,7 @@
 #include "Components/Collision/CollisionComponent.h"
 #include "Components/Rendering/BoxComponent.h"
 #include "Math/Vector2.h"
+#include "Datas/CollisionInfo.h"
 
 /// <summary>
 /// owner의 transform의 값을 기준으로 AABB 충돌 판정 컴포넌트
@@ -10,7 +11,7 @@ class AABBCollider : public CollisionComponent, ICollider
 {
 public:
 	AABBCollider();
-	void FixedUpdate(const std::vector<CollisionComponent*>& others) override;
+	void FixedUpdate(const std::vector<CollisionComponent*>& others, std::vector<CollisionInfo>& outInfos) override;
 
 	ColliderType GetColliderType() override;
 	Vector2 GetCenter() const override;

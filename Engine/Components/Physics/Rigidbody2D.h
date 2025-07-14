@@ -1,14 +1,14 @@
-#pragma once
+ï»¿#pragma once
 #include "Components/Physics/PhysicComponent.h"
 #include "Math/Vector2.h"
 
 /// <summary>
-/// 2D ¿ÀºêÁ§Æ®°¡ ¹°¸® Á¦¾î¸¦ ¹Ş°Ô µÇ´Â ÄÄÆ÷³ÍÆ®`
+/// 2D ì˜¤ë¸Œì íŠ¸ê°€ ë¬¼ë¦¬ ì œì–´ë¥¼ ë°›ê²Œ ë˜ëŠ” ì»´í¬ë„ŒíŠ¸`
 /// </summary>
 class Rigidbody2D : public PhysicComponent
 {
 public:
-	void FixedUpdate() override;
+	void FixedUpdate(std::vector<CollisionInfo>& collisions) override;
 
 	void SetKinematic(bool value);
 	void SetGravity(bool value);
@@ -20,7 +20,7 @@ private:
 	Vector2 velocity{0,0};
 	Vector2 accelration{0,0};
 
-	const Vector2 gravity = { 0.0f, -9.81f }; // NOTE: ÀÓ½Ã °ª
+	const Vector2 gravity = { 0.0f, -9.81f }; // NOTE: ì„ì‹œ ê°’
 
 	float mass = 1.0f;
 	bool useGravity = true;

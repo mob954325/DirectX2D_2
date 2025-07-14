@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Components/Base/Component.h"
 #include "Components/Collision/ICollider.h"
+#include "Datas/CollisionInfo.h"
 
 struct Bounds
 {
@@ -11,7 +12,7 @@ struct Bounds
 class CollisionComponent : public Component
 {
 public:
-	virtual void FixedUpdate(const std::vector<CollisionComponent*>& others) = 0;
+	virtual void FixedUpdate(const std::vector<CollisionComponent*>& others, std::vector<CollisionInfo>& outInfos) = 0;
 
 	void SetTrigger(bool value);
 	bool IsTrigger();

@@ -1,4 +1,4 @@
-#include "Systems/CollisionSystem.h"
+﻿#include "Systems/CollisionSystem.h"
 
 void CollisionSystem::Register(CollisionComponent* comp)
 {
@@ -24,11 +24,11 @@ void CollisionSystem::ClearAll()
 	components.clear();
 }
 
-void CollisionSystem::FixedUpdate()
+void CollisionSystem::FixedUpdate(std::vector<CollisionInfo>& outInfos)
 {
 	for (CollisionComponent* comp : components)
 	{
-		comp->FixedUpdate(components);
+		comp->FixedUpdate(components, outInfos);
 	}
 }
 

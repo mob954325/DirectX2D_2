@@ -1,7 +1,8 @@
-#pragma once
+﻿#pragma once
 #include "Utils/Singleton.h"
 #include "Components/Collision/CollisionComponent.h"
 #include <Components/Physics/PhysicComponent.h>
+#include "Datas/CollisionInfo.h"
 
 class CollisionSystem : public Singleton<CollisionSystem>
 {
@@ -12,7 +13,7 @@ public:
 	void UnRegister(CollisionComponent* comp);
 	void ClearAll();
 
-	void FixedUpdate();
+	void FixedUpdate(std::vector<CollisionInfo>& outInfos);
 private:
 	CollisionSystem() = default;
 	~CollisionSystem();

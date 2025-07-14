@@ -7,7 +7,7 @@ AABBCollider::AABBCollider()
 	type = ColliderType::AABB;
 }
 
-void AABBCollider::FixedUpdate(const std::vector<CollisionComponent*>& others)
+void AABBCollider::FixedUpdate(const std::vector<CollisionComponent*>& others, std::vector<CollisionInfo>& outInfos)
 {
 	for (auto it = others.begin(); it != others.end(); it++)
 	{
@@ -25,6 +25,8 @@ void AABBCollider::FixedUpdate(const std::vector<CollisionComponent*>& others)
 		if (CheckCollision(other))
 		{
 			std::cout << " ----- " << (*it)->owner->GetName() << ", " << this->owner->GetName() << "충돌됨" << std::endl;
+
+			// TODO: outinfos push_back 하기
 		}
 	}
 }

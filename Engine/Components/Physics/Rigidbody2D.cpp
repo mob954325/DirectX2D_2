@@ -3,7 +3,7 @@
 #include "Utils/GameTime.h"
 #include "Components/Base/GameObject.h"
 
-void Rigidbody2D::FixedUpdate()
+void Rigidbody2D::FixedUpdate(std::vector<CollisionInfo>& collisions)
 {
 	Intergrate();
 }
