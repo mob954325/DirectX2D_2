@@ -18,11 +18,11 @@ void MenuTextObject::Update()
 {
 	if (inputSystem->IsKeyPressed('2'))
 	{
-		Singleton<SceneManager>::GetInstance().ChangeScene(1);
+		Singleton<SceneManager>::GetInstance().LoadScene(1);
 	}
 	else if (inputSystem->IsKeyPressed('3'))
 	{
-		Singleton<SceneManager>::GetInstance().ChangeScene(2);
+		Singleton<SceneManager>::GetInstance().LoadScene(2);
 	}
 }
 

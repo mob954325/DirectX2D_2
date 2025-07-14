@@ -35,11 +35,11 @@ void GameTextObject::Update()
 
 	if (inputSystem->IsKeyPressed('3'))
 	{
-		Singleton<SceneManager>::GetInstance().ChangeScene(2);
+		Singleton<SceneManager>::GetInstance().LoadScene(2);
 	}
 	else if (inputSystem->IsKeyPressed('1'))
 	{
-		Singleton<SceneManager>::GetInstance().ChangeScene(0);
+		Singleton<SceneManager>::GetInstance().LoadScene(0);
 	}
 }
 

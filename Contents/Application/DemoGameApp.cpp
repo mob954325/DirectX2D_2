@@ -16,7 +16,9 @@ void DemoGameApp::Initialize()
 	Singleton<SceneManager>::GetInstance().AddScene(new MenuScene());
 	Singleton<SceneManager>::GetInstance().AddScene(new TestGameScene());
 	Singleton<SceneManager>::GetInstance().AddScene(new TestCollisionScene());
-	Singleton<SceneManager>::GetInstance().ChangeScene(0);
+
+	// SceneManager 초기화
+	Singleton<SceneManager>::GetInstance().Init();
 }
 
 void DemoGameApp::Render()

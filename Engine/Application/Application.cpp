@@ -130,7 +130,6 @@ void Application::Initialize()
 	Singleton<DebugUtility>::GetInstance().GetDxgiAdapter(m_d3dDevice, dxgiDevice);
 
 	ConsoleInitialize();
-
 	// -- Application 상속받은 클래스의 Initialize() 실행
 }
 
@@ -221,6 +220,8 @@ void Application::Run()
 			Update();
 			Render();
 			Singleton<SceneManager>::GetInstance().GetCurrentScene()->CleanUpDestroyedObjects(); // 06 30 추가 : 모든 루프가 끝나고 오브젝트 제거
+			Singleton<SceneManager>::GetInstance().CheckSceneLoad();	// 씬 교체 확인 
+
 		}
 	}
 }
