@@ -2,7 +2,6 @@
 #include "Components/Collision/CollisionComponent.h"
 #include "Components/Rendering/BoxComponent.h"
 #include "Math/Vector2.h"
-#include "Datas/CollisionInfo.h"
 
 /// <summary>
 /// owner의 transform의 값을 기준으로 AABB 충돌 판정 컴포넌트
@@ -17,7 +16,7 @@ public:
 	Vector2 GetCenter() const override;
 
 	// 충돌 확인용 인터페이스
-	bool CheckCollision(ICollider* other, CollisionInfo& outCollisionInfo) const override;
+	bool CheckCollision(ICollider* other, CollisionInfo& outCollisionInfo) override;
 	bool CheckCollisionWithAABB(ICollider* other) const;
 
 	void OnCreate() override;

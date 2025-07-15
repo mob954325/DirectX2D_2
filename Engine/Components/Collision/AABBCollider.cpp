@@ -42,7 +42,7 @@ Vector2 AABBCollider::GetCenter() const
 	return Vector2(owner->transform->GetPosition().x, owner->transform->GetPosition().y);
 }
 
-bool AABBCollider::CheckCollision(ICollider* other, CollisionInfo& outCollisionInfo) const
+bool AABBCollider::CheckCollision(ICollider* other, CollisionInfo& outCollisionInfo)
 {
 	ColliderType type = other->GetColliderType();
 	switch (type)
