@@ -3,6 +3,8 @@
 
 void TestGround::Start()
 {
+	transform->SetIsUnityCoords(true);
+
 	box = AddComponent<BoxComponent>();
 	box->SetIsShow(true);
 	box->SetWidth(2.0f);
@@ -16,7 +18,6 @@ void TestGround::Start()
 
 void TestGround::Update()
 {
-	std::cout << " - transform : " << transform->GetPosition().x << " " << transform->GetPosition().y << std::endl;
 }
 
 void TestGround::OnDestroy()

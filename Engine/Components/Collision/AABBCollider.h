@@ -17,7 +17,7 @@ public:
 
 	// 충돌 확인용 인터페이스
 	bool CheckCollision(ICollider* other, CollisionInfo& outCollisionInfo) override;
-	bool CheckCollisionWithAABB(ICollider* other) const;
+	bool CheckCollisionWithAABB(ICollider* other, CollisionInfo& outCollisionInfo);
 
 	void OnCreate() override;
 	void SetSize(float width, float height, float size);

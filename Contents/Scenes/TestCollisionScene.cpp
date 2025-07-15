@@ -3,8 +3,10 @@
 #include "GameObject/TestGameScene/FreeCamera.h"
 #include "GameObject/TestCollisionScene/TestGround.h"
 #include "GameObject/TestGameScene/TestPlayer.h"
-#include "GameObject/TestGameScene/SunGeneratorObject.h"
+#include "GameObject/TestGameScene/Sun.h"
 #include "Components/Camera/CameraManager.h"
+#include "GameObject/TestCollisionScene/TestWall.h"
+#include "GameObject/TestCollisionScene/TestColliderboxGenerator.h"
 
 void TestCollisionScene::OnEnterImpl()
 {
@@ -17,8 +19,11 @@ void TestCollisionScene::OnEnterImpl()
 	ground = new TestGround();
 	AddGameObject(ground, "Ground");
 
-	sun = new SunGeneratorObject();
-	AddGameObject(sun, "sun1");
+	wall = new TestWall();
+	AddGameObject(wall, "Wall");
+
+	boxGenerator = new TestColliderboxGenerator();
+	AddGameObject(boxGenerator, "bxg");
 }
 
 void TestCollisionScene::OnExitImpl()

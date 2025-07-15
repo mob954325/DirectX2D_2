@@ -1,12 +1,9 @@
 ﻿#pragma once
 #include "Components/Base/GameObject.h"
-#include "Components/Rendering/AnimationRenderer.h"
-#include "Components/Camera/Camera.h"
+#include "Components/Rendering/BitmapRenderer.h"
 #include "Components/Logic/InputSystem.h"
-#include "Components/Logic/StatComponent.h"
-#include "Components/Rendering/TextRenderer.h"
 #include "Components/Rendering/BoxComponent.h"
-#include "Components/Logic/FSMInstance.h"
+#include "Components/Rendering/TextRenderer.h"
 #include "Components/Collision/AABBCollider.h"
 #include "Components/Physics/Rigidbody2D.h"
 
@@ -24,7 +21,11 @@ private:
 	BitmapRenderer* sprite;
 	InputSystem* input;
 	Rigidbody2D* rigid;
+	TextRenderer* playerPosText{};
 
-	float speed = 5.0f;
+	BoxComponent* box;
+	AABBCollider* aabb;
+
+	float speed = 5000.0f;
 };
 

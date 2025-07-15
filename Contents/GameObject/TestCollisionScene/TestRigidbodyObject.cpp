@@ -1,6 +1,7 @@
 ﻿#include "TestRigidbodyObject.h"
 #include "Math/Vector2.h"
 #include "Datas/EngineData.h"
+#include "Scene/SceneManager.h"
 
 void TestRigidbodyObject::Start()
 {
@@ -10,24 +11,58 @@ void TestRigidbodyObject::Start()
 	input = AddComponent<InputSystem>();
 
 	rigid = AddComponent<Rigidbody2D>();
+	rigid->SetGravity(true);
+
 	transform->SetPosition(0, 400.0f);
-	//transform->SetIsUnityCoords(true);
+	transform->SetIsUnityCoords(true);
+	transform->SetOffset(-44.5f, 138/2);
+
+	aabb = AddComponent<AABBCollider>();
+	aabb->SetSize(89, 138, 1);
+
+	box = AddComponent<BoxComponent>();
+	box->SetIsShow(true);
+	box->SetWidth(2.0f);
+	box->SetRect(
+		{
+			0,
+			0,
+			89,
+			138,
+		}
+	);
+
+	playerPosText = AddComponent<TextRenderer>();
+	playerPosText->SetViewportPosition(0.5f, 0.9f);
 }
 
 void TestRigidbodyObject::Update()
 {
-	if (transform->GetPosition().y < 0.0f)
+	HandleMoveInput();
+
+	if (input->IsKeyPressed('1'))
 	{
-		//rigid->SetGravity(false);
-		std::cout << "reached 0.0  coord" << std::endl;
+		Singleton<SceneManager>::GetInstance().LoadScene(0);
 	}
-	else
+	else if (input->IsKeyPressed('2'))
 	{
-		//rigid->SetGravity(true);
-		std::cout << "^^ not reached 0.0  coord" << std::endl;
+		Singleton<SceneManager>::GetInstance().LoadScene(1);
 	}
 
-	HandleMoveInput();
+	std::wstring str = L"x : ";
+	str += std::to_wstring(transform->GetPosition().x);
+	str += L" y : ";
+	str += std::to_wstring(transform->GetPosition().y);
+	playerPosText->SetText(str);
+
+	if (input->IsKeyDown('9'))
+	{
+		speed -= 1000.0f;
+	}
+	if (input->IsKeyDown('0'))
+	{
+		speed += 1000.0f;
+	}
 }
 
 void TestRigidbodyObject::OnDestroy()
@@ -41,21 +76,21 @@ void TestRigidbodyObject::HandleMoveInput()
 	Vector2 vec{0,0};
 	if (input->IsKeyDown(VK_RIGHT))
 	{
-		vec = Vector2::Right();
+		vec += Vector2::Right();
 	}
 	if (input->IsKeyDown(VK_LEFT))
 	{
-		vec = Vector2::Left();
+		vec += Vector2::Left();
 	}
 	if (input->IsKeyDown(VK_UP))
 	{
-		vec = Vector2::Up();
+		vec += Vector2::Up();
 	}
 	if (input->IsKeyDown(VK_DOWN))
 	{
-		vec = Vector2::Down();
+		vec += Vector2::Down();
 	}
 
-	vec = vec * speed * 1000;
-	//rigid->ApplyForce(vec);
+	vec = vec * speed;
+	rigid->ApplyForce(vec);
 }

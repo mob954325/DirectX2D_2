@@ -33,7 +33,7 @@ void BoxComponent::Render(D2DRenderManager* render)
 
 void BoxComponent::SetRect(D2D1_RECT_F rect)
 {
-	this->rect = rect;
+	this->rect = rect; // 순수 크기
 }
 
 void BoxComponent::SetWidth(FLOAT width)
@@ -51,7 +51,7 @@ void BoxComponent::SetIsShow(bool value)
 	isShow = value;	
 }
 
-D2D1_POINT_2F BoxComponent::MatrixTransform(const D2D1_POINT_2F& point, const D2D1_MATRIX_3X2_F& matrix) // ??
+D2D1_POINT_2F BoxComponent::MatrixTransform(const D2D1_POINT_2F& point, const D2D1_MATRIX_3X2_F& matrix)
 {
 	return D2D1::Point2F(
 		point.x * matrix._11 + point.y * matrix._21 + matrix._31,

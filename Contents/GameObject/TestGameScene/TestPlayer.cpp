@@ -54,10 +54,10 @@ void TestPlayer::Start()
 	Vector2 posVec = transform->GetPosition();
 	box->SetRect(
 		{
-			posVec.x - 30 / 0.5f,
-			posVec.y - 30 / 0.5f,
-			posVec.x + 30 / 0.5f,
-			posVec.y + 30 / 0.5f
+			-60 * 0.5f,
+			-60 * 0.5f,
+			60 * 0.5f,
+			60 * 0.5f
 		}
 	);
 
@@ -99,9 +99,12 @@ void TestPlayer::Start()
 
 	// player collider init
 	aabbCollider = AddComponent<AABBCollider>();
-	aabbCollider->SetSize(30, 30, 1);
+	aabbCollider->SetSize(129, 129, 1);
 
 	rigid = AddComponent<Rigidbody2D>();
+	rigid->SetGravity(true);
+
+	transform->SetPosition(0, 200);
 }
 
 void TestPlayer::Update()

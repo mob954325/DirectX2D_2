@@ -38,8 +38,8 @@ void TestGameScene::OnEnterImpl()
 	m_SunGeneratorObject = new SunGeneratorObject;
 	AddGameObject(m_SunGeneratorObject, "G_Sun");
 
-	rigidTest = new TestGround;
-	AddGameObject(rigidTest, "Test_rigid");
+	// rigidTest = new TestGround;
+	// AddGameObject(rigidTest, "Test_rigid");
 }
 
 void TestGameScene::OnExitImpl()

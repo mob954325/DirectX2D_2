@@ -14,15 +14,20 @@ public:
 	void SetGravity(bool value);
 
 	void ApplyForce(const Vector2& forceVec);
-	void Intergrate();
+	void Intergrate(std::vector<CollisionInfo>& collisions);
+
+	void SetMass(float value) { mass = value; }
+
 
 private:
-	Vector2 velocity{0,0};
-	Vector2 accelration{0,0};
+	Vector2 velocity{0,0};		// 속도
+	Vector2 accelration{0,0};	// 가속도
 
-	const Vector2 gravity = { 0.0f, -9.81f }; // NOTE: 임시 값
+	const Vector2 gravity = { 0.0f, -9.81f }; // 중력
 
-	float mass = 1.0f;
+	float drag = 0.5f; // 저항
+	float mass = 1.0f; // 질량
+
 	bool useGravity = true;
 	bool isKinematic = false;
 };

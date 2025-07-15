@@ -17,6 +17,8 @@ struct Vector2
 	static const Vector2& Up();
 	static const Vector2& Zero();
 
+	Vector2 operator-();
+
 	Vector2 operator+(const Vector2& other);
 	Vector2 operator-(const Vector2& other);
 

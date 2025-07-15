@@ -48,6 +48,11 @@ const Vector2& Vector2::Zero()
 	return zero;
 }
 
+Vector2 Vector2::operator-()
+{
+	return Vector2(-x, -y);
+}
+
 Vector2 Vector2::operator+(const Vector2& other)
 {
 	return Vector2(x + other.x, y + other.y);

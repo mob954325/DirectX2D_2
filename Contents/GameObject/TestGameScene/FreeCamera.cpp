@@ -33,8 +33,6 @@ void FreeCamera::Update()
 		Vector2 position = transform->GetPosition();
 		transform->SetPosition(position.x, position.y - cameraMoveSpeed);
 	}
-
-	std::cout << "--- cam : " << transform->GetPosition().x << ", " << transform->GetPosition().y << std::endl;
 }
 
 void FreeCamera::OnDestroy()

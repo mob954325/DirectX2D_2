@@ -12,7 +12,8 @@ protected:
 private:
 	GameObject* player{};
 	GameObject* ground{};
-	GameObject* sun{};
+	GameObject* wall{};
+	GameObject* boxGenerator{};
 
 	GameObject* m_MainCamera{};
 };

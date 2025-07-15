@@ -60,6 +60,9 @@
     <ClCompile Include="Scenes\TestCollisionScene.cpp" />
     <ClCompile Include="GameObject\TestCollisionScene\TestRigidbodyObject.cpp" />
     <ClCompile Include="GameObject\TestCollisionScene\TestGround.cpp" />
+    <ClCompile Include="GameObject\TestCollisionScene\TestWall.cpp" />
+    <ClCompile Include="GameObject\TestCollisionScene\TestColliderbox.cpp" />
+    <ClCompile Include="GameObject\TestCollisionScene\TestColliderboxGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\DemoGameApp.h">
@@ -101,5 +104,8 @@
     <ClInclude Include="Scenes\TestCollisionScene.h" />
     <ClInclude Include="GameObject\TestCollisionScene\TestRigidbodyObject.h" />
     <ClInclude Include="GameObject\TestCollisionScene\TestGround.h" />
+    <ClInclude Include="GameObject\TestCollisionScene\TestWall.h" />
+    <ClInclude Include="GameObject\TestCollisionScene\TestColliderbox.h" />
+    <ClInclude Include="GameObject\TestCollisionScene\TestColliderboxGenerator.h" />
   </ItemGroup>
 </Project>
