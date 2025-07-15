@@ -68,12 +68,32 @@ Vector2 Vector2::operator*(int other)
 	return Vector2(x * other, y * other);
 }
 
+Vector2 Vector2::operator*(float other) const
+{
+	return Vector2(x * other, y * other);
+}
+
+Vector2 Vector2::operator*(int other) const
+{
+	return Vector2(x * other, y * other);
+}
+
 Vector2 Vector2::operator/(float other)
 {
 	return Vector2(x / other, y / other);
 }
 
 Vector2 Vector2::operator/(int other)
+{
+	return Vector2(x / other, y / other);
+}
+
+Vector2 Vector2::operator/(float other) const
+{
+	return Vector2(x / other, y / other);
+}
+
+Vector2 Vector2::operator/(int other) const
 {
 	return Vector2(x / other, y / other);
 }

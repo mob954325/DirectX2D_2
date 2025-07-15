@@ -22,8 +22,13 @@ struct Vector2
 
 	Vector2 operator*(float other);
 	Vector2 operator*(int other);
+	Vector2 operator*(float other) const;
+	Vector2 operator*(int other) const;
+
 	Vector2 operator/(float other);
 	Vector2 operator/(int other);
+	Vector2 operator/(float other) const;
+	Vector2 operator/(int other) const;
 
 	Vector2& operator+=(const Vector2& other);
 	Vector2& operator-=(const Vector2& other);
