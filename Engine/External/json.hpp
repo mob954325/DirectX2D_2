@@ -1,4 +1,4 @@
-//     __ _____ _____ _____
+﻿//     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
 // |_____|_____|_____|_|___|  https://github.com/nlohmann/json
@@ -4864,7 +4864,7 @@ inline void from_json(const BasicJsonType& j, typename std::nullptr_t& n)
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_null()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be null, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be null, but is ", j.type_name()), &j));
     }
     n = nullptr;
 }
@@ -4917,7 +4917,7 @@ void get_arithmetic_value(const BasicJsonType& j, ArithmeticType& val)
         case value_t::binary:
         case value_t::discarded:
         default:
-            JSON_THROW(type_error::create(302, concat("type must be number, but is ", j.type_name()), &j));
+            JSON_THROW(type_error::create(302, concat("physicsType must be number, but is ", j.type_name()), &j));
     }
 }
 
@@ -4926,7 +4926,7 @@ inline void from_json(const BasicJsonType& j, typename BasicJsonType::boolean_t&
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_boolean()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be boolean, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be boolean, but is ", j.type_name()), &j));
     }
     b = *j.template get_ptr<const typename BasicJsonType::boolean_t*>();
 }
@@ -4936,7 +4936,7 @@ inline void from_json(const BasicJsonType& j, typename BasicJsonType::string_t& 
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_string()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be string, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be string, but is ", j.type_name()), &j));
     }
     s = *j.template get_ptr<const typename BasicJsonType::string_t*>();
 }
@@ -4952,7 +4952,7 @@ inline void from_json(const BasicJsonType& j, StringType& s)
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_string()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be string, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be string, but is ", j.type_name()), &j));
     }
 
     s = *j.template get_ptr<const typename BasicJsonType::string_t*>();
@@ -4994,7 +4994,7 @@ inline void from_json(const BasicJsonType& j, std::forward_list<T, Allocator>& l
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_array()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be array, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be array, but is ", j.type_name()), &j));
     }
     l.clear();
     std::transform(j.rbegin(), j.rend(),
@@ -5011,7 +5011,7 @@ inline void from_json(const BasicJsonType& j, std::valarray<T>& l)
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_array()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be array, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be array, but is ", j.type_name()), &j));
     }
     l.resize(j.size());
     std::transform(j.begin(), j.end(), std::begin(l),
@@ -5156,7 +5156,7 @@ void())
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_array()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be array, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be array, but is ", j.type_name()), &j));
     }
 
     from_json_array_impl(j, arr, priority_tag<3> {});
@@ -5175,7 +5175,7 @@ auto from_json(BasicJsonType&& j, identity_tag<std::array<T, N>> tag)
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_array()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be array, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be array, but is ", j.type_name()), &j));
     }
 
     return from_json_inplace_array_impl(std::forward<BasicJsonType>(j), tag, make_index_sequence<N> {});
@@ -5186,7 +5186,7 @@ inline void from_json(const BasicJsonType& j, typename BasicJsonType::binary_t& 
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_binary()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be binary, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be binary, but is ", j.type_name()), &j));
     }
 
     bin = *j.template get_ptr<const typename BasicJsonType::binary_t*>();
@@ -5198,7 +5198,7 @@ inline void from_json(const BasicJsonType& j, ConstructibleObjectType& obj)
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_object()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be object, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be object, but is ", j.type_name()), &j));
     }
 
     ConstructibleObjectType ret;
@@ -5258,7 +5258,7 @@ inline void from_json(const BasicJsonType& j, ArithmeticType& val)
         case value_t::binary:
         case value_t::discarded:
         default:
-            JSON_THROW(type_error::create(302, concat("type must be number, but is ", j.type_name()), &j));
+            JSON_THROW(type_error::create(302, concat("physicsType must be number, but is ", j.type_name()), &j));
     }
 }
 
@@ -5305,7 +5305,7 @@ auto from_json(BasicJsonType&& j, TupleRelated&& t)
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_array()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be array, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be array, but is ", j.type_name()), &j));
     }
 
     return from_json_tuple_impl(std::forward<BasicJsonType>(j), std::forward<TupleRelated>(t), priority_tag<3> {});
@@ -5318,14 +5318,14 @@ inline void from_json(const BasicJsonType& j, std::map<Key, Value, Compare, Allo
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_array()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be array, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be array, but is ", j.type_name()), &j));
     }
     m.clear();
     for (const auto& p : j)
     {
         if (JSON_HEDLEY_UNLIKELY(!p.is_array()))
         {
-            JSON_THROW(type_error::create(302, concat("type must be array, but is ", p.type_name()), &j));
+            JSON_THROW(type_error::create(302, concat("physicsType must be array, but is ", p.type_name()), &j));
         }
         m.emplace(p.at(0).template get<Key>(), p.at(1).template get<Value>());
     }
@@ -5338,14 +5338,14 @@ inline void from_json(const BasicJsonType& j, std::unordered_map<Key, Value, Has
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_array()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be array, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be array, but is ", j.type_name()), &j));
     }
     m.clear();
     for (const auto& p : j)
     {
         if (JSON_HEDLEY_UNLIKELY(!p.is_array()))
         {
-            JSON_THROW(type_error::create(302, concat("type must be array, but is ", p.type_name()), &j));
+            JSON_THROW(type_error::create(302, concat("physicsType must be array, but is ", p.type_name()), &j));
         }
         m.emplace(p.at(0).template get<Key>(), p.at(1).template get<Value>());
     }
@@ -5357,7 +5357,7 @@ inline void from_json(const BasicJsonType& j, std_fs::path& p)
 {
     if (JSON_HEDLEY_UNLIKELY(!j.is_string()))
     {
-        JSON_THROW(type_error::create(302, concat("type must be string, but is ", j.type_name()), &j));
+        JSON_THROW(type_error::create(302, concat("physicsType must be string, but is ", j.type_name()), &j));
     }
     const auto& s = *j.template get_ptr<const typename BasicJsonType::string_t*>();
     // Checking for C++20 standard or later can be insufficient in case the
@@ -6857,7 +6857,7 @@ class wide_string_input_adapter
     template<class T>
     std::size_t get_elements(T* /*dest*/, std::size_t /*count*/ = 1)
     {
-        JSON_THROW(parse_error::create(112, 1, "wide string type cannot be interpreted as binary data", nullptr));
+        JSON_THROW(parse_error::create(112, 1, "wide string physicsType cannot be interpreted as binary data", nullptr));
     }
 
   private:
@@ -9766,7 +9766,7 @@ struct is_sax
 {
   private:
     static_assert(is_basic_json<BasicJsonType>::value,
-                  "BasicJsonType must be of type basic_json<...>");
+                  "BasicJsonType must be of physicsType basic_json<...>");
 
     using number_integer_t = typename BasicJsonType::number_integer_t;
     using number_unsigned_t = typename BasicJsonType::number_unsigned_t;
@@ -9797,7 +9797,7 @@ struct is_sax_static_asserts
 {
   private:
     static_assert(is_basic_json<BasicJsonType>::value,
-                  "BasicJsonType must be of type basic_json<...>");
+                  "BasicJsonType must be of physicsType basic_json<...>");
 
     using number_integer_t = typename BasicJsonType::number_integer_t;
     using number_unsigned_t = typename BasicJsonType::number_unsigned_t;
@@ -10162,7 +10162,7 @@ class binary_reader
                 static_cast<void>((std::snprintf)(cr.data(), cr.size(), "%.2hhX", static_cast<unsigned char>(element_type))); // NOLINT(cppcoreguidelines-pro-type-vararg,hicpp-vararg)
                 const std::string cr_str{cr.data()};
                 return sax->parse_error(element_type_parse_position, cr_str,
-                                        parse_error::create(114, element_type_parse_position, concat("Unsupported BSON record type 0x", cr_str), nullptr));
+                                        parse_error::create(114, element_type_parse_position, concat("Unsupported BSON record physicsType 0x", cr_str), nullptr));
             }
         }
     }
@@ -10818,7 +10818,7 @@ class binary_reader
             {
                 auto last_token = get_token_string();
                 return sax->parse_error(chars_read, last_token, parse_error::create(113, chars_read,
-                                        exception_message(input_format_t::cbor, concat("expected length specification (0x60-0x7B) or indefinite string type (0x7F); last byte: 0x", last_token), "string"), nullptr));
+                                        exception_message(input_format_t::cbor, concat("expected length specification (0x60-0x7B) or indefinite string physicsType (0x7F); last byte: 0x", last_token), "string"), nullptr));
             }
         }
     }
@@ -10918,7 +10918,7 @@ class binary_reader
             {
                 auto last_token = get_token_string();
                 return sax->parse_error(chars_read, last_token, parse_error::create(113, chars_read,
-                                        exception_message(input_format_t::cbor, concat("expected length specification (0x40-0x5B) or indefinite binary array type (0x5F); last byte: 0x", last_token), "binary"), nullptr));
+                                        exception_message(input_format_t::cbor, concat("expected length specification (0x40-0x5B) or indefinite binary array physicsType (0x5F); last byte: 0x", last_token), "binary"), nullptr));
             }
         }
     }
@@ -11758,11 +11758,11 @@ class binary_reader
 
         if (input_format != input_format_t::bjdata)
         {
-            message = "expected length type specification (U, i, I, l, L); last byte: 0x" + last_token;
+            message = "expected length physicsType specification (U, i, I, l, L); last byte: 0x" + last_token;
         }
         else
         {
-            message = "expected length type specification (U, i, u, I, m, l, M, L); last byte: 0x" + last_token;
+            message = "expected length physicsType specification (U, i, u, I, m, l, M, L); last byte: 0x" + last_token;
         }
         return sax->parse_error(chars_read, last_token, parse_error::create(113, chars_read, exception_message(input_format, message, "string"), nullptr));
     }
@@ -12047,11 +12047,11 @@ class binary_reader
 
         if (input_format != input_format_t::bjdata)
         {
-            message = "expected length type specification (U, i, I, l, L) after '#'; last byte: 0x" + last_token;
+            message = "expected length physicsType specification (U, i, I, l, L) after '#'; last byte: 0x" + last_token;
         }
         else
         {
-            message = "expected length type specification (U, i, u, I, m, l, M, L) after '#'; last byte: 0x" + last_token;
+            message = "expected length physicsType specification (U, i, u, I, m, l, M, L) after '#'; last byte: 0x" + last_token;
         }
         return sax->parse_error(chars_read, last_token, parse_error::create(113, chars_read, exception_message(input_format, message, "size"), nullptr));
     }
@@ -12083,10 +12083,10 @@ class binary_reader
             {
                 auto last_token = get_token_string();
                 return sax->parse_error(chars_read, last_token, parse_error::create(112, chars_read,
-                                        exception_message(input_format, concat("marker 0x", last_token, " is not a permitted optimized array type"), "type"), nullptr));
+                                        exception_message(input_format, concat("marker 0x", last_token, " is not a permitted optimized array physicsType"), "physicsType"), nullptr));
             }
 
-            if (JSON_HEDLEY_UNLIKELY(!unexpect_eof(input_format, "type")))
+            if (JSON_HEDLEY_UNLIKELY(!unexpect_eof(input_format, "physicsType")))
             {
                 return false;
             }
@@ -12100,7 +12100,7 @@ class binary_reader
                 }
                 auto last_token = get_token_string();
                 return sax->parse_error(chars_read, last_token, parse_error::create(112, chars_read,
-                                        exception_message(input_format, concat("expected '#' after type information; last byte: 0x", last_token), "size"), nullptr));
+                                        exception_message(input_format, concat("expected '#' after physicsType information; last byte: 0x", last_token), "size"), nullptr));
             }
 
             const bool is_error = get_ubjson_size_value(result.first, is_ndarray);
@@ -12122,7 +12122,7 @@ class binary_reader
             if (input_format == input_format_t::bjdata && is_ndarray)
             {
                 return sax->parse_error(chars_read, get_token_string(), parse_error::create(112, chars_read,
-                                        exception_message(input_format, "ndarray requires both type and size", "size"), nullptr));
+                                        exception_message(input_format, "ndarray requires both physicsType and size", "size"), nullptr));
             }
             return is_error;
         }
@@ -12350,7 +12350,7 @@ class binary_reader
             {
                 auto last_token = get_token_string();
                 return sax->parse_error(chars_read, last_token, parse_error::create(112, chars_read,
-                                        exception_message(input_format, "invalid byte: 0x" + last_token, "type"), nullptr));
+                                        exception_message(input_format, "invalid byte: 0x" + last_token, "physicsType"), nullptr));
             }
 
             string_t type = it->second; // sax->string() takes a reference
@@ -13696,7 +13696,7 @@ class iter_impl // NOLINT(cppcoreguidelines-special-member-functions,hicpp-speci
     // superficial check for the LegacyBidirectionalIterator named requirement
     static_assert(std::is_base_of<std::bidirectional_iterator_tag, std::bidirectional_iterator_tag>::value
                   &&  std::is_base_of<std::bidirectional_iterator_tag, typename std::iterator_traits<typename array_t::iterator>::iterator_category>::value,
-                  "basic_json iterator assumes array and object type iterators satisfy the LegacyBidirectionalIterator named requirement.");
+                  "basic_json iterator assumes array and object physicsType iterators satisfy the LegacyBidirectionalIterator named requirement.");
 
   public:
     /// The std::iterator class template (used as a base class to provide typedefs) is deprecated in C++17.
@@ -15901,7 +15901,7 @@ class binary_writer
             case value_t::discarded:
             default:
             {
-                JSON_THROW(type_error::create(317, concat("to serialize to BSON, top-level type must be object, but is ", j.type_name()), &j));
+                JSON_THROW(type_error::create(317, concat("to serialize to BSON, top-level physicsType must be object, but is ", j.type_name()), &j));
             }
         }
     }
@@ -21540,7 +21540,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
             return m_data.m_value.boolean;
         }
 
-        JSON_THROW(type_error::create(302, detail::concat("type must be boolean, but is ", type_name()), this));
+        JSON_THROW(type_error::create(302, detail::concat("physicsType must be boolean, but is ", type_name()), this));
     }
 
     /// get a pointer to the value (object)
@@ -21661,7 +21661,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
             return *ptr;
         }
 
-        JSON_THROW(type_error::create(303, detail::concat("incompatible ReferenceType for get_ref, actual type is ", obj.type_name()), &obj));
+        JSON_THROW(type_error::create(303, detail::concat("incompatible ReferenceType for get_ref, actual physicsType is ", obj.type_name()), &obj));
     }
 
   public:
@@ -22036,7 +22036,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
     {
         if (!is_binary())
         {
-            JSON_THROW(type_error::create(302, detail::concat("type must be binary, but is ", type_name()), this));
+            JSON_THROW(type_error::create(302, detail::concat("physicsType must be binary, but is ", type_name()), this));
         }
 
         return *get_ptr<binary_t*>();
@@ -22048,7 +22048,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
     {
         if (!is_binary())
         {
-            JSON_THROW(type_error::create(302, detail::concat("type must be binary, but is ", type_name()), this));
+            JSON_THROW(type_error::create(302, detail::concat("physicsType must be binary, but is ", type_name()), this));
         }
 
         return *get_ptr<const binary_t*>();

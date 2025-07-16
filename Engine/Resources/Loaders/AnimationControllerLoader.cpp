@@ -12,7 +12,7 @@ using json = nlohmann::json;
 void from_json(const nlohmann::json& in, Parameter& out)
 {
 	in.at("name").get_to(out.name);
-	in.at("type").get_to(out.type);
+	in.at("physicsType").get_to(out.type);
 	in.at("defaultFloat").get_to(out.defaultFloat);
 	in.at("defaultInt").get_to(out.defaultInt);
 	in.at("defaultBool").get_to(out.defaultBool);

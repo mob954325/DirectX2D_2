@@ -19,9 +19,14 @@ void Rigidbody2D::FixedUpdate(std::vector<CollisionInfo>& collisions)
 	Intergrate(collapsed);
 }
 
-void Rigidbody2D::SetKinematic(bool value)
+void Rigidbody2D::SetPhysicsType(PhysicsType value)
 {
-	isKinematic = value;
+	physicsType = value;
+}
+
+PhysicsType Rigidbody2D::GetPhysicsType()
+{
+	return physicsType;
 }
 
 void Rigidbody2D::SetGravity(bool value)
@@ -35,29 +40,40 @@ void Rigidbody2D::ApplyForce(const Vector2& forceVec)
 	accelration += forceVec / mass;
 }
 
+void Rigidbody2D::SetVelocity(const Vector2& vel)
+{
+	velocity = vel;
+}
+
 void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 {
-	if (!isKinematic)
+	if (physicsType != PhysicsType::Static)
 	{
-		if (useGravity)
+		Vector2 adjustGravity = Vector2::Zero();
+		if (physicsType == PhysicsType::Dynamic && useGravity)
 		{
-			Vector2 adjustGravity = gravity;
+			adjustGravity = gravity;
+		}
 
-			// 수직항력 계산
-			if (!collisions.empty()) // 충돌한 오브젝트가 존재
+		// 충돌한 오브젝트 반응 계산
+		if (!collisions.empty()) 
+		{
+			for (const auto& info : collisions)
 			{
-				for (const auto& info : collisions)
-				{
-					Vector2 normal = info.normal;
-				
+				Vector2 normal = info.normal;
+			
+				if(useGravity)
+				{ 
 					// 중력의 법선 성분 제거
 					float gDotN = adjustGravity.Dot(normal);
 					if (gDotN < 0)
 					{
 						adjustGravity -= normal * gDotN;
 					}
+				}
 
-
+				if (physicsType == PhysicsType::Dynamic)
+				{
 					// velocity를 법선 방향으로 투영
 					float vDotN = velocity.Dot(normal);
 
@@ -67,34 +83,74 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 					// 	velocity -= normal * vDotN; // 침투 방향 성분 제거 -> 정지 
 					// }
 
-					// 탄성
-					float restitution = 0.3f; // 임시 : 반발 계수 
+					//// 탄성
+					//float restitution = 0.5f; // 임시 : 반발(복원) 계수 - 얼마나 잘튀는지 나타내는 값
+					//if (vDotN < 0) // 침투 방향일 때만 제거
+					//{
+					//	Vector2 impulse = -normal * (1 + restitution) * vDotN; // 탄성 테스트 코드
+					//	velocity += impulse; // 침투 방향 성분 제거 -> 정지 
+					//
+					//	std::cout << "impulse : " << impulse.x << ", " << impulse.y << std::endl;
+					//}
 
+					// 마찰과 탄성
+					float friction = 1.0f; // 마찰 계수
 					if (vDotN < 0) // 침투 방향일 때만 제거
 					{
-						Vector2 impulse = -normal * (1 + restitution) * vDotN; // 임시 : 
-						velocity += impulse; // 침투 방향 성분 제거 -> 정지 
+						// 탄성 반응
+						float restitution = 0.0f;	 // 탄성 계수
+						Vector2 vn = normal * vDotN; // 탄성 속도 벡터
+						Vector2 impulseT = -(1 + restitution) * vn;
 
-						std::cout << "impulse : " << impulse.x << ", " << impulse.y << std::endl;
+						// 접선 벡터 구하기
+						Vector2 vt = velocity - vn;			 // velocity의 접선 성분
+						Vector2 tangent = vt.Normalize();	 // 접선 방향
+						float vDotT = velocity.Dot(tangent); // 접속 속도 크기
+
+						// 마찰 반응
+						float friction = 0.1f;
+						Vector2 impulseN = -friction * vDotT * tangent;
+
+						// 최종 반응
+						velocity += impulseN + impulseT;
+
+						// std::cout << "impulseN: " << impulseN.x << ", " << impulseN.y << std::endl;
+						// std::cout << "impulseT: " << impulseT.x << ", " << impulseT.y << std::endl;
 					}
 				}
 
-				std::cout << "adjustGravity : " << adjustGravity.x << ", " << adjustGravity.y << std::endl;
+				// 물체 밀어내기
+				if (physicsType != PhysicsType::Static)
+				{
+					Rigidbody2D* bRigid = info.b->GetComponent<Rigidbody2D>();
+
+					if (bRigid == nullptr) continue;
+					if (bRigid->GetPhysicsType() != PhysicsType::Dynamic) continue;
+
+					Vector2 pushDir = -info.normal;
+					float force = 100000.0f;
+
+					bRigid->ApplyForce(pushDir * force);
+				}
 			}
 
-			velocity += adjustGravity; // 중력에 의한 수직항력 반영
+			// std::cout << "adjustGravity : " << adjustGravity.x << ", " << adjustGravity.y << std::endl;
 		}
 
+		velocity += adjustGravity; // 계산된 값 추가
 
 		float deltaTime = 0.001f;
 
-		// 추가된 값 velocity에 반영
-		velocity += accelration * deltaTime;	
+		if (physicsType == PhysicsType::Dynamic)
+		{
+			// 추가된 값 velocity에 반영
+			velocity += accelration * deltaTime;
 
-		// drag 추가 ( 충돌이랑 관련 없음 )
-		velocity -= velocity * drag * deltaTime;
+			// drag 추가 ( 충돌이랑 관련 없음 )
+			velocity -= velocity * drag * deltaTime;
 
-		std::cout << "velocity : " << velocity.x << ", " << velocity.y << std::endl;
+			std::cout << "velocity : " << velocity.x << ", " << velocity.y << std::endl;
+		}
 
 		// 이동 
 		owner->transform->Translate(velocity * deltaTime);

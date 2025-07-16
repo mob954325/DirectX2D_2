@@ -57,6 +57,8 @@ public:
 				return static_cast<T*>(comp);
 			}
 		}
+
+		return nullptr; // NOTE: main이랑 merge하고 나서 해당 주석 제거할 것
 	}
 
 	void RemoveComponent(Component* targetComp);

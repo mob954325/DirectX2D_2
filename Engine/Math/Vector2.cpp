@@ -48,7 +48,7 @@ const Vector2& Vector2::Zero()
 	return zero;
 }
 
-Vector2 Vector2::operator-()
+Vector2 Vector2::operator-() const
 {
 	return Vector2(-x, -y);
 }
@@ -63,16 +63,6 @@ Vector2 Vector2::operator-(const Vector2& other)
 	return Vector2(x - other.x, y - other.y);
 }
 
-Vector2 Vector2::operator*(float other)
-{
-	return Vector2(x * other, y * other);
-}
-
-Vector2 Vector2::operator*(int other)
-{
-	return Vector2(x * other, y * other);
-}
-
 Vector2 Vector2::operator*(float other) const
 {
 	return Vector2(x * other, y * other);
@@ -81,16 +71,6 @@ Vector2 Vector2::operator*(float other) const
 Vector2 Vector2::operator*(int other) const
 {
 	return Vector2(x * other, y * other);
-}
-
-Vector2 Vector2::operator/(float other)
-{
-	return Vector2(x / other, y / other);
-}
-
-Vector2 Vector2::operator/(int other)
-{
-	return Vector2(x / other, y / other);
 }
 
 Vector2 Vector2::operator/(float other) const
@@ -115,17 +95,7 @@ Vector2& Vector2::operator-=(const Vector2& other)
 	return *this;
 }
 
-Vector2 operator*(float scalar, const Vector2& vec) // float * vector
-{
-	return Vector2(vec.x * scalar, vec.y * scalar);
-}
-
-Vector2 operator*(int scalar, const Vector2& vec) // int * vector
-{
-	return Vector2(vec.x * scalar, vec.y * scalar);
-}
-
-bool Vector2::IsZero()
+bool Vector2::IsZero() const
 {
 	return x < FLT_EPSILON + 1.1e-13f && y < FLT_EPSILON + 1.1e-13f;
 }
@@ -147,11 +117,10 @@ float Vector2::SqrMegnitude()
 
 Vector2 Vector2::Normalize()
 {
-	float len = len = Megnituede();
-	if (len < FLT_EPSILON) // or Len == 0
+	float len = Megnituede();
+	if (len < FLT_EPSILON)
 		return Vector2(0.0f, 0.0f);
-
-	return Vector2(x / Megnituede(), y / Megnituede());
+	return Vector2(x / len, y / len);
 }
 
 Vector2	Vector2::Lerp(Vector2& start, Vector2& end, float t)

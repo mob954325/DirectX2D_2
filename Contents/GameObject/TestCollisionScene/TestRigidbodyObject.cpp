@@ -2,6 +2,8 @@
 #include "Math/Vector2.h"
 #include "Datas/EngineData.h"
 #include "Scene/SceneManager.h"
+#include "Utils/GameTime.h"
+
 
 void TestRigidbodyObject::Start()
 {
@@ -12,6 +14,7 @@ void TestRigidbodyObject::Start()
 
 	rigid = AddComponent<Rigidbody2D>();
 	rigid->SetGravity(true);
+	rigid->SetPhysicsType(PhysicsType::Kinematic);
 
 	transform->SetPosition(0, 400.0f);
 	transform->SetIsUnityCoords(true);
@@ -49,20 +52,32 @@ void TestRigidbodyObject::Update()
 		Singleton<SceneManager>::GetInstance().LoadScene(1);
 	}
 
+	// 리셋 포지션
+	if (input->IsKeyPressed('R'))
+	{
+		transform->SetPosition(0, 400.0f);
+	}
+
+	// 타입 변경
+	if (input->IsKeyPressed('T'))
+	{
+		rigid->SetPhysicsType(PhysicsType::Dynamic);
+	}
+	if (input->IsKeyPressed('Y'))
+	{
+		rigid->SetPhysicsType(PhysicsType::Kinematic);
+	}
+	if (input->IsKeyPressed('U'))
+	{
+		rigid->SetPhysicsType(PhysicsType::Static);
+	}
+
+	// 좌표 출력
 	std::wstring str = L"x : ";
 	str += std::to_wstring(transform->GetPosition().x);
 	str += L" y : ";
 	str += std::to_wstring(transform->GetPosition().y);
 	playerPosText->SetText(str);
-
-	if (input->IsKeyDown('9'))
-	{
-		speed -= 1000.0f;
-	}
-	if (input->IsKeyDown('0'))
-	{
-		speed += 1000.0f;
-	}
 }
 
 void TestRigidbodyObject::OnDestroy()
@@ -73,24 +88,50 @@ void TestRigidbodyObject::HandleMoveInput()
 {
 	if (input == nullptr) return;
 
-	Vector2 vec{0,0};
-	if (input->IsKeyDown(VK_RIGHT))
+	if (rigid->GetPhysicsType() == PhysicsType::Dynamic)
 	{
-		vec += Vector2::Right();
-	}
-	if (input->IsKeyDown(VK_LEFT))
-	{
-		vec += Vector2::Left();
-	}
-	if (input->IsKeyDown(VK_UP))
-	{
-		vec += Vector2::Up();
-	}
-	if (input->IsKeyDown(VK_DOWN))
-	{
-		vec += Vector2::Down();
-	}
+		Vector2 vec{ 0,0 };
+		if (input->IsKeyDown(VK_RIGHT))
+		{
+			vec += Vector2::Right();
+		}
+		if (input->IsKeyDown(VK_LEFT))
+		{
+			vec += Vector2::Left();
+		}
+		if (input->IsKeyPressed(VK_UP)) // jump
+		{
+			vec += Vector2::Up() * 50.0f;
+		}
+		if (input->IsKeyDown(VK_DOWN))
+		{
+			vec += Vector2::Down();
+		}
 
-	vec = vec * speed;
-	rigid->ApplyForce(vec);
+		vec = vec * physicSpeed;
+		rigid->ApplyForce(vec);
+	}
+	else
+	{
+		Vector2 vec{ 0,0 };
+		if (input->IsKeyDown(VK_RIGHT))
+		{
+			vec += Vector2::Right();
+		}
+		if (input->IsKeyDown(VK_LEFT))
+		{
+			vec += Vector2::Left();
+		}
+		if (input->IsKeyDown(VK_UP))
+		{
+			vec += Vector2::Up();
+		}
+		if (input->IsKeyDown(VK_DOWN))
+		{
+			vec += Vector2::Down();
+		}
+
+		vec = vec * normalSpeed;
+		rigid->SetVelocity(vec);
+	}
 }

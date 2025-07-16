@@ -6,17 +6,22 @@ void TestColliderbox::Start()
 	box->SetIsShow(true);
 	box->SetWidth(2.0f);
 
-	Vector2 posVec = transform->GetPosition();
-	box->SetRect({ -50 / 2, -50 / 2, 50 / 2, 50 / 2 });
-
 	aabb = AddComponent<AABBCollider>();
 
-	//int randX = rand() % 100;
-	//int randY = rand() % 100;
-	aabb->SetSize(50, 50, 1);
+	int min = 1;
+	int max = 100;
+	float randX = rand() % (max - min + 1) + min;
+	float randY = rand() % (max - min + 1) + min;
+	aabb->SetSize(randX, randY, 1);
+
+	box->SetRect({ -randX / 2, -randY / 2, randX / 2, randY / 2 });
 
 	rigid = AddComponent<Rigidbody2D>();
 	rigid->SetGravity(true);
+	rigid->SetPhysicsType(PhysicsType::Dynamic);
+
+	float randMass = rand() % 3;
+	rigid->SetMass(randMass);
 }
 
 void TestColliderbox::Update()

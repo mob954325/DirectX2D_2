@@ -2,6 +2,13 @@
 #include "Components/Physics/PhysicComponent.h"
 #include "Math/Vector2.h"
 
+enum PhysicsType
+{
+	Dynamic = 0,
+	Kinematic,
+	Static
+};
+
 /// <summary>
 /// 2D 오브젝트가 물리 제어를 받게 되는 컴포넌트`
 /// </summary>
@@ -10,10 +17,20 @@ class Rigidbody2D : public PhysicComponent
 public:
 	void FixedUpdate(std::vector<CollisionInfo>& collisions) override;
 
-	void SetKinematic(bool value);
+	void SetPhysicsType(PhysicsType type);
+	PhysicsType GetPhysicsType();
 	void SetGravity(bool value);
 
+	/// <summary>
+	/// 물리적으로 미는 함수 ( 질량에 영향 받음 )
+	/// </summary>
+	/// <param name="forceVec">미는 방향</param>
 	void ApplyForce(const Vector2& forceVec);
+	/// <summary>
+	/// 물리를 무시하고 강제로 이동하는 함수
+	/// </summary>
+	/// <param name="vec">이동 방향</param>
+	void SetVelocity(const Vector2& vel);
 	void Intergrate(std::vector<CollisionInfo>& collisions);
 
 	void SetMass(float value) { mass = value; }
@@ -29,5 +46,5 @@ private:
 	float mass = 1.0f; // 질량
 
 	bool useGravity = true;
-	bool isKinematic = false;
+	PhysicsType physicsType = PhysicsType::Dynamic;
 };

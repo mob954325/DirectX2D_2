@@ -11,7 +11,7 @@ void TestGround::Start()
 
 	Vector2 posVec = transform->GetPosition();
 	box->SetRect({ -1024 / 2, -50 / 2, 1024 / 2, 50 / 2 });
-
+	
 	aabb = AddComponent<AABBCollider>();
 	aabb->SetSize(1024, 50, 1);
 }

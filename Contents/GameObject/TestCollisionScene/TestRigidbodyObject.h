@@ -26,6 +26,7 @@ private:
 	BoxComponent* box;
 	AABBCollider* aabb;
 
-	float speed = 5000.0f;
+	float physicSpeed = 30000;
+	float normalSpeed = 1000;
 };
 
