@@ -36,6 +36,8 @@ void Rigidbody2D::SetGravity(bool value)
 
 void Rigidbody2D::ApplyForce(const Vector2& forceVec)
 {
+	if (mass <= minMassValue) return;
+
 	// F = ma -> a = F / m
 	accelration += forceVec / mass;
 }
@@ -94,7 +96,6 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 					//}
 
 					// 마찰과 탄성
-					float friction = 1.0f; // 마찰 계수
 					if (vDotN < 0) // 침투 방향일 때만 제거
 					{
 						// 탄성 반응
@@ -108,7 +109,7 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 						float vDotT = velocity.Dot(tangent); // 접속 속도 크기
 
 						// 마찰 반응
-						float friction = 0.1f;
+						float friction = 1.0f;
 						Vector2 impulseN = -friction * vDotT * tangent;
 
 						// 최종 반응
@@ -157,6 +158,19 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 
 		// 가속도 초기화
 		accelration = Vector2::Zero();
+	}
+}
+
+void Rigidbody2D::SetMass(float value)
+{
+	mass = value;
+
+	if (mass <= minMassValue)
+	{
+		mass = 0.0f;
+		physicsType = PhysicsType::Static;
+		useGravity = false;
+		std::cout << owner->GetName() << " -> " << "Warning: Mass set to 0. Converted to Static object." << std::endl;
 	}
 }
 

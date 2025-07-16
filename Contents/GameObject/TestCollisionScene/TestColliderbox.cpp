@@ -20,7 +20,7 @@ void TestColliderbox::Start()
 	rigid->SetGravity(true);
 	rigid->SetPhysicsType(PhysicsType::Dynamic);
 
-	float randMass = rand() % 3;
+	float randMass = rand() % (3 - min + 1) + min;;
 	rigid->SetMass(randMass);
 }
 

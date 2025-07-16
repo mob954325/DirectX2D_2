@@ -33,7 +33,7 @@ public:
 	void SetVelocity(const Vector2& vel);
 	void Intergrate(std::vector<CollisionInfo>& collisions);
 
-	void SetMass(float value) { mass = value; }
+	void SetMass(float value);
 
 
 private:
@@ -43,7 +43,8 @@ private:
 	const Vector2 gravity = { 0.0f, -9.81f }; // 중력
 
 	float drag = 0.5f; // 저항
-	float mass = 1.0f; // 질량
+	float mass = 1.0f; // 질량 ( 0이면 고정 대상으로 간주 )
+	const float minMassValue = 0.0001f;
 
 	bool useGravity = true;
 	PhysicsType physicsType = PhysicsType::Dynamic;
