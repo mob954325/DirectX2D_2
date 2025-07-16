@@ -49,6 +49,14 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 				for (const auto& info : collisions)
 				{
 					Vector2 normal = info.normal;
+				
+					// 중력의 법선 성분 제거
+					float gDotN = adjustGravity.Dot(normal);
+					if (gDotN < 0)
+					{
+						adjustGravity -= normal * gDotN;
+					}
+
 
 					// velocity를 법선 방향으로 투영
 					float vDotN = velocity.Dot(normal);
@@ -57,13 +65,6 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 					// if (vDotN < 0) // 침투 방향일 때만 제거
 					// {
 					// 	velocity -= normal * vDotN; // 침투 방향 성분 제거 -> 정지 
-					// }
-					// 
-					// // 중력의 법선 성분 제거
-					// float gDotN = adjustGravity.Dot(normal);
-					// if (gDotN < 0)
-					// {
-					// 	adjustGravity -= normal * gDotN;
 					// }
 
 					// 탄성
