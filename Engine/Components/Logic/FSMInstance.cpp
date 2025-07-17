@@ -242,7 +242,7 @@ void FSMInstance::ResetTrigger(const std::string& name)
 	auto it = triggerParams.find(name);
 	if (it == triggerParams.end())
 	{
-		std::cerr << "Error: Parameter " << name << " is not registered as Trigger physicsType." << std::endl;
+		std::cerr << "Error: Parameter " << name << " is not registered as Trigger type." << std::endl;
 		return;
 	}
 
