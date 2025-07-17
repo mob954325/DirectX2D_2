@@ -7,11 +7,11 @@ void CollisionSystem::Register(CollisionComponent* comp)
 
 void CollisionSystem::UnRegister(CollisionComponent* comp)
 {
-	std::vector<CollisionComponent*>::iterator it = components.begin();
+	auto it = components.begin();
 
 	for (; it != components.end(); it++)
 	{
-		if (comp == *it)
+		if (*it == comp)
 		{
 			components.erase(it);
 			break;

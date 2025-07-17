@@ -9,7 +9,7 @@ void PhysicSystem::UnRegister(PhysicComponent* comp)
 {
 	auto it = components.begin();
 
-	for (; it != components.end();)
+	for (; it != components.end(); it++)
 	{
 		if (*it == comp)
 		{

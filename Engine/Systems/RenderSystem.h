@@ -16,7 +16,7 @@ public:
 	void SetD2DRenderManager(D2DRenderManager* pRenderManager) { renderManager = pRenderManager; }
 	void SetResourceManager(ResourceManager* pResourceManager) { resourceManager = pResourceManager; }
 	void Register(RenderComponent* comp);
-	void UnRegist(RenderComponent* comp);
+	void UnRegister(RenderComponent* comp);
 
 	void InitializeRenderLayers();
 	void ClearAll();

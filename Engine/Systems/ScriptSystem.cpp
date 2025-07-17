@@ -17,7 +17,7 @@ void ScriptSystem::Register(ScriptComponent* comp)
 	components.push_back(comp);
 }
 
-void ScriptSystem::UnRegist(ScriptComponent* comp)
+void ScriptSystem::UnRegister(ScriptComponent* comp)
 {
 	std::vector<ScriptComponent*>::iterator it = components.begin();
 

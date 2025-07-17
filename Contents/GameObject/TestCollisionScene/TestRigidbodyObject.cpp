@@ -37,6 +37,13 @@ void TestRigidbodyObject::Start()
 
 	playerPosText = AddComponent<TextRenderer>();
 	playerPosText->SetViewportPosition(0.5f, 0.9f);
+
+	GuideText = AddComponent<TextRenderer>();
+	GuideText->SetViewportPosition(0.2f, 0.2f);
+	GuideText->SetText(L"-- key list --\n\nReset position : R\n\n-- Player physics type --\n\nDynamic : T\nKinematic : Y\nStatic : U");
+
+	showTypeText = AddComponent<TextRenderer>();
+	showTypeText->SetViewportPosition(0.2f, 0.5f);
 }
 
 void TestRigidbodyObject::Update()
@@ -78,6 +85,21 @@ void TestRigidbodyObject::Update()
 	str += L" y : ";
 	str += std::to_wstring(transform->GetPosition().y);
 	playerPosText->SetText(str);
+
+	// type 출력
+	PhysicsType type = rigid->GetPhysicsType();
+	if (type == PhysicsType::Dynamic)
+	{
+		showTypeText->SetText(L"Physics : Dynamic");
+	}
+	else if (type == PhysicsType::Kinematic)
+	{
+		showTypeText->SetText(L"Physics : Kinematic");
+	}
+	else if (type == PhysicsType::Static)
+	{
+		showTypeText->SetText(L"Physics : Static");
+	}
 }
 
 void TestRigidbodyObject::OnDestroy()

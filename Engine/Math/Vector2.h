@@ -34,9 +34,9 @@ struct Vector2
 	bool IsZero() const;
 	float Dot(const Vector2& other);
 	Vector2	Lerp(Vector2& start, Vector2& end, float t);
-	float Megnituede();
-	float SqrMegnitude();
-	Vector2 Normalize();
+	float Megnituede() const;
+	float SqrMegnitude() const;
+	Vector2 Normalize() const;
 };
 
 // float * vector

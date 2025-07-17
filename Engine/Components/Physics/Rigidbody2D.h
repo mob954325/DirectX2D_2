@@ -37,10 +37,17 @@ public:
 
 
 private:
+
+	Vector2 CalculateCollisionResponse(const CollisionInfo& info);
+	void Push(Rigidbody2D* targetRigidbody, const Vector2& dir, const float depth, float time);
+
 	Vector2 velocity{0,0};		// 속도
 	Vector2 accelration{0,0};	// 가속도
 
 	const Vector2 gravity = { 0.0f, -9.81f }; // 중력
+
+	float restitution = 0.0f;	// 탄성 계수
+	float friction = 0.5f;		// 마찰 계수
 
 	float drag = 0.5f; // 저항
 	float mass = 1.0f; // 질량 ( 0이면 고정 대상으로 간주 )

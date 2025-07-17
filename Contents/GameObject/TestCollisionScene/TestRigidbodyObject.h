@@ -22,9 +22,11 @@ private:
 	InputSystem* input;
 	Rigidbody2D* rigid;
 	TextRenderer* playerPosText{};
+	TextRenderer* GuideText{};
+	TextRenderer* showTypeText{};
 
-	BoxComponent* box;
-	AABBCollider* aabb;
+	BoxComponent* box{};
+	AABBCollider* aabb{};
 
 	float physicSpeed = 30000;
 	float normalSpeed = 1000;

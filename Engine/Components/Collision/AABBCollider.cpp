@@ -12,16 +12,10 @@ void AABBCollider::FixedUpdate(const std::vector<CollisionComponent*>& others, s
 {
 	for (auto it = others.begin(); it != others.end(); it++)
 	{
-		if ((*it)->owner == this->owner)
-		{
-			continue;
-		}
+		if ((*it)->owner == this->owner) continue;
 
 		ICollider* other = dynamic_cast<ICollider*>((*it)->collider);
-		if (other == nullptr)
-		{
-			continue;
-		}
+		if (other == nullptr) continue;
 
 		CollisionInfo outInfo{ nullptr, nullptr, Vector2::Zero(), 0.0f }; // 충돌 정보
 		if (CheckCollision(other, outInfo))

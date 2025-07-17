@@ -17,7 +17,7 @@ void RenderSystem::Register(RenderComponent* comp)
 	comp->SetResourceManager(resourceManager);
 }
 
-void RenderSystem::UnRegist(RenderComponent* comp)
+void RenderSystem::UnRegister(RenderComponent* comp)
 {
 	auto groupIt = renderComponentGroup.find(comp->owner->GetRenderLayer());
 	if (groupIt == renderComponentGroup.end()) return;

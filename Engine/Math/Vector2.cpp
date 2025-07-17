@@ -105,17 +105,17 @@ float Vector2::Dot(const Vector2& other)
 	return x * other.x + y * other.y;
 }
 
-float Vector2::Megnituede()
+float Vector2::Megnituede() const
 {
 	return sqrt(x * x + y * y);
 }
 
-float Vector2::SqrMegnitude()
+float Vector2::SqrMegnitude() const
 {
 	return x * x + y * y;
 }
 
-Vector2 Vector2::Normalize()
+Vector2 Vector2::Normalize() const
 {
 	float len = Megnituede();
 	if (len < FLT_EPSILON)
