@@ -202,7 +202,7 @@ void Rigidbody2D::PushImpulse(Rigidbody2D* targetRigidbody, const Vector2& dir, 
 	if (depth <= 0.0f) return;
 
 	// 밀어낼 속도량 (간단히 penetration depth 기반)
-	float restitutionFactor = 50; // restitutionFactor는 50~100 정도
+	float restitutionFactor = 40; // restitutionFactor는 50~100 정도
 
 	Vector2 impulse = dir.Normalize() * depth * restitutionFactor;
 
