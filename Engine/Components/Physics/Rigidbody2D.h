@@ -26,6 +26,13 @@ public:
 	/// </summary>
 	/// <param name="forceVec">미는 방향</param>
 	void ApplyForce(const Vector2& forceVec);
+
+	/// <summary>
+	/// 직접 속도를 추가하는 함수 ( 시간에 영향을 받지 않음 -> 물리적인 이동 X )
+	/// </summary>
+	/// <param name="impluse">추가할 벡터 성분</param>
+	void ApplyImpluse(const Vector2& impluse);
+
 	/// <summary>
 	/// 물리를 무시하고 강제로 이동하는 함수
 	/// </summary>
@@ -39,7 +46,19 @@ public:
 private:
 
 	Vector2 CalculateCollisionResponse(const CollisionInfo& info);
-	void Push(Rigidbody2D* targetRigidbody, const Vector2& dir, const float depth, float time);
+
+	/// <summary>
+	/// ApplyForce로 물체를 미는 함수
+	/// </summary>
+	void PushForce(Rigidbody2D* targetRigidbody, const Vector2& dir, const float depth, float time);
+
+	/// <summary>
+	/// ApplyImpluse로 물체를 미는 함수
+	/// </summary>
+	/// <param name="targetRigidbody"></param>
+	/// <param name="dir"></param>
+	/// <param name="depth"></param>
+	void PushImpulse(Rigidbody2D* targetRigidbody, const Vector2& dir, const float depth);	
 
 	Vector2 velocity{0,0};		// 속도
 	Vector2 accelration{0,0};	// 가속도

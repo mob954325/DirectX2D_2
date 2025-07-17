@@ -42,6 +42,13 @@ void Rigidbody2D::ApplyForce(const Vector2& forceVec)
 	accelration += forceVec / mass;
 }
 
+void Rigidbody2D::ApplyImpluse(const Vector2& impluse)
+{
+	// 충격량 = 질량 * 속도 변화량
+	if (mass <= minMassValue) return;
+	velocity += impluse / mass;
+}
+
 void Rigidbody2D::SetVelocity(const Vector2& vel)
 {
 	velocity = vel;
@@ -90,7 +97,19 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 					if (bRigid->GetPhysicsType() != PhysicsType::Dynamic) continue;
 
 					Vector2 pushDir = -info.normal;
-					Push(bRigid, pushDir, info.penetrationDepth, 0.1f);
+					// PushForce(bRigid, pushDir, info.penetrationDepth, 0.1f);
+
+					if (this->mass < bRigid->mass)
+					{
+						if (this->physicsType != PhysicsType::Kinematic) // 본인이 kinematic이 아니면 밀려남
+						{
+							PushImpulse(this, info.normal, info.penetrationDepth);
+						}
+					}
+					else
+					{
+						PushImpulse(bRigid, -info.normal, info.penetrationDepth);
+					}
 				}
 			}
 
@@ -166,16 +185,28 @@ Vector2 Rigidbody2D::CalculateCollisionResponse(const CollisionInfo& info)
 	return Vector2::Zero();
 }
 
-void Rigidbody2D::Push(Rigidbody2D* targetRigidbody, const Vector2& dir, const float depth, float time)
+void Rigidbody2D::PushForce(Rigidbody2D* targetRigidbody, const Vector2& dir, const float depth, float time)
 {
 	if (time <= 0.0f || depth <= 0.0f) return;
 
-	float accel = (2.0f * depth) / (time * time); // d = 2d / t^2;
+	float accel = (2.0f * depth) / (time * time); // d(가속도) = 2d / t^2; ( 등가속도 운동 공식에서 유도 )
 	Vector2 pushForce = dir.Normalize() * accel * mass;
 
 	std::cout << "pushForce : " << pushForce.x << ", " << pushForce.y << std::endl;
 
 	targetRigidbody->ApplyForce(pushForce);
+}
+
+void Rigidbody2D::PushImpulse(Rigidbody2D* targetRigidbody, const Vector2& dir, const float depth)
+{
+	if (depth <= 0.0f) return;
+
+	// 밀어낼 속도량 (간단히 penetration depth 기반)
+	float restitutionFactor = 50; // restitutionFactor는 50~100 정도
+
+	Vector2 impulse = dir.Normalize() * depth * restitutionFactor;
+
+	targetRigidbody->ApplyImpluse(impulse);
 }
 
 /// 물리 상태의 계산

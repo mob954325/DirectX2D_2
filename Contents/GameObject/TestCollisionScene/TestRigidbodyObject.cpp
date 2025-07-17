@@ -15,6 +15,7 @@ void TestRigidbodyObject::Start()
 	rigid = AddComponent<Rigidbody2D>();
 	rigid->SetGravity(true);
 	rigid->SetPhysicsType(PhysicsType::Kinematic);
+	rigid->SetMass(2);
 
 	transform->SetPosition(0, 400.0f);
 	transform->SetIsUnityCoords(true);
@@ -123,7 +124,7 @@ void TestRigidbodyObject::HandleMoveInput()
 		}
 		if (input->IsKeyPressed(VK_UP)) // jump
 		{
-			vec += Vector2::Up() * 50.0f;
+			rigid->ApplyImpluse(Vector2::Up() * normalSpeed * 3);
 		}
 		if (input->IsKeyDown(VK_DOWN))
 		{
