@@ -14,6 +14,13 @@ public:
 	void Update() override;
 	void OnDestroy() override;
 
+	void OnColliderEnter(GameObject* collider) override;
+	void OnColliderStay(GameObject* collider) override;
+	void OnColliderExit(GameObject* collider) override;
+	void OnTriggerEnter(GameObject* collider) override;
+	void OnTriggerStay(GameObject* collider) override;
+	void OnTriggerExit(GameObject* collider) override;
+
 private:
 
 	void HandleMoveInput();

@@ -7,6 +7,7 @@ struct Vector2
 {
 	float x, y;
 
+	Vector2();
 	Vector2(float valueX, float valueY);
 	Vector2(int valueX, int valueY);
 

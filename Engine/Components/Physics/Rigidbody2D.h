@@ -55,9 +55,6 @@ private:
 	/// <summary>
 	/// ApplyImpluse로 물체를 미는 함수
 	/// </summary>
-	/// <param name="targetRigidbody"></param>
-	/// <param name="dir"></param>
-	/// <param name="depth"></param>
 	void PushImpulse(Rigidbody2D* targetRigidbody, const Vector2& dir, const float depth);	
 
 	Vector2 velocity{0,0};		// 속도

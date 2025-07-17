@@ -29,6 +29,14 @@ public:
 	/// 씬 종료시 실행될 함수
 	/// </summary>
 	virtual void OnDestroy() = 0;
+	
+	// 충돌처리 함수, 매개변수는 충돌 대상
+	virtual void OnColliderEnter(GameObject* collider) {}
+	virtual void OnColliderStay(GameObject* collider) {}
+	virtual void OnColliderExit(GameObject* collider) {}
+	virtual void OnTriggerEnter(GameObject* collider) {}
+	virtual void OnTriggerStay(GameObject* collider) {}
+	virtual void OnTriggerExit(GameObject* collider) {}
 
 	Transform* transform = {};
 
