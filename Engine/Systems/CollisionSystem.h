@@ -8,15 +8,16 @@
 
 using Pair = std::pair<GameObject*, GameObject*>;
 
-struct ColliderPair
+struct CollisionPair
 {
 	Pair pair;
 	CollisionInfo info;
 
-	ColliderPair(const Pair& p, const CollisionInfo& i = {}) : pair(p), info(i) {}
+	CollisionPair(Pair pair, CollisionInfo info) : pair(pair), info(info) {}
 
-	bool operator<(const ColliderPair& other) const {
-		return pair < other.pair;
+	bool operator<(const CollisionPair& other) const 
+	{
+		return pair < other.pair; // std::set 사용 위해 필요
 	}
 };
 
@@ -37,7 +38,7 @@ private:
 	void EventUpdate(std::vector<CollisionInfo>& infos);
 	void CallEvent(GameObject* a, GameObject* b, const std::string& type);
 
-	std::set<Pair> prevPairs;
+	std::set<CollisionPair> prevPairs;
 	std::vector<CollisionComponent*> components;
 };
 

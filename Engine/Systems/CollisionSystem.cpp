@@ -1,4 +1,5 @@
 ﻿#include "Systems/CollisionSystem.h"
+#include "set"
 
 void CollisionSystem::Register(CollisionComponent* comp)
 {
@@ -35,8 +36,20 @@ void CollisionSystem::FixedUpdate(std::vector<CollisionInfo>& outInfos)
 }
 
 void CollisionSystem::EventUpdate(std::vector<CollisionInfo>& infos)
-{
-	std::set<Pair> currPairs;
+{	
+	for (auto it = prevPairs.begin(); it != prevPairs.end(); )
+	{
+		if (it->pair.first->IsMarkedForRemoval() || it->pair.second->IsMarkedForRemoval())
+		{
+			it = prevPairs.erase(it);
+		}
+		else
+		{
+			it++;
+		}
+	}
+
+	std::set<CollisionPair> currPairs;
 
 	// 충돌 쌍 정규화 -> 이벤트 중복호출 방지용
 	auto MakeKey = [](GameObject* a, GameObject* b) -> Pair
@@ -47,15 +60,15 @@ void CollisionSystem::EventUpdate(std::vector<CollisionInfo>& infos)
 	// 현재 충돌 쌍 저장
 	for (auto it = infos.begin(); it != infos.end(); it++)
 	{
-		currPairs.insert(MakeKey(it->a, it->b));
+		currPairs.insert(CollisionPair(MakeKey(it->a, it->b), *it));
 	}
 
 	// enter/stay
-	for (const auto& pair : currPairs)
+	for (const auto& collisionPair : currPairs)
 	{
-		bool wasInPrev = prevPairs.find(pair) != prevPairs.end();
-		auto* a = pair.first;
-		auto* b = pair.second;
+		bool wasInPrev = prevPairs.find(collisionPair) != prevPairs.end();
+		auto* a = collisionPair.pair.first;
+		auto* b = collisionPair.pair.second;
 
 		if (wasInPrev)
 		{
@@ -63,20 +76,27 @@ void CollisionSystem::EventUpdate(std::vector<CollisionInfo>& infos)
 		}
 		else
 		{
-			CallEvent(a, b, "Enter");
+			if (collisionPair.info.penetrationDepth > 0.1f)
+			{
+				CallEvent(a, b, "Enter");
+			}
 		}
 	}
 
 	// exit
-	for (const auto& pair : prevPairs)
+	for (const auto& prev : prevPairs)
 	{
-		if (currPairs.find(pair) == currPairs.end())
+		auto it = currPairs.find(prev);
+		if (it == currPairs.end())
 		{
-			CallEvent(pair.first, pair.second, "Exit");
+			if (prev.info.penetrationDepth > 0.1f)
+			{
+				CallEvent(prev.pair.first, prev.pair.second, "Exit");
+			}
 		}
 	}
 
-	// prev 갱신
+	// prevPairs 갱신
 	prevPairs = std::move(currPairs);
 }
 
