@@ -72,6 +72,8 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 		{
 			for (const auto& info : collisions)
 			{
+				if (info.a->IsTrigger() || info.b->IsTrigger()) continue; // 둘 중 하나가 트리거면 반응 계산 무시
+
 				Vector2 normal = info.normal;
 			
 				// 중력 계산
