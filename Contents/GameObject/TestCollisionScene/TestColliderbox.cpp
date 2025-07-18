@@ -19,9 +19,12 @@ void TestColliderbox::Start()
 	rigid = AddComponent<Rigidbody2D>();
 	rigid->SetGravity(true);
 	rigid->SetPhysicsType(PhysicsType::Dynamic);
+	rigid->SetMass(0.3);
+	rigid->Setfriction(1);
 
-	float randMass = rand() % (3 - min + 1) + min;;
-	rigid->SetMass(randMass);
+	text = AddComponent<TextRenderer>();
+	text->SetText(L"상자");
+	text->SetWorldObject(true);
 }
 
 void TestColliderbox::Update()

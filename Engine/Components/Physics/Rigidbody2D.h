@@ -41,7 +41,9 @@ public:
 	void Intergrate(std::vector<CollisionInfo>& collisions);
 
 	void SetMass(float value);
-
+	void SetDrag(float value);
+	void SetRestitution(float value);
+	void Setfriction(float value);
 
 private:
 

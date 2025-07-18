@@ -3,6 +3,7 @@
 #include "Components/Collision/AABBCollider.h"
 #include "Components/Rendering/BoxComponent.h"
 #include "Components/Physics/Rigidbody2D.h"
+#include "Components/Rendering/TextRenderer.h"
 
 class TestColliderbox : public GameObject
 {
@@ -15,5 +16,6 @@ private:
 	BoxComponent* box;
 	AABBCollider* aabb;
 	Rigidbody2D* rigid;
+	TextRenderer* text;
 };
 

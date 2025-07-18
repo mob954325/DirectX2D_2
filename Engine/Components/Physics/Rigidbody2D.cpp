@@ -67,6 +67,8 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 			adjustGravity = gravity;
 		}
 
+		bool grounded = false; // 접지 상태 판단 ( 땅에 닿았는지 판단 )
+
 		// 충돌한 오브젝트 반응 계산
 		if (!collisions.empty()) 
 		{
@@ -75,7 +77,14 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 				if (info.a->IsTrigger() || info.b->IsTrigger()) continue; // 둘 중 하나가 트리거면 반응 계산 무시
 
 				Vector2 normal = info.normal;
-			
+
+				if (info.normal.y > 0.7f)
+				{
+					grounded = true;
+
+					std::cout << "grounded true" << std::endl;
+				}
+
 				// 중력 계산
 				if(useGravity)
 				{ 
@@ -87,7 +96,7 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 					}
 				}
 
-				// 충돌 반응 계산
+				// 반응 계산
 				if (physicsType == PhysicsType::Dynamic)
 				{
 					velocity += CalculateCollisionResponse(info);
@@ -133,7 +142,15 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 			// drag 추가 ( 충돌이랑 관련 없음 )
 			velocity -= velocity * drag * deltaTime;
 
-			// std::cout << "velocity : " << velocity.x << ", " << velocity.y << std::endl;
+			// 마찰력 적용 (접지 시)
+			if (grounded)
+			{
+				float frictionCoefficient = 10.0f;
+				velocity.x -= velocity.x * frictionCoefficient * deltaTime;
+
+				if (std::abs(velocity.x) < 0.001f)
+					velocity.x = 0;
+			}
 		}
 
 		// 이동 
@@ -157,6 +174,21 @@ void Rigidbody2D::SetMass(float value)
 	}
 }
 
+void Rigidbody2D::SetDrag(float value)
+{
+	drag = value;
+}
+
+void Rigidbody2D::SetRestitution(float value)
+{
+	restitution = value;
+}
+
+void Rigidbody2D::Setfriction(float value)
+{
+	friction = value;
+}
+
 Vector2 Rigidbody2D::CalculateCollisionResponse(const CollisionInfo& info)
 {
 	Vector2 normal = info.normal;
@@ -178,7 +210,7 @@ Vector2 Rigidbody2D::CalculateCollisionResponse(const CollisionInfo& info)
 		float vDotT = velocity.Dot(tangent); // 접속 속도 크기
 
 		// 마찰 반응
-		Vector2 impulseN = -friction * vDotT * tangent;
+		Vector2 impulseN = -friction * vDotT * tangent; // 부딪칠 때
 
 		// std::cout << "impulseN: " << impulseN.x << ", " << impulseN.y << std::endl;
 		// std::cout << "impulseT: " << impulseT.x << ", " << impulseT.y << std::endl;
