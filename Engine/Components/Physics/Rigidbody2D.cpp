@@ -82,7 +82,7 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 				{
 					grounded = true;
 
-					std::cout << "grounded true" << std::endl;
+					// std::cout << "grounded true" << std::endl;
 				}
 
 				// 중력 계산

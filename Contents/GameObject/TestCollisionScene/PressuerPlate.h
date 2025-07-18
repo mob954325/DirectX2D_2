@@ -2,6 +2,7 @@
 #include "Components/Base/GameObject.h"
 #include "Components/Collision/AABBCollider.h"
 #include "Components/Physics/Rigidbody2D.h"
+#include "Components/Rendering/TextRenderer.h"
 
 class PressuerPlate : public GameObject
 {
@@ -17,5 +18,7 @@ private:
 
 	BoxComponent* box{};
 	AABBCollider* aabb{};
+	TextRenderer* text{};
+	TextRenderer* alarmText{};
 };
 
