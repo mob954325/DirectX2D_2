@@ -17,7 +17,7 @@ void AABBCollider::FixedUpdate(const std::vector<CollisionComponent*>& others, s
 		ICollider* other = dynamic_cast<ICollider*>((*it)->collider);
 		if (other == nullptr) continue;
 
-		CollisionInfo outInfo{ nullptr, nullptr, Vector2::Zero(), 0.0f }; // 충돌 정보
+		CollisionInfo outInfo{ nullptr, nullptr, Vector2::Zero(), 0}; // 충돌 정보
 		if (CheckCollision(other, outInfo))
 		{
 			//std::cout << " [ " << (*it)->owner->GetName() << ", " << this->owner->GetName() << "충돌됨 ] " << std::endl;
@@ -105,9 +105,9 @@ bool AABBCollider::CheckCollisionWithAABB(ICollider* other, CollisionInfo& outCo
 			outCollisionInfo.penetrationDepth = overlapY;
 		}
 
-
-		outCollisionInfo.a = this->owner;
-		outCollisionInfo.b = otherAABB->owner;
+		// NOTE: Gameobject -> collisioncomponent
+		outCollisionInfo.a = dynamic_cast<CollisionComponent*>(this);
+		outCollisionInfo.b = dynamic_cast<CollisionComponent*>(otherAABB);
 
 		//std::cout << "[Collision] Normal: ("
 		//	<< outCollisionInfo.normal.x << ", "

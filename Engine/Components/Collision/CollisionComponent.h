@@ -3,12 +3,6 @@
 #include "Components/Collision/ICollider.h"
 #include "Datas/CollisionInfo.h"
 
-struct Bounds
-{
-	// vector3 center;	// bounding box의 중앙
-	// vector3 extents;	// bounding box의 범위 -> 항상 bounds 크기의 절반 값
-};
-
 class CollisionComponent : public Component
 {
 public:

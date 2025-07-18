@@ -1,7 +1,10 @@
 ﻿#include "Rigidbody2D.h"
 #include "Utils/Singleton.h"
 #include "Utils/GameTime.h"
+
 #include "Components/Base/GameObject.h"
+#include "Components/Collision/CollisionComponent.h"
+
 #include <math.h>
 
 void Rigidbody2D::FixedUpdate(std::vector<CollisionInfo>& collisions)
@@ -10,7 +13,7 @@ void Rigidbody2D::FixedUpdate(std::vector<CollisionInfo>& collisions)
 
 	for (const auto& info : collisions)
 	{
-		if (info.a == this->owner)
+		if (info.a->owner == this->owner)
 		{
 			collapsed.push_back(info);
 		}
@@ -91,7 +94,7 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 				// 물체 밀어내기
 				if (physicsType != PhysicsType::Static)
 				{
-					Rigidbody2D* bRigid = info.b->GetComponent<Rigidbody2D>();
+					Rigidbody2D* bRigid = info.b->owner->GetComponent<Rigidbody2D>();
 
 					if (bRigid == nullptr) continue;
 					if (bRigid->GetPhysicsType() != PhysicsType::Dynamic) continue;
@@ -202,7 +205,7 @@ void Rigidbody2D::PushImpulse(Rigidbody2D* targetRigidbody, const Vector2& dir, 
 	if (depth <= 0.0f) return;
 
 	// 밀어낼 속도량 (간단히 penetration depth 기반)
-	float restitutionFactor = 40; // restitutionFactor는 50~100 정도
+	float restitutionFactor = 40; 
 
 	Vector2 impulse = dir.Normalize() * depth * restitutionFactor;
 

@@ -11,7 +11,6 @@ void TestWall::Start()
 
 	aabb = AddComponent<AABBCollider>();
 	aabb->SetSize(50, 1024, 1);
-	transform->SetPosition(200, 0);
 }
 
 void TestWall::Update()

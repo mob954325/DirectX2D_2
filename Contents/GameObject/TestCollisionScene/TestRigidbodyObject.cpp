@@ -109,32 +109,32 @@ void TestRigidbodyObject::OnDestroy()
 
 void TestRigidbodyObject::OnColliderEnter(GameObject* collider)
 {
-	std::cout << " -- Enter -- " << std::endl;
+	// std::cout << " -- Enter -- " << std::endl;
 }
 
 void TestRigidbodyObject::OnColliderStay(GameObject* collider)
 {
-	std::cout << " *** Stay *** " << std::endl;
+	// std::cout << " *** Stay *** " << std::endl;
 }
 
 void TestRigidbodyObject::OnColliderExit(GameObject* collider)
 {
-	std::cout << " |||| Exit |||| " << std::endl;
+	// std::cout << " |||| Exit |||| " << std::endl;
 }
 
 void TestRigidbodyObject::OnTriggerEnter(GameObject* collider)
 {
-	std::cout << " -- Enter -- " << std::endl;
+	// std::cout << " -- Enter -- " << std::endl;
 }
 
 void TestRigidbodyObject::OnTriggerStay(GameObject* collider)
 {
-	std::cout << " *** Stay *** " << std::endl;
+	// std::cout << " *** Stay *** " << std::endl;
 }
 
 void TestRigidbodyObject::OnTriggerExit(GameObject* collider)
 {
-	std::cout << " |||| Exit |||| " << std::endl;
+	// std::cout << " |||| Exit |||| " << std::endl;
 }
 
 void TestRigidbodyObject::HandleMoveInput()

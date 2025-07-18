@@ -6,7 +6,7 @@
 #include "unordered_map"
 #include "set"
 
-using Pair = std::pair<GameObject*, GameObject*>;
+using Pair = std::pair<CollisionComponent*, CollisionComponent*>;
 
 struct CollisionPair
 {
@@ -36,7 +36,7 @@ private:
 	~CollisionSystem();
 
 	void EventUpdate(std::vector<CollisionInfo>& infos);
-	void CallEvent(GameObject* a, GameObject* b, const std::string& type);
+	void CallEvent(CollisionComponent* a, CollisionComponent* b, const std::string& type);
 
 	std::set<CollisionPair> prevPairs;
 	std::vector<CollisionComponent*> components;

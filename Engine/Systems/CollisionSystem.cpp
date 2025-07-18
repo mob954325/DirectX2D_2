@@ -1,4 +1,5 @@
 ﻿#include "Systems/CollisionSystem.h"
+#include "Components/Base/GameObject.h"
 #include "set"
 
 void CollisionSystem::Register(CollisionComponent* comp)
@@ -39,7 +40,7 @@ void CollisionSystem::EventUpdate(std::vector<CollisionInfo>& infos)
 {	
 	for (auto it = prevPairs.begin(); it != prevPairs.end(); )
 	{
-		if (it->pair.first->IsMarkedForRemoval() || it->pair.second->IsMarkedForRemoval())
+		if (it->pair.first->owner->IsMarkedForRemoval() || it->pair.second->owner->IsMarkedForRemoval())
 		{
 			it = prevPairs.erase(it);
 		}
@@ -52,7 +53,7 @@ void CollisionSystem::EventUpdate(std::vector<CollisionInfo>& infos)
 	std::set<CollisionPair> currPairs;
 
 	// 충돌 쌍 정규화 -> 이벤트 중복호출 방지용
-	auto MakeKey = [](GameObject* a, GameObject* b) -> Pair
+	auto MakeKey = [](CollisionComponent* a, CollisionComponent* b) -> Pair
 		{
 			return (a < b) ? Pair(a, b) : Pair(b, a);
 		};
@@ -100,13 +101,10 @@ void CollisionSystem::EventUpdate(std::vector<CollisionInfo>& infos)
 	prevPairs = std::move(currPairs);
 }
 
-void CollisionSystem::CallEvent(GameObject* a, GameObject* b, const std::string& type)
+void CollisionSystem::CallEvent(CollisionComponent* a, CollisionComponent* b, const std::string& type)
 {
-	auto* collisionA = a->GetComponent<CollisionComponent>();
-	auto* collisionB = b->GetComponent<CollisionComponent>();
-
-	bool aTrigger = collisionA && collisionA->IsTrigger();
-	bool bTrigger = collisionB && collisionB->IsTrigger();
+	bool aTrigger = a && a->IsTrigger();
+	bool bTrigger = b && b->IsTrigger();
 
 	auto DoCall = [&](GameObject* caller, GameObject* target, bool trigger)
 		{
@@ -124,8 +122,8 @@ void CollisionSystem::CallEvent(GameObject* a, GameObject* b, const std::string&
 			}
 		};
 
-	DoCall(a, b, aTrigger);
-	DoCall(b, a, bTrigger);
+	DoCall(a->owner, b->owner, aTrigger);
+	DoCall(b->owner, a->owner, bTrigger);
 }
 
 CollisionSystem::~CollisionSystem()

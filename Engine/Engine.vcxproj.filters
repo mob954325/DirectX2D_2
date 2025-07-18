@@ -248,6 +248,9 @@
     <ClInclude Include="Datas\CollisionInfo.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Utils\TypeCastUtil.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -356,6 +359,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Components\Physics\Rigidbody2D.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\TypeCastUtil.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

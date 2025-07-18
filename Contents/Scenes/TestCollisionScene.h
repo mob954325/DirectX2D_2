@@ -12,8 +12,10 @@ protected:
 private:
 	GameObject* player{};
 	GameObject* ground{};
-	GameObject* wall{};
+	GameObject* rightWall{};
+	GameObject* leftWall{};
 	GameObject* boxGenerator{};
+	GameObject* doorButton{};
 
 	GameObject* m_MainCamera{};
 };

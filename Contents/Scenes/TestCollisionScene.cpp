@@ -7,6 +7,7 @@
 #include "Components/Camera/CameraManager.h"
 #include "GameObject/TestCollisionScene/TestWall.h"
 #include "GameObject/TestCollisionScene/TestColliderboxGenerator.h"
+#include "GameObject/TestCollisionScene/PressuerPlate.h"
 
 void TestCollisionScene::OnEnterImpl()
 {
@@ -19,11 +20,20 @@ void TestCollisionScene::OnEnterImpl()
 	ground = new TestGround();
 	AddGameObject(ground, "Ground");
 
-	wall = new TestWall();
-	AddGameObject(wall, "Wall");
+	rightWall = new TestWall();
+	AddGameObject(rightWall, "Wall");
+	rightWall->transform->SetPosition(400, 0);
+
+	leftWall = new TestWall();
+	AddGameObject(leftWall, "Wall");
+	leftWall->transform->SetPosition(-400, 0);
 
 	boxGenerator = new TestColliderboxGenerator();
 	AddGameObject(boxGenerator, "bxg");
+
+	doorButton = new PressuerPlate();
+	AddGameObject(doorButton, "doorButton");
+	doorButton->transform->SetPosition(200, 30);
 }
 
 void TestCollisionScene::OnExitImpl()
