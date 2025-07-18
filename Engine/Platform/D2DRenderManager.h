@@ -32,7 +32,7 @@ public:
 	/// <param name="outBitmap">반환 될 Bitmap</param>
 	/// <returns>상태</returns>
 	HRESULT CreateBitmapFromFile(const wchar_t* path, ID2D1Bitmap1** outBitmap);
-	void PrintText(const wchar_t* str, float left, float top);
+	void PrintText(const wchar_t* str, float left, float top, bool isWorld = false);
 	void CreateEffect(ID2D1Effect** skew, ID2D1Effect** shadow, Microsoft::WRL::ComPtr<ID2D1Bitmap> bitmap);
 
 protected:

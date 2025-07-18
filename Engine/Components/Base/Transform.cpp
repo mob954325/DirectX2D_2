@@ -40,7 +40,7 @@ void Transform::CalculateFinalMatrix()
 	}
 }
 
-D2D1_MATRIX_3X2_F Transform::GetFinalMatrix()
+D2D1_MATRIX_3X2_F Transform::GetFinalMatrix() const
 {
 	return finalMatrix;
 }

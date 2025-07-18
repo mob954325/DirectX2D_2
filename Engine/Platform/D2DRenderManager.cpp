@@ -99,11 +99,12 @@ void D2DRenderManager::DrawRectangle(D2D1_RECT_F& rect, ID2D1Brush* brush, FLOAT
 	m_d2dDeviceContext->DrawRectangle(rect, brush, width, strokeStyle);
 }
 
-void D2DRenderManager::PrintText(const wchar_t* str, float left, float top)
+void D2DRenderManager::PrintText(const wchar_t* str, float left, float top, bool isWorld)
 {
 	if (!m_d2dDeviceContext || !m_pBrush) return;
 
-	m_d2dDeviceContext->SetTransform(D2D1::Matrix3x2F::Identity());
+	if(!isWorld) m_d2dDeviceContext->SetTransform(D2D1::Matrix3x2F::Identity());
+
 	m_pBrush->SetColor(D2D1::ColorF(D2D1::ColorF::White));
 	m_d2dDeviceContext->DrawTextW(str, (UINT32)wcslen(str), m_pDWriteTextFormat.Get(), D2D1::RectF(left, top, left + 300, top + 250), m_pBrush.Get());
 }
