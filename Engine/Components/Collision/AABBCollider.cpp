@@ -1,5 +1,6 @@
 ﻿#include "AABBCollider.h"
 #include "Components/Base/GameObject.h"
+#include <algorithm>
 
 AABBCollider::AABBCollider()
 {
@@ -7,24 +8,25 @@ AABBCollider::AABBCollider()
 	type = ColliderType::AABB;
 }
 
-void AABBCollider::FixedUpdate(const std::vector<CollisionComponent*>& others)
+void AABBCollider::FixedUpdate(const std::vector<CollisionComponent*>& others, std::vector<CollisionInfo>& outInfos)
 {
 	for (auto it = others.begin(); it != others.end(); it++)
 	{
-		if ((*it)->owner == this->owner)
-		{
-			continue;
-		}
+		if ((*it)->owner == this->owner) continue;
 
 		ICollider* other = dynamic_cast<ICollider*>((*it)->collider);
-		if (other == nullptr)
-		{
-			continue;
-		}
+		if (other == nullptr) continue;
 
-		if (CheckCollision(other))
+		CollisionInfo outInfo{ nullptr, nullptr, Vector2::Zero(), 0}; // 충돌 정보
+		if (CheckCollision(other, outInfo))
 		{
-			std::cout << " ----- " << (*it)->owner->GetName() << ", " << this->owner->GetName() << "충돌됨" << std::endl;
+			//std::cout << " [ " << (*it)->owner->GetName() << ", " << this->owner->GetName() << "충돌됨 ] " << std::endl;
+
+			//std::cout << "-- Collision Info -- \n";
+			//std::cout << outInfo.a->GetName() << "->" << outInfo.b->GetName() << " : " << outInfo.normal.x << ", " << outInfo.normal.y << "\n";
+			//std::cout << "Depth : " << outInfo.penetrationDepth << std::endl;
+
+			outInfos.push_back(outInfo);
 		}
 	}
 }
@@ -39,7 +41,7 @@ Vector2 AABBCollider::GetCenter() const
 	return Vector2(owner->transform->GetPosition().x, owner->transform->GetPosition().y);
 }
 
-bool AABBCollider::CheckCollision(ICollider* other) const
+bool AABBCollider::CheckCollision(ICollider* other, CollisionInfo& outCollisionInfo)
 {
 	ColliderType type = other->GetColliderType();
 	switch (type)
@@ -47,7 +49,7 @@ bool AABBCollider::CheckCollision(ICollider* other) const
 	case Circle:
 		break;
 	case AABB:
-		return CheckCollisionWithAABB(other);
+		return CheckCollisionWithAABB(other, outCollisionInfo);
 	default:
 		break;
 	}
@@ -55,11 +57,12 @@ bool AABBCollider::CheckCollision(ICollider* other) const
 	return false;
 }
 
-bool AABBCollider::CheckCollisionWithAABB(ICollider* other) const
+bool AABBCollider::CheckCollisionWithAABB(ICollider* other, CollisionInfo& outCollisionInfo)
 {
 	AABBCollider* otherAABB = static_cast<AABBCollider*>(other);
 	if (!otherAABB) return false;
 
+	// AABB 계산
 	Vector2 aCenter = GetCenter();
 	Vector2 bCenter = otherAABB->GetCenter();
 	D2D1_RECT_F aRect = GetSize();
@@ -81,6 +84,37 @@ bool AABBCollider::CheckCollisionWithAABB(ICollider* other) const
 		(aMinY < bMaxY) &&
 		(aMaxY > bMinY);
 
+	// info 데이터 추가
+	if (isColliding)
+	{
+		// 침투한 길이 
+		float overlapX = min(aMaxX, bMaxX) - max(aMinX, bMinX);
+		float overlapY = min(aMaxY, bMaxY) - max(aMinY, bMinY);
+
+		Vector2 delta = bCenter - aCenter;
+
+		// 침투 깊이가 깊으면 해당 축을 반응 축으로 저장 ( 클수록 덜 겹침 )
+		if (overlapX < overlapY)
+		{
+			outCollisionInfo.normal = (delta.x > 0) ? Vector2(-1, 0) : Vector2(1, 0); // 밀려나야할 법선 벡터
+			outCollisionInfo.penetrationDepth = overlapX;
+		}
+		else // >=
+		{
+			outCollisionInfo.normal = (delta.y > 0) ? Vector2(0, -1) : Vector2(0, 1);
+			outCollisionInfo.penetrationDepth = overlapY;
+		}
+
+		// NOTE: Gameobject -> collisioncomponent
+		outCollisionInfo.a = dynamic_cast<CollisionComponent*>(this);
+		outCollisionInfo.b = dynamic_cast<CollisionComponent*>(otherAABB);
+
+		//std::cout << "[Collision] Normal: ("
+		//	<< outCollisionInfo.normal.x << ", "
+		//	<< outCollisionInfo.normal.y << "), Depth: "
+		//	<< outCollisionInfo.penetrationDepth << "\n";
+	}
+
 	return isColliding;
 }
 
@@ -95,42 +129,44 @@ void AABBCollider::SetSize(float width, float height, float scale)
 	this->height = height;
 	this->size = scale;
 
-	if (box != nullptr)
-	{
-		D2D1_VECTOR_2F posVec = owner->transform->GetPosition();
-		box->SetRect
-		({
-			posVec.x - width / 2 * scale,
-			posVec.y - height / 2 * scale ,
-			posVec.x + width / 2 * scale ,
-			posVec.y + height / 2 * scale
-		});
-
-	}
+	//if (box != nullptr)
+	//{
+	//	Vector2 posVec = owner->transform->GetPosition();
+	//	box->SetRect
+	//	({
+	//		posVec.x - width / 2 * scale,
+	//		posVec.y - height / 2 * scale,
+	//		posVec.x + width / 2 * scale,
+	//		posVec.y + height / 2 * scale
+	//	});
+	//}
 }
 
 D2D1_RECT_F AABBCollider::GetSize() const
 {
 	D2D1_RECT_F rect{};
 	Vector2 centerVec = GetCenter();
+
 	if (owner->transform->IsUnityCoords())
 	{
+		// 중앙을 기준으로 한 크기 
 		rect =
 		{
-			centerVec.x - width * 0.5f,
-			centerVec.y + height * 0.5f,
-			centerVec.x + width * 0.5f,
-			centerVec.y - height * 0.5f
+			-width * 0.5f * size,
+			height * 0.5f * size,
+			width * 0.5f * size,
+			-height * 0.5f * size
 		};
 	}
 	else
 	{
+		// 좌측 상단을 기준으로한 크기
 		rect =
 		{
-			centerVec.x,
-			centerVec.y,
-			centerVec.x + width,
-			centerVec.y + height
+			0,
+			0,
+			width * size,
+			height * size
 		};
 	}
 

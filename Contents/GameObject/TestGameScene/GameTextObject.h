@@ -21,7 +21,5 @@ private:
 	TextRenderer* textRenderer4{};
 
 	InputSystem* inputSystem{};
-
-	BoxComponent* box{};
 };
 

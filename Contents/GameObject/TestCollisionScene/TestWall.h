@@ -3,7 +3,7 @@
 #include "Components/Collision/AABBCollider.h"
 #include "Components/Rendering/BoxComponent.h"
 
-class TestGround : public GameObject
+class TestWall : public GameObject
 {
 public:
 	void Start() override;
@@ -11,7 +11,7 @@ public:
 	void OnDestroy() override;
 
 private:
-	BoxComponent* box; 
+	BoxComponent* box;
 	AABBCollider* aabb;
 };
 

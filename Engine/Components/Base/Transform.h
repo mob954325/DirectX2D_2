@@ -24,9 +24,9 @@ class Transform : public Component
 protected:
 	Transform* parent = nullptr;
 
-	D2D1_VECTOR_2F position;
+	Vector2 position;
 	float rotation;
-	D2D1_VECTOR_2F scale;
+	Vector2 scale;
 	D2D1_MATRIX_3X2_F cachedMatrix = D2D1::Matrix3x2F::Identity();
 
 	D2D1_MATRIX_3X2_F unityCoordMatrix = D2D1::Matrix3x2F::Identity(); // 유니티 좌표 전환 메트릭스
@@ -50,13 +50,13 @@ public:
 	void OnEnd() override;
 
 	// get, set
-	D2D1_VECTOR_2F GetPosition() const { return position; }
+	Vector2 GetPosition() const { return position; }
 	void SetPosition(float x, float y);
 
 	float GetRotation() const { return rotation; }
 	void SetRotation(float rotValue);
 
-	D2D1_VECTOR_2F GetScale() const { return scale; }
+	Vector2 GetScale() const { return scale; }
 	void SetScale(float scaleX, float scaleY); 
 
 	Transform* GetParent() const { return parent; }
@@ -68,12 +68,12 @@ public:
 	void SetOffset(float x, float y);
 
 	void CalculateFinalMatrix();
-	D2D1_MATRIX_3X2_F GetFinalMatrix() { return finalMatrix; }
+	D2D1_MATRIX_3X2_F GetFinalMatrix() const;
 
 	void ResetDirty() { dirty = false; }
 	bool IsDirty();
 
-	void Translate(const D2D1_VECTOR_2F& delta);
+	void Translate(const Vector2& delta);
 
 	/// <summary>
 	/// 매트릭스로 transform 값 설정

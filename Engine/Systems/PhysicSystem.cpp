@@ -9,7 +9,7 @@ void PhysicSystem::UnRegister(PhysicComponent* comp)
 {
 	auto it = components.begin();
 
-	for (; it != components.end();)
+	for (; it != components.end(); it++)
 	{
 		if (*it == comp)
 		{
@@ -24,11 +24,11 @@ void PhysicSystem::ClearAll()
 	components.clear();
 }
 
-void PhysicSystem::FixedUpdate()
+void PhysicSystem::FixedUpdate(std::vector<CollisionInfo>& collisions)
 {
 	for (auto comp : components)
 	{
-		comp->FixedUpdate();
+		comp->FixedUpdate(collisions);
 	}
 }
 

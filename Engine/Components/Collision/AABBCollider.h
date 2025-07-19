@@ -10,14 +10,14 @@ class AABBCollider : public CollisionComponent, ICollider
 {
 public:
 	AABBCollider();
-	void FixedUpdate(const std::vector<CollisionComponent*>& others) override;
+	void FixedUpdate(const std::vector<CollisionComponent*>& others, std::vector<CollisionInfo>& outInfos) override;
 
 	ColliderType GetColliderType() override;
 	Vector2 GetCenter() const override;
 
 	// 충돌 확인용 인터페이스
-	bool CheckCollision(ICollider* other) const override;
-	bool CheckCollisionWithAABB(ICollider* other) const;
+	bool CheckCollision(ICollider* other, CollisionInfo& outCollisionInfo) override;
+	bool CheckCollisionWithAABB(ICollider* other, CollisionInfo& outCollisionInfo);
 
 	void OnCreate() override;
 	void SetSize(float width, float height, float size);

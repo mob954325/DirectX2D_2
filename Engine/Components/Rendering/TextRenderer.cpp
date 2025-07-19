@@ -1,10 +1,20 @@
 ﻿#include "TextRenderer.h"
 #include "Platform/D2DRenderManager.h"
 #include "Datas/EngineData.h"
+#include "Components/Base/GameObject.h"
 
 void TextRenderer::Render(D2DRenderManager* manager)
 {
-	manager->PrintText(text.c_str(), left, top);
+	if (!isWorldPosition)
+	{
+		manager->PrintText(text.c_str(), left, top);
+	}
+	else
+	{
+		D2D1_MATRIX_3X2_F final = owner->transform->GetFinalMatrix();
+		manager->SetBitmapTransform(final);
+		manager->PrintText(text.c_str(), 0x0, 0, true);
+	}
 }
 
 void TextRenderer::SetText(const std::wstring& text)
@@ -30,4 +40,14 @@ void TextRenderer::SetViewportPosition(float viewportX, float viewportY)
 
 	this->left = posX;
 	this->top = posY;
+}
+
+void TextRenderer::SetWorldObject(bool value)
+{
+	isWorldPosition = value;
+}
+
+bool TextRenderer::IsWorldPosition()
+{
+	return isWorldPosition;
 }

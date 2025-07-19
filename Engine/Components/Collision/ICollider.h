@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Math/Vector2.h"
+#include "Datas/CollisionInfo.h"
 
 enum ColliderType
 {
@@ -19,7 +20,7 @@ public:
 	virtual Vector2 GetCenter() const = 0;    
 
 	// 충돌 확인용 인터페이스
-	virtual bool CheckCollision(ICollider* other) const = 0;
+	virtual bool CheckCollision(ICollider* other, CollisionInfo& outCollisionInfo) = 0;
 
 	// 디버그용 or 렌더링용 AABB 정보
 	// virtual Vector2 GetBoundingRect() const = 0;

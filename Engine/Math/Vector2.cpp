@@ -1,5 +1,11 @@
 ﻿#include "Vector2.h"
 
+Vector2::Vector2()
+{
+	x = 0;
+	y = 0;
+}
+
 Vector2::Vector2(float valueX, float valueY)
 {
 	x = valueX;
@@ -48,6 +54,11 @@ const Vector2& Vector2::Zero()
 	return zero;
 }
 
+Vector2 Vector2::operator-() const
+{
+	return Vector2(-x, -y);
+}
+
 Vector2 Vector2::operator+(const Vector2& other)
 {
 	return Vector2(x + other.x, y + other.y);
@@ -58,22 +69,22 @@ Vector2 Vector2::operator-(const Vector2& other)
 	return Vector2(x - other.x, y - other.y);
 }
 
-Vector2 Vector2::operator*(float other)
+Vector2 Vector2::operator*(float other) const
 {
 	return Vector2(x * other, y * other);
 }
 
-Vector2 Vector2::operator*(int other)
+Vector2 Vector2::operator*(int other) const
 {
 	return Vector2(x * other, y * other);
 }
 
-Vector2 Vector2::operator/(float other)
+Vector2 Vector2::operator/(float other) const
 {
 	return Vector2(x / other, y / other);
 }
 
-Vector2 Vector2::operator/(int other)
+Vector2 Vector2::operator/(int other) const
 {
 	return Vector2(x / other, y / other);
 }
@@ -90,17 +101,7 @@ Vector2& Vector2::operator-=(const Vector2& other)
 	return *this;
 }
 
-Vector2 operator*(float scalar, const Vector2& vec) // float * vector
-{
-	return Vector2(vec.x * scalar, vec.y * scalar);
-}
-
-Vector2 operator*(int scalar, const Vector2& vec) // int * vector
-{
-	return Vector2(vec.x * scalar, vec.y * scalar);
-}
-
-bool Vector2::IsZero()
+bool Vector2::IsZero() const
 {
 	return x < FLT_EPSILON + 1.1e-13f && y < FLT_EPSILON + 1.1e-13f;
 }
@@ -110,23 +111,22 @@ float Vector2::Dot(const Vector2& other)
 	return x * other.x + y * other.y;
 }
 
-float Vector2::Megnituede()
+float Vector2::Megnituede() const
 {
 	return sqrt(x * x + y * y);
 }
 
-float Vector2::SqrMegnitude()
+float Vector2::SqrMegnitude() const
 {
 	return x * x + y * y;
 }
 
-Vector2 Vector2::Normalize()
+Vector2 Vector2::Normalize() const
 {
-	float len = len = Megnituede();
-	if (len < FLT_EPSILON) // or Len == 0
+	float len = Megnituede();
+	if (len < FLT_EPSILON)
 		return Vector2(0.0f, 0.0f);
-
-	return Vector2(x / Megnituede(), y / Megnituede());
+	return Vector2(x / len, y / len);
 }
 
 Vector2	Vector2::Lerp(Vector2& start, Vector2& end, float t)

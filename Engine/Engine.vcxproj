@@ -130,6 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Components\Physics\Rigidbody2D.h" />
+    <ClInclude Include="Datas\CollisionInfo.h" />
     <ClInclude Include="Systems\CollisionSystem.h" />
     <ClInclude Include="Components\Collision\AABBCollider.h" />
     <ClInclude Include="Components\Collision\CollisionComponent.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Datas\EngineData.h" />
     <ClInclude Include="Resources\Loaders\SpriteSheetLoader.h" />
     <ClInclude Include="Systems\TransformSystem.h" />
+    <ClInclude Include="Utils\TypeCastUtil.h" />
     <ClInclude Include="Utils\StringConvert.h" />
     <ClInclude Include="Systems\RenderSystem.h" />
     <ClInclude Include="Systems\ScriptSystem.h" />
@@ -204,6 +206,7 @@
     <ClCompile Include="Components\Rendering\TextRenderer.cpp" />
     <ClCompile Include="Resources\Loaders\SpriteSheetLoader.cpp" />
     <ClCompile Include="Systems\TransformSystem.cpp" />
+    <ClCompile Include="Utils\TypeCastUtil.cpp" />
     <ClCompile Include="Utils\StringConvert.cpp" />
     <ClCompile Include="Systems\ScriptSystem.cpp" />
     <ClCompile Include="Platform\D2DRenderManager.cpp" />

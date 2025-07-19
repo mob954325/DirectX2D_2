@@ -11,8 +11,14 @@ public:
 	void SetText(const std::wstring& text);
 	void SetPosition(float left, float top);
 	void SetViewportPosition(float viewportX, float viewportY);
+
+	void SetWorldObject(bool value);
+	bool IsWorldPosition();
+
 private:
 	std::wstring text;
+
+	bool isWorldPosition = false;
 	float left = 0.0f;
 	float top = 0.0f;
 };

@@ -1,12 +1,9 @@
-#pragma once
+﻿#pragma once
 #include "Components/Base/GameObject.h"
-#include "Components/Rendering/AnimationRenderer.h"
-#include "Components/Camera/Camera.h"
+#include "Components/Rendering/BitmapRenderer.h"
 #include "Components/Logic/InputSystem.h"
-#include "Components/Logic/StatComponent.h"
-#include "Components/Rendering/TextRenderer.h"
 #include "Components/Rendering/BoxComponent.h"
-#include "Components/Logic/FSMInstance.h"
+#include "Components/Rendering/TextRenderer.h"
 #include "Components/Collision/AABBCollider.h"
 #include "Components/Physics/Rigidbody2D.h"
 
@@ -17,6 +14,13 @@ public:
 	void Update() override;
 	void OnDestroy() override;
 
+	void OnColliderEnter(GameObject* collider) override;
+	void OnColliderStay(GameObject* collider) override;
+	void OnColliderExit(GameObject* collider) override;
+	void OnTriggerEnter(GameObject* collider) override;
+	void OnTriggerStay(GameObject* collider) override;
+	void OnTriggerExit(GameObject* collider) override;
+
 private:
 
 	void HandleMoveInput();
@@ -24,7 +28,14 @@ private:
 	BitmapRenderer* sprite;
 	InputSystem* input;
 	Rigidbody2D* rigid;
+	TextRenderer* playerPosText{};
+	TextRenderer* GuideText{};
+	TextRenderer* showTypeText{};
 
-	float speed = 5.0f;
+	BoxComponent* box{};
+	AABBCollider* aabb{};
+
+	float physicSpeed = 40000;
+	float normalSpeed = 1000;
 };
 

@@ -2,8 +2,10 @@
 #include "Components/Base/GameObject.h"
 #include "Components/Collision/AABBCollider.h"
 #include "Components/Rendering/BoxComponent.h"
+#include "Components/Physics/Rigidbody2D.h"
+#include "Components/Rendering/TextRenderer.h"
 
-class TestGround : public GameObject
+class TestColliderbox : public GameObject
 {
 public:
 	void Start() override;
@@ -11,7 +13,9 @@ public:
 	void OnDestroy() override;
 
 private:
-	BoxComponent* box; 
+	BoxComponent* box;
 	AABBCollider* aabb;
+	Rigidbody2D* rigid;
+	TextRenderer* text;
 };
 

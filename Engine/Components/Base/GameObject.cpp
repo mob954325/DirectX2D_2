@@ -3,6 +3,7 @@
 #include "Systems/ScriptSystem.h"
 #include "Systems/CollisionSystem.h"
 #include "Systems/PhysicSystem.h"
+#include "Systems/TransformSystem.h"
 
 GameObject::GameObject()
 {
@@ -18,7 +19,7 @@ GameObject::~GameObject()
 		RemoveComponentToSystem(*it);
 		it = components.erase(it);
 	}
-
+	
 	components.clear();
 }
 
@@ -63,18 +64,22 @@ void GameObject::RemoveComponentToSystem(Component* comp)
 {
 	if (ScriptComponent* sc = dynamic_cast<ScriptComponent*>(comp))
 	{
-		Singleton<ScriptSystem>::GetInstance().UnRegist(sc);
+		Singleton<ScriptSystem>::GetInstance().UnRegister(sc);
 	}
 	else if (RenderComponent* rc = dynamic_cast<RenderComponent*>(comp))
 	{
-		Singleton<RenderSystem>::GetInstance().UnRegist(rc);
+		Singleton<RenderSystem>::GetInstance().UnRegister(rc);
 	}
-	else if (RenderComponent* pc = dynamic_cast<RenderComponent*>(comp))
+	else if (CollisionComponent* cc = dynamic_cast<CollisionComponent*>(comp))
 	{
-		Singleton<RenderSystem>::GetInstance().Register(pc);
+		Singleton<CollisionSystem>::GetInstance().UnRegister(cc);
 	}
 	else if (PhysicComponent* pc = dynamic_cast<PhysicComponent*>(comp))
 	{
-		Singleton<PhysicSystem>::GetInstance().Register(pc);
+		Singleton<PhysicSystem>::GetInstance().UnRegister(pc);
+	}
+	else if (Transform* t = dynamic_cast<Transform*>(comp))
+	{
+		Singleton<TransformSystem>::GetInstance().Unregister(t); // NOTE: 시스템 추가는 addGameObject에서 하고 있음
 	}
 }

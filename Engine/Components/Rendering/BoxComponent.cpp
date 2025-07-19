@@ -25,39 +25,15 @@ void BoxComponent::Render(D2DRenderManager* render)
 	{
 		D2D1_MATRIX_3X2_F mat = owner->transform->GetFinalMatrix();
 
-		D2D1_POINT_2F topLeft = D2D1::Point2F(rect.left, rect.top);
-		D2D1_POINT_2F bottomRight = D2D1::Point2F(rect.right, rect.bottom);
-
-		D2D1_POINT_2F transformedTopLeft = MatrixTransform(topLeft, mat);
-		D2D1_POINT_2F transformedBottomRight = MatrixTransform(bottomRight, mat);
-
-		//D2D1_RECT_F transformedRect = D2D1::RectF(
-		//	transformedTopLeft.x,
-		//	transformedTopLeft.y,
-		//	transformedBottomRight.x,
-		//	transformedBottomRight.y
-		//);
-
-		D2D1_RECT_F transformedRect = D2D1::RectF(
-			rect.left + mat.dx,
-			rect.top + mat.dy,
-			rect.right + mat.dx,
-			rect.bottom + mat.dy
-		);
-
-		D2D1_VECTOR_2F pos = owner->transform->GetPosition();
-		//std::cout << owner->GetName() <<" - Render Pos: " << pos.x << ", " << pos.y << std::endl;
-
-		// D2D1_RECT_F rect = ...; 여기서 pos 기반인지 확인
-		std::cout << owner->GetName() <<" - Render Rect: " << transformedRect.left << ", " << transformedRect.top << ", " << transformedRect.right << ", " << transformedRect.bottom << std::endl;
-
-		render->DrawRectangle(transformedRect, brush, width, strokeStyle);
+		Vector2 pos = owner->transform->GetPosition();
+		render->SetBitmapTransform(mat);
+		render->DrawRectangle(rect, brush, width, strokeStyle);
 	}
 }
 
 void BoxComponent::SetRect(D2D1_RECT_F rect)
 {
-	this->rect = rect;
+	this->rect = rect; // 순수 크기
 }
 
 void BoxComponent::SetWidth(FLOAT width)
@@ -75,7 +51,7 @@ void BoxComponent::SetIsShow(bool value)
 	isShow = value;	
 }
 
-D2D1_POINT_2F BoxComponent::MatrixTransform(const D2D1_POINT_2F& point, const D2D1_MATRIX_3X2_F& matrix) // ??
+D2D1_POINT_2F BoxComponent::MatrixTransform(const D2D1_POINT_2F& point, const D2D1_MATRIX_3X2_F& matrix)
 {
 	return D2D1::Point2F(
 		point.x * matrix._11 + point.y * matrix._21 + matrix._31,

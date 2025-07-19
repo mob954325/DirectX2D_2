@@ -11,7 +11,6 @@ void BitmapRenderer::Render(D2DRenderManager* manager)
 {
 	if (m_bitmapResource != nullptr)
 	{
-		// CalculateFinalMatrix();
 		D2D1_MATRIX_3X2_F mat = owner->transform->GetFinalMatrix();
 
 		manager->SetBitmapTransform(mat);

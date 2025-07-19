@@ -1,17 +1,12 @@
 ﻿#pragma once
 #include "Components/Base/Component.h"
 #include "Components/Collision/ICollider.h"
-
-struct Bounds
-{
-	// vector3 center;	// bounding box의 중앙
-	// vector3 extents;	// bounding box의 범위 -> 항상 bounds 크기의 절반 값
-};
+#include "Datas/CollisionInfo.h"
 
 class CollisionComponent : public Component
 {
 public:
-	virtual void FixedUpdate(const std::vector<CollisionComponent*>& others) = 0;
+	virtual void FixedUpdate(const std::vector<CollisionComponent*>& others, std::vector<CollisionInfo>& outInfos) = 0;
 
 	void SetTrigger(bool value);
 	bool IsTrigger();

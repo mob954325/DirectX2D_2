@@ -9,7 +9,7 @@ public:
 	friend class Singleton<ScriptSystem>;
 
 	void Register(ScriptComponent* comp);
-	void UnRegist(ScriptComponent* comp);
+	void UnRegister(ScriptComponent* comp);
 	void ClearAll();
 
 	void Update();	// 컴포넌트 업데이트 실행함수
