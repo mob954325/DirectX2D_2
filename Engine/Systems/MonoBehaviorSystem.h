@@ -11,7 +11,7 @@ public:
 	void UnRegister(MonoBehavior* comp);
 	void ClearAll();
 
-	void Update();
+	void Update();	
 
 private:
 	MonoBehaviorSystem() = default;

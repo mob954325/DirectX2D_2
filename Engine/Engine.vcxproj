@@ -129,8 +129,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Components\Base\ActiveComponent.h" />
+    <ClInclude Include="Components\Base\MonoBehavior.h" />
+    <ClInclude Include="Components\Base\BaseObject.h" />
     <ClInclude Include="Components\Physics\Rigidbody2D.h" />
     <ClInclude Include="Datas\CollisionInfo.h" />
+    <ClInclude Include="Systems\MonoBehaviorSystem.h" />
     <ClInclude Include="Systems\CollisionSystem.h" />
     <ClInclude Include="Components\Collision\AABBCollider.h" />
     <ClInclude Include="Components\Collision\CollisionComponent.h" />
@@ -183,8 +187,10 @@
     <ClInclude Include="Math\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Components\Base\BaseObject.cpp" />
     <ClCompile Include="Math\Vector2.cpp" />
     <ClCompile Include="Components\Physics\Rigidbody2D.cpp" />
+    <ClCompile Include="Systems\MonoBehaviorSystem.cpp" />
     <ClCompile Include="Systems\CollisionSystem.cpp" />
     <ClCompile Include="Components\Collision\AABBCollider.cpp" />
     <ClCompile Include="Components\Collision\CollisionComponent.cpp" />

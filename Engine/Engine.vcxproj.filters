@@ -251,6 +251,18 @@
     <ClInclude Include="Utils\TypeCastUtil.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Components\Base\BaseObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Base\MonoBehavior.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Base\ActiveComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\MonoBehaviorSystem.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -362,6 +374,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Utils\TypeCastUtil.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Base\BaseObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\MonoBehaviorSystem.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
