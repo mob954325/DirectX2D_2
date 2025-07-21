@@ -5,38 +5,16 @@
 #include "Transform.h"
 #include "Datas/EngineData.h"
 #include "Scene/GameObjectQuery.h"
+#include "BaseObject.h"
 
 /// <summary>
 /// 모든 게임 오브젝트가 상속받는 클래스로 Component만 담고 Component관련 함수만 포함되어있음
 /// </summary>
-class GameObject
+class GameObject : public BaseObject
 {
 public:
 	GameObject();
 	virtual ~GameObject();
-
-	/// <summary>
-	/// Update 실행 전 한 번 실행되는 함수
-	/// </summary>
-	virtual void Start() = 0;
-
-	/// <summary>
-	/// 업데이트 실행
-	/// </summary>
-	virtual void Update() = 0;
-
-	/// <summary>
-	/// 씬 종료시 실행될 함수
-	/// </summary>
-	virtual void OnDestroy() = 0;
-	
-	// 충돌처리 함수, 매개변수는 충돌 대상
-	virtual void OnColliderEnter(GameObject* collider) {}
-	virtual void OnColliderStay(GameObject* collider) {}
-	virtual void OnColliderExit(GameObject* collider) {}
-	virtual void OnTriggerEnter(GameObject* collider) {}
-	virtual void OnTriggerStay(GameObject* collider) {}
-	virtual void OnTriggerExit(GameObject* collider) {}
 
 	Transform* transform = {};
 
@@ -83,9 +61,6 @@ public:
 	EngineData::RenderLayer GetRenderLayer() const { return renderLayer; }
 	int GetRenderLayerIndex() const { return (int)renderLayer; }
 
-	std::string GetName() const { return name; }
-	void SetName(const std::string& name) { this->name = name; }
-
 	void SetQueryInterface(IGameObjectQuery* q) { query = q; }
 
 protected:
@@ -99,7 +74,5 @@ private:
 	std::vector<Component*> components; // 컴포넌트를 담는 컨테이너
 	bool shouldRemove = false;			// 해당 오브젝트가 다음 프레임에 제거될 대상인지 확인하는 변수 ( 제거예정이면 true )
 	bool earlyCreated = true;			// 해당 오브젝트가 이번 프레임에 생성되었는지 확인하는 변수 ( 생성된 후 다음 프레임에 false로 전환 )
-
-	std::string name{}; // 해당 오브젝트의 이름
 };
 

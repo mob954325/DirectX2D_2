@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include "Components/Base/baseObject.h"
+
 class GameObject;
 
 #include "pch.h"
@@ -6,7 +8,7 @@ class GameObject;
 /// <summary>
 /// 모든 컴포넌트 클래스가 상속 받을 클래스
 /// </summary>
-class Component
+class Component : public BaseObject
 {
 public:
 	Component() = default;

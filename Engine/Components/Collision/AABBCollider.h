@@ -24,7 +24,7 @@ public:
 	D2D1_RECT_F GetSize() const;
 
 private:
-	BoxComponent* box = nullptr; // 디버깅용
+	BoxComponent* debugBoxComponent = nullptr; // 디버깅용
 
 	float width = 0; 
 	float height = 0;

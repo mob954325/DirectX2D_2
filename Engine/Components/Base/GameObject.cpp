@@ -4,10 +4,11 @@
 #include "Systems/CollisionSystem.h"
 #include "Systems/PhysicSystem.h"
 #include "Systems/TransformSystem.h"
+#include "Systems/MonoBehaviorSystem.h"
 
 GameObject::GameObject()
 {
-	transform = AddComponent<Transform>();
+	transform = AddComponent<Transform>(); // GameObject는 무조건 Transform를 하나 소유함
 }
 
 GameObject::~GameObject()
@@ -58,6 +59,10 @@ void GameObject::DispatchComponentToSystem(Component* comp)
 	{
 		Singleton<PhysicSystem>::GetInstance().Register(pc);
 	}
+	else if (MonoBehavior* mb = dynamic_cast<MonoBehavior*>(comp))
+	{
+		Singleton<MonoBehaviorSystem>::GetInstance().Register(mb);
+	}
 }
 
 void GameObject::RemoveComponentToSystem(Component* comp)
@@ -81,5 +86,9 @@ void GameObject::RemoveComponentToSystem(Component* comp)
 	else if (Transform* t = dynamic_cast<Transform*>(comp))
 	{
 		Singleton<TransformSystem>::GetInstance().Unregister(t); // NOTE: 시스템 추가는 addGameObject에서 하고 있음
+	}
+	else if (MonoBehavior* mb = dynamic_cast<MonoBehavior*>(comp))
+	{
+		Singleton<MonoBehaviorSystem>::GetInstance().Register(mb);
 	}
 }
