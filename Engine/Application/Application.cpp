@@ -17,6 +17,9 @@
 #include "AppPaths.h"
 #include "Utils/DebugUtility.h"
 
+// NOTE: 0721 - monobehavior 시스템 루프가 포함되어있지않음 완성되면 포함하고 해당 주석을 제거 할 것
+
+
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	Application* pThis = nullptr;

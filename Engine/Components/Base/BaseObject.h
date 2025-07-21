@@ -14,11 +14,15 @@ protected:
 	std::string name = "";
 
 public:
-	BaseObject() : instanceID(nextInstanceID++) {};
+	BaseObject() : instanceID(nextInstanceID++) {}
+	virtual ~BaseObject() {}
 
 	uint64_t GetInstanceID();
 	std::string GetName();
 	void SetName(std::string str);
+
+	static void Destroy(BaseObject obj, float t = 0.0f);
+	static void Instantiate(BaseObject original);
 
 	operator bool() const
 	{

@@ -14,3 +14,13 @@ void BaseObject::SetName(std::string str)
 {
     name = str;
 }
+
+void BaseObject::Destroy(BaseObject obj, float t)
+{
+    // 파괴
+}
+
+void BaseObject::Instantiate(BaseObject original)
+{
+    // map에서 찾아서 생성
+}

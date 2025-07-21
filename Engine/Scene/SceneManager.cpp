@@ -4,6 +4,7 @@
 #include "Systems/TransformSystem.h"
 #include "Systems/CollisionSystem.h"
 #include "Systems/PhysicSystem.h"
+#include "Systems/MonoBehaviorSystem.h"
 #include "Components/Camera/CameraManager.h"
 
 SceneManager::~SceneManager()
@@ -54,6 +55,7 @@ void SceneManager::CheckSceneLoad()
 			Singleton<TransformSystem>::GetInstance().ClearAll();
 			Singleton<CameraManager>::GetInstance().ClearAll();
 			Singleton<RenderSystem>::GetInstance().ClearAll();
+			Singleton<MonoBehaviorSystem>::GetInstance().ClearAll();
 		}
 
 		// 씬 교체
