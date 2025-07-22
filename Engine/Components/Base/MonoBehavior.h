@@ -8,11 +8,8 @@
 class MonoBehavior : public ActiveComponent
 {
 public:	
-	virtual void OnCreate() {};
-	virtual void OnStart() {};
 	virtual void OnUpdate() {};
 	virtual void OnFixedUpdate() {};
-	virtual void OnEnd() {};
 	virtual void OnDestroy() {};
 
 	// 충돌처리 함수, 매개변수는 충돌 대상

@@ -1,13 +1,13 @@
 ﻿#pragma once
-#include "Components/Base/GameObject.h"
+#include "Components/Base/MonoBehavior.h"
 #include "Components/Collision/AABBCollider.h"
 #include "Components/Rendering/BoxComponent.h"
 
-class TestGround : public GameObject
+class TestGround : public MonoBehavior
 {
 public:
-	void Start() override;
-	void Update() override;
+	void OnStart() override;
+	void OnUpdate() override;
 	void OnDestroy() override;
 
 private:

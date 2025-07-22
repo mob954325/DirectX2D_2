@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Scene/Scene.h"
+#include "Components/Base/GameObject.h"
 
 class MenuScene : public Scene
 {
@@ -9,4 +10,5 @@ protected:
 	void UpdateImpl() override;
 
 private:
+	GameObject* menuObj;
 };

@@ -2,20 +2,21 @@
 #include "GameObject/TestCollisionScene/TestColliderbox.h"
 #include "Scene/SceneManager.h"
 
-void TestColliderboxGenerator::Start()
+void TestColliderboxGenerator::OnStart()
 {
-	input = AddComponent<InputSystem>();
-	text = AddComponent<TextRenderer>();
+	input = owner->AddComponent<InputSystem>();
+	text = owner->AddComponent<TextRenderer>();
 
 	text->SetViewportPosition(0.5f, 0.0f);
 	text->SetText(L"[ Box Generator 명령어 ]\n\nO : 박스 생성 \n P : 박스 제거");
 }
 
-void TestColliderboxGenerator::Update()
+void TestColliderboxGenerator::OnUpdate()
 {
 	if (input->IsKeyPressed('O'))
 	{
-		GameObject* obj = new TestColliderbox();
+		GameObject* obj = new GameObject();
+		obj->AddComponent<TestColliderbox>();
 		objects.push_back(obj);
 
 		std::string name = "box";
@@ -23,7 +24,7 @@ void TestColliderboxGenerator::Update()
 		std::string finalName = name + index;
 
 		obj->SetName(finalName);
-		obj->transform->SetPosition(0, 400);
+		obj->GetTransform().SetPosition(0, 400);
 		Singleton<SceneManager>::GetInstance().GetCurrentScene()->AddGameObject(obj);
 	}
 

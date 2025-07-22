@@ -19,7 +19,6 @@ public:
 	friend class Singleton<SceneManager>;
 
 	void Init();
-	void Update();
 	void LoadScene(int sceneIndex);
 	void CheckSceneLoad();
 	void AddScene(Scene* pScene);

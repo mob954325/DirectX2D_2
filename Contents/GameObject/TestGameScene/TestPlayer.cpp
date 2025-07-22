@@ -9,36 +9,36 @@
 #include <string>
 #include <iostream>
 
-void TestPlayer::Start()
+void TestPlayer::OnStart()
 {
-	renderLayer = EngineData::RenderLayer::Player;
+	owner->SetRenderLayer(EngineData::RenderLayer::Player);
 
 	// Player camera init
-	playerMainCam = AddComponent<Camera>();
+	playerMainCam = owner->AddComponent<Camera>();
 	Singleton<CameraManager>::GetInstance().Register(new CameraInfo(playerMainCam->GetPriority(), playerMainCam));
 	playerMainCam->SetPriority(11);
 
 	// animation renderer init
-	idleBitmap = AddComponent<AnimationRenderer>();	
+	idleBitmap = owner->AddComponent<AnimationRenderer>();	
 	idleBitmap->CreateBitmapResource(L"../Resource/ken.png");
 	idleBitmap->SetSpriteSheet(L"../Resource/Json/ken_sprites.json");
 	idleBitmap->SetAnimationClip(L"../Resource/Json/Dead_Normal_anim.json");
 	idleBitmap->Play();
 	
 	// set transform
-	transform->SetIsUnityCoords(true);
-	transform->SetScale(1.0f, 1.0f);
+	owner->GetTransform().SetIsUnityCoords(true);
+	owner->GetTransform().SetScale(1.0f, 1.0f);
 
 	// input init
-	input = AddComponent<InputSystem>();
+	input = owner->AddComponent<InputSystem>();
 
 	// statcomponent(hp) init
-	hpComp = AddComponent<StatComponent>();
+	hpComp = owner->AddComponent<StatComponent>();
 	hpComp->ChangeStat(maxHp);
 	OnHitAction += hpComp->GetValueFunctionObject();
 	
 	// text init
-	hpText = AddComponent<TextRenderer>();
+	hpText = owner->AddComponent<TextRenderer>();
 	hpText->SetPosition(700, 20);
 
 	std::wstring str = L"Hp : ";
@@ -46,12 +46,12 @@ void TestPlayer::Start()
 	hpText->SetText(str);
 
 	// box component init
-	box = AddComponent<BoxComponent>();
+	box = owner->AddComponent<BoxComponent>();
 	box->SetIsShow(true);
 	box->SetWidth(2.0f);
 	D2D1_SIZE_F size = idleBitmap->GetResource().get()->GetBitmap()->GetSize();
 
-	Vector2 posVec = transform->GetPosition();
+	Vector2 posVec = owner->GetTransform().GetPosition();
 	box->SetRect(
 		{
 			-60 * 0.5f,
@@ -62,7 +62,7 @@ void TestPlayer::Start()
 	);
 
 	// animFramText init
-	animFramText = AddComponent<TextRenderer>();
+	animFramText = owner->AddComponent<TextRenderer>();
 	animFramText->SetViewportPosition(0.8f, 0.1f);
 
 	// animator init
@@ -70,7 +70,7 @@ void TestPlayer::Start()
 	//animator->SetAnimationController(L"../Resource/Json/TestPlayer_AnimController.json");
 
 	AnimationControllerLoader::LoadAnimatorController(L"../Resource/Json/TestPlayer_AnimController.json", ac);
-	fsmInstance = AddComponent<FSMInstance>();
+	fsmInstance = owner->AddComponent<FSMInstance>();
 	fsmInstance->SetAnimationController(ac);
 
 	// state 클래스들 초기화
@@ -94,35 +94,35 @@ void TestPlayer::Start()
 	fsmInstance->OnStart();
 
 	// player position text init
-	playerPosText = AddComponent<TextRenderer>();
+	playerPosText = owner->AddComponent<TextRenderer>();
 	playerPosText->SetViewportPosition(0.5f, 0.9f);
 
 	// player collider init
-	aabbCollider = AddComponent<AABBCollider>();
+	aabbCollider = owner->AddComponent<AABBCollider>();
 	aabbCollider->SetSize(129, 129, 1);
 
-	rigid = AddComponent<Rigidbody2D>();
-	rigid->SetGravity(true);
+	rigid = owner->AddComponent<Rigidbody2D>();
+	rigid->SetGravity(false);
 
-	transform->SetPosition(0, 200);
+	owner->GetTransform().SetPosition(0, 200);
 }
 
-void TestPlayer::Update()
+void TestPlayer::OnUpdate()
 {
 	animFramText->SetText(L"현재 애니메이션 프레임 : " + std::to_wstring(idleBitmap->GetFrame()));
 
-	if (input->IsKeyPressed('M')) // IGameObjectQuery로 게임 오브젝트 찾기 테스트
-	{
-		GameObject* sun = query->FindByName("Sun11");
-		if (sun != nullptr)
-		{
-			DebugUtility::Print("--- Found Sun !!");
-		}
-		else
-		{
-			DebugUtility::Print("--- Target Sun is not exist");
-		}
-	}
+	//if (input->IsKeyPressed('M')) // IGameObjectQuery로 게임 오브젝트 찾기 테스트
+	//{
+	//	GameObject* sun = query->FindByName("Sun11");
+	//	if (sun != nullptr)
+	//	{
+	//		DebugUtility::Print("--- Found Sun !!");
+	//	}
+	//	else
+	//	{
+	//		DebugUtility::Print("--- Target Sun is not exist");
+	//	}
+	//}
 
 	if (input->IsKeyPressed('N'))
 	{
@@ -136,16 +136,14 @@ void TestPlayer::Update()
 	HandleAnimationInput();
 
 	std::wstring str = L"x : ";
-	str += std::to_wstring(transform->GetPosition().x);
+	str += std::to_wstring(owner->GetTransform().GetPosition().x);
 	str += L" y : ";
-	str += std::to_wstring(transform->GetPosition().y);
+	str += std::to_wstring(owner->GetTransform().GetPosition().y);
 	playerPosText->SetText(str);
 }
 
 void TestPlayer::OnDestroy()
 {
-	fsmInstance->OnEnd();
-
 	delete idleState;
 	delete moveState;
 	delete hitState;
@@ -155,7 +153,7 @@ void TestPlayer::HandleMoveInput()
 {
 	if (input == nullptr) return;
 
-	Vector2 position = transform->GetPosition();
+	Vector2 position = owner->GetTransform().GetPosition();
 	Vector2 moveVec = { 0,0 };
 
 	if (input->IsKeyDown(VK_RIGHT))
@@ -185,7 +183,7 @@ void TestPlayer::HandleMoveInput()
 		fsmInstance->SetFloat("speed", 1);
 	}
 
-	transform->SetPosition(position.x + moveVec.x, position.y + moveVec.y);
+	owner->GetTransform().SetPosition(position.x + moveVec.x, position.y + moveVec.y);
 }
 
 void TestPlayer::HandlePlayerCameraInput()

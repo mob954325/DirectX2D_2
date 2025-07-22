@@ -16,11 +16,20 @@ public:
 
 	virtual void OnCreate() {};
 	virtual void OnStart() {};
-	virtual void OnEnd() {};
 	virtual void OnDestroy() {};
+
+	bool IsCreated();
+	void SetCreated();
+
+	bool IsStarted();
+	void SetStarted();
 
 	/// <summary>
 	/// 해당 Component를 가지고 있는 게임 오브젝트
 	/// </summary>
 	GameObject* owner = nullptr;
+
+private:
+	bool isStarted = false;
+	bool isCreated = false;
 };

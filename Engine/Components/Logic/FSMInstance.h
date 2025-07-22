@@ -52,7 +52,7 @@ private:
 public:
 	// eventCycle
 	void OnStart() override;
-	void OnEnd() override;
+	void OnDestroy() override;
 	void Update() override;
 	bool EvaluateConditions(std::vector<Condition>& conditions);
 

@@ -7,7 +7,9 @@
 
 void MenuScene::OnEnterImpl()
 {
-	AddGameObject(new MenuTextObject());	
+	menuObj = new GameObject();
+	menuObj->AddComponent<MenuTextObject>();
+	AddGameObject(menuObj);	
 }
 
 void MenuScene::OnExitImpl()

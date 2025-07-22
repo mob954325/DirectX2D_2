@@ -1,22 +1,23 @@
 ﻿#include "Earth.h"
 #include "Scene/SceneManager.h"
 #include "Utils/GameTime.h"
+#include "Components/Base/GameObject.h"
 
-void Earth::Start()
+void Earth::OnStart()
 {
-	bitmapRenderer = AddComponent<BitmapRenderer>();
+	bitmapRenderer = owner->AddComponent<BitmapRenderer>();
 	bitmapRenderer->CreateBitmapResource(L"../Resource/Earth.png");
 
-	transform->SetScale(0.5f, 0.5f);
-	transform->SetPosition(0.0f, 1000.0f);
-	transform->SetIsUnityCoords(true);
-	transform->SetOffset(-bitmapRenderer->GetResource().get()->GetBitmap()->GetSize().width / 2, bitmapRenderer->GetResource().get()->GetBitmap()->GetSize().height / 2);
+	owner->GetTransform().SetScale(0.5f, 0.5f);
+	owner->GetTransform().SetPosition(0.0f, 1000.0f);
+	owner->GetTransform().SetIsUnityCoords(true);
+	owner->GetTransform().SetOffset(-bitmapRenderer->GetResource().get()->GetBitmap()->GetSize().width / 2, bitmapRenderer->GetResource().get()->GetBitmap()->GetSize().height / 2);
 }
 
-void Earth::Update()
+void Earth::OnUpdate()
 {
-	float rotation_earth = transform->GetRotation();
-	transform->SetRotation(rotation_earth + baseRotateSpeed * earthRotateRatio * Singleton<GameTime>::GetInstance().GetDeltaTime());
+	float rotation_earth = owner->GetTransform().GetRotation();
+	owner->GetTransform().SetRotation(rotation_earth + baseRotateSpeed * earthRotateRatio * Singleton<GameTime>::GetInstance().GetDeltaTime());
 }
 
 void Earth::OnDestroy()

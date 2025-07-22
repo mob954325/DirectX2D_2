@@ -1,8 +1,12 @@
 ﻿#include "InputSystem.h"
 
-void InputSystem::OnStart()
+void InputSystem::OnCreate()
 {
 	input = new Input();
+}
+
+void InputSystem::OnStart()
+{
 }
 
 void InputSystem::OnDestroy()

@@ -7,14 +7,14 @@
 class BaseObject
 {
 private:
-	static uint64_t nextInstanceID;
+	// static uint64_t nextInstanceID;
 	uint64_t instanceID = 0;
 
 protected:
 	std::string name = "";
 
 public:
-	BaseObject() : instanceID(nextInstanceID++) {}
+	BaseObject() : instanceID(instanceID++) {}
 	virtual ~BaseObject() {}
 
 	uint64_t GetInstanceID();
@@ -41,4 +41,4 @@ public:
 };
 
 
-uint64_t BaseObject::nextInstanceID = 1;
+// uint64_t BaseObject::nextInstanceID = 1; // ?

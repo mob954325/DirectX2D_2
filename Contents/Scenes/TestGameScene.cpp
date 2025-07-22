@@ -15,27 +15,34 @@
 
 void TestGameScene::OnEnterImpl()
 {
-	m_TestPlayer = new TestPlayer();
+	m_TestPlayer = new GameObject();
+	m_TestPlayer->AddComponent<TestPlayer>();
 	AddGameObject(m_TestPlayer, "Player");
 
-	m_MainCamera = new FreeCamera();
+	m_MainCamera = new GameObject();
+	m_MainCamera->AddComponent<FreeCamera>();
 	AddGameObject(m_MainCamera, "MainCamera");
 	
-	m_Sun = new Sun();
-	AddGameObject(m_Sun, "Sun");
-	 
-	m_Earth = new Earth();
-	AddGameObject(m_Earth, "Earth");
-	m_Earth->transform->SetParent(m_Sun->transform);
+	// m_Sun = new GameObject();
+	// m_Sun->AddComponent<Sun>();
+	// AddGameObject(m_Sun, "Sun");
+	//  
+	// m_Earth = new GameObject();
+	// m_Earth->AddComponent<Earth>();
+	// AddGameObject(m_Earth, "Earth");
+	// m_Earth->GetTransform().SetParent(&m_Sun->GetTransform());
+	// 
+	// m_Moon = new GameObject();
+	// m_Moon->AddComponent<Moon>();
+	// AddGameObject(m_Moon, "Moon");
+	// m_Moon->GetTransform().SetParent(&m_Earth->GetTransform());
 	
-	m_Moon = new Moon();
-	AddGameObject(m_Moon, "Moon");
-	m_Moon->transform->SetParent(m_Earth->transform);
-	
-	m_TextObject = new GameTextObject();
+	m_TextObject = new GameObject();
+	m_TextObject->AddComponent<GameTextObject>();
 	AddGameObject(m_TextObject, "TextUI");
 
-	m_SunGeneratorObject = new SunGeneratorObject;
+	m_SunGeneratorObject = new GameObject();
+	m_SunGeneratorObject->AddComponent<SunGeneratorObject>();
 	AddGameObject(m_SunGeneratorObject, "G_Sun");
 
 	// rigidTest = new TestGround;

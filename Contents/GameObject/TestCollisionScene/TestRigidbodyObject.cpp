@@ -3,28 +3,29 @@
 #include "Datas/EngineData.h"
 #include "Scene/SceneManager.h"
 #include "Utils/GameTime.h"
+#include "Components/Base/GameObject.h"
 
 
-void TestRigidbodyObject::Start()
+void TestRigidbodyObject::OnStart()
 {
-	sprite = AddComponent<BitmapRenderer>();
+	sprite = owner->AddComponent<BitmapRenderer>();
 	sprite->CreateBitmapResource(L"../Resource/man.png");
 
-	input = AddComponent<InputSystem>();
+	input = owner->AddComponent<InputSystem>();
 
-	rigid = AddComponent<Rigidbody2D>();
+	rigid = owner->AddComponent<Rigidbody2D>();
 	rigid->SetGravity(true);
 	rigid->SetPhysicsType(PhysicsType::Kinematic);
 	rigid->SetMass(2);
 
-	transform->SetPosition(0, 400.0f);
-	transform->SetIsUnityCoords(true);
-	transform->SetOffset(-44.5f, 138/2);
+	owner->GetTransform().SetPosition(0, 400.0f);
+	owner->GetTransform().SetIsUnityCoords(true);
+	owner->GetTransform().SetOffset(-44.5f, 138/2);
 
-	aabb = AddComponent<AABBCollider>();
+	aabb = owner->AddComponent<AABBCollider>();
 	aabb->SetSize(89, 138, 1);
 
-	box = AddComponent<BoxComponent>();
+	box = owner->AddComponent<BoxComponent>();
 	box->SetIsShow(true);
 	box->SetWidth(2.0f);
 	box->SetRect(
@@ -36,18 +37,18 @@ void TestRigidbodyObject::Start()
 		}
 	);
 
-	playerPosText = AddComponent<TextRenderer>();
+	playerPosText = owner->AddComponent<TextRenderer>();
 	playerPosText->SetViewportPosition(0.5f, 0.9f);
 
-	GuideText = AddComponent<TextRenderer>();
+	GuideText = owner->AddComponent<TextRenderer>();
 	GuideText->SetViewportPosition(0.2f, 0.2f);
 	GuideText->SetText(L"-- key list --\n\nReset position : R\n\n-- Player physics type --\n\nDynamic : T\nKinematic : Y\nStatic : U");
 
-	showTypeText = AddComponent<TextRenderer>();
+	showTypeText = owner->AddComponent<TextRenderer>();
 	showTypeText->SetViewportPosition(0.2f, 0.5f);
 }
 
-void TestRigidbodyObject::Update()
+void TestRigidbodyObject::OnUpdate()
 {
 	HandleMoveInput();
 
@@ -63,7 +64,7 @@ void TestRigidbodyObject::Update()
 	// 리셋 포지션
 	if (input->IsKeyPressed('R'))
 	{
-		transform->SetPosition(0, 400.0f);
+		owner->GetTransform().SetPosition(0, 400.0f);
 	}
 
 	// 타입 변경
@@ -82,9 +83,9 @@ void TestRigidbodyObject::Update()
 
 	// 좌표 출력
 	std::wstring str = L"x : ";
-	str += std::to_wstring(transform->GetPosition().x);
+	str += std::to_wstring(owner->GetTransform().GetPosition().x);
 	str += L" y : ";
-	str += std::to_wstring(transform->GetPosition().y);
+	str += std::to_wstring(owner->GetTransform().GetPosition().y);
 	playerPosText->SetText(str);
 
 	// type 출력

@@ -1,21 +1,23 @@
 ﻿#include "Sun.h"
 #include "Utils/GameTime.h"
-void Sun::Start()
+#include "Components/Base/GameObject.h"
+
+void Sun::OnStart()
 {
-	bitmapRenderer = AddComponent<BitmapRenderer>();
+	bitmapRenderer = owner->AddComponent<BitmapRenderer>();
 	bitmapRenderer->CreateBitmapResource(L"../Resource/Sun.png");
 
-	transform->SetScale(0.1f, 0.1f);
-	transform->SetIsUnityCoords(true);
-	transform->SetOffset(-512, 512);
+	owner->GetTransform().SetScale(0.1f, 0.1f);
+	owner->GetTransform().SetIsUnityCoords(true);
+	owner->GetTransform().SetOffset(-512, 512);
 
-	aabbCollision = AddComponent<AABBCollider>();
+	aabbCollision = owner->AddComponent<AABBCollider>();
 	aabbCollision->SetSize(120, 120, 1);
 
-	box = AddComponent<BoxComponent>();
+	box = owner->AddComponent<BoxComponent>();
 	box->SetIsShow(true);
 	box->SetWidth(2.0f);
-	Vector2 posVec = transform->GetPosition();
+	Vector2 posVec = owner->GetTransform().GetPosition();
 	box->SetRect(
 		{
 			-60 * 0.5f,
@@ -26,7 +28,7 @@ void Sun::Start()
 	);
 }
 
-void Sun::Update()
+void Sun::OnUpdate()
 {
 	int a = 0;
 

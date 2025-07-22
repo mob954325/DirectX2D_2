@@ -1,8 +1,9 @@
 ﻿#include "MonoBehaviorSystem.h"
+#include "Components/Base/GameObject.h"
 
 void MonoBehaviorSystem::Register(MonoBehavior* comp)
 {
-	components.push_back(comp);
+	pendingComponents.push_back(comp);
 }
 
 void MonoBehaviorSystem::UnRegister(MonoBehavior* comp)
@@ -24,13 +25,30 @@ void MonoBehaviorSystem::ClearAll()
 
 void MonoBehaviorSystem::Update()
 {
-	for (auto it = components.begin(); it != components.end(); it++)
+	for (MonoBehavior* mono : components)
 	{
-		if ((*it)->IsActiveSelf())
+		if (mono->IsActiveSelf())
 		{
-			(*it)->OnUpdate();
+			mono->OnUpdate();
 		}
 	}
+}
+
+void MonoBehaviorSystem::FixedUpdate()
+{
+	for (MonoBehavior* mono : components)
+	{
+		if (mono->IsActiveSelf())
+		{
+			mono->OnFixedUpdate();
+		}
+	}
+}
+
+void MonoBehaviorSystem::ProcessPendingComponents()
+{
+	components.insert(components.end(), pendingComponents.begin(), pendingComponents.end());
+	pendingComponents.clear();
 }
 
 MonoBehaviorSystem::~MonoBehaviorSystem()

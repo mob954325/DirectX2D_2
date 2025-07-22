@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Components/Base/GameObject.h"
+#include "Components/Base/MonoBehavior.h"
 #include "Components/Rendering/AnimationRenderer.h"
 #include "Components/Camera/Camera.h"
 #include "Components/Logic/InputSystem.h"
@@ -18,7 +18,7 @@ class DeadState;
 class HitState;
 class AttackState;
 
-class TestPlayer : public GameObject
+class TestPlayer : public MonoBehavior
 {
 private:
 	void HandleMoveInput();
@@ -58,8 +58,8 @@ private:
 	int maxHp = 3;
 
 public:
-	void Start() override;
-	void Update() override;
+	void OnStart() override;
+	void OnUpdate() override;
 	void OnDestroy() override;
 
 	AnimationRenderer* GetRenderer() { return idleBitmap; }

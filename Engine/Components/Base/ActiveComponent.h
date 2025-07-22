@@ -11,4 +11,5 @@ private:
 
 public:
 	bool IsActiveSelf() { return enabled; }
+	void SetActive(bool value) { enabled = value; }
 };

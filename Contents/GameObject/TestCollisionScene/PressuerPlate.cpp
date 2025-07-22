@@ -1,29 +1,30 @@
 ﻿#include "PressuerPlate.h"
 #include "algorithm"
+#include "Components/Base/GameObject.h"
 
-void PressuerPlate::Start()
+void PressuerPlate::OnStart()
 {
-	transform->SetIsUnityCoords(true);
+	owner->GetTransform().SetIsUnityCoords(true);
 
-	box = AddComponent<BoxComponent>();
+	box = owner->AddComponent<BoxComponent>();
 	box->SetIsShow(true);
 	box->SetWidth(2);
 	box->SetRect({ -50 / 2, -20 / 2, 50 / 2, 20 / 2 });
 
-	aabb = AddComponent<AABBCollider>();
+	aabb = owner->AddComponent<AABBCollider>();
 	aabb->SetSize(50, 20, 1);
 	aabb->SetTrigger(true);
 
-	text = AddComponent<TextRenderer>();
+	text = owner->AddComponent<TextRenderer>();
 	text->SetWorldObject(true);
 	text->SetText(L"버튼");
 
-	alarmText = AddComponent<TextRenderer>();
+	alarmText = owner->AddComponent<TextRenderer>();
 	alarmText->SetText(L"");
 	alarmText->SetViewportPosition(0.5f, 0.5f);
 }
 
-void PressuerPlate::Update()
+void PressuerPlate::OnUpdate()
 {
 }
 

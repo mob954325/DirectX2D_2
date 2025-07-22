@@ -1,14 +1,14 @@
 ﻿#pragma once
-#include "Components/Base/GameObject.h"
+#include "Components/Base/MonoBehavior.h"
 #include "Components/Collision/AABBCollider.h"
 #include "Components/Physics/Rigidbody2D.h"
 #include "Components/Rendering/TextRenderer.h"
 
-class PressuerPlate : public GameObject
+class PressuerPlate : public MonoBehavior
 {
 public:
-	void Start() override;
-	void Update() override;
+	void OnStart() override;
+	void OnUpdate() override;
 	void OnDestroy() override;
 
 	void OnTriggerEnter(GameObject* collider) override;

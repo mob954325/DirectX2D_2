@@ -1,17 +1,17 @@
 ﻿#pragma once
-#include "Components/Base/GameObject.h"
+#include "Components/Base/MonoBehavior.h"
 #include "Components/Rendering/TextRenderer.h"
 #include "Components/Logic/InputSystem.h"
 #include "Components/Rendering/BoxComponent.h"
 
-class GameTextObject : public GameObject
+class GameTextObject : public MonoBehavior
 {
 public:
 	GameTextObject() {};
 	~GameTextObject() {};
 
-	void Start() override;
-	void Update() override;
+	void OnStart() override;
+	void OnUpdate() override;
 	void OnDestroy() override;
 
 private:

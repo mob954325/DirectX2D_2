@@ -1,14 +1,14 @@
 ﻿#pragma once
-#include "Components/Base/GameObject.h"
+#include "Components/Base/MonoBehavior.h"
 #include "Components/Logic/InputSystem.h"
 #include "Components/Rendering/TextRenderer.h"
 #include <vector>
 
-class TestColliderboxGenerator : public GameObject
+class TestColliderboxGenerator : public MonoBehavior
 {
 public:
-	void Start() override;
-	void Update() override;
+	void OnStart() override;
+	void OnUpdate() override;
 	void OnDestroy() override;
 
 private:

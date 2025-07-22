@@ -11,29 +11,34 @@
 
 void TestCollisionScene::OnEnterImpl()
 {
-	m_MainCamera = new FreeCamera();
+	m_MainCamera = new GameObject();
+	m_MainCamera->AddComponent<FreeCamera>();
 	AddGameObject(m_MainCamera, "MainCamera");
 
-	player = new TestRigidbodyObject();
+	player = new GameObject();
+	player->AddComponent<TestRigidbodyObject>();
 	AddGameObject(player, "Player");
 
-	ground = new TestGround();
+	ground = new GameObject();
+	ground->AddComponent<TestGround>();
 	AddGameObject(ground, "Ground");
 
-	rightWall = new TestWall();
-	AddGameObject(rightWall, "Wall");
-	rightWall->transform->SetPosition(400, 0);
+	rightWall = new GameObject();
+	rightWall->AddComponent<TestWall>();
+	AddGameObject(rightWall, "rWall");
+	rightWall->GetTransform().SetPosition(400, 0);
 
-	leftWall = new TestWall();
-	AddGameObject(leftWall, "Wall");
-	leftWall->transform->SetPosition(-400, 0);
+	leftWall = new GameObject();
+	leftWall->AddComponent<TestWall>();
+	AddGameObject(leftWall, "lWall");
+	leftWall->GetTransform().SetPosition(-400, 0);
 
-	boxGenerator = new TestColliderboxGenerator();
+	boxGenerator = new GameObject();TestColliderboxGenerator();
 	AddGameObject(boxGenerator, "bxg");
 
-	doorButton = new PressuerPlate();
+	doorButton = new GameObject();PressuerPlate();
 	AddGameObject(doorButton, "doorButton");
-	doorButton->transform->SetPosition(200, 30);
+	doorButton->GetTransform().SetPosition(200, 30);
 }
 
 void TestCollisionScene::OnExitImpl()

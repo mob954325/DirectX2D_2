@@ -279,7 +279,7 @@ void FSMInstance::OnStart()
 	StartStateBehavior(currentStateIndex);
 }
 
-void FSMInstance::OnEnd()
+void FSMInstance::OnDestroy()
 {
 	stateBehavitors[currentStateIndex]->OnStateExit();
 }

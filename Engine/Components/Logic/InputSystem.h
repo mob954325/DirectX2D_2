@@ -4,6 +4,7 @@
 class InputSystem : public ScriptComponent
 {
 public:
+	void OnCreate() override;
 	void OnStart() override;
 	void OnDestroy() override;
 	void Update();

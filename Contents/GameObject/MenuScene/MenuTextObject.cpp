@@ -1,20 +1,20 @@
 ﻿#include "MenuTextObject.h"
 #include "Scene/SceneManager.h"
 
-void MenuTextObject::Start()
+void MenuTextObject::OnStart()
 {
-	textRenderer = AddComponent<TextRenderer>();
+	textRenderer = owner->AddComponent<TextRenderer>();
 	textRenderer->SetText(L"여기는 메인 메뉴 씬\n Z로 GameScene 이동");
 	textRenderer->SetPosition(20, 20);
 
-	inputSystem = AddComponent<InputSystem>();
+	inputSystem = owner->AddComponent<InputSystem>();
 
-	box = AddComponent<BoxComponent>();
+	box = owner->AddComponent<BoxComponent>();
 	box->SetIsShow(true);
 	box->SetRect({ 0, 0, 200, 200 });
 }
 
-void MenuTextObject::Update()
+void MenuTextObject::OnUpdate()
 {
 	if (inputSystem->IsKeyPressed('2'))
 	{

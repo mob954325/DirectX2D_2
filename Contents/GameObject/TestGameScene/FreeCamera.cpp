@@ -2,36 +2,36 @@
 #include "Scene/SceneManager.h"
 #include "Components/Camera/CameraManager.h"
 
-void FreeCamera::Start()
+void FreeCamera::OnStart()
 {
-	camera = AddComponent<Camera>();
+	camera = owner->AddComponent<Camera>();
 	Singleton<CameraManager>::GetInstance().Register(new CameraInfo(camera->GetPriority(), camera));
 
-	inputSystem = AddComponent<InputSystem>();
+	inputSystem = owner->AddComponent<InputSystem>();
 }
 
-void FreeCamera::Update()
+void FreeCamera::OnUpdate()
 {
 	// Input
 	if (inputSystem->IsKeyDown('D'))
 	{
-		Vector2 position = transform->GetPosition();
-		transform->SetPosition(position.x + cameraMoveSpeed, position.y);
+		Vector2 position = owner->GetTransform().GetPosition();
+		owner->GetTransform().SetPosition(position.x + cameraMoveSpeed, position.y);
 	}
 	if (inputSystem->IsKeyDown('A'))
 	{
-		Vector2 position = transform->GetPosition();
-		transform->SetPosition(position.x - cameraMoveSpeed, position.y);
+		Vector2 position = owner->GetTransform().GetPosition();
+		owner->GetTransform().SetPosition(position.x - cameraMoveSpeed, position.y);
 	}
 	if (inputSystem->IsKeyDown('W'))
 	{
-		Vector2 position = transform->GetPosition();
-		transform->SetPosition(position.x, position.y + cameraMoveSpeed);
+		Vector2 position = owner->GetTransform().GetPosition();
+		owner->GetTransform().SetPosition(position.x, position.y + cameraMoveSpeed);
 	}
 	if (inputSystem->IsKeyDown('S'))
 	{
-		Vector2 position = transform->GetPosition();
-		transform->SetPosition(position.x, position.y - cameraMoveSpeed);
+		Vector2 position = owner->GetTransform().GetPosition();
+		owner->GetTransform().SetPosition(position.x, position.y - cameraMoveSpeed);
 	}
 }
 

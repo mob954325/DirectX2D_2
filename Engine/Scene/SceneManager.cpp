@@ -21,14 +21,6 @@ void SceneManager::Init()
 	currentScene->OnEnter();
 }
 
-void SceneManager::Update()
-{
-	if (currentScene != nullptr)
-	{
-		currentScene->Update();
-	}
-}
-
 void SceneManager::LoadScene(int sceneIndex)
 {
 	if (sceneIndex < 0 || sceneIndex >= sceneCount)

@@ -188,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Components\Base\BaseObject.cpp" />
+    <ClCompile Include="Components\Base\Component.cpp" />
     <ClCompile Include="Math\Vector2.cpp" />
     <ClCompile Include="Components\Physics\Rigidbody2D.cpp" />
     <ClCompile Include="Systems\MonoBehaviorSystem.cpp" />

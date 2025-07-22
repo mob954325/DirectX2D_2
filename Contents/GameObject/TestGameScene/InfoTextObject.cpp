@@ -1,9 +1,9 @@
 ﻿#include "InfoTextObject.h"
 
-void InfoTextObject::Start()
+void InfoTextObject::OnStart()
 {
 }
 
-void InfoTextObject::Update()
+void InfoTextObject::OnUpdate()
 {
 }

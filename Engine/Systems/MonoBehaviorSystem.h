@@ -11,12 +11,16 @@ public:
 	void UnRegister(MonoBehavior* comp);
 	void ClearAll();
 
-	void Update();	
+	// MonoBehaiovr 이벤트 호출 함수들
+	void Update();
+	void FixedUpdate();
 
+	void ProcessPendingComponents();
 private:
 	MonoBehaviorSystem() = default;
 	~MonoBehaviorSystem();
 
 	std::vector<MonoBehavior*> components;
+	std::vector<MonoBehavior*> pendingComponents;
 };
 

@@ -1,16 +1,16 @@
 ﻿#pragma once
-#include "Components/Base/GameObject.h"
+#include "Components/Base/MonoBehavior.h"
 #include "Components/Logic/InputSystem.h"
 #include "Components/Camera/Camera.h"
 
-class FreeCamera : public GameObject
+class FreeCamera : public MonoBehavior
 {
 public:
 	FreeCamera() {};
 	~FreeCamera() {};
 
-	void Start() override;
-	void Update() override;
+	void OnStart() override;
+	void OnUpdate() override;
 	void OnDestroy() override;
 
 private:

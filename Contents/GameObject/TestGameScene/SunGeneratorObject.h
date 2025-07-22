@@ -1,15 +1,15 @@
 ﻿#pragma once
-#include "Components/Base/GameObject.h"
+#include "Components/Base/MonoBehavior.h"
 #include "Components/Rendering/BitmapRenderer.h"
 #include "Components/Logic/InputSystem.h"
 #include "Components/Rendering/TextRenderer.h"
 #include <vector>
 
-class SunGeneratorObject : public GameObject
+class SunGeneratorObject : public MonoBehavior
 {
 public:
-	void Start() override;
-	void Update() override;
+	void OnStart() override;
+	void OnUpdate() override;
 	void OnDestroy() override;
 
 private:

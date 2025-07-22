@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Components/Base/GameObject.h"
+#include "Components/Base/MonoBehavior.h"
 #include "Components/Rendering/BitmapRenderer.h"
 #include "Components/Logic/InputSystem.h"
 #include "Components/Rendering/BoxComponent.h"
@@ -7,11 +7,11 @@
 #include "Components/Collision/AABBCollider.h"
 #include "Components/Physics/Rigidbody2D.h"
 
-class TestRigidbodyObject : public GameObject
+class TestRigidbodyObject : public MonoBehavior
 {
 public:
-	void Start() override;
-	void Update() override;
+	void OnStart() override;
+	void OnUpdate() override;
 	void OnDestroy() override;
 
 	void OnColliderEnter(GameObject* collider) override;

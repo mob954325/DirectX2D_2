@@ -7,24 +7,25 @@
 #include "Utils/DebugUtility.h"
 
 // NOTE : 0630 리소스 매니저 확인을 위한 게임오브젝트 추가
-void SunGeneratorObject::Start()
+void SunGeneratorObject::OnStart()
 {
-	bitmapRenderer = AddComponent<BitmapRenderer>();
-	input = AddComponent<InputSystem>();
+	bitmapRenderer = owner->AddComponent<BitmapRenderer>();
+	input = owner->AddComponent<InputSystem>();
 
 	DebugUtility::Print(L"SunGeneratorObject Create");
 	Singleton<DebugUtility>::GetInstance().PrintMemoryUsage();
 
-	textRenderer = AddComponent<TextRenderer>();
+	textRenderer = owner->AddComponent<TextRenderer>();
 	textRenderer->SetPosition(2, 600);
 	textRenderer->SetText(L"태양 개수 : " + std::to_wstring(objects.size()));
 }
 
-void SunGeneratorObject::Update()
+void SunGeneratorObject::OnUpdate()
 {
 	if (input->IsKeyDown('O'))
 	{
-		GameObject* obj = new Sun();
+		GameObject* obj = new GameObject();
+		obj->AddComponent<Sun>();
 		objects.push_back(obj);
 		
 		std::string name = "Sun";
@@ -35,7 +36,7 @@ void SunGeneratorObject::Update()
 
 		int randX = rand() % 1000;
 		int randY = rand() % 600;
-		obj->transform->SetPosition((float)randX, (float)randY);
+		obj->GetTransform().SetPosition((float)randX, (float)randY);
 		Singleton<SceneManager>::GetInstance().GetCurrentScene()->AddGameObject(obj);
 		Singleton<DebugUtility>::GetInstance().PrintMemoryUsage();
 

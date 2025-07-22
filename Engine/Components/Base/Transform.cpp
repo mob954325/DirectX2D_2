@@ -22,20 +22,20 @@ void Transform::CalculateFinalMatrix()
 	if (IsDirty())
 	{		
 		// 최종 변환 값 계산
-		if (owner->transform->IsUnityCoords())
+		if (owner->GetTransform().IsUnityCoords())
 		{
 			finalMatrix =
-				unityRenderMatrix *					// Render Matrix
-				owner->transform->ToWorldMatrix() *	// m_transform world matrix 
-				mainCamInvertMatrix *				// MainCamera invert matrix
-				unityCoordMatrix;					// unity coord Matrix
+				unityRenderMatrix *						// Render Matrix
+				owner->GetTransform().ToWorldMatrix() *	// m_transform world matrix 
+				mainCamInvertMatrix *					// MainCamera invert matrix
+				unityCoordMatrix;						// unity coord Matrix
 		}
 		else
 		{
 			finalMatrix =
-				normalRenderMatrix *				// Render Matrix
-				owner->transform->ToWorldMatrix() *	// m_transform world matrix 
-				mainCamInvertMatrix;				// MainCamera invert matrix	
+				normalRenderMatrix *					// Render Matrix
+				owner->GetTransform().ToWorldMatrix() *	// m_transform world matrix 
+				mainCamInvertMatrix;					// MainCamera invert matrix	
 		}
 	}
 }
@@ -163,10 +163,10 @@ void Transform::OnStart()
 	unityCoordMatrix = D2D1::Matrix3x2F::Scale(1.0f, -1.0f) * D2D1::Matrix3x2F::Translation((FLOAT)(EngineData::SceenWidth / 2), (FLOAT)(EngineData::SceenHeight / 2));
 }
 
-void Transform::OnEnd()
-{
-	if (dirty) dirty = false;
-}
+// void Transform::OnEnd()
+// {
+// 	if (dirty) dirty = false;
+// }
 
 void Transform::SetPosition(float x, float y)
 {
