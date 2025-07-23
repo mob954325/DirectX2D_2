@@ -5,9 +5,11 @@
 #include "Platform/Input.h"
 #include "Utils/GameTime.h"
 
-#include "Scenes/MenuScene.h"
-#include "Scenes/TestGameScene.h"
-#include "Scenes/TestCollisionScene.h"
+#include "Test_2Q/Scenes/MenuScene.h"
+#include "Test_2Q/Scenes/TestGameScene.h"
+#include "Test_2Q/Scenes/TestCollisionScene.h"
+
+using namespace Test_2QApp;
 
 void DemoGameApp::Initialize()
 {

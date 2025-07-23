@@ -1,5 +1,5 @@
 ﻿#include <windows.h>
-#include "DemoGameApp.h"
+#include "Test_2Q/Application/DemoGameApp.h"
 
 /// <summary>
 /// 프로그램 winMain
@@ -12,7 +12,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     CoInitialize(nullptr);  // COM 초기화
 
     // 실행할 Appliaction를 상속받은 클래스의 내용 작성
-    DemoGameApp demoGameApp;
+    Test_2QApp::DemoGameApp demoGameApp;
 
     demoGameApp.Initialize();
     demoGameApp.Run();

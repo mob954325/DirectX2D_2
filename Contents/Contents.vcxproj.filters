@@ -21,123 +21,123 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameObject\TestGameScene\SunGeneratorObject.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\SunGeneratorObject.cpp">
       <Filter>GameObject\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\MenuScene\MenuTextObject.cpp">
+    <ClCompile Include="Test_2Q\GameObject\MenuScene\MenuTextObject.cpp">
       <Filter>GameObject\MenuScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestGameScene\Earth.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\Earth.cpp">
       <Filter>GameObject\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestGameScene\FreeCamera.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\FreeCamera.cpp">
       <Filter>GameObject\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestGameScene\GameTextObject.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\GameTextObject.cpp">
       <Filter>GameObject\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestGameScene\InfoTextObject.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\InfoTextObject.cpp">
       <Filter>GameObject\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestGameScene\Moon.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\Moon.cpp">
       <Filter>GameObject\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestGameScene\Sun.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\Sun.cpp">
       <Filter>GameObject\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestGameScene\TestPlayer.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\TestPlayer.cpp">
       <Filter>GameObject\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="Application\DemoGameApp.cpp">
+    <ClCompile Include="Test_2Q\Application\DemoGameApp.cpp">
       <Filter>Application</Filter>
     </ClCompile>
     <ClCompile Include="Application\Game.cpp">
       <Filter>Application</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes\MenuScene.cpp">
+    <ClCompile Include="Test_2Q\Scenes\MenuScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes\TestGameScene.cpp">
+    <ClCompile Include="Test_2Q\Scenes\TestGameScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestCollisionScene\PressuerPlate.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\PressuerPlate.cpp">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestCollisionScene\TestColliderbox.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestColliderbox.cpp">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestCollisionScene\TestColliderboxGenerator.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestColliderboxGenerator.cpp">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes\TestCollisionScene.cpp">
+    <ClCompile Include="Test_2Q\Scenes\TestCollisionScene.cpp">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestCollisionScene\TestGround.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestGround.cpp">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestCollisionScene\TestRigidbodyObject.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestRigidbodyObject.cpp">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\TestCollisionScene\TestWall.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestWall.cpp">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application\DemoGameApp.h">
+    <ClInclude Include="Test_2Q\Application\DemoGameApp.h">
       <Filter>Application</Filter>
     </ClInclude>
-    <ClInclude Include="Scenes\MenuScene.h">
+    <ClInclude Include="Test_2Q\Scenes\MenuScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Scenes\TestGameScene.h">
+    <ClInclude Include="Test_2Q\Scenes\TestGameScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestGameScene\Earth.h">
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\Earth.h">
       <Filter>GameObject\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestGameScene\FreeCamera.h">
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\FreeCamera.h">
       <Filter>GameObject\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestGameScene\GameTextObject.h">
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\GameTextObject.h">
       <Filter>GameObject\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestGameScene\InfoTextObject.h">
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\InfoTextObject.h">
       <Filter>GameObject\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestGameScene\Moon.h">
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\Moon.h">
       <Filter>GameObject\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestGameScene\Sun.h">
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\Sun.h">
       <Filter>GameObject\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestGameScene\SunGeneratorObject.h">
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\SunGeneratorObject.h">
       <Filter>GameObject\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestGameScene\TestPlayer.h">
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\TestPlayer.h">
       <Filter>GameObject\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\MenuScene\MenuTextObject.h">
+    <ClInclude Include="Test_2Q\GameObject\MenuScene\MenuTextObject.h">
       <Filter>GameObject\MenuScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestCollisionScene\PressuerPlate.h">
+    <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\PressuerPlate.h">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestCollisionScene\TestColliderbox.h">
+    <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\TestColliderbox.h">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestCollisionScene\TestColliderboxGenerator.h">
+    <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\TestColliderboxGenerator.h">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClInclude>
-    <ClInclude Include="Scenes\TestCollisionScene.h">
+    <ClInclude Include="Test_2Q\Scenes\TestCollisionScene.h">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestCollisionScene\TestGround.h">
+    <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\TestGround.h">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestCollisionScene\TestRigidbodyObject.h">
+    <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\TestRigidbodyObject.h">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\TestCollisionScene\TestWall.h">
+    <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\TestWall.h">
       <Filter>GameObject\TestColliderScene</Filter>
     </ClInclude>
   </ItemGroup>

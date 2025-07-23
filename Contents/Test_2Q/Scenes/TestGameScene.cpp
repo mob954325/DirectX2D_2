@@ -4,14 +4,14 @@
 #include "Platform/Input.h"
 #include "Scene/SceneManager.h"
 
-#include "GameObject/TestGameScene/Sun.h"
-#include "GameObject/TestGameScene/Earth.h"
-#include "GameObject/TestGameScene/Moon.h"
-#include "GameObject/TestGameScene/FreeCamera.h"
-#include "GameObject/TestGameScene/GameTextObject.h"
-#include "GameObject/TestGameScene/TestPlayer.h"
-#include "GameObject/TestGameScene/SunGeneratorObject.h"
-#include "GameObject/TestCollisionScene/TestGround.h"
+#include "Test_2Q/GameObject/TestGameScene/Sun.h"
+#include "Test_2Q/GameObject/TestGameScene/Earth.h"
+#include "Test_2Q/GameObject/TestGameScene/Moon.h"
+#include "Test_2Q/GameObject/TestGameScene/FreeCamera.h"
+#include "Test_2Q/GameObject/TestGameScene/GameTextObject.h"
+#include "Test_2Q/GameObject/TestGameScene/TestPlayer.h"
+#include "Test_2Q/GameObject/TestGameScene/SunGeneratorObject.h"
+#include "Test_2Q/GameObject/TestCollisionScene/TestGround.h"
 
 void TestGameScene::OnEnterImpl()
 {

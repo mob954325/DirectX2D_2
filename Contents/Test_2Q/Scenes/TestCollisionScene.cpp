@@ -1,13 +1,13 @@
 ﻿#include "TestCollisionScene.h"
-#include "GameObject/TestCollisionScene/TestRigidbodyObject.h"
-#include "GameObject/TestGameScene/FreeCamera.h"
-#include "GameObject/TestCollisionScene/TestGround.h"
-#include "GameObject/TestGameScene/TestPlayer.h"
-#include "GameObject/TestGameScene/Sun.h"
+#include "Test_2Q/GameObject/TestCollisionScene/TestRigidbodyObject.h"
+#include "Test_2Q/GameObject/TestGameScene/FreeCamera.h"
+#include "Test_2Q/GameObject/TestCollisionScene/TestGround.h"
+#include "Test_2Q/GameObject/TestGameScene/TestPlayer.h"
+#include "Test_2Q/GameObject/TestGameScene/Sun.h"
 #include "Components/Camera/CameraManager.h"
-#include "GameObject/TestCollisionScene/TestWall.h"
-#include "GameObject/TestCollisionScene/TestColliderboxGenerator.h"
-#include "GameObject/TestCollisionScene/PressuerPlate.h"
+#include "Test_2Q/GameObject/TestCollisionScene/TestWall.h"
+#include "Test_2Q/GameObject/TestCollisionScene/TestColliderboxGenerator.h"
+#include "Test_2Q/GameObject/TestCollisionScene/PressuerPlate.h"
 
 void TestCollisionScene::OnEnterImpl()
 {

@@ -24,6 +24,7 @@
     <ProjectGuid>{72e55f47-4e9c-41f5-962d-5b96a402c2e6}</ProjectGuid>
     <RootNamespace>Contents</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Content</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -129,47 +130,47 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Application\DemoGameApp.cpp" />
-    <ClCompile Include="GameObject\TestGameScene\Earth.cpp" />
+    <ClCompile Include="Test_2Q\Application\DemoGameApp.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\Earth.cpp" />
     <ClCompile Include="Application\Game.cpp" />
-    <ClCompile Include="GameObject\TestGameScene\Sun.cpp" />
-    <ClCompile Include="GameObject\MenuScene\MenuTextObject.cpp" />
-    <ClCompile Include="GameObject\TestGameScene\GameTextObject.cpp" />
-    <ClCompile Include="GameObject\TestGameScene\Moon.cpp" />
-    <ClCompile Include="GameObject\TestGameScene\FreeCamera.cpp" />
-    <ClCompile Include="GameObject\TestGameScene\InfoTextObject.cpp" />
-    <ClCompile Include="GameObject\TestGameScene\TestPlayer.cpp" />
-    <ClCompile Include="GameObject\TestGameScene\SunGeneratorObject.cpp" />
-    <ClCompile Include="GameObject\TestCollisionScene\PressuerPlate.cpp" />
-    <ClCompile Include="Scenes\MenuScene.cpp" />
-    <ClCompile Include="Scenes\TestGameScene.cpp" />
-    <ClCompile Include="Scenes\TestCollisionScene.cpp" />
-    <ClCompile Include="GameObject\TestCollisionScene\TestRigidbodyObject.cpp" />
-    <ClCompile Include="GameObject\TestCollisionScene\TestGround.cpp" />
-    <ClCompile Include="GameObject\TestCollisionScene\TestWall.cpp" />
-    <ClCompile Include="GameObject\TestCollisionScene\TestColliderbox.cpp" />
-    <ClCompile Include="GameObject\TestCollisionScene\TestColliderboxGenerator.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\Sun.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\MenuScene\MenuTextObject.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\GameTextObject.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\Moon.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\FreeCamera.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\InfoTextObject.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\TestPlayer.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\SunGeneratorObject.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\PressuerPlate.cpp" />
+    <ClCompile Include="Test_2Q\Scenes\MenuScene.cpp" />
+    <ClCompile Include="Test_2Q\Scenes\TestGameScene.cpp" />
+    <ClCompile Include="Test_2Q\Scenes\TestCollisionScene.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestRigidbodyObject.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestGround.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestWall.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestColliderbox.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestColliderboxGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application\DemoGameApp.h" />
-    <ClInclude Include="GameObject\TestGameScene\Earth.h" />
-    <ClInclude Include="GameObject\TestGameScene\Sun.h" />
-    <ClInclude Include="GameObject\MenuScene\MenuTextObject.h" />
-    <ClInclude Include="GameObject\TestGameScene\GameTextObject.h" />
-    <ClInclude Include="GameObject\TestGameScene\Moon.h" />
-    <ClInclude Include="GameObject\TestGameScene\FreeCamera.h" />
-    <ClInclude Include="GameObject\TestGameScene\InfoTextObject.h" />
-    <ClInclude Include="GameObject\TestGameScene\TestPlayer.h" />
-    <ClInclude Include="GameObject\TestGameScene\SunGeneratorObject.h" />
-    <ClInclude Include="GameObject\TestCollisionScene\PressuerPlate.h" />
-    <ClInclude Include="Scenes\MenuScene.h" />
-    <ClInclude Include="Scenes\TestGameScene.h" />
-    <ClInclude Include="Scenes\TestCollisionScene.h" />
-    <ClInclude Include="GameObject\TestCollisionScene\TestRigidbodyObject.h" />
-    <ClInclude Include="GameObject\TestCollisionScene\TestGround.h" />
-    <ClInclude Include="GameObject\TestCollisionScene\TestWall.h" />
-    <ClInclude Include="GameObject\TestCollisionScene\TestColliderbox.h" />
-    <ClInclude Include="GameObject\TestCollisionScene\TestColliderboxGenerator.h" />
+    <ClInclude Include="Test_2Q\Application\DemoGameApp.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\Earth.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\Sun.h" />
+    <ClInclude Include="Test_2Q\GameObject\MenuScene\MenuTextObject.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\GameTextObject.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\Moon.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\FreeCamera.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\InfoTextObject.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\TestPlayer.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\SunGeneratorObject.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\PressuerPlate.h" />
+    <ClInclude Include="Test_2Q\Scenes\MenuScene.h" />
+    <ClInclude Include="Test_2Q\Scenes\TestGameScene.h" />
+    <ClInclude Include="Test_2Q\Scenes\TestCollisionScene.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\TestRigidbodyObject.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\TestGround.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\TestWall.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\TestColliderbox.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\TestColliderboxGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

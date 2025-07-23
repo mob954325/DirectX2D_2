@@ -1,6 +1,6 @@
 ﻿#include "TestColliderboxGenerator.h"
-#include "GameObject/TestCollisionScene/TestColliderbox.h"
 #include "Scene/SceneManager.h"
+#include "TestColliderbox.h"
 
 void TestColliderboxGenerator::OnStart()
 {
