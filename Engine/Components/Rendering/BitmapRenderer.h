@@ -19,6 +19,8 @@ public:
 
 	std::shared_ptr<BitmapResource> GetResource();
 
+	void SetFlip(bool value);
+
 protected:
 	std::shared_ptr<BitmapResource> m_bitmapResource;
 	D2D1_RECT_F destRect = {};
@@ -30,5 +32,7 @@ protected:
 
 	float timer = 0;
 	float maxtimer = 0.2f;
+
+	bool isFlip = false;
 };
 
