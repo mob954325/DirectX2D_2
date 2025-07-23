@@ -1,5 +1,7 @@
 ﻿#include "BaseObject.h"
 
+uint64_t BaseObject::nextInstanceID = 1;
+
 uint64_t BaseObject::GetInstanceID()
 {
     return instanceID;

@@ -7,14 +7,14 @@
 class BaseObject
 {
 private:
-	// static uint64_t nextInstanceID;
+	static uint64_t nextInstanceID;
 	uint64_t instanceID = 0;
 
 protected:
 	std::string name = "";
 
 public:
-	BaseObject() : instanceID(instanceID++) {}
+	BaseObject() : instanceID(nextInstanceID++) {}
 	virtual ~BaseObject() {}
 
 	uint64_t GetInstanceID();
@@ -39,6 +39,3 @@ public:
 		return instanceID == rhs.GetInstanceID();
 	}
 };
-
-
-// uint64_t BaseObject::nextInstanceID = 1; // ?
