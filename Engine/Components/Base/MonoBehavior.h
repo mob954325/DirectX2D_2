@@ -10,7 +10,6 @@ class MonoBehavior : public ActiveComponent
 public:	
 	virtual void OnUpdate() {};
 	virtual void OnFixedUpdate() {};
-	virtual void OnDestroy() {};
 
 	// 충돌처리 함수, 매개변수는 충돌 대상
 	virtual void OnColliderEnter(GameObject* collider) {}
