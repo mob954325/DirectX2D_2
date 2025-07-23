@@ -7,35 +7,38 @@
 #include "Components/Collision/AABBCollider.h"
 #include "Components/Physics/Rigidbody2D.h"
 
-class TestRigidbodyObject : public MonoBehavior
+namespace Test_2QApp
 {
-public:
-	void OnStart() override;
-	void OnUpdate() override;
-	void OnDestroy() override;
+	class TestRigidbodyObject : public MonoBehavior
+	{
+	public:
+		void OnStart() override;
+		void OnUpdate() override;
+		void OnDestroy() override;
 
-	void OnColliderEnter(GameObject* collider) override;
-	void OnColliderStay(GameObject* collider) override;
-	void OnColliderExit(GameObject* collider) override;
-	void OnTriggerEnter(GameObject* collider) override;
-	void OnTriggerStay(GameObject* collider) override;
-	void OnTriggerExit(GameObject* collider) override;
+		void OnColliderEnter(GameObject* collider) override;
+		void OnColliderStay(GameObject* collider) override;
+		void OnColliderExit(GameObject* collider) override;
+		void OnTriggerEnter(GameObject* collider) override;
+		void OnTriggerStay(GameObject* collider) override;
+		void OnTriggerExit(GameObject* collider) override;
 
-private:
+	private:
 
-	void HandleMoveInput();
+		void HandleMoveInput();
 
-	BitmapRenderer* sprite;
-	InputSystem* input;
-	Rigidbody2D* rigid;
-	TextRenderer* playerPosText{};
-	TextRenderer* GuideText{};
-	TextRenderer* showTypeText{};
+		BitmapRenderer* sprite;
+		InputSystem* input;
+		Rigidbody2D* rigid;
+		TextRenderer* playerPosText{};
+		TextRenderer* GuideText{};
+		TextRenderer* showTypeText{};
 
-	BoxComponent* box{};
-	AABBCollider* aabb{};
+		BoxComponent* box{};
+		AABBCollider* aabb{};
 
-	float physicSpeed = 40000;
-	float normalSpeed = 1000;
-};
+		float physicSpeed = 40000;
+		float normalSpeed = 1000;
+	};
 
+}

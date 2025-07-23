@@ -2,17 +2,19 @@
 #include "Components/Base/MonoBehavior.h"
 #include "Components/Rendering/BitmapRenderer.h"
 
-class Earth : public MonoBehavior
+namespace Test_2QApp
 {
-public:
-	void OnStart() override;
-	void OnUpdate() override;
-	void OnDestroy() override;
+	class Earth : public MonoBehavior
+	{
+	public:
+		void OnStart() override;
+		void OnUpdate() override;
+		void OnDestroy() override;
 
-protected:
-	BitmapRenderer* bitmapRenderer{};
+	protected:
+		BitmapRenderer* bitmapRenderer{};
 
-	float baseRotateSpeed = 360.0f;
-	float earthRotateRatio = 0.5f;
-};
-
+		float baseRotateSpeed = 360.0f;
+		float earthRotateRatio = 0.5f;
+	};
+}

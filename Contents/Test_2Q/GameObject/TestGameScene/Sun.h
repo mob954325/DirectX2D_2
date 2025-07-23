@@ -4,19 +4,21 @@
 #include "Components/Collision/AABBCollider.h"
 #include "Components/Rendering/BoxComponent.h"
 
-class Sun : public MonoBehavior
+namespace Test_2QApp
 {
-public:
-	void OnStart() override;
-	void OnUpdate() override;
-	void OnDestroy() override;
+	class Sun : public MonoBehavior
+	{
+	public:
+		void OnStart() override;
+		void OnUpdate() override;
+		void OnDestroy() override;
 
-protected:
-	BitmapRenderer* bitmapRenderer {};
-	AABBCollider* aabbCollision{};
-	BoxComponent* box{};
+	protected:
+		BitmapRenderer* bitmapRenderer{};
+		AABBCollider* aabbCollision{};
+		BoxComponent* box{};
 
-	float baseRotateSpeed = 360.0f;	
-	float sunRotateRatio = 0.1f;
-};
-
+		float baseRotateSpeed = 360.0f;
+		float sunRotateRatio = 0.1f;
+	};
+}

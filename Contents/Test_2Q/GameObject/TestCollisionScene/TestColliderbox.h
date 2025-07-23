@@ -5,17 +5,20 @@
 #include "Components/Physics/Rigidbody2D.h"
 #include "Components/Rendering/TextRenderer.h"
 
-class TestColliderbox : public MonoBehavior
+namespace Test_2QApp
 {
-public:
-	void OnStart() override;
-	void OnUpdate() override;
-	void OnDestroy() override;
+	class TestColliderbox : public MonoBehavior
+	{
+	public:
+		void OnStart() override;
+		void OnUpdate() override;
+		void OnDestroy() override;
 
-private:
-	BoxComponent* box;
-	AABBCollider* aabb;
-	Rigidbody2D* rigid;
-	TextRenderer* text;
-};
+	private:
+		BoxComponent* box;
+		AABBCollider* aabb;
+		Rigidbody2D* rigid;
+		TextRenderer* text;
+	};
 
+}

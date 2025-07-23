@@ -2,6 +2,8 @@
 #include "Datas/EngineData.h"
 #include "Components/Base/GameObject.h"
 
+using namespace Test_2QApp;
+
 void TestGround::OnStart()
 {
 	owner->GetTransform().SetIsUnityCoords(true);

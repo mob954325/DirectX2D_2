@@ -5,18 +5,20 @@
 #include "Components/Rendering/TextRenderer.h"
 #include <vector>
 
-class SunGeneratorObject : public MonoBehavior
+namespace Test_2QApp
 {
-public:
-	void OnStart() override;
-	void OnUpdate() override;
-	void OnDestroy() override;
+	class SunGeneratorObject : public MonoBehavior
+	{
+	public:
+		void OnStart() override;
+		void OnUpdate() override;
+		void OnDestroy() override;
 
-private:
-	std::vector<GameObject*> objects;
+	private:
+		std::vector<GameObject*> objects;
 
-	BitmapRenderer* bitmapRenderer{};
-	TextRenderer* textRenderer{};
-	InputSystem* input{};
-};
-
+		BitmapRenderer* bitmapRenderer{};
+		TextRenderer* textRenderer{};
+		InputSystem* input{};
+	};
+}

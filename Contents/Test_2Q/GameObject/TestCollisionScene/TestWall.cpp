@@ -1,6 +1,8 @@
 ﻿#include "TestWall.h"
 #include "Components/Base/GameObject.h"
 
+using namespace Test_2QApp;
+
 void TestWall::OnStart()
 {
 	box = owner->AddComponent<BoxComponent>();

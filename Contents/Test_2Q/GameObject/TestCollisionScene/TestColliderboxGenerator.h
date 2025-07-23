@@ -4,17 +4,20 @@
 #include "Components/Rendering/TextRenderer.h"
 #include <vector>
 
-class TestColliderboxGenerator : public MonoBehavior
+namespace Test_2QApp
 {
-public:
-	void OnStart() override;
-	void OnUpdate() override;
-	void OnDestroy() override;
+	class TestColliderboxGenerator : public MonoBehavior
+	{
+	public:
+		void OnStart() override;
+		void OnUpdate() override;
+		void OnDestroy() override;
 
-private:
-	InputSystem* input;
-	TextRenderer* text;
+	private:
+		InputSystem* input;
+		TextRenderer* text;
 
-	std::vector<GameObject*> objects;
-};
+		std::vector<GameObject*> objects;
+	};
 
+}

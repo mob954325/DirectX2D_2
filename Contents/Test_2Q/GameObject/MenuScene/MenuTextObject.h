@@ -4,19 +4,21 @@
 #include "Components/Logic/InputSystem.h"
 #include "Components/Rendering/BoxComponent.h"
 
-class MenuTextObject : public MonoBehavior
+namespace Test_2QApp
 {
-public:
-	MenuTextObject() {};
-	~MenuTextObject() {};
+	class MenuTextObject : public MonoBehavior
+	{
+	public:
+		MenuTextObject() {};
+		~MenuTextObject() {};
 
-	void OnStart() override;
-	void OnUpdate() override;
-	void OnDestroy() override;
+		void OnStart() override;
+		void OnUpdate() override;
+		void OnDestroy() override;
 
-private:
-	TextRenderer* textRenderer{};
-	InputSystem* inputSystem{};
-	BoxComponent* box{};
-};
-
+	private:
+		TextRenderer* textRenderer{};
+		InputSystem* inputSystem{};
+		BoxComponent* box{};
+	};
+}

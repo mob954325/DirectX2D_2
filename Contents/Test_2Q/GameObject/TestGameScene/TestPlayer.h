@@ -12,108 +12,110 @@
 
 #include "Utils/EventDelegate.h"
 
-class IdleState;
-class MoveState;
-class DeadState;
-class HitState;
-class AttackState;
-
-class TestPlayer : public MonoBehavior
+namespace Test_2QApp
 {
-private:
-	void HandleMoveInput();
-	void HandlePlayerCameraInput();
-	void HandleHitInput();
-	void HandleCameraInput();
-	void HandleAnimationInput();
+	class IdleState;
+	class MoveState;
+	class DeadState;
+	class HitState;
+	class AttackState;
 
-	void OnHit(int dmg);
+	class TestPlayer : public MonoBehavior
+	{
+	private:
+		void HandleMoveInput();
+		void HandlePlayerCameraInput();
+		void HandleHitInput();
+		void HandleCameraInput();
+		void HandleAnimationInput();
 
-	Camera* playerMainCam{};
-	AnimationRenderer* idleBitmap{};
-	InputSystem* input{};
-	StatComponent* hpComp{};
-	BoxComponent* box{};
+		void OnHit(int dmg);
 
-	TextRenderer* hpText{};
-	TextRenderer* animFramText{};
-	TextRenderer* playerPosText{};
+		Camera* playerMainCam{};
+		AnimationRenderer* idleBitmap{};
+		InputSystem* input{};
+		StatComponent* hpComp{};
+		BoxComponent* box{};
 
-	EventDelegate<int> OnHitAction; // 피격시 호출되는 델리게이트
+		TextRenderer* hpText{};
+		TextRenderer* animFramText{};
+		TextRenderer* playerPosText{};
 
-	FSMInstance* fsmInstance{};
-	AnimatorController ac{};
+		EventDelegate<int> OnHitAction; // 피격시 호출되는 델리게이트
 
-	IdleState* idleState;
-	MoveState* moveState;
-	HitState* hitState;
-	DeadState* deadState;
-	AttackState* attackState;
+		FSMInstance* fsmInstance{};
+		AnimatorController ac{};
 
-	AABBCollider* aabbCollider;
-	Rigidbody2D* rigid;
+		IdleState* idleState;
+		MoveState* moveState;
+		HitState* hitState;
+		DeadState* deadState;
+		AttackState* attackState;
 
-	float speed = 2.0f;
-	float camSpeed = 5.0f;
-	int maxHp = 3;
+		AABBCollider* aabbCollider;
+		Rigidbody2D* rigid;
 
-public:
-	void OnStart() override;
-	void OnUpdate() override;
-	void OnDestroy() override;
+		float speed = 2.0f;
+		float camSpeed = 5.0f;
+		int maxHp = 3;
 
-	AnimationRenderer* GetRenderer() { return idleBitmap; }
-};
+	public:
+		void OnStart() override;
+		void OnUpdate() override;
+		void OnDestroy() override;
+
+		AnimationRenderer* GetRenderer() { return idleBitmap; }
+	};
 
 #pragma region States
-class IdleState : public IStateBehaviorBase
-{
-public:
-	TestPlayer* player;
+	class IdleState : public IStateBehaviorBase
+	{
+	public:
+		TestPlayer* player;
 
-	void OnStateEnter() override;
-	void OnStateUpdate() override;
-	void OnStateExit() override;
-};
+		void OnStateEnter() override;
+		void OnStateUpdate() override;
+		void OnStateExit() override;
+	};
 
-class MoveState : public IStateBehaviorBase
-{
-public:
-	TestPlayer* player;
+	class MoveState : public IStateBehaviorBase
+	{
+	public:
+		TestPlayer* player;
 
-	void OnStateEnter() override;
-	void OnStateUpdate() override;
-	void OnStateExit() override;
-};
+		void OnStateEnter() override;
+		void OnStateUpdate() override;
+		void OnStateExit() override;
+	};
 
-class HitState : public IStateBehaviorBase
-{
-public:
-	TestPlayer* player;
+	class HitState : public IStateBehaviorBase
+	{
+	public:
+		TestPlayer* player;
 
-	void OnStateEnter() override;
-	void OnStateUpdate() override;
-	void OnStateExit() override;
-};
+		void OnStateEnter() override;
+		void OnStateUpdate() override;
+		void OnStateExit() override;
+	};
 
-class DeadState : public IStateBehaviorBase
-{
-public:
-	TestPlayer* player;
+	class DeadState : public IStateBehaviorBase
+	{
+	public:
+		TestPlayer* player;
 
-	void OnStateEnter() override;
-	void OnStateUpdate() override;
-	void OnStateExit() override;
-};
+		void OnStateEnter() override;
+		void OnStateUpdate() override;
+		void OnStateExit() override;
+	};
 
-class AttackState : public IStateBehaviorBase
-{
-public:
-	TestPlayer* player;
+	class AttackState : public IStateBehaviorBase
+	{
+	public:
+		TestPlayer* player;
 
-	void OnStateEnter() override;
-	void OnStateUpdate() override;
-	void OnStateExit() override;
-};
+		void OnStateEnter() override;
+		void OnStateUpdate() override;
+		void OnStateExit() override;
+	};
 #pragma endregion
-
+}

@@ -13,6 +13,8 @@
 #include "Test_2Q/GameObject/TestGameScene/SunGeneratorObject.h"
 #include "Test_2Q/GameObject/TestCollisionScene/TestGround.h"
 
+using namespace Test_2QApp;
+
 void TestGameScene::OnEnterImpl()
 {
 	m_TestPlayer = new GameObject();

@@ -4,21 +4,23 @@
 #include "Components/Physics/Rigidbody2D.h"
 #include "Components/Rendering/TextRenderer.h"
 
-class PressuerPlate : public MonoBehavior
+namespace Test_2QApp
 {
-public:
-	void OnStart() override;
-	void OnUpdate() override;
-	void OnDestroy() override;
+	class PressuerPlate : public MonoBehavior
+	{
+	public:
+		void OnStart() override;
+		void OnUpdate() override;
+		void OnDestroy() override;
 
-	void OnTriggerEnter(GameObject* collider) override;
-	void OnTriggerStay(GameObject* collider) override;
-	void OnTriggerExit(GameObject* collider) override;
-private:
+		void OnTriggerEnter(GameObject* collider) override;
+		void OnTriggerStay(GameObject* collider) override;
+		void OnTriggerExit(GameObject* collider) override;
+	private:
 
-	BoxComponent* box{};
-	AABBCollider* aabb{};
-	TextRenderer* text{};
-	TextRenderer* alarmText{};
-};
-
+		BoxComponent* box{};
+		AABBCollider* aabb{};
+		TextRenderer* text{};
+		TextRenderer* alarmText{};
+	};
+}

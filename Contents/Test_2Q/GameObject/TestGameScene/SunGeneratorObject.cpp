@@ -6,6 +6,8 @@
 
 #include "Utils/DebugUtility.h"
 
+using namespace Test_2QApp;
+
 // NOTE : 0630 리소스 매니저 확인을 위한 게임오브젝트 추가
 void SunGeneratorObject::OnStart()
 {

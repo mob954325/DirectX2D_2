@@ -3,15 +3,17 @@
 #include "Components/Collision/AABBCollider.h"
 #include "Components/Rendering/BoxComponent.h"
 
-class TestWall : public MonoBehavior
+namespace Test_2QApp
 {
-public:
-	void OnStart() override;
-	void OnUpdate() override;
-	void OnDestroy() override;
+	class TestWall : public MonoBehavior
+	{
+	public:
+		void OnStart() override;
+		void OnUpdate() override;
+		void OnDestroy() override;
 
-private:
-	BoxComponent* box;
-	AABBCollider* aabb;
-};
-
+	private:
+		BoxComponent* box;
+		AABBCollider* aabb;
+	};
+}

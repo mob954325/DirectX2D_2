@@ -5,6 +5,8 @@
 #include "Datas/EngineData.h"
 #include "Utils/DebugUtility.h"
 
+using namespace Test_2QApp;
+
 void GameTextObject::OnStart()
 {
 	owner->SetRenderLayer(EngineData::RenderLayer::UI);

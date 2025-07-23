@@ -130,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Test_Platformer\Application\TestPlatformerGameApp.cpp" />
     <ClCompile Include="Test_2Q\Application\DemoGameApp.cpp" />
     <ClCompile Include="Test_2Q\GameObject\TestGameScene\Earth.cpp" />
     <ClCompile Include="Application\Game.cpp" />
@@ -138,7 +139,6 @@
     <ClCompile Include="Test_2Q\GameObject\TestGameScene\GameTextObject.cpp" />
     <ClCompile Include="Test_2Q\GameObject\TestGameScene\Moon.cpp" />
     <ClCompile Include="Test_2Q\GameObject\TestGameScene\FreeCamera.cpp" />
-    <ClCompile Include="Test_2Q\GameObject\TestGameScene\InfoTextObject.cpp" />
     <ClCompile Include="Test_2Q\GameObject\TestGameScene\TestPlayer.cpp" />
     <ClCompile Include="Test_2Q\GameObject\TestGameScene\SunGeneratorObject.cpp" />
     <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\PressuerPlate.cpp" />
@@ -152,6 +152,7 @@
     <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestColliderboxGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Test_Platformer\Application\TestPlatformerGameApp.h" />
     <ClInclude Include="Test_2Q\Application\DemoGameApp.h" />
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\Earth.h" />
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\Sun.h" />
@@ -159,7 +160,6 @@
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\GameTextObject.h" />
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\Moon.h" />
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\FreeCamera.h" />
-    <ClInclude Include="Test_2Q\GameObject\TestGameScene\InfoTextObject.h" />
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\TestPlayer.h" />
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\SunGeneratorObject.h" />
     <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\PressuerPlate.h" />

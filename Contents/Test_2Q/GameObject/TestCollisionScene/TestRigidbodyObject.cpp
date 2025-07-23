@@ -5,6 +5,7 @@
 #include "Utils/GameTime.h"
 #include "Components/Base/GameObject.h"
 
+using namespace Test_2QApp;
 
 void TestRigidbodyObject::OnStart()
 {

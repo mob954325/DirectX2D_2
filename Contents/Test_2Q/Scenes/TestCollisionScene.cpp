@@ -9,6 +9,8 @@
 #include "Test_2Q/GameObject/TestCollisionScene/TestColliderboxGenerator.h"
 #include "Test_2Q/GameObject/TestCollisionScene/PressuerPlate.h"
 
+using namespace Test_2QApp;
+
 void TestCollisionScene::OnEnterImpl()
 {
 	m_MainCamera = new GameObject();

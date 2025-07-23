@@ -3,20 +3,22 @@
 #include "Components/Logic/InputSystem.h"
 #include "Components/Camera/Camera.h"
 
-class FreeCamera : public MonoBehavior
+namespace Test_2QApp
 {
-public:
-	FreeCamera() {};
-	~FreeCamera() {};
+	class FreeCamera : public MonoBehavior
+	{
+	public:
+		FreeCamera() {};
+		~FreeCamera() {};
 
-	void OnStart() override;
-	void OnUpdate() override;
-	void OnDestroy() override;
+		void OnStart() override;
+		void OnUpdate() override;
+		void OnDestroy() override;
 
-private:
-	Camera* camera{};
-	InputSystem* inputSystem{};
+	private:
+		Camera* camera{};
+		InputSystem* inputSystem{};
 
-	float cameraMoveSpeed = 5.0f;
-};
-
+		float cameraMoveSpeed = 5.0f;
+	};
+}

@@ -2,14 +2,16 @@
 #include "Components/Base/MonoBehavior.h"
 #include "Components/Rendering/BitmapRenderer.h"
 
-class Moon : public MonoBehavior
+namespace Test_2QApp
 {
-public:
-	void OnStart() override;
-	void OnUpdate() override;
-	void OnDestroy() override;
+	class Moon : public MonoBehavior
+	{
+	public:
+		void OnStart() override;
+		void OnUpdate() override;
+		void OnDestroy() override;
 
-protected:
-	BitmapRenderer* bitmapRenderer{};
-};
-
+	protected:
+		BitmapRenderer* bitmapRenderer{};
+	};
+}

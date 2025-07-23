@@ -5,6 +5,8 @@
 #include "Scene/SceneManager.h"
 #include <Test_2Q/GameObject/MenuScene/MenuTextObject.h>
 
+using namespace Test_2QApp;
+
 void MenuScene::OnEnterImpl()
 {
 	menuObj = new GameObject();

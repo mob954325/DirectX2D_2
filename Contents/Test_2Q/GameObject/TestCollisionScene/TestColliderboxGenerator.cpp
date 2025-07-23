@@ -2,6 +2,8 @@
 #include "Scene/SceneManager.h"
 #include "TestColliderbox.h"
 
+using namespace Test_2QApp;
+
 void TestColliderboxGenerator::OnStart()
 {
 	input = owner->AddComponent<InputSystem>();

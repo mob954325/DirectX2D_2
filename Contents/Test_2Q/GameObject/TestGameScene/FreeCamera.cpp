@@ -2,6 +2,8 @@
 #include "Scene/SceneManager.h"
 #include "Components/Camera/CameraManager.h"
 
+using namespace Test_2QApp;
+
 void FreeCamera::OnStart()
 {
 	camera = owner->AddComponent<Camera>();

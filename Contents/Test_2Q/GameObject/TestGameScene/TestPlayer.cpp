@@ -9,6 +9,8 @@
 #include <string>
 #include <iostream>
 
+using namespace Test_2QApp;
+
 void TestPlayer::OnStart()
 {
 	owner->SetRenderLayer(EngineData::RenderLayer::Player);

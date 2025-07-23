@@ -1,6 +1,8 @@
 ﻿#include "Moon.h"
 #include "Components/Base/GameObject.h"
 
+using namespace Test_2QApp;
+
 void Moon::OnStart()
 {
 	bitmapRenderer = owner->AddComponent<BitmapRenderer>();

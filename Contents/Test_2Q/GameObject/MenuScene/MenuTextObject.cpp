@@ -1,6 +1,8 @@
 ﻿#include "MenuTextObject.h"
 #include "Scene/SceneManager.h"
 
+using namespace Test_2QApp;
+
 void MenuTextObject::OnStart()
 {
 	textRenderer = owner->AddComponent<TextRenderer>();
