@@ -18,8 +18,18 @@ void Rigidbody2D::FixedUpdate(std::vector<CollisionInfo>& collisions)
 			collapsed.push_back(info);
 		}
 	}
+	
+	// 임시
+	const float maxStep = 0.016f;
+	float deltaTime = Singleton<GameTime>::GetInstance().GetDeltaTime();
+	int steps = std::ceil(deltaTime / maxStep);
+	float subDeltaTime = deltaTime / steps;
 
-	Intergrate(collapsed);
+	for (int i = 0; i < steps; i++)
+	{
+		std::cout << subDeltaTime << std::endl;
+		Intergrate(collapsed, subDeltaTime);
+	}
 }
 
 void Rigidbody2D::SetPhysicsType(PhysicsType value)
@@ -57,7 +67,7 @@ void Rigidbody2D::SetVelocity(const Vector2& vel)
 	velocity = vel;
 }
 
-void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
+void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions, float deltaTime)
 {
 	if (physicsType != PhysicsType::Static)
 	{
@@ -132,7 +142,7 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 
 		velocity += adjustGravity; // 계산된 값 추가
 
-		float deltaTime = 0.001f;
+		// float deltaTime = Singleton<GameTime>::GetInstance().GetFixedDeltaTime();
 
 		if (physicsType == PhysicsType::Dynamic)
 		{

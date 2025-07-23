@@ -38,7 +38,7 @@ public:
 	/// </summary>
 	/// <param name="vec">이동 방향</param>
 	void SetVelocity(const Vector2& vel);
-	void Intergrate(std::vector<CollisionInfo>& collisions);
+	void Intergrate(std::vector<CollisionInfo>& collisions, float deltaTime);
 
 	void SetMass(float value);
 	void SetDrag(float value);

@@ -14,6 +14,7 @@ namespace Test_2QApp
 	public:
 		void OnStart() override;
 		void OnUpdate() override;
+		void OnFixedUpdate() override;
 		void OnDestroy() override;
 
 		void OnColliderEnter(GameObject* collider) override;
@@ -26,6 +27,7 @@ namespace Test_2QApp
 	private:
 
 		void HandleMoveInput();
+		void HandleDynamicMoveInput();
 
 		BitmapRenderer* sprite;
 		InputSystem* input;
@@ -37,7 +39,7 @@ namespace Test_2QApp
 		BoxComponent* box{};
 		AABBCollider* aabb{};
 
-		float physicSpeed = 40000;
+		float physicSpeed = 2000;
 		float normalSpeed = 1000;
 	};
 

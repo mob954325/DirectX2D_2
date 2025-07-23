@@ -205,6 +205,7 @@ void Application::Update()
 
 	// 2. 현재 씬이 내부에 MonoBehavior System / Transform System / Collision System 등을 호출
 	Scene* currentScene = Singleton<SceneManager>::GetInstance().GetCurrentScene();	
+	currentScene->PostUpdate();	// 
 	currentScene->FixedUpdate(collsioninfos);	// 물리 , 충돌
 	currentScene->Update();						// MonoBehavior / 컴포넌트
 	currentScene->LateUpdate();					// 

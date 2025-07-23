@@ -34,6 +34,11 @@ public:
 	void OnEnter();
 
 	/// <summary>
+	/// FixedUpdate 이전에 실행되는 함수
+	/// </summary>
+	void PostUpdate();
+
+	/// <summary>
 	/// 게임 오브젝트 파괴 리스트 순환 후 UpdateImpl() 호출
 	/// </summary>
 	void Update();

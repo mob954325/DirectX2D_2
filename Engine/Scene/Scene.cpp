@@ -8,6 +8,8 @@
 #include "Systems/MonoBehaviorSystem.h"
 #include "Components/Camera/CameraManager.h"
 
+#include "Utils/GameTime.h"
+
 #pragma region Event Update
 void Scene::OnEnter()
 {
@@ -17,19 +19,22 @@ void Scene::OnEnter()
 	state = SceneState::Playing;
 }
 
+void Scene::PostUpdate()
+{
+	AddCreatedObjects();										// 생성된 게임 오브젝트 활성화 오브젝트로 변경
+	Singleton<MonoBehaviorSystem>::GetInstance().ProcessPendingComponents(); // MonoBehavior 지연 등록 확인
+	CheckGameObjectStartQueue();								// component OnStart 처리, NOTE: Fixed 쪼개면 PostUpdate 만들어서 넣기 
+}
+
 void Scene::FixedUpdate(std::vector<CollisionInfo>& collisionInfos)
 {
+	Singleton<MonoBehaviorSystem>::GetInstance().FixedUpdate();		// MonoBehavior 처리
 	Singleton<CollisionSystem>::GetInstance().FixedUpdate(collisionInfos);
 	Singleton<PhysicSystem>::GetInstance().FixedUpdate(collisionInfos);
 }
 
 void Scene::Update()
 {
-	AddCreatedObjects();										// 생성된 게임 오브젝트 활성화 오브젝트로 변경
-	if (state == SceneState::ReadyToChange) return;
-	
-	Singleton<MonoBehaviorSystem>::GetInstance().ProcessPendingComponents(); // MonoBehavior 지연 등록 확인
-	CheckGameObjectStartQueue();								// component OnStart 처리
 	Singleton<MonoBehaviorSystem>::GetInstance().Update();		// MonoBehavior 처리
 	Singleton<ScriptSystem>::GetInstance().Update();			// 컴포넌트 기반 스크립트 처리
 	Singleton<TransformSystem>::GetInstance().Update();			// Transform 연산

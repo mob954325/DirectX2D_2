@@ -105,6 +105,11 @@ void TestRigidbodyObject::OnUpdate()
 	}
 }
 
+void Test_2QApp::TestRigidbodyObject::OnFixedUpdate()
+{
+	HandleDynamicMoveInput();
+}
+
 void TestRigidbodyObject::OnDestroy()
 {
 }
@@ -143,6 +148,34 @@ void TestRigidbodyObject::HandleMoveInput()
 {
 	if (input == nullptr) return;
 
+
+	if (rigid->GetPhysicsType() != PhysicsType::Dynamic)
+	{
+		Vector2 vec{ 0,0 };
+		if (input->IsKeyDown(VK_RIGHT))
+		{
+			vec += Vector2::Right();
+		}
+		if (input->IsKeyDown(VK_LEFT))
+		{
+			vec += Vector2::Left();
+		}
+		if (input->IsKeyDown(VK_UP))
+		{
+			vec += Vector2::Up();
+		}
+		if (input->IsKeyDown(VK_DOWN))
+		{
+			vec += Vector2::Down();
+		}
+
+		vec = vec * normalSpeed;
+		rigid->SetVelocity(vec);
+	}
+}
+
+void Test_2QApp::TestRigidbodyObject::HandleDynamicMoveInput()
+{
 	if (rigid->GetPhysicsType() == PhysicsType::Dynamic)
 	{
 		Vector2 vec{ 0,0 };
@@ -165,28 +198,5 @@ void TestRigidbodyObject::HandleMoveInput()
 
 		vec = vec * physicSpeed;
 		rigid->ApplyForce(vec);
-	}
-	else
-	{
-		Vector2 vec{ 0,0 };
-		if (input->IsKeyDown(VK_RIGHT))
-		{
-			vec += Vector2::Right();
-		}
-		if (input->IsKeyDown(VK_LEFT))
-		{
-			vec += Vector2::Left();
-		}
-		if (input->IsKeyDown(VK_UP))
-		{
-			vec += Vector2::Up();
-		}
-		if (input->IsKeyDown(VK_DOWN))
-		{
-			vec += Vector2::Down();
-		}
-
-		vec = vec * normalSpeed;
-		rigid->SetVelocity(vec);
 	}
 }

@@ -105,7 +105,7 @@ void TestPlayer::OnStart()
 	aabbCollider->SetSize(129, 129, 1);
 
 	rigid = owner->AddComponent<Rigidbody2D>();
-	rigid->SetGravity(false);
+	rigid->SetGravity(true);
 
 	owner->GetTransform().SetPosition(0, 200);
 }

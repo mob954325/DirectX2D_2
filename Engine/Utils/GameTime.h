@@ -14,6 +14,7 @@ public:
 	void InitTime();
 	void UpdateTime();
 	float GetDeltaTime();
+	float GetFixedDeltaTime();
 	float GetElapsedTime();
 
 private:

@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "Components/Rendering/RenderComponent.h"
 
-// NOTE: 나중에 클래스명을 RectRendererComponent로 바꾸기
 class BoxComponent : public RenderComponent
 {
 public:

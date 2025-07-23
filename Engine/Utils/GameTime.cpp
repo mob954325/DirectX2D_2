@@ -23,6 +23,11 @@ float GameTime::GetDeltaTime()
     return deltaTime;
 }
 
+float GameTime::GetFixedDeltaTime()
+{
+    return 1.0f / 60.0f; // 0.016s, 60FPS 고정시간 반환
+}
+
 float GameTime::GetElapsedTime()
 {
     QueryPerformanceCounter(&end);

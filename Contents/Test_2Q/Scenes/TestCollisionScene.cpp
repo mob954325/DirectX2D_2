@@ -35,10 +35,12 @@ void TestCollisionScene::OnEnterImpl()
 	AddGameObject(leftWall, "lWall");
 	leftWall->GetTransform().SetPosition(-400, 0);
 
-	boxGenerator = new GameObject();TestColliderboxGenerator();
+	boxGenerator = new GameObject();
+	boxGenerator->AddComponent<TestColliderboxGenerator>();
 	AddGameObject(boxGenerator, "bxg");
 
-	doorButton = new GameObject();PressuerPlate();
+	doorButton = new GameObject();
+	doorButton->AddComponent<PressuerPlate>();
 	AddGameObject(doorButton, "doorButton");
 	doorButton->GetTransform().SetPosition(200, 30);
 }
