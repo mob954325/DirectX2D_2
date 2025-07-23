@@ -13,7 +13,9 @@ void AnimationRenderer::Render(D2DRenderManager* manager)
 	if (!m_bitmapResource) return;
 	
 	// 출력할 최종 위치 설정
-	D2D1_MATRIX_3X2_F mat = owner->transform->GetFinalMatrix();
+	D2D1_MATRIX_3X2_F mat = owner->GetTransform().GetFinalMatrix();
+
+	if (isFlip) mat.m11 = -mat.m11;
 	manager->SetBitmapTransform(mat);
 
 	// Spirte 정보에 맞게 위치 조정

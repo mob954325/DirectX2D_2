@@ -31,6 +31,7 @@ public:
 	void ClearAll();
 
 	void FixedUpdate(std::vector<CollisionInfo>& outInfos);
+	void CheckPrevPairRemoval();
 private:
 	CollisionSystem() = default;
 	~CollisionSystem();

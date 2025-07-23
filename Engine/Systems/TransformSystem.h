@@ -8,7 +8,7 @@ public:
 	friend class Singleton<TransformSystem>;
 
 	void Register(Transform* pTransform);
-	void Unregister(Transform* pTransform);
+	void UnRegister(Transform* pTransform);
 	void Update();
 	void ClearAll();
 

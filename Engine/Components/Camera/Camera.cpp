@@ -31,7 +31,7 @@ D2D1_MATRIX_3X2_F Camera::GetMatrix() const
 		return D2D1::Matrix3x2F::Identity();
 	}
 		
-	D2D1_MATRIX_3X2_F attached = owner->transform->ToWorldMatrix();
+	D2D1_MATRIX_3X2_F attached = owner->GetTransform().ToWorldMatrix();
 	D2D1_MATRIX_3X2_F local = localTransform->ToWorldMatrix();
 	D2D1_MATRIX_3X2_F resultMatrix = attached * local;
 

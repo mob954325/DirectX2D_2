@@ -4,6 +4,7 @@
 #include "Systems/ScriptSystem.h"
 #include "Systems/RenderSystem.h"
 #include "Scene/GameObjectQuery.h"
+#include "Datas/CollisionInfo.h"
 #include <vector>
 
 /// <summary>
@@ -13,7 +14,7 @@ enum SceneState
 {	
 	Enter = 0,		// 씬 전환 후 시작 시
 	Playing,		// 씬 업데이트 중이고 씬 교체가 없을 때
-	ReadyToExit,	// 다음 프레임에 씬 교체가 시작될 때
+	ReadyToChange,	// 다음 프레임에 씬 교체가 시작될 때
 	Exit,			// 씬 내 데이터 정리 후 Enter 전 
 };
 
@@ -38,6 +39,11 @@ public:
 	void Update();
 
 	/// <summary>
+	/// 게임 물리 업데이트
+	/// </summary>
+	void FixedUpdate(std::vector<CollisionInfo>& collisionInfos);
+
+	/// <summary>
 	/// 모든 업데이트 끝나고 실행
 	/// </summary>
 	void LateUpdate();
@@ -52,6 +58,7 @@ public:
 	/// </summary>
 	void CleanUpDestroyedObjects();
 
+	// GameObject 제어 함수
 	void AddGameObject(GameObject* gameObject);
 	void AddGameObject(GameObject* gameObject, const std::string& name);
 	void FindRemoveObject();
@@ -60,7 +67,7 @@ public:
 
 protected:
 	void AddCreatedObjects();
-	void UpdateActiveObjects();
+	void CheckGameObjectStartQueue();
 
 	/// <summary>
 	/// Scene을 상속 받은 클래스가 씬 시작 시 실행할 내용
@@ -82,6 +89,5 @@ protected:
 	std::vector<GameObject*> objectsToAdd;		// 다음 프레임에 activeObjects에 포함될 오브젝트들
 
 	SceneState state = SceneState::Exit;
-	// bool isSceneChanging = false;
 };
 

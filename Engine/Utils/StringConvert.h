@@ -3,6 +3,9 @@
 #include <locale>
 #include <codecvt>
 
+/// <summary>
+/// string <-> wstring 변환 클래스
+/// </summary>
 class StringConvert
 {
 public:

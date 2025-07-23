@@ -5,40 +5,18 @@
 #include "Transform.h"
 #include "Datas/EngineData.h"
 #include "Scene/GameObjectQuery.h"
+#include "BaseObject.h"
+#include "MonoBehavior.h"
+#include <queue>
 
 /// <summary>
 /// 모든 게임 오브젝트가 상속받는 클래스로 Component만 담고 Component관련 함수만 포함되어있음
 /// </summary>
-class GameObject
+class GameObject : public BaseObject
 {
 public:
 	GameObject();
 	virtual ~GameObject();
-
-	/// <summary>
-	/// Update 실행 전 한 번 실행되는 함수
-	/// </summary>
-	virtual void Start() = 0;
-
-	/// <summary>
-	/// 업데이트 실행
-	/// </summary>
-	virtual void Update() = 0;
-
-	/// <summary>
-	/// 씬 종료시 실행될 함수
-	/// </summary>
-	virtual void OnDestroy() = 0;
-	
-	// 충돌처리 함수, 매개변수는 충돌 대상
-	virtual void OnColliderEnter(GameObject* collider) {}
-	virtual void OnColliderStay(GameObject* collider) {}
-	virtual void OnColliderExit(GameObject* collider) {}
-	virtual void OnTriggerEnter(GameObject* collider) {}
-	virtual void OnTriggerStay(GameObject* collider) {}
-	virtual void OnTriggerExit(GameObject* collider) {}
-
-	Transform* transform = {};
 
 	template <typename T>
 	T* AddComponent()
@@ -47,27 +25,37 @@ public:
 
 		T* comp = new T;
 		comp->owner = this;
-		components.push_back(comp);
 
-		DispatchComponentToSystem(comp);
-		comp->OnStart();
-
+		CheckComponent(comp);
 		return comp;
 	}
 
 	template <typename T>
 	T* GetComponent()
 	{
+		static_assert(std::is_base_of<Component, T>::value, "T must derive from Component");
+
+		for (Component* mono : monoBehaviors)
+		{
+			if (typeid(*mono) == typeid(T))
+			{
+				return static_cast<T*>(static_cast<Component*>(mono));
+			}
+		}
+
 		for (Component* comp : components)
 		{
 			if (typeid(*comp) == typeid(T))
 			{
-				return static_cast<T*>(comp);
+				return static_cast<T*>(static_cast<Component*>(comp));
 			}
 		}
 
-		return nullptr; // NOTE: main이랑 merge하고 나서 해당 주석 제거할 것
+		return nullptr;
 	}
+
+	void ProcessStartQeue();
+	void Destroy();
 
 	void RemoveComponent(Component* targetComp);
 
@@ -80,26 +68,29 @@ public:
 	bool IsEarlyCreated() const { return earlyCreated; }
 	
 	// get/set
-	EngineData::RenderLayer GetRenderLayer() const { return renderLayer; }
-	int GetRenderLayerIndex() const { return (int)renderLayer; }
+	EngineData::RenderLayer GetRenderLayer() const;
 
-	std::string GetName() const { return name; }
-	void SetName(const std::string& name) { this->name = name; }
+	void SetRenderLayer(int value);
+	void SetRenderLayer(EngineData::RenderLayer layerType);
+	int GetRenderLayerIndex() const;
 
-	void SetQueryInterface(IGameObjectQuery* q) { query = q; }
+	void SetQueryInterface(IGameObjectQuery* q);
+
+	Transform& GetTransform();
 
 protected:
 	EngineData::RenderLayer renderLayer = EngineData::RenderLayer::None;
 	IGameObjectQuery* query = nullptr;
 
 private:
+	void CheckComponent(Component* comp);
 	void DispatchComponentToSystem(Component* comp);
 	void RemoveComponentToSystem(Component* comp);
 
-	std::vector<Component*> components; // 컴포넌트를 담는 컨테이너
-	bool shouldRemove = false;			// 해당 오브젝트가 다음 프레임에 제거될 대상인지 확인하는 변수 ( 제거예정이면 true )
-	bool earlyCreated = true;			// 해당 오브젝트가 이번 프레임에 생성되었는지 확인하는 변수 ( 생성된 후 다음 프레임에 false로 전환 )
-
-	std::string name{}; // 해당 오브젝트의 이름
+	Transform* transform = {};
+	std::vector<MonoBehavior*> monoBehaviors;	// MonoBehaivor 컴포넌트만 담는 컨테이너
+	std::vector<Component*> components;			// 컴포넌트를 담는 컨테이너
+	std::queue<Component*> startQueue;			// start를 실행하지 않은 컴포넌트 모음
+	bool shouldRemove = false;					// 해당 오브젝트가 다음 프레임에 제거될 대상인지 확인하는 변수 ( 제거예정이면 true )
+	bool earlyCreated = true;					// 해당 오브젝트가 이번 프레임에 생성되었는지 확인하는 변수 ( 생성된 후 다음 프레임에 false로 전환 )
 };
-

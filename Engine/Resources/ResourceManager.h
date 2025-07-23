@@ -4,6 +4,9 @@
 #include "BitmapResource.h"
 #include <unordered_map>
 
+/// <summary>
+/// 리소스 매니저 ( 일단 BitmapResource만 다룸 )
+/// </summary>
 class ResourceManager
 {
 public:

@@ -4,6 +4,7 @@
 #include "Systems/TransformSystem.h"
 #include "Systems/CollisionSystem.h"
 #include "Systems/PhysicSystem.h"
+#include "Systems/MonoBehaviorSystem.h"
 #include "Components/Camera/CameraManager.h"
 
 SceneManager::~SceneManager()
@@ -20,14 +21,6 @@ void SceneManager::Init()
 	currentScene->OnEnter();
 }
 
-void SceneManager::Update()
-{
-	if (currentScene != nullptr)
-	{
-		currentScene->Update();
-	}
-}
-
 void SceneManager::LoadScene(int sceneIndex)
 {
 	if (sceneIndex < 0 || sceneIndex >= sceneCount)
@@ -36,13 +29,13 @@ void SceneManager::LoadScene(int sceneIndex)
 		return;
 	}
 
-	currentScene->state = SceneState::ReadyToExit;
+	currentScene->state = SceneState::ReadyToChange;
 	targetSceneIndex = sceneIndex;
 }
 
 void SceneManager::CheckSceneLoad()
 {
-	if (currentScene->state == SceneState::ReadyToExit)
+	if (currentScene->state == SceneState::ReadyToChange)
 	{
 		// 현재 씬 종료
 		if (currentScene != nullptr)
@@ -54,6 +47,7 @@ void SceneManager::CheckSceneLoad()
 			Singleton<TransformSystem>::GetInstance().ClearAll();
 			Singleton<CameraManager>::GetInstance().ClearAll();
 			Singleton<RenderSystem>::GetInstance().ClearAll();
+			Singleton<MonoBehaviorSystem>::GetInstance().ClearAll();
 		}
 
 		// 씬 교체

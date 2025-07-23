@@ -4,23 +4,47 @@
 #include "Systems/CollisionSystem.h"
 #include "Systems/PhysicSystem.h"
 #include "Systems/TransformSystem.h"
+#include "Systems/MonoBehaviorSystem.h"
 
 GameObject::GameObject()
 {
-	transform = AddComponent<Transform>();
+	transform = AddComponent<Transform>(); // GameObject는 무조건 Transform를 하나 소유함
 }
 
 GameObject::~GameObject()
 {
-	std::vector<Component*>::iterator it = components.begin();
-	for (; it != components.end();)
+	// Destroy();
+}
+
+void GameObject::ProcessStartQeue()
+{
+	while (!startQueue.empty())
 	{
-		(*it)->OnDestroy();
-		RemoveComponentToSystem(*it);
-		it = components.erase(it);
+		Component* comp = startQueue.front();
+		startQueue.pop();
+
+		comp->OnStart();
+		comp->SetStarted();
 	}
-	
+}
+
+void GameObject::Destroy()
+{
+	for (Component* comp : components)
+	{
+		comp->OnDestroy();
+		RemoveComponentToSystem(comp);
+		delete comp;
+	}
 	components.clear();
+
+	for (MonoBehavior* mb : monoBehaviors)
+	{
+		mb->OnDestroy();
+		RemoveComponentToSystem(mb);
+		delete mb;
+	}
+	monoBehaviors.clear();
 }
 
 void GameObject::RemoveComponent(Component* targetComp)
@@ -40,6 +64,23 @@ void GameObject::RemoveComponent(Component* targetComp)
 	}
 }
 
+void GameObject::CheckComponent(Component* comp)
+{
+	if (MonoBehavior* mb = dynamic_cast<MonoBehavior*>(comp))
+	{
+		monoBehaviors.push_back(mb);
+	}
+	else
+	{
+		components.push_back(comp);
+	}
+
+	DispatchComponentToSystem(comp);
+	comp->OnCreate(); // 즉시 OnCreate 호출
+	comp->SetCreated();
+	startQueue.push(comp);
+}
+
 void GameObject::DispatchComponentToSystem(Component* comp)
 {
 	if (ScriptComponent* sc = dynamic_cast<ScriptComponent*>(comp))
@@ -57,6 +98,14 @@ void GameObject::DispatchComponentToSystem(Component* comp)
 	else if (PhysicComponent* pc = dynamic_cast<PhysicComponent*>(comp))
 	{
 		Singleton<PhysicSystem>::GetInstance().Register(pc);
+	}
+	else if (Transform* t = dynamic_cast<Transform*>(comp))
+	{
+		Singleton<TransformSystem>::GetInstance().Register(t);
+	}
+	else if (MonoBehavior* mb = dynamic_cast<MonoBehavior*>(comp))
+	{
+		Singleton<MonoBehaviorSystem>::GetInstance().Register(mb);
 	}
 }
 
@@ -80,6 +129,40 @@ void GameObject::RemoveComponentToSystem(Component* comp)
 	}
 	else if (Transform* t = dynamic_cast<Transform*>(comp))
 	{
-		Singleton<TransformSystem>::GetInstance().Unregister(t); // NOTE: 시스템 추가는 addGameObject에서 하고 있음
+		Singleton<TransformSystem>::GetInstance().UnRegister(t);
 	}
+	else if (MonoBehavior* mb = dynamic_cast<MonoBehavior*>(comp))
+	{
+		Singleton<MonoBehaviorSystem>::GetInstance().UnRegister(mb);
+	}
+}
+
+EngineData::RenderLayer GameObject::GetRenderLayer() const
+{
+	return renderLayer;
+}
+
+void GameObject::SetRenderLayer(int value)
+{
+	renderLayer = (EngineData::RenderLayer)value;
+}
+
+void GameObject::SetRenderLayer(EngineData::RenderLayer layerType)
+{
+	renderLayer = layerType;
+}
+
+int GameObject::GetRenderLayerIndex() const
+{ 
+	return (int)renderLayer; 
+}
+
+void GameObject::SetQueryInterface(IGameObjectQuery* q) 
+{ 
+	query = q; 
+}
+
+Transform& GameObject::GetTransform()
+{
+	return *transform;
 }

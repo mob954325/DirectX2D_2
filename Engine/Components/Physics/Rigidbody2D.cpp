@@ -154,7 +154,7 @@ void Rigidbody2D::Intergrate(std::vector<CollisionInfo>& collisions)
 		}
 
 		// 이동 
-		owner->transform->Translate(velocity * deltaTime);
+		owner->GetTransform().Translate(velocity * deltaTime);
 
 		// 가속도 초기화
 		accelration = Vector2::Zero();

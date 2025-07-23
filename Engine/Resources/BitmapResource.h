@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include "pch.h"
 
+/// <summary>
+/// 비트맵 데이터 클래스
+/// </summary>
 class BitmapResource
 {
 public:

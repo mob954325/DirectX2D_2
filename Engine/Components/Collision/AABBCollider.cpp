@@ -38,7 +38,7 @@ ColliderType AABBCollider::GetColliderType()
 
 Vector2 AABBCollider::GetCenter() const
 {
-	return Vector2(owner->transform->GetPosition().x, owner->transform->GetPosition().y);
+	return Vector2(owner->GetTransform().GetPosition().x, owner->GetTransform().GetPosition().y);
 }
 
 bool AABBCollider::CheckCollision(ICollider* other, CollisionInfo& outCollisionInfo)
@@ -105,7 +105,6 @@ bool AABBCollider::CheckCollisionWithAABB(ICollider* other, CollisionInfo& outCo
 			outCollisionInfo.penetrationDepth = overlapY;
 		}
 
-		// NOTE: Gameobject -> collisioncomponent
 		outCollisionInfo.a = dynamic_cast<CollisionComponent*>(this);
 		outCollisionInfo.b = dynamic_cast<CollisionComponent*>(otherAABB);
 
@@ -120,7 +119,11 @@ bool AABBCollider::CheckCollisionWithAABB(ICollider* other, CollisionInfo& outCo
 
 void AABBCollider::OnCreate()
 {
-	box = owner->AddComponent<BoxComponent>();
+	// debugBoxComponent = owner->AddComponent<BoxComponent>();
+}
+
+void AABBCollider::OnDestroy()
+{
 }
 
 void AABBCollider::SetSize(float width, float height, float scale)
@@ -147,7 +150,7 @@ D2D1_RECT_F AABBCollider::GetSize() const
 	D2D1_RECT_F rect{};
 	Vector2 centerVec = GetCenter();
 
-	if (owner->transform->IsUnityCoords())
+	if (owner->GetTransform().IsUnityCoords())
 	{
 		// 중앙을 기준으로 한 크기 
 		rect =

@@ -136,6 +136,8 @@ void Application::Initialize()
 void Application::Uninitialize()
 {
 	Singleton<SceneManager>::GetInstance().GetCurrentScene()->OnExit();
+	Singleton<SceneManager>::GetInstance().GetCurrentScene()->CleanUpDestroyedObjects();
+
 	m_D2DRenderManager->Uninitialize();
 	delete m_D2DRenderManager;
 
@@ -196,12 +198,19 @@ void Application::Render()
 void Application::Update()
 {
 	std::vector<CollisionInfo> collsioninfos;
-	Singleton<ScriptSystem>::GetInstance().Update();	// 컴포넌트 업데이트
-	Singleton<CollisionSystem>::GetInstance().FixedUpdate(collsioninfos);
-	Singleton<PhysicSystem>::GetInstance().FixedUpdate(collsioninfos);
-	Singleton<SceneManager>::GetInstance().Update();	// 씬 내용 업데이트
-	Singleton<TransformSystem>::GetInstance().Update();	// transform 연산 업데이트 
-	Singleton<CameraManager>::GetInstance().Update();	// 카메라 순서 업데이트
+
+	// 1. GameTime, Fps 등 엔진 전역 시스템 
+	Singleton<GameTime>::GetInstance().UpdateTime();
+	Singleton<DebugUtility>::GetInstance().UpdateFPSCount();
+
+	// 2. 현재 씬이 내부에 MonoBehavior System / Transform System / Collision System 등을 호출
+	Scene* currentScene = Singleton<SceneManager>::GetInstance().GetCurrentScene();	
+	currentScene->FixedUpdate(collsioninfos);	// 물리 , 충돌
+	currentScene->Update();						// MonoBehavior / 컴포넌트
+	currentScene->LateUpdate();					// 
+
+	// 3. 그외 전역 시스템 ( 씬의 외부 내용 업데이트 )
+	// ...
 
 	collsioninfos.clear(); // 임시
 }
@@ -218,10 +227,9 @@ void Application::Run()
 		}
 		else 
 		{
-			Singleton<GameTime>::GetInstance().UpdateTime();
-			Singleton<DebugUtility>::GetInstance().UpdateFPSCount();
 			Update();
 			Render();
+			Singleton<CollisionSystem>::GetInstance().CheckPrevPairRemoval();
 			Singleton<SceneManager>::GetInstance().GetCurrentScene()->CleanUpDestroyedObjects(); // 06 30 추가 : 모든 루프가 끝나고 오브젝트 제거
 			Singleton<SceneManager>::GetInstance().CheckSceneLoad();	// 씬 교체 확인 
 

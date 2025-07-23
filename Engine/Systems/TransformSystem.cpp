@@ -5,7 +5,7 @@ void TransformSystem::Register(Transform* pTransform)
 	components.push_back(pTransform);
 }
 
-void TransformSystem::Unregister(Transform* pTransform)
+void TransformSystem::UnRegister(Transform* pTransform)
 {
 	auto it = components.begin();
 	for (; it != components.end();)
@@ -24,11 +24,15 @@ void TransformSystem::Update()
 {	
 	for (auto comp : components)
 	{
+		if (!comp->IsStarted()) continue;
+
 		comp->CalculateFinalMatrix();
 	}
 
 	for (auto comp : components)
 	{
+		if (!comp->IsStarted()) continue;
+
 		comp->ResetDirty();
 	}
 }

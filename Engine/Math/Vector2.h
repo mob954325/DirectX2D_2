@@ -2,7 +2,6 @@
 #include <float.h>
 #include <math.h>
 
-
 struct Vector2
 {
 	float x, y;
