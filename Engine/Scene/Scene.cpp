@@ -17,26 +17,26 @@ void Scene::OnEnter()
 	state = SceneState::Playing;
 }
 
+void Scene::FixedUpdate(std::vector<CollisionInfo>& collisionInfos)
+{
+	Singleton<CollisionSystem>::GetInstance().FixedUpdate(collisionInfos);
+	Singleton<PhysicSystem>::GetInstance().FixedUpdate(collisionInfos);
+}
+
 void Scene::Update()
 {
 	AddCreatedObjects();										// 생성된 게임 오브젝트 활성화 오브젝트로 변경
-	if (state == SceneState::ReadyToExit) return;
+	if (state == SceneState::ReadyToChange) return;
 	
 	Singleton<MonoBehaviorSystem>::GetInstance().ProcessPendingComponents(); // MonoBehavior 지연 등록 확인
 	CheckGameObjectStartQueue();								// component OnStart 처리
 	Singleton<MonoBehaviorSystem>::GetInstance().Update();		// MonoBehavior 처리
 	Singleton<ScriptSystem>::GetInstance().Update();			// 컴포넌트 기반 스크립트 처리
 	Singleton<TransformSystem>::GetInstance().Update();			// Transform 연산
-	if (state == SceneState::ReadyToExit) return;
+	if (state == SceneState::ReadyToChange) return;
 
 	UpdateImpl();
-	if (state == SceneState::ReadyToExit) return;
-}
-
-void Scene::FixedUpdate(std::vector<CollisionInfo>& collisionInfos)
-{
-	Singleton<CollisionSystem>::GetInstance().FixedUpdate(collisionInfos);
-	Singleton<PhysicSystem>::GetInstance().FixedUpdate(collisionInfos);
+	if (state == SceneState::ReadyToChange) return;
 }
 
 void Scene::LateUpdate()

@@ -3,6 +3,9 @@
 #include <windows.h>
 #include "Utils/Singleton.h"
 
+/// <summary>
+/// 게임 시간관련 클래스
+/// </summary>
 class GameTime : public Singleton<GameTime>
 {
 public:

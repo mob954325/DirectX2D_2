@@ -29,13 +29,13 @@ void SceneManager::LoadScene(int sceneIndex)
 		return;
 	}
 
-	currentScene->state = SceneState::ReadyToExit;
+	currentScene->state = SceneState::ReadyToChange;
 	targetSceneIndex = sceneIndex;
 }
 
 void SceneManager::CheckSceneLoad()
 {
-	if (currentScene->state == SceneState::ReadyToExit)
+	if (currentScene->state == SceneState::ReadyToChange)
 	{
 		// 현재 씬 종료
 		if (currentScene != nullptr)

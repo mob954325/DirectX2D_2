@@ -2,6 +2,9 @@
 #include "pch.h"
 #include "Utils/Singleton.h"
 
+/// <summary>
+/// 디버그용 기능 함수 모음 클래스
+/// </summary>
 class DebugUtility : public Singleton<DebugUtility>
 {
 public:

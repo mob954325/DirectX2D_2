@@ -1,6 +1,9 @@
 ﻿#include <windows.h>
 #include "DemoGameApp.h"
 
+/// <summary>
+/// 프로그램 winMain
+/// </summary>
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
     _In_ LPWSTR    lpCmdLine,
@@ -8,6 +11,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     CoInitialize(nullptr);  // COM 초기화
 
+    // 실행할 Appliaction를 상속받은 클래스의 내용 작성
     DemoGameApp demoGameApp;
 
     demoGameApp.Initialize();

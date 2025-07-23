@@ -24,6 +24,7 @@ void TestPlayer::OnStart()
 	idleBitmap->SetSpriteSheet(L"../Resource/Json/ken_sprites.json");
 	idleBitmap->SetAnimationClip(L"../Resource/Json/Dead_Normal_anim.json");
 	idleBitmap->Play();
+	idleBitmap->SetFlip(true);
 	
 	// set transform
 	owner->GetTransform().SetIsUnityCoords(true);

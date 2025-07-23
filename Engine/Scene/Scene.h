@@ -14,7 +14,7 @@ enum SceneState
 {	
 	Enter = 0,		// 씬 전환 후 시작 시
 	Playing,		// 씬 업데이트 중이고 씬 교체가 없을 때
-	ReadyToExit,	// 다음 프레임에 씬 교체가 시작될 때
+	ReadyToChange,	// 다음 프레임에 씬 교체가 시작될 때
 	Exit,			// 씬 내 데이터 정리 후 Enter 전 
 };
 
