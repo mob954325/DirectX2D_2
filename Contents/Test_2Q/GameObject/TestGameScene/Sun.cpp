@@ -10,7 +10,7 @@ void Sun::OnStart()
 	bitmapRenderer->CreateBitmapResource(L"../Resource/Sun.png");
 
 	owner->GetTransform().SetScale(0.1f, 0.1f);
-	owner->GetTransform().SetIsUnityCoords(true);
+	owner->GetTransform().SetUnityCoords(true);
 	owner->GetTransform().SetOffset(-512, 512);
 
 	aabbCollision = owner->AddComponent<AABBCollider>();

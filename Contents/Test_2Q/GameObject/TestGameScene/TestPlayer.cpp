@@ -29,7 +29,7 @@ void TestPlayer::OnStart()
 	idleBitmap->SetFlip(true);
 	
 	// set transform
-	owner->GetTransform().SetIsUnityCoords(true);
+	owner->GetTransform().SetUnityCoords(true);
 	owner->GetTransform().SetScale(1.0f, 1.0f);
 
 	// input init

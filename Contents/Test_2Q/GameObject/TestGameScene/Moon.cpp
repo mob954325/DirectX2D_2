@@ -11,7 +11,7 @@ void Moon::OnStart()
 	SetName("Moon");
 	owner->GetTransform().SetScale(0.5f, 0.5f);
 	owner->GetTransform().SetPosition(0.0f, 1000.0f);
-	owner->GetTransform().SetIsUnityCoords(true);
+	owner->GetTransform().SetUnityCoords(true);
 	owner->GetTransform().SetOffset(-bitmapRenderer->GetResource().get()->GetBitmap()->GetSize().width / 2, bitmapRenderer->GetResource().get()->GetBitmap()->GetSize().height / 2);
 }
 

@@ -20,7 +20,7 @@ void TestRigidbodyObject::OnStart()
 	rigid->SetMass(2);
 
 	owner->GetTransform().SetPosition(0, 400.0f);
-	owner->GetTransform().SetIsUnityCoords(true);
+	owner->GetTransform().SetUnityCoords(true);
 	owner->GetTransform().SetOffset(-44.5f, 138/2);
 
 	aabb = owner->AddComponent<AABBCollider>();

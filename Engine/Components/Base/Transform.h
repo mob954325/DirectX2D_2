@@ -63,7 +63,7 @@ public:
 	void SetParent(Transform* t) { parent = t; }
 
 	bool IsUnityCoords() { return isUnityCoords; }
-	void SetIsUnityCoords(bool value) { isUnityCoords = value; }
+	void SetUnityCoords(bool value) { isUnityCoords = value; }
 
 	void SetOffset(float x, float y);
 

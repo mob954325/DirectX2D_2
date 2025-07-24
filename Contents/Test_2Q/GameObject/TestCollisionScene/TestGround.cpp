@@ -6,7 +6,7 @@ using namespace Test_2QApp;
 
 void TestGround::OnStart()
 {
-	owner->GetTransform().SetIsUnityCoords(true);
+	owner->GetTransform().SetUnityCoords(true);
 
 	box = owner->AddComponent<BoxComponent>();
 	box->SetIsShow(true);
