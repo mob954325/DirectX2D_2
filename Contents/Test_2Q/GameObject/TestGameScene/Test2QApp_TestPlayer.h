@@ -20,7 +20,7 @@ namespace Test_2QApp
 	class HitState;
 	class AttackState;
 
-	class TestPlayer : public MonoBehavior
+	class Test2QApp_TestPlayer : public MonoBehavior
 	{
 	private:
 		void HandleMoveInput();
@@ -71,7 +71,7 @@ namespace Test_2QApp
 	class IdleState : public IStateBehaviorBase
 	{
 	public:
-		TestPlayer* player;
+		Test2QApp_TestPlayer* player;
 
 		void OnStateEnter() override;
 		void OnStateUpdate() override;
@@ -81,7 +81,7 @@ namespace Test_2QApp
 	class MoveState : public IStateBehaviorBase
 	{
 	public:
-		TestPlayer* player;
+		Test2QApp_TestPlayer* player;
 
 		void OnStateEnter() override;
 		void OnStateUpdate() override;
@@ -91,7 +91,7 @@ namespace Test_2QApp
 	class HitState : public IStateBehaviorBase
 	{
 	public:
-		TestPlayer* player;
+		Test2QApp_TestPlayer* player;
 
 		void OnStateEnter() override;
 		void OnStateUpdate() override;
@@ -101,7 +101,7 @@ namespace Test_2QApp
 	class DeadState : public IStateBehaviorBase
 	{
 	public:
-		TestPlayer* player;
+		Test2QApp_TestPlayer* player;
 
 		void OnStateEnter() override;
 		void OnStateUpdate() override;
@@ -111,7 +111,7 @@ namespace Test_2QApp
 	class AttackState : public IStateBehaviorBase
 	{
 	public:
-		TestPlayer* player;
+		Test2QApp_TestPlayer* player;
 
 		void OnStateEnter() override;
 		void OnStateUpdate() override;

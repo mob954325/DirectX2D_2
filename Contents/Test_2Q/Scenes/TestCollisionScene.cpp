@@ -2,7 +2,7 @@
 #include "Test_2Q/GameObject/TestCollisionScene/TestRigidbodyObject.h"
 #include "Test_2Q/GameObject/TestGameScene/FreeCamera.h"
 #include "Test_2Q/GameObject/TestCollisionScene/TestGround.h"
-#include "Test_2Q/GameObject/TestGameScene/TestPlayer.h"
+#include "Test_2Q/GameObject/TestGameScene/Test2QApp_TestPlayer.h"
 #include "Test_2Q/GameObject/TestGameScene/Sun.h"
 #include "Components/Camera/CameraManager.h"
 #include "Test_2Q/GameObject/TestCollisionScene/TestWall.h"

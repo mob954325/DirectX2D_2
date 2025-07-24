@@ -9,7 +9,7 @@
 #include "Test_2Q/GameObject/TestGameScene/Moon.h"
 #include "Test_2Q/GameObject/TestGameScene/FreeCamera.h"
 #include "Test_2Q/GameObject/TestGameScene/GameTextObject.h"
-#include "Test_2Q/GameObject/TestGameScene/TestPlayer.h"
+#include "Test_2Q/GameObject/TestGameScene/Test2QApp_TestPlayer.h"
 #include "Test_2Q/GameObject/TestGameScene/SunGeneratorObject.h"
 #include "Test_2Q/GameObject/TestCollisionScene/TestGround.h"
 
@@ -18,7 +18,7 @@ using namespace Test_2QApp;
 void TestGameScene::OnEnterImpl()
 {
 	m_TestPlayer = new GameObject();
-	m_TestPlayer->AddComponent<TestPlayer>();
+	m_TestPlayer->AddComponent<Test2QApp_TestPlayer>();
 	AddGameObject(m_TestPlayer, "Player");
 
 	m_MainCamera = new GameObject();
