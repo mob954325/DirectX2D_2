@@ -143,7 +143,7 @@ void Scene::AddCreatedObjects()
 	for (GameObject* obj : objectsToAdd)
 	{
 		activeObjects.push_back(obj);
-		obj->SetEarlyCreated();	
+		obj->MarkSetupComplete();	
 	}
 
 	objectsToAdd.clear();

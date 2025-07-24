@@ -64,8 +64,8 @@ public:
 	bool IsMarkedForRemoval() const { return shouldRemove; }
 
 	// 오브젝트 추가 관련
-	void SetEarlyCreated() { earlyCreated = false; };			// 추가된 오브젝트라고 마킹
-	bool IsEarlyCreated() const { return earlyCreated; }
+	void MarkSetupComplete() { isActiveInScene = false; };			// 추가된 오브젝트라고 마킹
+	bool IsActiveInScene() const { return isActiveInScene; }
 	
 	// get/set
 	EngineData::RenderLayer GetRenderLayer() const;
@@ -92,5 +92,5 @@ private:
 	std::vector<Component*> components;			// 컴포넌트를 담는 컨테이너
 	std::queue<Component*> startQueue;			// start를 실행하지 않은 컴포넌트 모음
 	bool shouldRemove = false;					// 해당 오브젝트가 다음 프레임에 제거될 대상인지 확인하는 변수 ( 제거예정이면 true )
-	bool earlyCreated = true;					// 해당 오브젝트가 이번 프레임에 생성되었는지 확인하는 변수 ( 생성된 후 다음 프레임에 false로 전환 )
+	bool isActiveInScene = true;					// 해당 오브젝트가 이번 프레임에 생성되었는지 확인하는 변수 ( 생성된 후 다음 프레임에 false로 전환 )
 };
