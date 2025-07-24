@@ -130,6 +130,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Test_Platformer\Scene\PlayScene.cpp" />
+    <ClCompile Include="Test_Platformer\Scripts\TestPlatformerGame_TestPlayer.cpp" />
     <ClCompile Include="Test_Platformer\Scene\MainMenu.cpp" />
     <ClCompile Include="Test_Platformer\Scripts\MenuObj.cpp" />
     <ClCompile Include="Test_Platformer\Application\TestPlatformerGameApp.cpp" />
@@ -141,7 +143,7 @@
     <ClCompile Include="Test_2Q\GameObject\TestGameScene\GameTextObject.cpp" />
     <ClCompile Include="Test_2Q\GameObject\TestGameScene\Moon.cpp" />
     <ClCompile Include="Test_2Q\GameObject\TestGameScene\FreeCamera.cpp" />
-    <ClCompile Include="Test_2Q\GameObject\TestGameScene\TestPlayer.cpp" />
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\Test2QApp_TestPlayer.cpp" />
     <ClCompile Include="Test_2Q\GameObject\TestGameScene\SunGeneratorObject.cpp" />
     <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\PressuerPlate.cpp" />
     <ClCompile Include="Test_2Q\Scenes\MenuScene.cpp" />
@@ -154,6 +156,8 @@
     <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestColliderboxGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Test_Platformer\Scene\PlayScene.h" />
+    <ClInclude Include="Test_Platformer\Scripts\TestPlatformerGame_TestPlayer.h" />
     <ClInclude Include="Test_Platformer\Scene\MainMenu.h" />
     <ClInclude Include="Test_Platformer\Scripts\MenuObj.h" />
     <ClInclude Include="Test_Platformer\Application\TestPlatformerGameApp.h" />
@@ -164,7 +168,7 @@
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\GameTextObject.h" />
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\Moon.h" />
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\FreeCamera.h" />
-    <ClInclude Include="Test_2Q\GameObject\TestGameScene\TestPlayer.h" />
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\Test2QApp_TestPlayer.h" />
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\SunGeneratorObject.h" />
     <ClInclude Include="Test_2Q\GameObject\TestCollisionScene\PressuerPlate.h" />
     <ClInclude Include="Test_2Q\Scenes\MenuScene.h" />

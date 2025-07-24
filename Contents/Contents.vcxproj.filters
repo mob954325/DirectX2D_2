@@ -57,7 +57,7 @@
     <ClCompile Include="Test_2Q\GameObject\TestGameScene\Sun.cpp">
       <Filter>Test_2Q\GameObject\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="Test_2Q\GameObject\TestGameScene\TestPlayer.cpp">
+    <ClCompile Include="Test_2Q\GameObject\TestGameScene\Test2QApp_TestPlayer.cpp">
       <Filter>Test_2Q\GameObject\TestGameScene</Filter>
     </ClCompile>
     <ClCompile Include="Test_2Q\Application\DemoGameApp.cpp">
@@ -102,6 +102,8 @@
     <ClCompile Include="Test_Platformer\Scripts\MenuObj.cpp">
       <Filter>Test_Platformer\Scripts</Filter>
     </ClCompile>
+    <ClCompile Include="Test_Platformer\Scripts\TestPlatformerGame_TestPlayer.cpp" />
+    <ClCompile Include="Test_Platformer\Scene\PlayScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Test_2Q\Application\DemoGameApp.h">
@@ -131,7 +133,7 @@
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\SunGeneratorObject.h">
       <Filter>Test_2Q\GameObject\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="Test_2Q\GameObject\TestGameScene\TestPlayer.h">
+    <ClInclude Include="Test_2Q\GameObject\TestGameScene\Test2QApp_TestPlayer.h">
       <Filter>Test_2Q\GameObject\TestGameScene</Filter>
     </ClInclude>
     <ClInclude Include="Test_2Q\GameObject\MenuScene\MenuTextObject.h">
@@ -167,5 +169,7 @@
     <ClInclude Include="Test_Platformer\Scripts\MenuObj.h">
       <Filter>Test_Platformer\Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="Test_Platformer\Scripts\TestPlatformerGame_TestPlayer.h" />
+    <ClInclude Include="Test_Platformer\Scene\PlayScene.h" />
   </ItemGroup>
 </Project>
