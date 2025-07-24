@@ -1,5 +1,7 @@
 ﻿#include "MenuObj.h"
 #include "Components/Base/GameObject.h"
+#include "Utils/Singleton.h"
+#include "Scene/SceneManager.h"
 
 void Test_PlatformerGame::MenuObj::OnCreate()
 {
@@ -15,6 +17,8 @@ void Test_PlatformerGame::MenuObj::OnCreate()
 	menuText->SetViewportPosition(0.5f, 0.5f);	// viewport 기준 위치 설정
 	menuText->SetColor(D2D1::ColorF::DarkBlue);
 	menuText->SetText(L"한글 한글, English English");
+
+	input = owner->AddComponent<InputSystem>();
 }
 
 void Test_PlatformerGame::MenuObj::OnStart()
@@ -27,6 +31,10 @@ void Test_PlatformerGame::MenuObj::OnFixedUpdate()
 
 void Test_PlatformerGame::MenuObj::OnUpdate()
 {
+	if (input->IsKeyPressed('P'))
+	{
+		Singleton<SceneManager>::GetInstance().LoadScene(1);
+	}
 }
 
 void Test_PlatformerGame::MenuObj::OnDestroy()

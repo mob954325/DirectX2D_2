@@ -2,6 +2,7 @@
 #include "Components/Base/MonoBehavior.h"
 #include "Components/Rendering/BitmapRenderer.h"
 #include "Components/Rendering/TextRenderer.h"
+#include "Components/Logic/InputSystem.h"
 
 // == 주요 이벤트 호출 함수 모음 == 
 // void OnCreate() override;
@@ -24,5 +25,6 @@ namespace Test_PlatformerGame
 	private:
 		BitmapRenderer* backGround; // 뒷 배경 
 		TextRenderer* menuText;
+		InputSystem* input;
 	};	
 }

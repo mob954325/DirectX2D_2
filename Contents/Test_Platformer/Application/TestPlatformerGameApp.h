@@ -20,5 +20,6 @@ namespace Test_PlatformerGame
 
 	private:
 		Scene* menuScene{};
+		Scene* playScene{};
 	};
 }
