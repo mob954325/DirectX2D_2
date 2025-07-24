@@ -109,6 +109,16 @@ void D2DRenderManager::PrintText(const wchar_t* str, float left, float top, bool
 	m_d2dDeviceContext->DrawTextW(str, (UINT32)wcslen(str), m_pDWriteTextFormat.Get(), D2D1::RectF(left, top, left + 300, top + 250), m_pBrush.Get());
 }
 
+void D2DRenderManager::PrintText(const wchar_t* str, float left, float top, D2D1::ColorF color, bool isWorld)
+{
+	if (!m_d2dDeviceContext || !m_pBrush) return;
+
+	if (!isWorld) m_d2dDeviceContext->SetTransform(D2D1::Matrix3x2F::Identity());
+
+	m_pBrush->SetColor(D2D1::ColorF(color));
+	m_d2dDeviceContext->DrawTextW(str, (UINT32)wcslen(str), m_pDWriteTextFormat.Get(), D2D1::RectF(left, top, left + 300, top + 250), m_pBrush.Get());
+}
+
 void D2DRenderManager::CreateEffect(ID2D1Effect** skew, ID2D1Effect** shadow, Microsoft::WRL::ComPtr<ID2D1Bitmap> bitmap) // ?
 {
 	// AffineTransform2D 이펙트 생성	

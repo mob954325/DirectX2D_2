@@ -7,13 +7,13 @@ void TextRenderer::Render(D2DRenderManager* manager)
 {
 	if (!isWorldPosition)
 	{
-		manager->PrintText(text.c_str(), left, top);
+		manager->PrintText(text.c_str(), left, top, color);
 	}
 	else
 	{
 		D2D1_MATRIX_3X2_F final = owner->GetTransform().GetFinalMatrix();
 		manager->SetBitmapTransform(final);
-		manager->PrintText(text.c_str(), 0x0, 0, true);
+		manager->PrintText(text.c_str(), 0x0, 0, color, true);
 	}
 }
 
@@ -50,4 +50,9 @@ void TextRenderer::SetWorldObject(bool value)
 bool TextRenderer::IsWorldPosition()
 {
 	return isWorldPosition;
+}
+
+void TextRenderer::SetColor(D2D1::ColorF color)
+{
+	this->color = color;
 }

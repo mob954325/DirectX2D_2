@@ -15,8 +15,12 @@ public:
 	void SetWorldObject(bool value);
 	bool IsWorldPosition();
 
+	void SetColor(D2D1::ColorF color);
+
 private:
 	std::wstring text;
+	
+	D2D1::ColorF color = D2D1::ColorF::White;
 
 	bool isWorldPosition = false;
 	float left = 0.0f;
