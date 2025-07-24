@@ -96,6 +96,12 @@
     <ClCompile Include="Test_Platformer\Application\TestPlatformerGameApp.cpp">
       <Filter>Test_Platformer\Application</Filter>
     </ClCompile>
+    <ClCompile Include="Test_Platformer\Scene\MainMenu.cpp">
+      <Filter>Test_Platformer\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Platformer\Scripts\MenuObj.cpp">
+      <Filter>Test_Platformer\Scripts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Test_2Q\Application\DemoGameApp.h">
@@ -154,6 +160,12 @@
     </ClInclude>
     <ClInclude Include="Test_Platformer\Application\TestPlatformerGameApp.h">
       <Filter>Test_Platformer\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Test_Platformer\Scene\MainMenu.h">
+      <Filter>Test_Platformer\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Test_Platformer\Scripts\MenuObj.h">
+      <Filter>Test_Platformer\Scripts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

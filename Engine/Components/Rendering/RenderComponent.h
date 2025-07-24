@@ -11,10 +11,14 @@ public:
 	virtual ~RenderComponent() = default;
 
 	virtual void Render(D2DRenderManager* manager) = 0;
-	void SetRenderManager(D2DRenderManager* pManager) { renderManager = pManager; }
-	void SetResourceManager(ResourceManager* pManager) { resourceManager = pManager; }
+	void SetRenderManager(D2DRenderManager* pManager);
+	void SetResourceManager(ResourceManager* pManager);
+	
+	void SetOrderInLayer(int value);
+	int GetOrderInLayer();
 
 protected:	
 	D2DRenderManager* renderManager{};
 	ResourceManager* resourceManager{};
+	int orderInLayer = 0;
 };

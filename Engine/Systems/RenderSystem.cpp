@@ -1,6 +1,7 @@
 ﻿#include "RenderSystem.h"
 #include "Components/Rendering/RenderComponent.h"
 #include "Components/Base/GameObject.h"
+#include <algorithm>
 
 RenderSystem::~RenderSystem()
 {
@@ -53,6 +54,15 @@ void RenderSystem::ClearAll()
 void RenderSystem::Update(D2DRenderManager* manager)
 {
 	assert(manager && "D2DRenderManager is nullptr");
+
+	std::for_each(renderComponentGroup.begin(), renderComponentGroup.end(),
+		[](auto element)
+		{
+			std::sort(element.second.begin(), element.second.end(), [](RenderComponent* lhs, RenderComponent* rhs)
+				{
+					return lhs->GetOrderInLayer() < rhs->GetOrderInLayer();
+				});
+		});
 
 	for (auto group : renderComponentGroup)
 	{

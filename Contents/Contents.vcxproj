@@ -130,6 +130,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Test_Platformer\Scene\MainMenu.cpp" />
+    <ClCompile Include="Test_Platformer\Scripts\MenuObj.cpp" />
     <ClCompile Include="Test_Platformer\Application\TestPlatformerGameApp.cpp" />
     <ClCompile Include="Test_2Q\Application\DemoGameApp.cpp" />
     <ClCompile Include="Test_2Q\GameObject\TestGameScene\Earth.cpp" />
@@ -152,6 +154,8 @@
     <ClCompile Include="Test_2Q\GameObject\TestCollisionScene\TestColliderboxGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Test_Platformer\Scene\MainMenu.h" />
+    <ClInclude Include="Test_Platformer\Scripts\MenuObj.h" />
     <ClInclude Include="Test_Platformer\Application\TestPlatformerGameApp.h" />
     <ClInclude Include="Test_2Q\Application\DemoGameApp.h" />
     <ClInclude Include="Test_2Q\GameObject\TestGameScene\Earth.h" />
