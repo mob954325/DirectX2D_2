@@ -1,6 +1,11 @@
 ﻿#include "pch.h"
 #include "Input.h"
 
+float Input::MouseX = 0.0f;
+float Input::MouseY = 0.0f;
+float Input::MouseDeltaX = 0.0f;
+float Input::MouseDeltaY = 0.0f;
+
 void Input::Update() {
     memcpy_s(prevState, sizeof(prevState), currState, sizeof(currState));
     for (int i = 0; i < 256; i++) {

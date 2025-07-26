@@ -13,6 +13,11 @@ public:
 	bool IsKeyPressed(int vKey);
 	bool IsKeyReleased(int vKey);
 
+	static float MouseX;
+	static float MouseY;
+	static float MouseDeltaX;
+	static float MouseDeltaY;
+
 private:
 	SHORT prevState[256] = { 0 };
 	SHORT currState[256] = { 0 };

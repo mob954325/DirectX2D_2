@@ -184,6 +184,16 @@ void Application::MessageProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			m_resized = false;
 		}
 		break;
+	case WM_MOUSEMOVE:
+	{
+		Input::MouseDeltaX = LOWORD(lParam) - Input::MouseX;
+		Input::MouseDeltaY = HIWORD(lParam) - Input::MouseY;
+		Input::MouseX = LOWORD(lParam);
+		Input::MouseY = HIWORD(lParam);
+		std::cout << "Mouse : " << Input::MouseX << ", " << Input::MouseY << std::endl;
+		std::cout << "Mouse Delta : " << Input::MouseDeltaX << ", " << Input::MouseDeltaY << std::endl;
+	}
+	break;
 	default:
 		break;
 	}
