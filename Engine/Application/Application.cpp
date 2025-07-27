@@ -185,15 +185,15 @@ void Application::MessageProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	case WM_MOUSEMOVE:
-	{
-		Input::MouseDeltaX = LOWORD(lParam) - Input::MouseX;
-		Input::MouseDeltaY = HIWORD(lParam) - Input::MouseY;
-		Input::MouseX = LOWORD(lParam);
-		Input::MouseY = HIWORD(lParam);
-		std::cout << "Mouse : " << Input::MouseX << ", " << Input::MouseY << std::endl;
-		std::cout << "Mouse Delta : " << Input::MouseDeltaX << ", " << Input::MouseDeltaY << std::endl;
-	}
-	break;
+	case WM_LBUTTONDOWN:
+	case WM_LBUTTONUP:
+	case WM_RBUTTONDOWN:
+	case WM_RBUTTONUP:
+	case WM_MBUTTONDOWN:
+	case WM_MBUTTONUP:
+	case WM_MOUSEWHEEL:
+		Input::ProcessMouseMessage(msg, wParam, lParam);
+		break;
 	default:
 		break;
 	}
@@ -231,6 +231,7 @@ void Application::Run()
 	MSG msg = {};
 	while (msg.message != WM_QUIT)
 	{
+		Input::ResetMouseEventFrameState();	// 07 27 추가 : 마우스 이벤트는 윈도우 메세지를 받기때문에 메세지 받기전에 초기화
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 			TranslateMessage(&msg);
