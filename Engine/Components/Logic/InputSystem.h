@@ -12,6 +12,7 @@ public:
 	bool IsKeyPressed(int vKey);
 	bool IsKeyDown(int vKey);
 	bool IsKeyRelease(int vKey);
+	bool IsMouseButtonDown(MouseButton button);
 
 private:
 	Input* input{};

@@ -33,3 +33,8 @@ bool InputSystem::IsKeyRelease(int vKey)
 {
 	return input->IsKeyReleased(vKey);
 }
+
+bool InputSystem::IsMouseButtonDown(MouseButton button)
+{
+	return input->IsMouseDown(button);
+}
