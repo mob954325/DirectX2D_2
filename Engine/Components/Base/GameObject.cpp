@@ -66,6 +66,12 @@ void GameObject::RemoveComponent(Component* targetComp)
 
 void GameObject::CheckComponent(Component* comp)
 {
+	if (!*comp)
+	{
+		std::cerr << "[ " << comp->GetName() << " ] is INVALID" << std::endl;
+		assert(false && "Invalid component");
+	}
+
 	if (MonoBehavior* mb = dynamic_cast<MonoBehavior*>(comp))
 	{
 		monoBehaviors.push_back(mb);

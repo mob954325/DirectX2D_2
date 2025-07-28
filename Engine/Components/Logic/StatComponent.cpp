@@ -1,11 +1,11 @@
 ﻿#include "StatComponent.h"
 
-std::function<void(int)> StatComponent::GetValueFunctionObject()
+std::function<void(int)> StatComponent::GetSetValueFunctor()
 {
-	return std::bind(&StatComponent::ChangeStat, this, std::placeholders::_1);
+	return std::bind(&StatComponent::SetValue, this, std::placeholders::_1);
 }
 
-void StatComponent::ChangeStat(int value)
+void StatComponent::SetValue(int value)
 {
 	statValue = value;
 }

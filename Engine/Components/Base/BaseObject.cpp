@@ -2,6 +2,14 @@
 
 uint64_t BaseObject::nextInstanceID = 1;
 
+void BaseObject::SetInstanceID()
+{
+    if (instanceID == INVALID_ID)
+    {
+        instanceID = nextInstanceID++;
+    }
+}
+
 uint64_t BaseObject::GetInstanceID()
 {
     return instanceID;

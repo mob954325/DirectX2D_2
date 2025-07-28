@@ -16,7 +16,7 @@ void Test_PlatformerGame::MenuObj::OnCreate()
 	menuText = owner->AddComponent<TextRenderer>();
 	menuText->SetViewportPosition(0.5f, 0.5f);	// viewport 기준 위치 설정
 	menuText->SetColor(D2D1::ColorF::DarkBlue);
-	menuText->SetText(L"한글 한글, English English");
+	menuText->SetText(L"한글 한글, English English\n\n P : 다음 씬 이동");
 
 	input = owner->AddComponent<InputSystem>();
 }

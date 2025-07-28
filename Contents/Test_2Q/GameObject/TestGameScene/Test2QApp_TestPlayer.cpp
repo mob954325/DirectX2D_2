@@ -37,8 +37,8 @@ namespace Test_2QApp
 
 		// statcomponent(hp) init
 		hpComp = owner->AddComponent<StatComponent>();
-		hpComp->ChangeStat(maxHp);
-		OnHitAction += hpComp->GetValueFunctionObject();
+		hpComp->SetValue(maxHp);
+		OnHitAction += hpComp->GetSetValueFunctor();
 
 		// text init
 		hpText = owner->AddComponent<TextRenderer>();
@@ -228,7 +228,7 @@ namespace Test_2QApp
 		}
 		else if (input->IsKeyPressed('J'))
 		{
-			hpComp->ChangeStat(maxHp);
+			hpComp->SetValue(maxHp);
 
 			std::wstring hpStr = L"Hp : ";
 			hpStr += std::to_wstring(hpComp->GetValue());

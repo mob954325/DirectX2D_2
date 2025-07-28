@@ -7,6 +7,7 @@
 class BaseObject
 {
 private:
+	static constexpr uint64_t INVALID_ID = 0xFFFFFFFFFFFFFFFF;
 	static uint64_t nextInstanceID;
 	uint64_t instanceID = 0;
 
@@ -14,9 +15,10 @@ protected:
 	std::string name = "";
 
 public:
-	BaseObject() : instanceID(nextInstanceID++) {}
+	BaseObject() : instanceID(INVALID_ID) {}
 	virtual ~BaseObject() {}
 
+	void SetInstanceID();
 	uint64_t GetInstanceID();
 	std::string GetName();
 	void SetName(std::string str);
@@ -26,7 +28,7 @@ public:
 
 	operator bool() const
 	{
-		return instanceID == 0 ? false : true;
+		return instanceID == INVALID_ID ? false : true;
 	}
 
 	bool operator !=(BaseObject rhs) const

@@ -10,8 +10,8 @@ public:
 
 	int GetValue() { return statValue; }
 
-	std::function<void(int)> GetValueFunctionObject();
-	void ChangeStat(int value);
+	std::function<void(int)> GetSetValueFunctor();
+	void SetValue(int value);
 private:
 	int statValue = 0;
 };
