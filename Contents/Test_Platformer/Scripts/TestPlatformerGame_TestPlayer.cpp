@@ -25,7 +25,7 @@ void Test_PlatformerGame::TestPlatformerGame_TestPlayer::OnCreate()
 	onHit.Add(hpStat->GetSetValueFunctor());
 
 	// hp Text 위치 초기화
-	// hpText = owner->AddComponent<TextRenderer>();
+	hpText = owner->AddComponent<TextRenderer>();
 	hpText->SetViewportPosition(0.5f, 0.0f);
 }
 

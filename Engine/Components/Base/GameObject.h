@@ -26,6 +26,7 @@ public:
 		T* comp = new T;
 		comp->owner = this;
 
+		comp->SetInstanceID();
 		CheckComponent(comp);
 		return comp;
 	}
